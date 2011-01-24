@@ -1,0 +1,243 @@
+Ok
+Cancel
+Error
+No file selected!
+No dataset loaded!
+No variable selected!
+No factor selected!
+No 1st factor selected!
+No graph drawn!
+Space, tab or entry
+Period
+Comma
+Semicolon
+File type:   
+Code for missing values:   
+Column separator:   
+Name of variables indicated in the file:   
+Decimal separator:   
+The dataset contains 
+ variables and 
+" individuals.
+There is (are) "
+ missing value(s), shared between 
+ line(s).
+Numeric variables
+Factors
+The numeric variable
+The factor
+contains
+levels and
+value(s), including
+missing.
+Load
+Rename one or several variables
+Convert the numeric variable into factor
+Draw a graph
+Variable to be renamed
+New name
+Rename
+Variable to be converted:
+No grouping (
+ levels)
+Grouping by classes:
+of same length
+of same size
+Number of classes
+Variable to be represented:   
+Factor (optional):   
+No factor
+Factor level:   
+Type of histogram:   
+individuals
+frequencies
+densities
+Title:   
+Color of title
+Color:   
+Size:   
+Color of axes and values:   
+Color of axes
+Size of values:   
+Color of legends:   
+Color of legends
+Size of legends:   
+Abscissa axis
+Ordinate axis
+Legend:   
+Lower limit:   
+Upper limit:   
+Number of bars:   
+Color of bars:   
+Color of borders:   
+Distribution curve:   
+Color of the distribution curve
+Type of line:   
+Full line
+Large dashed line
+Fine dashed line
+Width:   
+Draw the graph
+New window
+Back
+Factor:   
+Orientation:   
+vertical
+horizontal
+Color of axis labels:   
+Color of axis labels
+Size of labels:   
+                        Box name axis
+Values axis
+Nam of boxes:   
+Log scale:   
+Color of boxes:   
+Color of boxes
+Color of border
+CI of the median:   
+Color of whiskers:   
+Color of whiskers
+"Size of whiskers:
+(proportion of the box)"
+Represent outliers:   
+Color of outliers
+Symbol:   
+empty
+full
+Factor 1 (obligatory):   
+Factor 2 (optional):   
+Type:   
+sums
+means
+proportions
+Configure
+Name of bars / groups:   
+Color of bars
+Hatchings
+Color of borders
+Stack bars:   
+Type of bars:   
+No bar
+Standard deviations
+Standard errors
+Confidence intervals
+Color of error bars
+Segment at the end of the bar:   
+Labels:   
+Position:   
+Top - left
+Top - middle
+Top - right
+Left
+Center
+Right
+Bottom - left
+Bottom - middle
+Bottom - right
+Variable:   
+Slices to be represented:   
+Slice
+clockwise
+counter-clockwise
+Start of the pie chart (degrees):   
+Name of slices:   
+Join up names to slices:   
+Color of slices
+Color of border:   
+Color of border
+X variable:   
+Y variable:   
+Level:   
+"   Factor:
+(optional)   "
+Levels:   
+Box:   
+Symbol and color of points
+Size of points:   
+Parameters of curve
+Levels to be represented:   
+Add a line / curve
+The two variables are not selected!
+Box 
+Bar 
+Group 
+Label 
+Name of slices
+Representation:   
+Points only
+Curve only
+Points and curve 1
+Points and curve 2
+Sticks
+Horizontal:
+Vertical:
+Line of known equation:
+Line of linear regression
+least squares regression
+least rectangles regression
+Line of quadratic regression
+Tendency curve (non parametric)
+Choose the number of graphs to be drawn into the window:
+Background color:   
+Abscissa:   
+Select with the mouse
+Draw
+Close
+Ordinate:   
+Equation:   
+Select 2 points with the mouse
+Text:   
+Coordinates:
+"Click on the 2 bars to select them
+(enter your text first)"
+"Click on the left bar and on the right
+bar to select them (enter your text first)"
+Select
+Window to be saved:   
+Window_
+Image length:   
+Choose and parameter the type of distribution:
+Binomial law
+Poisson law
+Negative binomial law
+Geometric law
+Hypergeometric law
+Normal law
+Gamma law
+Exponential law
+ law
+Fisher-Snedecor law
+Student's law
+Mann-Whitney distribution
+Wilcoxon sign rank distribution
+Number of trials (n):   
+Probability of success (p):   
+Probability of success - rare (p):   
+Aimed number of succesful trials (k):   
+Total number of possible trials (N):   
+Number of trials (n):   
+Mean (
+Standard deviation (
+First paramter of the law (
+Second parameter of the law (
+Parameter of the law (
+Number of degrees of freedom (
+First number of degrees of freedom (
+Second number of degrees of freedom (
+Size of sample 1 (n1):   
+Size of sample 2 (n2):   
+Number of individuals (n):   
+Choose the type of graph
+Change or modify the dataset
+Color of hatchings
+:   
+Color of points
+Background color
+Color of line
+Color of text
+Choose the type of representation:   
+Save
+The variable to be represented and/or the 1st factor are not selected!
+):   
+           x:   
+           y:   

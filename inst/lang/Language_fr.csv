@@ -1,0 +1,244 @@
+Ok
+Annuler
+Erreur
+Aucun fichier sélectionné !
+Pas de jeu de données chargé !
+Aucune variable sélectionnée !
+Aucun facteur sélectionné !
+Pas de 1er facteur sélectionné !
+Aucun graphe tracé !
+Espace, tab ou entrée
+Point
+Virgule
+Point virgule
+Type de fichier :   
+Codage des données manquantes :   
+Séparateur de colonnes :   
+Nom des variables indiqué dans le fichier :   
+Séparateur décimal :   
+Le jeu de données contient 
+ variables et 
+" individus.
+Il y a "
+ valeur(s) manquante(s), réparties sur 
+ ligne(s).
+Variables numériques
+Facteurs
+La variable numérique
+Le facteur
+contient
+niveaux et
+valeur(s), dont
+manquante(s).
+Charger
+Renommer une ou plusieurs variables
+Transformer la variable numérique en facteur
+Tracer un graphe
+Variable à renommer
+Nouveau nom
+Renommer
+Variable à transformer :
+Pas de regroupement (
+ niveaux)
+Regrouper par classes :
+de même longueur
+de même effectif
+Nombre de classes
+Variable à représenter :   
+Facteur (facultatif) :   
+Aucun
+Niveau du facteur :   
+Type d'histogramme :   
+effectifs
+fréquences
+densités
+Titre :   
+Couleur du titre
+Couleur :   
+Taille :   
+Couleur des axes et valeurs :   
+Couleur des axes
+Taille des valeurs :   
+Couleur des légendes :   
+Couleur des légendes
+Taille des légendes :   
+Axe des abscisses
+Axe des ordonnées
+Légende :   
+Limite inférieure :   
+Limite supérieure :   
+Nombre de barres :   
+Couleur des barres :   
+Couleur des bordures :   
+Courbe de distribution :   
+Couleur de la courbe de distribution
+Type de trait :   
+Trait plein
+Trait pointillé large
+Trait pointillé fin
+Epaisseur :   
+Tracer le graphe
+Nouvelle fenêtre
+Retour
+Facteur :   
+Orientation :   
+verticale
+horizontale
+Couleur des libellés d'axes :   
+Couleur des libellés d'axes
+Taille des libellés :   
+               Axe des noms de boîtes
+Axe des valeurs
+Nom des boîtes :   
+Echelle log :   
+Couleur des boîtes :   
+Couleur des boîtes
+Couleur des bordures 
+IC de la médiane :   
+Couleur des moustaches :   
+Couleur des moustaches
+"Taille des moustaches :
+(proportion de la boîte)"
+Représenter les individus extrêmes :   
+Couleur des individus extrêmes
+Symbole :   
+vide
+plein
+Facteur 1 (obligatoire) :   
+Facteur 2 (facultatif) :   
+Type :   
+sommes
+moyennes
+proportions
+Configurer
+Nom des barres / groupes :   
+Couleur des barres 
+Hachures
+Couleur des bordures 
+Superposer les barres :   
+Type de barres :   
+Aucune
+Ecarts-types
+Erreurs standards
+Intervalles de confiance
+Couleur des barres d'erreur
+Segment au bout des barres :   
+Libellés :   
+Position :   
+Haut - gauche
+Haut - milieu
+Haut - droite
+Gauche
+Centre
+Droite
+Bas - gauche
+Bas - milieu
+Bas - droite
+Variable :   
+Parts à représenter :   
+Part
+sens des aiguilles d'une montre
+sens inverse des aiguilles d'une montre
+Début du camembert (degrés) :   
+Nom des parts :   
+Relier les noms aux parts :   
+Couleur des parts
+Couleur de la bordure :   
+Couleur de la bordure
+Variable X :   
+Variable Y :   
+Niveau :   
+"Facteur :
+   (facultatif)"
+Niveaux :   
+Encadré :   
+Symbole et couleur des points
+Taille des points :   
+Paramètres de la courbe
+Niveaux à représenter :   
+Ajouter une droite / courbe
+Les deux variables ne sont pas sélectionnées !
+Boîte 
+Barre 
+Groupe 
+Libellé 
+Nom des parts
+Représentation :   
+Points seuls
+Courbe seule
+Points et courbe 1
+Points et courbe 2
+Bâtons
+Horizontale :
+Verticale :
+Droite d'équation connue :
+Droite de régression linéaire :
+au sens des moindres carrés
+au sens des moindres rectangles
+Droite de régression quadratique
+Courbe de tendance du nuage (non paramétrique)
+Choisir le nombre de graphiques à tracer dans la fenêtre :
+Couleur du fond :   
+Abscisse :   
+Sélectionner à la souris
+Tracer
+Fermer
+Ordonnée :   
+Equation :   
+Sélectionner 2 points à la souris
+Texte :   
+Coordonnées :
+"Cliquer sur les 2 barres pour les
+sélectionner (rentrer le texte avant)"
+"Cliquer sur la barre la plus à gauche
+et celle la plus à droite pour les
+sélectionner (rentrer le texte avant)"
+Sélectionner
+Fenêtre à enregistrer :   
+Fenêtre_
+Largeur de l'image :   
+Choisir et paramétrer le type de distribution :
+Loi binomiale
+Loi de Poisson
+Loi binomiale négative
+Loi géométrique
+Loi hypergéométrique
+Loi normale
+Loi gamma
+Loi exponentielle
+Loi de 
+Loi de Fisher-Snedecor
+Loi de Student
+Distribution de probabilité de Mann-Whitney
+Distribution du test des signes de Wilcoxon
+Nombre d'essais (n) :   
+Probabilité de succès (p) :   
+Probabilité de succès - rare (p) :   
+Nombre de succès visé (k) :   
+Nombre total de tirages possibles (N) :   
+Nombre de tirages réalisés (n) :   
+Moyenne (
+Ecart-type (
+Premier paramètre de la loi (
+Deuxième paramètre de la loi (
+Paramètre de la loi (
+Nombre de degrés de liberté (
+Premier nombre de degrés de liberté (
+Deuxième nombre de degrés de liberté (
+Effectif de la classe 1 (n1) :   
+Effectif de la classe 2 (n2) :   
+Effectif de l'échantillon (n) :   
+Choisir le type de graphe
+Changer ou modifier le jeu de données
+Couleur des hachures
+ :   
+Couleur des points
+Couleur du fond
+Couleur du trait
+Couleur du texte
+Choisir le type de représentation :
+Enregistrer
+La variable à représenter et/ou le 1er facteur ne sont pas sélectionnés !
+) :   
+          x :   
+          y :   
