@@ -53,23 +53,23 @@ individuals
 frequencies
 densities
 Title:   
-Color of title
+Title color
 Color:   
 Size:   
 Color of axes and values:   
-Color of axes
+Axes color
 Size of values:   
 Color of legends:   
-Color of legends
+Legends color
 Size of legends:   
-Abscissa axis
-Ordinate axis
+Horizontal axis
+Vertical axis
 Legend:   
 Lower limit:   
 Upper limit:   
 Number of bars:   
-Color of bars:   
-Color of borders:   
+Bar color:   
+Border color:   
 Distribution curve:   
 Color of the distribution curve
 Type of line:   
@@ -91,16 +91,16 @@ Size of labels:
 Values axis
 Nam of boxes:   
 Log scale:   
-Color of boxes:   
-Color of boxes
-Color of border
+Boxes color:   
+Boxes color
+Border color
 CI of the median:   
-Color of whiskers:   
-Color of whiskers
+Whiskers color:   
+Whiskers color
 "Size of whiskers:
 (proportion of the box)"
 Represent outliers:   
-Color of outliers
+Outliers color
 Symbol:   
 empty
 full
@@ -112,11 +112,11 @@ means
 proportions
 Configure
 Name of bars / groups:   
-Color of bars
+Bar color
 Hatchings
-Color of borders
+Border color
 Stack bars:   
-Type of bars:   
+Bar type:   
 No bar
 Standard deviations
 Standard errors
@@ -142,9 +142,9 @@ counter-clockwise
 Start of the pie chart (degrees):   
 Name of slices:   
 Join up names to slices:   
-Color of slices
-Color of border:   
-Color of border
+Slices color
+Border color:   
+Border color
 X variable:   
 Y variable:   
 Level:   
@@ -154,7 +154,7 @@ Levels:
 Box:   
 Symbol and color of points
 Size of points:   
-Parameters of curve
+Curve parameters
 Levels to be represented:   
 Add a line / curve
 The two variables are not selected!
@@ -195,7 +195,7 @@ bar to select them (enter your text first)"
 Select
 Window to be saved:   
 Window_
-Image length:   
+Image width:   
 Choose and parameter the type of distribution:
 Binomial law
 Poisson law
@@ -229,15 +229,17 @@ Size of sample 2 (n2):
 Number of individuals (n):   
 Choose the type of graph
 Change or modify the dataset
-Color of hatchings
+Hatching color
 :   
-Color of points
+Points color
 Background color
-Color of line
-Color of text
+Line color
+Text color
 Choose the type of representation:   
 Save
 The variable to be represented and/or the 1st factor are not selected!
 ):   
            x:   
            y:   
+Attention
+Because of a low number of individuals in at least one class, confidence interval of medians is represented.

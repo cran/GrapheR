@@ -5,7 +5,7 @@
   if(exists(".required", envir = myEnv, inherits = FALSE)){
     required <- get(".required", envir = myEnv)
     for(pkg in required)
-      require(pkg, quietly = TRUE, character.only = TRUE, save = FALSE)
+      library(pkg, quietly = TRUE, character.only = TRUE)
   }
   if(exists(".First.lib", envir = myEnv, inherits = FALSE)){
     f <- get(".First.lib", envir = myEnv, inherits = FALSE)
@@ -18,6 +18,6 @@
   options(locatorBell=FALSE)
   assign("police",tkfont.create(family="Arial",size=8),pos=Env)
   assign("toolbar.GrapheR",0,pos=Env)
-  packageStartupMessage("\nWelcome to GrapheR v 1.0\n\nUse GrapheR.begin() to relaunch the interface after closing\n\nHave fun\n")
+  packageStartupMessage("\nWelcome to GrapheR v 1.1\n\nUse GrapheR.begin() to relaunch the interface after closing\n\nHave fun\n")
   GrapheR.begin()
 }

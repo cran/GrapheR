@@ -1,6 +1,0 @@
-citHeader("To cite GrapheR in publications use:")
-
-citEntry(entry="Manual",
-         title = "GrapheR: a multiplatform GUI for drawing highly customizable common graphs in R.",
-         author = personList(as.person("Maxime Hervé")),
-         textVersion ="Maxime Hervé (2011). GrapheR: a multiplatform GUI for drawing highly customizable common graphs in R. Package version 1.0")

@@ -62,8 +62,8 @@ Taille des valeurs :
 Couleur des légendes :   
 Couleur des légendes
 Taille des légendes :   
-Axe des abscisses
-Axe des ordonnées
+Axe horizontal
+Axe vertical
 Légende :   
 Limite inférieure :   
 Limite supérieure :   
@@ -242,3 +242,5 @@ La variable à représenter et/ou le 1er facteur ne sont pas sélectionnés !
 ) :   
           x :   
           y :   
+Attention
+Pour cause d'effectif faible dans au moins une classe, l'intervalle de confiance représenté est celui des médianes.
