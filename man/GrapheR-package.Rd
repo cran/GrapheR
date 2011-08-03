@@ -6,14 +6,14 @@
 A multiplatform GUI for drawing customizable graphs in R
 }
 \description{
-GrapheR is a multiplatform user interface for drawing highly customizable graphs in R. It aims to be a valuable help to quickly draw publishable graphs without any knowledge of R commands. Six kinds of graphs are available: histogram, box-and-whisker plot, bar plot, pie chart, curve and scatter plot.
+GrapheR is a multiplatform user interface for drawing highly customizable graphs in R. It aims to be a valuable help to quickly draw publishable graphs without any knowledge of R commands. Six kinds of graph are available: histogram, box-and-whisker plot, bar plot, pie chart, curve and scatter plot.
 }
 \details{
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2011-03-21\cr
+Version: \tab 1.9-5\cr
+Date: \tab 2011-08-03\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -21,7 +21,7 @@ LazyLoad: \tab yes\cr
 \author{
 Maxime Hervé
 
-Maintainer: Maxime Hervé <maxime.herve@laposte.net>
+Maintainer: Maxime Hervé <mx.herve@gmail.com>
 }
 
 \references{

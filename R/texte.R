@@ -1,59 +1,74 @@
 texte <-
 function() {
-  Text=tktoplevel()
-  tkwm.resizable(Text,FALSE,FALSE)
-  tktitle(Text)="GrapheR"
-  tkgrab.set(Text)
-  txtValue=tclVar("")
-  txt=tkentry(Text,width=33,font=Env$police,textvariable=txtValue)
-  xValue=tclVar("")
-  yValue=tclVar("")
-  coordx=tkentry(Text,width=8,font=Env$police,textvariable=xValue)
-  coordy=tkentry(Text,width=8,font=Env$police,textvariable=yValue)
-  coord.but=tkbutton(Text,text=Env$vocab[180,1],width=20,font=Env$police,command=function() {
-    coord=locator(n=1)
-    x=round(coord$x[1],4)
-    y=round(coord$y[1],4)
-    tclvalue(xValue)=x
-    tclvalue(yValue)=y
-    tkdelete(coordx,0,"end")
-    tkdelete(coordy,0,"end")
-    tkinsert(coordx,"end",x)
-    tkinsert(coordy,"end",y)
-    tkfocus(Text)
-  })
-  tailleValue=tclVar("1")
-  taille.choose=tkscale(Text,from=0.5,to=5,showvalue=TRUE,font=Env$police,variable=tailleValue,resolution=0.25,orient="horizontal")
-  colValue=tclVar("black")
-  col.choose=tkbutton(Text,text="Aa",font=tkfont.create(family="Arial",size=10,weight="bold"),command=function() {couleur(fen=Text,titre=232,var=colValue,widg=col.choose,type="but",plusieurs=FALSE)})
-  tracer=tkbutton(Text,text=Env$vocab[181,1],font=Env$police,font=Env$police,width=16,command=function() {
+  fr7.close()
+  for (i in 1:length(Env$l.fr7)) {tkdestroy(Env$l.fr7[[i]])}
+  Env$l.fr7<-list()
+  tkconfigure(Env$l.frames$Fr7,borderwidth=3)
+  Env$l.fr7$txt.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[202,1],font=Env$police)
+  Env$l.fr7$txt.wdg<-tkentry(Env$l.frames$Fr7,width=33,font=Env$police,textvariable=Env$l.var$add.txt)
+  Env$l.fr7$coords.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[203,1],font=Env$police)
+  Env$l.fr7$x.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[204,1],font=Env$police)
+  Env$l.fr7$x.wdg<-tkentry(Env$l.frames$Fr7,width=8,font=Env$police,textvariable=Env$l.var$add.param1)
+  tkbind(Env$l.fr7$x.wdg,"<Enter>",function() {msg(text=Env$voc[155,1],type="warning")})
+  tkbind(Env$l.fr7$x.wdg,"<Leave>",function() {msg(text="",type="info")})
+  Env$l.fr7$y.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[205,1],font=Env$police)
+  Env$l.fr7$y.wdg<-tkentry(Env$l.frames$Fr7,width=8,font=Env$police,textvariable=Env$l.var$add.param2)
+  tkbind(Env$l.fr7$y.wdg,"<Enter>",function() {msg(text=Env$voc[155,1],type="warning")})
+  tkbind(Env$l.fr7$y.wdg,"<Leave>",function() {msg(text="",type="info")})
+  Env$l.fr7$coords.but<-tkbutton(Env$l.frames$Fr7,text=Env$voc[162,1],width=20,font=Env$police,command=function() {
     if (dev.cur()>1) {
-    text(as.numeric(tclvalue(xValue)),as.numeric(tclvalue(yValue)),labels=tclvalue(txtValue),cex=as.numeric(tclvalue(tailleValue)),
-      col=tclvalue(colValue))
-    } else {tkmessageBox(title=Env$vocab[3,1],message=Env$vocab[9,1],icon="error",type="ok")}
+	coords<-locator(n=1)
+	tclvalue(Env$l.var$add.param1)<-round(coords$x[1],4)
+	tclvalue(Env$l.var$add.param2)<-round(coords$y[1],4)
+    } else {
+	msg(text=Env$voc[163,1],type="error")
+    }
   })
-  fermer=tkbutton(Text,text=Env$vocab[182,1],font=Env$police,font=Env$police,width=16,command=function() {tkgrab.release(Text);tkdestroy(Text);tkfocus(Env$Toolbar)})
-  tkgrid(tklabel(Text,text=" ",font=Env$police))
-  tkgrid(tklabel(Text,text="     ",font=Env$police),row=1,column=0)
-  tkgrid(tklabel(Text,text=Env$vocab[186,1],font=Env$police),row=1,column=1,sticky="e")
-  tkgrid(txt,row=1,column=2,columnspan=3,sticky="w")
-  tkgrid(tklabel(Text,text=" ",font=tkfont.create(family="Arial",size=1)))
-  tkgrid(tklabel(Text,text=Env$vocab[187,1],font=Env$police),row=3,column=1,sticky="e")
-  tkgrid(tklabel(Text,text=Env$vocab[237,1],font=Env$police),row=4,column=1,sticky="e")
-  tkgrid(coordx,row=4,column=2)
-  tkgrid(tklabel(Text,text=Env$vocab[238,1],font=Env$police),row=5,column=1,sticky="e")
-  tkgrid(coordy,row=5,column=2)
-  tkgrid(tklabel(Text,text="   ",font=Env$police),row=4,column=3)
-  tkgrid(coord.but,row=4,column=4,rowspan=2)
-  tkgrid(tklabel(Text,text="       ",font=Env$police),row=4,column=5)
-  tkgrid(tklabel(Text,text=Env$vocab[57,1],font=Env$police),row=6,column=1,sticky="e")
-  tkgrid(taille.choose,row=6,column=2,columnspan=3,sticky="w")
-  tkgrid(tklabel(Text,text=" ",font=tkfont.create(family="Arial",size=1)))
-  tkgrid(tklabel(Text,text=Env$vocab[56,1],font=Env$police),row=8,column=1,sticky="e")
-  tkgrid(col.choose,row=8,column=2,columnspan=3,sticky="w")
-  tkgrid(tklabel(Text,text=" ",font=Env$police))
-  tkgrid(tracer,row=10,column=1,columnspan=2,sticky="e")
-  tkgrid(fermer,row=10,column=4)
-  tkgrid(tklabel(Text,text=" ",font=tkfont.create(family="Arial",size=4)))
+  Env$l.fr7$taille.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[46,1],font=Env$police)
+  Env$l.fr7$taille.wdg<-tkscale(Env$l.frames$Fr7,from=0.5,to=5,showvalue=TRUE,font=Env$police,variable=Env$l.var$add.epaisseur1,resolution=0.25,orient="horizontal")
+  Env$l.fr7$col.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[45,1],font=Env$police)
+  Env$l.fr7$col.wdg<-tkbutton(Env$l.frames$Fr7,text="Aa",font=Env$police3,foreground=tclvalue(Env$l.var$add.col1),activeforeground=tclvalue(Env$l.var$add.col1),command=function() {
+    temp<-tclvalue(tcl("tk_chooseColor",initialcolor=tclvalue(Env$l.var$add.col1),title=Env$voc[64,1]))
+    if (nchar(temp)>0) {
+	tclvalue(Env$l.var$add.col1)<-temp
+	tkconfigure(Env$l.fr7$col.wdg,foreground=temp,activeforeground=temp)
+    }
+  })
+  Env$l.fr7$tracer<-tkbutton(Env$l.frames$Fr7,text=Env$voc[72,1],font=Env$police,width=16,command=function() {
+    if (dev.cur()>1) {
+	text(as.numeric(tclvalue(Env$l.var$add.param1)),as.numeric(tclvalue(Env$l.var$add.param2)),
+	  labels=tclvalue(Env$l.var$add.txt),cex=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	  col=tclvalue(Env$l.var$add.col1))
+    } else {
+	msg(text=Env$voc[163,1],type="error")
+    }
+  })
+  Env$l.fr7$fermer<-tkbutton(Env$l.frames$Fr7,text=Env$voc[152,1],font=Env$police,width=16,command=fr7.close)
+  Env$l.fr7$espace.ver1<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver2<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver3<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.hor1<-tklabel(Env$l.frames$Fr7,text="     ",font=Env$police3)
+  Env$l.fr7$espace.hor2<-tklabel(Env$l.frames$Fr7,text="     ",font=Env$police3)
+  Env$l.fr7$espace.hor3<-tklabel(Env$l.frames$Fr7,text="   ",font=Env$police3)
+  tkgrid(Env$l.fr7$espace.ver1)
+  tkgrid(Env$l.fr7$espace.hor1,row=1,column=0)
+  tkgrid(Env$l.fr7$txt.lab,row=1,column=1,sticky="e")
+  tkgrid(Env$l.fr7$txt.wdg,row=1,column=2,columnspan=3,sticky="w")
+  tkgrid(Env$l.fr7$espace.hor2,row=1,column=5)
+  tkgrid(Env$l.fr7$coords.lab,row=2,column=1,sticky="e")
+  tkgrid(Env$l.fr7$x.lab,row=3,column=1,sticky="e")
+  tkgrid(Env$l.fr7$x.wdg,row=3,column=2)
+  tkgrid(Env$l.fr7$y.lab,row=4,column=1,sticky="e")
+  tkgrid(Env$l.fr7$y.wdg,row=4,column=2)
+  tkgrid(Env$l.fr7$espace.hor3,row=3,column=3)
+  tkgrid(Env$l.fr7$coords.but,row=3,column=4,rowspan=2)
+  tkgrid(Env$l.fr7$taille.lab,row=5,column=1,sticky="e")
+  tkgrid(Env$l.fr7$taille.wdg,row=5,column=2,columnspan=3,sticky="w")
+  tkgrid(Env$l.fr7$col.lab,row=6,column=1,sticky="e")
+  tkgrid(Env$l.fr7$col.wdg,row=6,column=2,columnspan=3,sticky="w")
+  tkgrid(Env$l.fr7$espace.ver2)
+  tkgrid(Env$l.fr7$tracer,row=8,column=1,columnspan=2,sticky="e")
+  tkgrid(Env$l.fr7$fermer,row=8,column=4)
+  tkgrid(Env$l.fr7$espace.ver3)
 }
 

@@ -1,213 +1,182 @@
-Ok
-Annuler
-Erreur
-Aucun fichier sélectionné !
-Pas de jeu de données chargé !
-Aucune variable sélectionnée !
-Aucun facteur sélectionné !
-Pas de 1er facteur sélectionné !
-Aucun graphe tracé !
-Espace, tab ou entrée
-Point
-Virgule
-Point virgule
-Type de fichier :   
-Codage des données manquantes :   
+Commencer par charger le jeu de données.
+Fichier externe
+Extension :   
 Séparateur de colonnes :   
-Nom des variables indiqué dans le fichier :   
+espace / tabulation
+virgule
+point-virgule
 Séparateur décimal :   
-Le jeu de données contient 
- variables et 
-" individus.
-Il y a "
- valeur(s) manquante(s), réparties sur 
- ligne(s).
-Variables numériques
-Facteurs
-La variable numérique
-Le facteur
-contient
-niveaux et
-valeur(s), dont
-manquante(s).
+point
+Codage des données manquantes :   
+Nom des variables indiqué dans le fichier :   
+Objet déjà chargé dans R
 Charger
-Renommer une ou plusieurs variables
-Transformer la variable numérique en facteur
-Tracer un graphe
-Variable à renommer
+Seuls les objets de classe ''data.frame'' sont affichés.
+Variables du jeu de données
+Type de variable : 
+Résumé de la variable
+Erreur :
+pas de fichier chargé.
+pas d'objet sélectionné dans la liste.
+Jeu de données chargé.
 Nouveau nom
 Renommer
-Variable à transformer :
+aucun nouveau nom donné.
+aucune variable sélectionnée dans la liste.
+Cliquer pour effacer (ne pas sélectionner à la souris). Appuyer sur Entrée pour valider.
 Pas de regroupement (
  niveaux)
 Regrouper par classes :
 de même longueur
 de même effectif
 Nombre de classes
+Transformer
+seules des variables numériques et des vecteurs de chaînes de caractères peuvent être transformés.
+Variable convertie.
 Variable à représenter :   
 Facteur (facultatif) :   
-Aucun
 Niveau du facteur :   
 Type d'histogramme :   
-effectifs
 fréquences
+effectifs
 densités
+Encadré :   
 Titre :   
-Couleur du titre
 Couleur :   
 Taille :   
-Couleur des axes et valeurs :   
-Couleur des axes
-Taille des valeurs :   
+Couleur des graduations :   
+Taille des graduations :   
 Couleur des légendes :   
-Couleur des légendes
 Taille des légendes :   
 Axe horizontal
 Axe vertical
-Légende :   
 Limite inférieure :   
 Limite supérieure :   
 Nombre de barres :   
 Couleur des barres :   
 Couleur des bordures :   
-Courbe de distribution :   
-Couleur de la courbe de distribution
+Tracer la courbe :   
 Type de trait :   
-Trait plein
-Trait pointillé large
-Trait pointillé fin
+plein
+pointillé fin
+pointillé large
 Epaisseur :   
-Tracer le graphe
-Nouvelle fenêtre
-Retour
+Choisir une couleur
 Facteur :   
-Orientation :   
-verticale
+Orientation des boîtes :   
 horizontale
-Couleur des libellés d'axes :   
-Couleur des libellés d'axes
-Taille des libellés :   
-               Axe des noms de boîtes
+verticale
+Axe des noms de boîtes
 Axe des valeurs
 Nom des boîtes :   
+Tracer
 Echelle log :   
 Couleur des boîtes :   
-Couleur des boîtes
-Couleur des bordures 
 IC de la médiane :   
-Couleur des moustaches :   
-Couleur des moustaches
-"Taille des moustaches :
-(proportion de la boîte)"
+L'intervalle de confiance est représenté par une encoche dans la boîte.
+La taille est exprimée en proportion de la longueur de la boîte.
 Représenter les individus extrêmes :   
-Couleur des individus extrêmes
 Symbole :   
-vide
 plein
+vide
+Aucun
+Renommer une boîte :   
+Moyennes   
+Proportions
 Facteur 1 (obligatoire) :   
 Facteur 2 (facultatif) :   
-Type :   
-sommes
-moyennes
-proportions
-Configurer
-Nom des barres / groupes :   
-Couleur des barres 
-Hachures
-Couleur des bordures 
+Proportions :   
+Nom des barres :   
+Renommer une barre :   
+Couleur des barres :   
+Hachures :   
 Superposer les barres :   
-Type de barres :   
-Aucune
-Ecarts-types
-Erreurs standards
-Intervalles de confiance
-Couleur des barres d'erreur
-Segment au bout des barres :   
-Libellés :   
+Type de barre :   
+aucune
+écart-type
+erreur standard
+intervalle de confiance
+Ajouter une légende :   
 Position :   
-Haut - gauche
-Haut - milieu
-Haut - droite
-Gauche
-Centre
-Droite
-Bas - gauche
-Bas - milieu
-Bas - droite
-Variable :   
+haut - gauche
+haut - centré
+haut - droite
+gauche
+centré
+droite
+bas - gauche
+bas - centré
+bas - droite
+Items :   
+Renommer un item :   
+Une couleur de barres, de bordures et un motif de hachures différents peuvent être définis par niveau.
+aucune barre d'erreur ne peut être tracée si les barres sont superposées.
+seul le type ''densités'' permet d'ajouter une courbe de distribution des données.
 Parts à représenter :   
-Part
+Nom des parts :   
+Renommer une part :   
+Sens du camembert :   
 sens des aiguilles d'une montre
 sens inverse des aiguilles d'une montre
 Début du camembert (degrés) :   
-Nom des parts :   
-Relier les noms aux parts :   
-Couleur des parts
-Couleur de la bordure :   
-Couleur de la bordure
+Relier les parts à leur nom :   
+Une couleur et un motif de hachures différents peuvent être définis par part.
+Couleur de la part :   
+une légende ne peut pas être ajoutée si les parts sont reliées à leur nom.
+La couleur des bordures est unique.
 Variable X :   
 Variable Y :   
-Niveau :   
-"Facteur :
-   (facultatif)"
+Proportion :   
 Niveaux :   
-Encadré :   
-Symbole et couleur des points
-Taille des points :   
-Paramètres de la courbe
-Niveaux à représenter :   
-Ajouter une droite / courbe
-Les deux variables ne sont pas sélectionnées !
-Boîte 
-Barre 
-Groupe 
-Libellé 
-Nom des parts
-Représentation :   
-Points seuls
-Courbe seule
-Points et courbe 1
-Points et courbe 2
-Bâtons
-Horizontale :
-Verticale :
-Droite d'équation connue :
-Droite de régression linéaire :
-au sens des moindres carrés
-au sens des moindres rectangles
-Droite de régression quadratique
-Courbe de tendance du nuage (non paramétrique)
-Choisir le nombre de graphiques à tracer dans la fenêtre :
+Taille des symboles :   
+Type de courbe :   
+points seuls
+courbe seule
+points et courbe 1
+points et courbe 2
+bâtons
+Symbole :   
+Une courbe est tracée par niveau sélectionné.
+une seule proportion peut être représentée.
+Tous les paramètres peuvent être définis différemment pour chaque courbe.
+Sélectionner la ou les proportion(s) à représenter.
+Un nuage de points est tracé par niveau sélectionné.
+Ajouter une droite :   
+droite de régression linéaire (moindres carrés)
+droite de régression linéaire (moindres rectangles)
+droite de régression quadratique
+courbe de tendance du nuage de points
+Choisir le nombre de graphes à tracer dans la fenêtre :
 Couleur du fond :   
+Ok
+Fermer
+aucun jeu de données n'est chargé.
+tous les paramètres généraux nécessaires ne sont pas définis.
+le séparateur décimal doit être un point et non une virgule.
+Le nombre de barres peut différer légèrement de la valeur donnée.
+pour cause d'effectif(s) faible(s), l'intervalle de confiance représenté est celui des médianes.
+aucune hachure ne peut être ajoutée si l'échelle log est choisie.
+Sélectionner la ou les part(s) à représenter.
+Avertissement :
 Abscisse :   
 Sélectionner à la souris
-Tracer
-Fermer
+aucun graphe n'est tracé.
 Ordonnée :   
 Equation :   
+y  =  
+ x   +  
 Sélectionner 2 points à la souris
-Texte :   
-Coordonnées :
-"Cliquer sur les 2 barres pour les
-sélectionner (rentrer le texte avant)"
-"Cliquer sur la barre la plus à gauche
-et celle la plus à droite pour les
-sélectionner (rentrer le texte avant)"
-Sélectionner
-Fenêtre à enregistrer :   
-Fenêtre_
-Largeur de l'image :   
-Choisir et paramétrer le type de distribution :
-Loi binomiale
-Loi de Poisson
-Loi binomiale négative
-Loi géométrique
-Loi hypergéométrique
+Choisir et paramétrer la distribution :
 Loi normale
+Loi binomiale
 Loi gamma
+Loi de Poisson
 Loi exponentielle
+Loi binomiale négative
 Loi de 
+Loi de géométrique
 Loi de Fisher-Snedecor
+Loi hypergéométrique
 Loi de Student
 Distribution de probabilité de Mann-Whitney
 Distribution du test des signes de Wilcoxon
@@ -228,19 +197,45 @@ Deuxième nombre de degrés de liberté (
 Effectif de la classe 1 (n1) :   
 Effectif de la classe 2 (n2) :   
 Effectif de l'échantillon (n) :   
-Choisir le type de graphe
-Changer ou modifier le jeu de données
-Couleur des hachures
- :   
-Couleur des points
-Couleur du fond
-Couleur du trait
-Couleur du texte
-Choisir le type de représentation :
-Enregistrer
-La variable à représenter et/ou le 1er facteur ne sont pas sélectionnés !
 ) :   
-          x :   
-          y :   
-Attention
-Pour cause d'effectif faible dans au moins une classe, l'intervalle de confiance représenté est celui des médianes.
+le graphe tracé n'est pas un histogramme en densités.
+Texte :   
+Coordonnées :
+x :   
+y :   
+"Cliquer sur les 2 barres pour les
+sélectionner (rentrer le texte avant)"
+"Cliquer sur la barre la plus à gauche
+et celle la plus à droite pour les
+sélectionner (rentrer le texte avant)"
+Sélectionner
+le graphe tracé n'est pas un graphe en barres.
+Choisir le type de représentation :
+Fenêtre à enregistrer :   
+Fenêtre
+Type de fichier :   
+Largeur de l'image :   
+Enregistrer
+Langue :   
+anglais
+français
+Sauvegarder la préférence :   
+pas de langue sélectionnée.
+Charger ou modifier le jeu de données.
+Tracer un histogramme.
+Tracer un diagramme en boîtes à moustaches.
+Tracer un diagramme en barres.
+Tracer un camembert.
+Tracer une ou plusieurs courbe(s).
+Tracer un ou plusieurs nuage(s) de points.
+Ouvrir une nouvelle fenêtre.
+Tracer le graphe.
+Ajouter une droite horizontale sur le graphe.
+Ajouter une droite verticale sur le graphe.
+Ajouter une droite quelconque sur le graphe.
+Ajouter une courbe de distribution théorique sur le graphe (uniquement sur des histogrammes tracés en densités).
+Ajouter du texte sur le graphe.
+Ajouter des p-values sur le graphe (uniquement sur des diagrammes en barres).
+Sauvegarder le(s) graphe(s).
+Changer la langue de l'interface.
+Ouvrir le manuel d'introduction à GrapheR.

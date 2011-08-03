@@ -4,8 +4,8 @@
 GrapheR environment
 }
 \description{
-All objects used in several functions are stored in this environment.
+All objects used in GrapheR functions are stored in this environment.
 }
 \author{
-Maxime Hervé <maxime.herve@laposte.net>
+Maxime Hervé <mx.herve@gmail.com>
 }

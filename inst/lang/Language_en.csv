@@ -1,215 +1,185 @@
-Ok
-Cancel
-Error
-No file selected!
-No dataset loaded!
-No variable selected!
-No factor selected!
-No 1st factor selected!
-No graph drawn!
-Space, tab or entry
-Period
-Comma
-Semicolon
-File type:   
-Code for missing values:   
+Start by loading the dataset.
+Extern file
+Extension:   
 Column separator:   
-Name of variables indicated in the file:   
-Decimal separator:   
-The dataset contains 
- variables and 
-" individuals.
-There is (are) "
- missing value(s), shared between 
- line(s).
-Numeric variables
-Factors
-The numeric variable
-The factor
-contains
-levels and
-value(s), including
-missing.
+space / tabulation
+comma
+semicolon
+Decimal separator
+point
+Code for missing values:   
+Variables name indicated in the file:   
+Existing R objects
 Load
-Rename one or several variables
-Convert the numeric variable into factor
-Draw a graph
-Variable to be renamed
+Only objects of class ''data.frame'' are printed.
+Dataset variables
+Variable type:   
+Variable summary
+Error:
+no file loaded.
+no object selected in the list.
+Dataset loaded.
 New name
 Rename
-Variable to be converted:
+no new name given.
+no variable selected in the list.
+Click to delete (do not select with the mouse). Press Enter to valid.
 No grouping (
  levels)
 Grouping by classes:
 of same length
 of same size
-Number of classes
+Classes number
+Transform
+only numeric variables and character chain vectors can be transformed.
+Variable converted.
 Variable to be represented:   
 Factor (optional):   
-No factor
 Factor level:   
-Type of histogram:   
-individuals
+Histogram type:   
 frequencies
+counts
 densities
+Box:   
 Title:   
-Title color
 Color:   
 Size:   
-Color of axes and values:   
-Axes color
-Size of values:   
-Color of legends:   
-Legends color
-Size of legends:   
+Graduations color:   
+Graduations size:   
+Legends color:   
+Legends size:   
 Horizontal axis
 Vertical axis
-Legend:   
 Lower limit:   
 Upper limit:   
 Number of bars:   
-Bar color:   
-Border color:   
-Distribution curve:   
-Color of the distribution curve
-Type of line:   
-Full line
-Large dashed line
-Fine dashed line
+Bars color:   
+Borders color:   
+Draw the curve:   
+Line type:   
+full
+fine dashed
+large dashed
 Width:   
-Draw the graph
-New window
-Back
+Choose a color
 Factor:   
-Orientation:   
-vertical
+Boxes orientation:   
 horizontal
-Color of axis labels:   
-Color of axis labels
-Size of labels:   
-                        Box name axis
+vertical
+Box names axis
 Values axis
-Nam of boxes:   
+Boxes names:   
+Draw
 Log scale:   
 Boxes color:   
-Boxes color
-Border color
 CI of the median:   
-Whiskers color:   
-Whiskers color
-"Size of whiskers:
-(proportion of the box)"
+The confidence interval is represented by a notch in the box.
+The size is expressed in proportion of box length.
 Represent outliers:   
-Outliers color
 Symbol:   
-empty
 full
+empty
+None
+Rename a box:   
+Means
+Proportions
 Factor 1 (obligatory):   
 Factor 2 (optional):   
-Type:   
-sums
-means
-proportions
-Configure
-Name of bars / groups:   
-Bar color
-Hatchings
-Border color
+Proportions:   
+Bar names:   
+Rename a bar:   
+Bars color:   
+Hatchings:   
 Stack bars:   
 Bar type:   
-No bar
-Standard deviations
-Standard errors
-Confidence intervals
-Color of error bars
-Segment at the end of the bar:   
-Labels:   
+none
+standard deviation
+standard error
+confidence interval
+Add a legend:   
 Position:   
-Top - left
-Top - middle
-Top - right
-Left
-Center
-Right
-Bottom - left
-Bottom - middle
-Bottom - right
-Variable:   
+top - left
+top - center
+top - right
+left
+center
+right
+bottom - left
+bottom - center
+bottom - right
+Items:   
+Rename an item:   
+One bar color, border color and hatching pattern can be defined by level.
+no error bar can be drawn if bars are stacked.
+only ''densities'' type allows to draw the distribution curve of the data.
 Slices to be represented:   
-Slice
+Slices names:   
+Rename a slice:   
+Pie orientation:   
 clockwise
 counter-clockwise
-Start of the pie chart (degrees):   
-Name of slices:   
-Join up names to slices:   
-Slices color
-Border color:   
-Border color
+Pie start (degrees):   
+Join up slices to their name:   
+One bar color and hatching pattern can be defined by slice.
+Slice color:   
+no legend can be added if slices are joined up to their name.
+The border color is unique.
 X variable:   
 Y variable:   
-Level:   
-"   Factor:
-(optional)   "
+Proportion:   
 Levels:   
-Box:   
-Symbol and color of points
-Size of points:   
-Curve parameters
-Levels to be represented:   
-Add a line / curve
-The two variables are not selected!
-Box 
-Bar 
-Group 
-Label 
-Name of slices
-Representation:   
-Points only
-Curve only
-Points and curve 1
-Points and curve 2
-Sticks
-Horizontal:
-Vertical:
-Line of known equation:
-Line of linear regression
-least squares regression
-least rectangles regression
-Line of quadratic regression
-Tendency curve (non parametric)
+Symbols size:   
+Curve type:   
+points only
+curve only
+points and curve 1
+points and curve 2
+sticks
+Symbol:   
+A curve is drawn by selected level.
+only one proportion can be represented.
+All parameters can be differently defined for each curve.
+Select proportion(s) to be represented.
+A scatter plot is drawn by selected level.
+Add a line:   
+linear regression line (least squares)
+linear regression line (least rectangles)
+quadratic regression line
+tendency curve of points
 Choose the number of graphs to be drawn into the window:
 Background color:   
-Abscissa:   
-Select with the mouse
-Draw
+Ok
 Close
+no dataset loaded.
+not all needed general parameters are defined.
+the decimal separator must be a point, not a comma.
+The number of bars can be slightly different from the given value.
+because of a low number of individuals, confidence interval of medians is represented.
+no hatching can be added if log scale is chosen.
+Select slice(s) to be represented.
+Warning:
+Abscissa:   
+Mouse selection
+no graph is drawn.
 Ordinate:   
 Equation:   
-Select 2 points with the mouse
-Text:   
-Coordinates:
-"Click on the 2 bars to select them
-(enter your text first)"
-"Click on the left bar and on the right
-bar to select them (enter your text first)"
-Select
-Window to be saved:   
-Window_
-Image width:   
-Choose and parameter the type of distribution:
-Binomial law
-Poisson law
-Negative binomial law
-Geometric law
-Hypergeometric law
+y  =  
+ x   +  
+Mouse selection (2 points)
+Choose and parameter the distribution:
 Normal law
+Binomial law
 Gamma law
+Poisson law
 Exponential law
+Negative binomial law
  law
+Geometric law
 Fisher-Snedecor law
-Student's law
+Hypergeometric law
+Student law
 Mann-Whitney distribution
-Wilcoxon sign rank distribution
+Wilcoxon sign rank test distribution
 Number of trials (n):   
 Probability of success (p):   
 Probability of success - rare (p):   
@@ -227,19 +197,44 @@ Second number of degrees of freedom (
 Size of sample 1 (n1):   
 Size of sample 2 (n2):   
 Number of individuals (n):   
-Choose the type of graph
-Change or modify the dataset
-Hatching color
-:   
-Points color
-Background color
-Line color
-Text color
-Choose the type of representation:   
-Save
-The variable to be represented and/or the 1st factor are not selected!
 ):   
-           x:   
-           y:   
-Attention
-Because of a low number of individuals in at least one class, confidence interval of medians is represented.
+the drawn graph is not a histogram in densities.
+Text:   
+Coordinates:   
+x:   
+y:   
+"Click on the 2 bars to select them
+(enter your text first)"
+"Click on the left bar and on the right
+bar to select them (enter your text first)"
+Select
+the drawn graph is not a bar plot.
+Choose the type of representation:   
+Window to be saved:   
+Window
+File type:   
+Image length:   
+Save
+Language:   
+English
+French
+Save the preference:   
+no language selected.
+Load or modify the dataset.
+Draw a histogram.
+Draw a box-and-whisker plot.
+Draw a bar plot.
+Draw a pie chart.
+Draw one or several curve(s).
+Draw a scatter plot.
+Open a new window.
+Draw the graph.
+Add a horizontal line to the graph.
+Add a vertical line to the graph.
+Add any line to the graph.
+Add a theoretical distribution curve to the graph (only on densities histograms).
+Add text to the graph.
+Add p-values to the graph (only on bar plots).
+Save graph(s).
+Change interface language.
+Open the GrapheR introductory manual.

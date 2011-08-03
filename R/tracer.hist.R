@@ -1,22 +1,48 @@
 tracer.hist <-
-function(var,fact,niv,type,xinf,xsup,ysup,nb.barres,col.bar,col.bor,x.leg,y.leg,size.leg,col.leg,titre,col.titre,size.titre,
-  col.ax,size.ax,distrib,col.distrib,type.distrib,ep.distrib,fen) {
-  if (nchar(var)>0) {
-    vect=if (nchar(fact)>0 & fact!=Env$vocab[48,1]) {Env$datas.GrapheR[,var][which(Env$datas.GrapheR[,fact]==niv)]} else {Env$datas.GrapheR[,var]}
-    sequence=c(min(vect,na.rm=TRUE),max(vect,na.rm=TRUE),abs(max(vect,na.rm=TRUE)-min(vect,na.rm=TRUE))/1000)
-    if (is.numeric(dev.list()[1])==FALSE) {par(bg="white",mar=c(5,6,4,2))}
-    if (type=="eff" | type=="dens") {
-	tracer.hist.effdens(xinf=xinf,vect=vect,nb.barres=nb.barres,xsup=xsup,ysup=ysup,type=type,col.bar=col.bar,col.bor=col.bor,x.leg=x.leg,y.leg=y.leg,
-	  size.leg=size.leg,col.leg=col.leg,col.ax=col.ax,size.ax=size.ax,distrib=distrib,type.distrib=type.distrib,col.distrib=col.distrib,ep.distrib=ep.distrib)
-    } else {
-	tracer.hist.freq(vect=vect,nb.barres=nb.barres,ysup=ysup,col.bar=col.bar,col.bor=col.bor,x.leg=x.leg,y.leg=y.leg,size.leg=size.leg,
-	  col.leg=col.leg,col.ax=col.ax,size.ax=size.ax)
+function() {
+  variable<-if (nchar(tclvalue(Env$l.var$facteur1))>0 & tclvalue(Env$l.var$facteur1)!=Env$voc[82,1]) {
+    Env$dataset[,tclvalue(Env$l.var$variable)][Env$dataset[,tclvalue(Env$l.var$facteur1)]==tclvalue(Env$l.var$niveau)]
+  } else {
+    Env$dataset[,tclvalue(Env$l.var$variable)]
+  }
+  if (tclvalue(Env$l.var$hist.type)==Env$voc[40,1]) {
+    total<-sum(hist(variable,breaks=ifelse(tclvalue(Env$l.var$hist.barres)=="Auto","Sturges",as.numeric(tclvalue(Env$l.var$hist.barres))-1),
+	plot=FALSE)$counts)
+    frequence<-hist(variable,breaks=ifelse(tclvalue(Env$l.var$hist.barres)=="Auto","Sturges",as.numeric(tclvalue(Env$l.var$hist.barres))-1),
+	plot=FALSE)$counts/total
+    limites<-tracer.hist.limites(variable=variable,type="freq",frequence=frequence)
+    x.inf<-limites$xinf
+    x.sup<-limites$xsup
+    y.sup<-limites$ysup
+    barplot(frequence,axes=FALSE,ann=FALSE,space=0,col=tclvalue(Env$l.var$couleur1A),border=tclvalue(Env$l.var$col.borduresA),
+	xlim=c(x.inf,x.sup),ylim=c(0,y.sup))
+    graphe.axes(type="hist.freq",mids=hist(variable,breaks=ifelse(tclvalue(Env$l.var$hist.barres)=="Auto","Sturges",as.numeric(tclvalue(Env$l.var$hist.barres))-1),
+	plot=FALSE)$mids,longueur=length(frequence))
+  } else if (tclvalue(Env$l.var$hist.type)==Env$voc[41,1]) {
+    limites<-tracer.hist.limites(variable=variable,type="eff")
+    x.inf<-limites$xinf
+    x.sup<-limites$xsup
+    y.sup<-limites$ysup
+    hist(variable,axes=FALSE,ann=FALSE,freq=TRUE,col=tclvalue(Env$l.var$couleur1A),border=tclvalue(Env$l.var$col.borduresA),
+	breaks=ifelse(tclvalue(Env$l.var$hist.barres)=="Auto","Sturges",as.numeric(tclvalue(Env$l.var$hist.barres))-1),
+	xlim=c(x.inf,x.sup),ylim=c(0,y.sup))
+    graphe.axes()
+  } else if (tclvalue(Env$l.var$hist.type)==Env$voc[42,1]) {
+    Env$l.var$add.seq<-seq(min(variable,na.rm=TRUE),max(variable,na.rm=TRUE),abs(max(variable,na.rm=TRUE)-min(variable,na.rm=TRUE))/1000)
+    Env$l.var$add.seq2<-floor(min(variable,na.rm=TRUE)):ceiling(max(variable,na.rm=TRUE))
+    limites<-tracer.hist.limites(variable=variable,type="dens")
+    x.inf<-limites$xinf
+    x.sup<-limites$xsup
+    y.sup<-limites$ysup
+    hist(variable,axes=FALSE,ann=FALSE,freq=FALSE,col=tclvalue(Env$l.var$couleur1A),border=tclvalue(Env$l.var$col.borduresA),
+      breaks=ifelse(tclvalue(Env$l.var$hist.barres)=="Auto","Sturges",as.numeric(tclvalue(Env$l.var$hist.barres))-1),
+	xlim=c(x.inf,x.sup),ylim=c(0,y.sup))
+    graphe.axes()
+    if (tclvalue(Env$l.var$hist.dens)=="1") {
+	lines(density(na.omit(variable)),col=tclvalue(Env$l.var$couleur2A),lwd=as.numeric(tclvalue(Env$l.var$epaisseur1)),lty=type.trait(type=tclvalue(Env$l.var$trait1)))
     }
-    title(main=titre,col.main=col.titre,cex.main=size.titre)
-    axis(2,col=col.ax,col.axis=col.ax,cex.axis=size.ax)
-    if (Env$toolbar.GrapheR==1) {tkdestroy(Env$Toolbar)}
-    tkgrab.release(fen)
-    toolbar(type="hist",type.hist=type,sequence=sequence,log.ax="",ht="",abs="")
-  } else {tkmessageBox(title=Env$vocab[3,1],message=Env$vocab[6,1],type="ok",icon="error")}
+  }
+  graphe.titre()
+  graphe.box()
 }
 

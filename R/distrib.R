@@ -1,128 +1,180 @@
 distrib <-
-function(sequence) {
-  Dis=tktoplevel()
-  tkwm.resizable(Dis,FALSE,FALSE)
-  tktitle(Dis)="GrapheR"
-  tkgrab.set(Dis)
-  courbeValue=tclVar("normal")
-  type.distrib=function(dis,par1,par2,par3,act2,act3) {
-    tkconfigure(lab.titre,text=dis)
-    tkconfigure(lab1,text=par1)
-    tkconfigure(lab2,text=par2)
-    tkconfigure(lab3,text=par3)
-    tkconfigure(param1,textvariable=tclVar(""),state="normal")
-    tkconfigure(param2,textvariable=tclVar(""),state=if (act2==TRUE) {"normal"} else {"disabled"})
-    tkconfigure(param3,textvariable=tclVar(""),state=if (act3==TRUE) {"normal"} else {"disabled"})
+function() {
+  fr7.close()
+  for (i in 1:length(Env$l.fr7)) {tkdestroy(Env$l.fr7[[i]])}
+  Env$l.fr7<-list()
+  tkconfigure(Env$l.frames$Fr7,borderwidth=3)
+  type.distrib<-function(dist,par1,par2,par3,act2,act3) {
+    tclvalue(Env$l.var$add.param1)<-""
+    tclvalue(Env$l.var$add.param2)<-""
+    tclvalue(Env$l.var$add.param3)<-""
+    tkconfigure(Env$l.fr7$distrib.lab,text=dist)
+    tkconfigure(Env$l.fr7$param1.lab,text=par1)
+    tkconfigure(Env$l.fr7$param2.lab,text=par2)
+    tkconfigure(Env$l.fr7$param3.lab,text=par3)
+    tkconfigure(Env$l.fr7$param1.wdg,state="normal")
+    tkconfigure(Env$l.fr7$param2.wdg,state=ifelse(act2==TRUE,"normal","disabled"))
+    tkconfigure(Env$l.fr7$param3.wdg,state=ifelse(act3==TRUE,"normal","disabled"))
   }
-  rb1=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="B (n,p)",par1=Env$vocab[208,1],par2=Env$vocab[209,1],par3="",act2=TRUE,act3=FALSE)})
-  rb2=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="P (n.p)",par1=Env$vocab[208,1],par2=Env$vocab[210,1],par3="",act2=TRUE,act3=FALSE)})
-  rb3=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="BN (k,p)",par1=Env$vocab[211,1],par2=Env$vocab[209,1],par3="",act2=TRUE,act3=FALSE)})
-  rb4=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="G (p)",par1=Env$vocab[209,1],par2="",par3="",act2=FALSE,act3=FALSE)})
-  rb5=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="H (N,n,p)",par1=Env$vocab[212,1],par2=Env$vocab[213,1],par3=Env$vocab[209,1],act2=TRUE,act3=TRUE)})
-  rb6=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="N (\U03BC,\U03C3)",par1=paste(Env$vocab[214,1],"\U03BC",Env$vocab[236,1],sep=""),par2=paste(Env$vocab[215,1],"\U03C3",Env$vocab[236,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
-  rb7=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="G (\U03B1,\U03B2)",par1=paste(Env$vocab[216,1],"\U03B1",Env$vocab[236,1],sep=""),par2=paste(Env$vocab[217,1],"\U03B2",Env$vocab[236,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
-  rb8=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="exp (\U03BB)",par1=paste(Env$vocab[218,1],"\U03BB",Env$vocab[236,1],sep=""),par2="",par3="",act2=FALSE,act3=FALSE)})
-  rb9=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="\U03C7\U00B2 (\U03BD)",par1=paste(Env$vocab[219,1],"\U03BD",Env$vocab[236,1],sep=""),par2="",par3="",act2=FALSE,act3=FALSE)})
-  rb10=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis=paste("F (\U03BD","1,\U03BD","2)",sep=""),par1=paste(Env$vocab[220,1],"\U03BD","1",Env$vocab[236,1],sep=""),par2=paste(Env$vocab[221,1],"\U03BD","2",Env$vocab[236,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
-  rb11=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="t (\U03BD)",par1=paste(Env$vocab[219,1],"\U03BD",Env$vocab[236,1],sep=""),par2="",par3="",act2=FALSE,act3=FALSE)})
-  rb12=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="U (n1,n2)",par1=Env$vocab[222,1],par2=Env$vocab[223,1],par3="",act2=TRUE,act3=FALSE)})
-  rb13=tkradiobutton(Dis,font=Env$police,command=function() {type.distrib(dis="V (n)",par1=Env$vocab[224,1],par2="",par3="",act2=FALSE,act3=FALSE)})
-  tkconfigure(rb1,variable=courbeValue,value="binomial",text=Env$vocab[195,1])
-  tkconfigure(rb2,variable=courbeValue,value="poisson",text=Env$vocab[196,1])
-  tkconfigure(rb3,variable=courbeValue,value="nbinomial",text=Env$vocab[197,1])
-  tkconfigure(rb4,variable=courbeValue,value="geom",text=Env$vocab[198,1])
-  tkconfigure(rb5,variable=courbeValue,value="hypergeom",text=Env$vocab[199,1])
-  tkconfigure(rb6,variable=courbeValue,value="normal",text=Env$vocab[200,1])
-  tkconfigure(rb7,variable=courbeValue,value="gamma",text=Env$vocab[201,1])
-  tkconfigure(rb8,variable=courbeValue,value="expo",text=Env$vocab[202,1])
-  tkconfigure(rb9,variable=courbeValue,value="chi2",text=if (Env$lang=="fr") {paste(Env$vocab[203,1],"\U03C7\U00B2",sep="")} else if (Env$lang=="en") {paste("\U03C7\U00B2",Env$vocab[203,1],sep="")})
-  tkconfigure(rb10,variable=courbeValue,value="fisher",text=Env$vocab[204,1])
-  tkconfigure(rb11,variable=courbeValue,value="student",text=Env$vocab[205,1])
-  tkconfigure(rb12,variable=courbeValue,value="mann",text=Env$vocab[206,1])
-  tkconfigure(rb13,variable=courbeValue,value="wilcox",text=Env$vocab[207,1])
-  lab.titre=tklabel(Dis,text="N (\U03BC,\U03C3)",font=tkfont.create(family="Arial",size=10,slant="italic"))
-  lab1=tklabel(Dis,text=paste(Env$vocab[214,1],"\U03BC",Env$vocab[236,1],sep=""),font=Env$police)
-  lab2=tklabel(Dis,text=paste(Env$vocab[215,1],"\U03C3",Env$vocab[236,1],sep=""),font=Env$police)
-  lab3=tklabel(Dis,text="",font=Env$police)
-  param1=tkentry(Dis,width=5,font=Env$police)
-  param2=tkentry(Dis,width=5,font=Env$police)
-  param3=tkentry(Dis,width=5,font=Env$police,state="disabled")
-  typeValue=tclVar(Env$vocab[75,1])
-  type.choose=ttkcombobox(Dis,font=Env$police,values=c(Env$vocab[75,1],Env$vocab[76,1],Env$vocab[77,1]),textvariable=typeValue,state="readonly")
-  epValue=tclVar("1")
-  ep.choose=tkscale(Dis,from=1,to=5,showvalue=TRUE,font=Env$police,variable=epValue,resolution=1,orient="horizontal")
-  colValue=tclVar("black")
-  col.choose=tkcanvas(Dis,width="40",height="25",bg=tclvalue(colValue))
-  tkbind(col.choose,"<ButtonRelease-1>",function() {couleur(fen=Dis,titre=231,var=colValue,widg=col.choose,type="can",plusieurs=FALSE)})
-  tracer=tkbutton(Dis,width=16,text=Env$vocab[181,1],font=Env$police,command=function() {
-    trait=if (tclvalue(typeValue)==Env$vocab[75,1]) {1} else if (tclvalue(typeValue)==Env$vocab[76,1]) {2} else {3}
-    if (tclvalue(courbeValue)=="binomial") {lines(seq(sequence[1],sequence[2],1),dbinom(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1))),
-      as.numeric(tclvalue(tkget(param2)))),type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="poisson") {lines(seq(sequence[1],sequence[2],1),dpois(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1)))*
-      as.numeric(tclvalue(tkget(param2)))),type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="nbinomial") {lines(seq(sequence[1],sequence[2],1),dnbinom(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1))),
-      as.numeric(tclvalue(tkget(param2)))),type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="geom") {lines(seq(sequence[1],sequence[2],1),dgeom(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1)))),
-      type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="hypergeom") {lines(seq(sequence[1],sequence[2],1),dhyper(seq(sequence[1],sequence[2],1),round(as.numeric(tclvalue(tkget(param3)))*as.numeric(tclvalue(tkget(param1))),0),
-      round((1-as.numeric(tclvalue(tkget(param3))))*as.numeric(tclvalue(tkget(param1))),0),as.numeric(tclvalue(tkget(param2)))),type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="normal") {lines(seq(sequence[1],sequence[2],sequence[3]),dnorm(seq(sequence[1],sequence[2],sequence[3]),as.numeric(tclvalue(tkget(param1))),
-      as.numeric(tclvalue(tkget(param2)))),lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="gamma") {lines(seq(sequence[1],sequence[2],sequence[3]),dgamma(seq(sequence[1],sequence[2],sequence[3]),shape=as.numeric(tclvalue(tkget(param1))),
-      scale=as.numeric(tclvalue(tkget(param2)))),lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="expo") {lines(seq(sequence[1],sequence[2],sequence[3]),dexp(seq(sequence[1],sequence[2],sequence[3]),as.numeric(tclvalue(tkget(param1)))),
-      lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="chi2") {lines(seq(sequence[1],sequence[2],sequence[3]),dchisq(seq(sequence[1],sequence[2],sequence[3]),as.numeric(tclvalue(tkget(param1)))),
-      lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="fisher") {lines(seq(sequence[1],sequence[2],sequence[3]),df(seq(sequence[1],sequence[2],sequence[3]),as.numeric(tclvalue(tkget(param1))),
-      as.numeric(tclvalue(tkget(param2)))),lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="student") {lines(seq(sequence[1],sequence[2],sequence[3]),dt(seq(sequence[1],sequence[2],sequence[3]),as.numeric(tclvalue(tkget(param1)))),
-      lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="mann") {lines(seq(sequence[1],sequence[2],1),dwilcox(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1))),
-      as.numeric(tclvalue(tkget(param2)))),type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))} else
-    if (tclvalue(courbeValue)=="wilcox") {lines(seq(sequence[1],sequence[2],1),dsignrank(seq(sequence[1],sequence[2],1),as.numeric(tclvalue(tkget(param1)))),
-      type="o",pch=16,lty=trait,lwd=as.numeric(tclvalue(epValue)),col=tclvalue(colValue))}
+  Env$l.fr7$titre.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[169,1],font=Env$police3)
+  Env$l.fr7$rb1<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="norm",text=Env$voc[170,1],
+    command=function() {type.distrib(dist="N (\U03BC,\U03C3)",par1=paste(Env$voc[189,1],"\U03BC",Env$voc[200,1],sep=""),
+    par2=paste(Env$voc[190,1],"\U03C3",Env$voc[200,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb2<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="binom",text=Env$voc[171,1],
+    command=function() {type.distrib(dist="B (n,p)",par1=Env$voc[183,1],par2=Env$voc[184,1],par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb3<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="gamma",text=Env$voc[172,1],
+    command=function() {type.distrib(dist="G (\U03B1,\U03B2)",par1=paste(Env$voc[191,1],"\U03B1",Env$voc[200,1],sep=""),
+    par2=paste(Env$voc[192,1],"\U03B2",Env$voc[200,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb4<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="poiss",text=Env$voc[173,1],
+    command=function() {type.distrib(dist="P (n.p)",par1=Env$voc[183,1],par2=Env$voc[185,1],par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb5<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="expo",text=Env$voc[174,1],
+    command=function() {type.distrib(dist="exp (\U03BB)",par1=paste(Env$voc[193,1],"\U03BB",Env$voc[200,1],sep=""),
+    par2="",par3="",act2=FALSE,act3=FALSE)})
+  Env$l.fr7$rb6<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="nbinom",text=Env$voc[175,1],
+    command=function() {type.distrib(dist="BN (k,p)",par1=Env$voc[186,1],par2=Env$voc[184,1],par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb7<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="chi",
+    text=if (Env$lang=="fr") {paste(Env$voc[176,1],"\U03C7\U00B2",sep="")} else
+    if (Env$lang=="en") {paste("\U03C7\U00B2",Env$voc[176,1],sep="")},
+    command=function() {type.distrib(dist="\U03C7\U00B2 (\U03BD)",par1=paste(Env$voc[194,1],"\U03BD",Env$voc[200,1],sep=""),
+    par2="",par3="",act2=FALSE,act3=FALSE)})
+  Env$l.fr7$rb8<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="geom",text=Env$voc[177,1],
+    command=function() {type.distrib(dist="G (p)",par1=Env$voc[184,1],par2="",par3="",act2=FALSE,act3=FALSE)})
+  Env$l.fr7$rb9<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="fish",text=Env$voc[178,1],
+    command=function() {type.distrib(dist=paste("F (\U03BD","1,\U03BD","2)",sep=""),par1=paste(Env$voc[195,1],"\U03BD","1",Env$voc[200,1],sep=""),
+    par2=paste(Env$voc[196,1],"\U03BD","1",Env$voc[200,1],sep=""),par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb10<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="hyper",text=Env$voc[179,1],
+    command=function() {type.distrib(dist="H (N,n,p)",par1=Env$voc[187,1],par2=Env$voc[188,1],par3=Env$voc[184,1],
+    act2=TRUE,act3=TRUE)})
+  Env$l.fr7$rb11<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="stud",text=Env$voc[180,1],
+    command=function() {type.distrib(dist="t (\U03BD)",par1=paste(Env$voc[194,1],"\U03BD",Env$voc[200,1],sep=""),
+    par2="",par3="",act2=FALSE,act3=FALSE)})
+  Env$l.fr7$rb12<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="mann",text=Env$voc[181,1],
+    command=function() {type.distrib(dist="U (n1,n2)",par1=Env$voc[197,1],par2=Env$voc[198,1],par3="",act2=TRUE,act3=FALSE)})
+  Env$l.fr7$rb13<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="wilcox",text=Env$voc[182,1],
+    command=function() {type.distrib(dist="V (n)",par1=Env$voc[199,1],par2="",par3="",act2=FALSE,act3=FALSE)})
+  Env$l.fr7$distrib.lab<-tklabel(Env$l.frames$Fr7,text="N (\U03BC,\U03C3)",font=Env$police6)
+  Env$l.fr7$param1.lab<-tklabel(Env$l.frames$Fr7,text=paste(Env$voc[189,1],"\U03BC",Env$voc[200,1],sep=""),font=Env$police)
+  Env$l.fr7$param1.wdg<-tkentry(Env$l.frames$Fr7,width=5,font=Env$police,textvariable=Env$l.var$add.param1)
+  tkbind(Env$l.fr7$param1.wdg,"<Enter>",function() {msg(text=Env$voc[155,1],type="warning")})
+  tkbind(Env$l.fr7$param1.wdg,"<Leave>",function() {msg(text="",type="info")})
+  Env$l.fr7$param2.lab<-tklabel(Env$l.frames$Fr7,text=paste(Env$voc[190,1],"\U03C3",Env$voc[200,1],sep=""),font=Env$police)
+  Env$l.fr7$param2.wdg<-tkentry(Env$l.frames$Fr7,width=5,font=Env$police,textvariable=Env$l.var$add.param2)
+  tkbind(Env$l.fr7$param2.wdg,"<Enter>",function() {msg(text=Env$voc[155,1],type="warning")})
+  tkbind(Env$l.fr7$param2.wdg,"<Leave>",function() {msg(text="",type="info")})
+  Env$l.fr7$param3.lab<-tklabel(Env$l.frames$Fr7,text="",font=Env$police)
+  Env$l.fr7$param3.wdg<-tkentry(Env$l.frames$Fr7,width=5,font=Env$police,textvariable=Env$l.var$add.param3,state="disabled")
+  tkbind(Env$l.fr7$param3.wdg,"<Enter>",function() {msg(text=Env$voc[155,1],type="warning")})
+  tkbind(Env$l.fr7$param3.wdg,"<Leave>",function() {msg(text="",type="info")})
+  Env$l.fr7$trait.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[59,1],font=Env$police)
+  Env$l.fr7$trait.wdg<-ttkcombobox(Env$l.frames$Fr7,font=Env$police,values=c(Env$voc[60:62,1]),textvariable=Env$l.var$add.trait,state="readonly")
+  Env$l.fr7$epaisseur.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[63,1],font=Env$police)
+  Env$l.fr7$epaisseur.wdg<-tkscale(Env$l.frames$Fr7,from=1,to=5,showvalue=TRUE,font=Env$police,variable=Env$l.var$add.epaisseur1,resolution=1,orient="horizontal")
+  Env$l.fr7$col.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[45,1],font=Env$police)
+  Env$l.fr7$col.wdg<-tkcanvas(Env$l.frames$Fr7,width="40",height="25",bg=tclvalue(Env$l.var$add.col1))
+  tkbind(Env$l.fr7$col.wdg,"<ButtonRelease-1>",function() {
+    temp<-tclvalue(tcl("tk_chooseColor",initialcolor=tclvalue(Env$l.var$add.col1),title=Env$voc[64,1]))
+    if (nchar(temp)>0) {
+	tclvalue(Env$l.var$add.col1)<-temp
+	tkconfigure(Env$l.fr7$col.wdg,bg=tclvalue(Env$l.var$add.col1))
+    }
   })
-  fermer=tkbutton(Dis,width=16,text=Env$vocab[182,1],font=Env$police,command=function() {tkgrab.release(Dis);tkdestroy(Dis);tkfocus(Env$Toolbar)})
-  tkgrid(tklabel(Dis,text="",font=Env$police))
-  tkgrid(tklabel(Dis,text="     ",font=Env$police),row=1,column=0)
-  tkgrid(tklabel(Dis,text=Env$vocab[194,1],font=tkfont.create(family="Arial",size=11,weight="bold")),row=1,column=1,columnspan=3)
-  tkgrid(tklabel(Dis,text="        ",font=Env$police),row=1,column=4)
-  tkgrid(tklabel(Dis,text="",font=tkfont.create(family="Arial",size=4)))
-  tkgrid(rb1,row=3,column=2,sticky="w")
-  tkgrid(rb2,row=4,column=2,sticky="w")
-  tkgrid(rb3,row=5,column=2,sticky="w")
-  tkgrid(rb4,row=6,column=2,sticky="w")
-  tkgrid(rb5,row=7,column=2,sticky="w")
-  tkgrid(rb6,row=3,column=1,sticky="w")
-  tkgrid(rb7,row=4,column=1,sticky="w")
-  tkgrid(rb8,row=5,column=1,sticky="w")
-  tkgrid(rb9,row=6,column=1,sticky="w")
-  tkgrid(rb10,row=7,column=1,sticky="w")
-  tkgrid(rb11,row=8,column=1,sticky="w")
-  tkgrid(tklabel(Dis,text=" ",font=tkfont.create(family="Arial",size=1)))
-  tkgrid(rb12,row=10,column=1,columnspan=2,sticky="w")
-  tkgrid(rb13,row=11,column=1,columnspan=2,sticky="w")
-  tkgrid(tklabel(Dis,text=" ",font=tkfont.create(family="Arial",size=3)))
-  tkgrid(lab.titre,row=13,column=1,columnspan=2)
-  tkgrid(tklabel(Dis,text=" ",font=tkfont.create(family="Arial",size=3)))
-  tkgrid(lab1,row=15,column=1,sticky="e")
-  tkgrid(param1,row=15,column=2,sticky="w")
-  tkgrid(lab2,row=16,column=1,sticky="e")
-  tkgrid(param2,row=16,column=2,sticky="w")
-  tkgrid(lab3,row=17,column=1,sticky="e")
-  tkgrid(param3,row=17,column=2,sticky="w")
-  tkgrid(tklabel(Dis,text="",font=Env$police))
-  tkgrid(tklabel(Dis,text=Env$vocab[74,1],font=Env$police),row=19,column=1,sticky="e")
-  tkgrid(type.choose,row=19,column=2,sticky="w")
-  tkgrid(tklabel(Dis,text=Env$vocab[78,1],font=Env$police),row=20,column=1,sticky="e")
-  tkgrid(ep.choose,row=20,column=2,sticky="w")
-  tkgrid(tklabel(Dis,text=" ",font=tkfont.create(family="Arial",size=1)))
-  tkgrid(tklabel(Dis,text=Env$vocab[56,1],font=Env$police),row=22,column=1,sticky="e")
-  tkgrid(col.choose,row=22,column=2,sticky="w")
-  tkgrid(tklabel(Dis,text="",font=Env$police))
-  tkgrid(tracer,row=24,column=1)
-  tkgrid(fermer,row=24,column=2)
-  tkgrid(tklabel(Dis,text=" ",font=tkfont.create(family="Arial",size=4)))
+  Env$l.fr7$tracer<-tkbutton(Env$l.frames$Fr7,width=16,text=Env$voc[72,1],font=Env$police,command=function() {
+    if (dev.cur()>1) {
+	if (!is.null(Env$l.var$add.seq)) {
+	  if (tclvalue(Env$l.var$add.distrib)=="norm") {lines(Env$l.var$add.seq,dnorm(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
+	    as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="binom") {lines(Env$l.var$add.seq2,dbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="gamma") {lines(Env$l.var$add.seq,dgamma(Env$l.var$add.seq,shape=as.numeric(tclvalue(Env$l.var$add.param1)),
+          scale=as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="poiss") {lines(Env$l.var$add.seq2,dpois(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))*
+          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="expo") {lines(Env$l.var$add.seq,dexp(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="nbinom") {lines(Env$l.var$add.seq2,dnbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="chi") {lines(Env$l.var$add.seq,dchisq(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="geom") {lines(Env$l.var$add.seq2,dgeom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
+	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="fish") {lines(Env$l.var$add.seq,df(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
+          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="hyper") {lines(Env$l.var$add.seq2,dhyper(Env$l.var$add.seq2,round(as.numeric(tclvalue(Env$l.var$add.param3))*
+	    as.numeric(tclvalue(Env$l.var$add.param1)),0),round((1-as.numeric(tclvalue(Env$l.var$add.param3)))*as.numeric(tclvalue(Env$l.var$add.param1)),0),
+	    as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="stud") {lines(Env$l.var$add.seq,dt(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1))} else
+	  if (tclvalue(Env$l.var$add.distrib)=="mann") {lines(Env$l.var$add.seq2,dwilcox(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
+	  if (tclvalue(Env$l.var$add.distrib)=="wilcox") {lines(Env$l.var$add.seq2,dsignrank(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
+	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)}
+	} else {
+	  msg(text=Env$voc[201,1],type="error")
+	}
+    } else {
+	msg(text=Env$voc[163,1],type="error")
+    }
+  })
+  Env$l.fr7$fermer<-tkbutton(Env$l.frames$Fr7,width=16,text=Env$voc[152,1],font=Env$police,command=fr7.close)
+  Env$l.fr7$espace.ver1<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver2<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver3<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver4<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver5<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver6<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.ver7<-tklabel(Env$l.frames$Fr7,text="",font=Env$police2)
+  Env$l.fr7$espace.hor1<-tklabel(Env$l.frames$Fr7,text="     ",font=Env$police3)
+  Env$l.fr7$espace.hor2<-tklabel(Env$l.frames$Fr7,text="     ",font=Env$police3)
+  tkgrid(Env$l.fr7$espace.hor1,row=1,column=0)
+  tkgrid(Env$l.fr7$titre.lab,row=1,column=1,columnspan=3)
+  tkgrid(Env$l.fr7$espace.hor2,row=1,column=4)
+  tkgrid(Env$l.fr7$espace.ver1)
+  tkgrid(Env$l.fr7$rb1,row=3,column=1,sticky="w")
+  tkgrid(Env$l.fr7$rb2,row=3,column=2,sticky="w")
+  tkgrid(Env$l.fr7$rb3,row=4,column=1,sticky="w")
+  tkgrid(Env$l.fr7$rb4,row=4,column=2,sticky="w")
+  tkgrid(Env$l.fr7$rb5,row=5,column=1,sticky="w")
+  tkgrid(Env$l.fr7$rb6,row=5,column=2,sticky="w")
+  tkgrid(Env$l.fr7$rb7,row=6,column=1,sticky="w")
+  tkgrid(Env$l.fr7$rb8,row=6,column=2,sticky="w")
+  tkgrid(Env$l.fr7$rb9,row=7,column=1,sticky="w")
+  tkgrid(Env$l.fr7$rb10,row=7,column=2,sticky="w")
+  tkgrid(Env$l.fr7$rb11,row=8,column=1,sticky="w")
+  tkgrid(Env$l.fr7$espace.ver2)
+  tkgrid(Env$l.fr7$rb12,row=10,column=1,columnspan=2,sticky="w")
+  tkgrid(Env$l.fr7$rb13,row=11,column=1,columnspan=2,sticky="w")
+  tkgrid(Env$l.fr7$espace.ver3)
+  tkgrid(Env$l.fr7$distrib.lab,row=13,column=1,columnspan=2)
+  tkgrid(Env$l.fr7$espace.ver4)
+  tkgrid(Env$l.fr7$param1.lab,row=15,column=1,sticky="e")
+  tkgrid(Env$l.fr7$param1.wdg,row=15,column=2,sticky="w")
+  tkgrid(Env$l.fr7$param2.lab,row=16,column=1,sticky="e")
+  tkgrid(Env$l.fr7$param2.wdg,row=16,column=2,sticky="w")
+  tkgrid(Env$l.fr7$param3.lab,row=17,column=1,sticky="e")
+  tkgrid(Env$l.fr7$param3.wdg,row=17,column=2,sticky="w")
+  tkgrid(Env$l.fr7$espace.ver5)
+  tkgrid(Env$l.fr7$trait.lab,row=19,column=1,sticky="e")
+  tkgrid(Env$l.fr7$trait.wdg,row=19,column=2,sticky="w")
+  tkgrid(Env$l.fr7$epaisseur.lab,row=20,column=1,sticky="e")
+  tkgrid(Env$l.fr7$epaisseur.wdg,row=20,column=2,sticky="w")
+  tkgrid(Env$l.fr7$col.lab,row=21,column=1,sticky="e")
+  tkgrid(Env$l.fr7$col.wdg,row=21,column=2,sticky="w")
+  tkgrid(Env$l.fr7$espace.ver6)
+  tkgrid(Env$l.fr7$tracer,row=23,column=1)
+  tkgrid(Env$l.fr7$fermer,row=23,column=2)
+  tkgrid(Env$l.fr7$espace.ver7)
 }
 

@@ -1,0 +1,20 @@
+reinit.fr7 <-
+function() {
+  tclvalue(Env$l.var$nw.col)<-"white"
+  tclvalue(Env$l.var$nw.lignes)<-"1"
+  tclvalue(Env$l.var$nw.colonnes)<-"1"
+  tclvalue(Env$l.var$add.param1)<-""
+  tclvalue(Env$l.var$add.trait)<-""
+  tclvalue(Env$l.var$add.epaisseur1)<-"1"
+  tclvalue(Env$l.var$add.col1)<-"black"
+  tclvalue(Env$l.var$add.param2)<-""
+  tclvalue(Env$l.var$add.param3)<-""
+  tclvalue(Env$l.var$add.distrib)<-"norm"
+  tclvalue(Env$l.var$add.txt)<-""
+  tclvalue(Env$l.var$add.epaisseur2)<-"1"
+  tclvalue(Env$l.var$add.col2)<-"black"
+  tclvalue(Env$l.var$fen.num)<-""
+  tclvalue(Env$l.var$fen.larg)<-"600"
+  tclvalue(Env$l.var$fen.type)<-"jpg"
+}
+
