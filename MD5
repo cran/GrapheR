@@ -1,4 +1,4 @@
-28009c8665f8dda24d776e4cf87a0534 *DESCRIPTION
+4b5fc8a9dc6443807a6ea0eca519e64d *DESCRIPTION
 5903a0cd01fc7f72a2979d2576ba4a7c *R/AAA.R
 5b47b8fb6215cb5f95e5c731b762dc22 *R/active.erreur.R
 df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
@@ -18,7 +18,7 @@ c60549da4315ffac66dc48c59110f1ba *R/data.load1.R
 6e37507158d92c370eb16cdc31f922dc *R/data.load2.R
 4a13c8514771c23817eb4f024413a0a4 *R/distrib.R
 c1c20f97ff4f94b2d02421ebfe848853 *R/enregistrer.R
-ca577e93de4106d92b3bc22d4e75fdad *R/fermer.GrapheR.R
+9ac31e1e06792f53b7285f9e0327df70 *R/fermer.GrapheR.R
 b04bcd51ceea0750d1ed6be662cc44d0 *R/fr1.close.R
 93bf3a717bfd4d054a9f12f7af74c25a *R/fr1.openB.R
 a18a862f85655bc0d21910691766f28b *R/fr1.openCa.R
@@ -213,7 +213,7 @@ d31c60333ba97c1316c24d6398769e32 *inst/lang/Images_fr.csv
 558a3f5c729174cd226853024b572b78 *inst/lang/Language_en.csv
 8af69fdda1c73eb1578eed2f849bad91 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-bede0c0a45f4c60fea91b2c9cc599b6e *man/GrapheR-package.Rd
+9674e23c7bc9d9ee586298ba75d51dd3 *man/GrapheR-package.Rd
 322da86695e4a85562aefff04e35b4ed *man/Swallows.Rd
 0ff9a4081107e9caa7c597d44a5d898c *man/active.erreur.Rd
 736e398811e619726db538a03fff096e *man/run.GrapheR.Rd

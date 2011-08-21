@@ -12,8 +12,8 @@ GrapheR is a multiplatform user interface for drawing highly customizable graphs
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.9-5\cr
-Date: \tab 2011-08-03\cr
+Version: \tab 1.9-55\cr
+Date: \tab 2011-08-21\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
