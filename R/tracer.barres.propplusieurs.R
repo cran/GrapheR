@@ -1,15 +1,16 @@
 tracer.barres.propplusieurs <-
 function() {
   niveaux<-as.numeric(strsplit(tclvalue(Env$l.var$prop.niveaux),split=" ")[[1]])+1
-  variable<-Env$dataset[,tclvalue(Env$l.var$proportions)][Env$dataset[,tclvalue(Env$l.var$proportions)]%in%levels(Env$dataset[,tclvalue(Env$l.var$proportions)])[niveaux]]
-  facteur<-Env$dataset[,tclvalue(Env$l.var$facteurprop)][Env$dataset[,tclvalue(Env$l.var$proportions)]%in%levels(Env$dataset[,tclvalue(Env$l.var$proportions)])[niveaux]]
+  variable<-Env$dataset[,tclvalue(Env$l.var$proportions)]
+  facteur<-Env$dataset[,tclvalue(Env$l.var$facteurprop)]
   valeurs<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur))
   for (i in 1:nlevels(facteur)) {
     for (j in 1:nlevels(variable)) {
 	valeurs[j,i]<-length(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]])/length(na.omit(variable[facteur==levels(facteur)[i]]))
     }
   }
-  erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur,valeurs=valeurs)
+  valeurs<-valeurs[niveaux,]
+  erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur,valeurs=valeurs,prop.nvx=niveaux)
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   y.inf<-limites$yinf

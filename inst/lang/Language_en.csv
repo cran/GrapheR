@@ -1,5 +1,5 @@
 Start by loading the dataset.
-Extern file
+External file
 Extension:   
 Column separator:   
 space / tabulation
@@ -203,10 +203,11 @@ Text:
 Coordinates:   
 x:   
 y:   
-"Click on the 2 bars to select them
-(enter your text first)"
-"Click on the left bar and on the right
-bar to select them (enter your text first)"
+"Enter your text, then click on 'Select'
+and select the 2 bars to be compared"
+"Enter your text, then click on 'Select'
+and select the left bar and the right bar
+of the group to be compared"
 Select
 the drawn graph is not a bar plot.
 Choose the type of representation:   

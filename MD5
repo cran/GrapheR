@@ -1,4 +1,4 @@
-4b5fc8a9dc6443807a6ea0eca519e64d *DESCRIPTION
+3bec1b5364aed4147ef3e64de6cf4ff9 *DESCRIPTION
 5903a0cd01fc7f72a2979d2576ba4a7c *R/AAA.R
 5b47b8fb6215cb5f95e5c731b762dc22 *R/active.erreur.R
 df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
@@ -59,7 +59,7 @@ cde3ea0608ee1c7d488cd9f57d7d5236 *R/fr6.openM.R
 be6d580bf9b547aeafb9548a447de765 *R/fr7.close.R
 e124e8732bcb9257e2b79ac034ddf8c8 *R/graphe.axes.R
 31d04bf0c0dd17bb71c097fa2694913e *R/graphe.box.R
-337e0baa1bf425727778c555f685320e *R/graphe.erreurs.calculer.R
+21391dedd9baf30483408ef2398ec3bc *R/graphe.erreurs.calculer.R
 0c1a8f1a41002cd54069eb095fd7007a *R/graphe.erreurs.calculer2.R
 3b9d4e90d0d01e4f0ac996dcf115ed32 *R/graphe.erreurs.tracer.R
 2512478fa9d81953011d33259b2cebfe *R/graphe.hachures.R
@@ -93,8 +93,8 @@ d5c109f10534662850ba3154c0388736 *R/tracer.R
 dff6e7addeb4a422ded5ca4783c67a72 *R/tracer.barres.limites.R
 861b51d08f4af7156d11d1132fb078e6 *R/tracer.barres.moyplusieurs.R
 5506fd7a84be7278818c4993099a5b7f *R/tracer.barres.moyun.R
-1417ccbed2b48db03c4e5635959d6f69 *R/tracer.barres.propplusieurs.R
-80dd7bfc90432e1658c4aea785688869 *R/tracer.barres.propun.R
+4ab39e1de836118d700398be00071133 *R/tracer.barres.propplusieurs.R
+4564fdfff2c9cca0b524e359c2768444 *R/tracer.barres.propun.R
 5f7b668a51d7beeb37298f46eba0c9c0 *R/tracer.cam.R
 d86f13b907e407e455d6325c56f6ac3f *R/tracer.courbe.limites.R
 03aba9a2141ed035536fbb09735be996 *R/tracer.courbe.moyplusieurs.R
@@ -112,7 +112,7 @@ e29039d4b18e1de3544b50eccc1cf3a9 *R/type.trait.R
 36cf4ce71828e8ccd3f1c14a77f40a82 *R/variables.class.R
 c5fe45a92198f576a4d05bdd6bc05bae *R/vertical.R
 49422981d82ace917cd0f48aeb1401f9 *data/Swallows.txt.gz
-b800c259f1fdd254586548b064761cb4 *inst/doc/manual_en.pdf
+3dc5632f98c102e0ecc8a5d3213e27d5 *inst/doc/manual_en.pdf
 aa3b895422a652cac4a9609d9c27a90b *inst/doc/manual_fr.pdf
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
 18eb6e9b97a9be77dae28c52b2fd3e28 *inst/images/But_box.gif
@@ -210,10 +210,10 @@ a512c20896be489d1cc57d8eb0254ba9 *inst/images/Symbole7.gif
 8558eaa5238712e979685c6d37e0bbf8 *inst/lang/Images_en.csv
 d31c60333ba97c1316c24d6398769e32 *inst/lang/Images_fr.csv
 552570457fdce8573c29a6969779025f *inst/lang/Language.txt
-558a3f5c729174cd226853024b572b78 *inst/lang/Language_en.csv
-8af69fdda1c73eb1578eed2f849bad91 *inst/lang/Language_fr.csv
+77d2908395b8acb9391f7b3592237659 *inst/lang/Language_en.csv
+9f1809db1a525466429c4cabfd854fc2 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-9674e23c7bc9d9ee586298ba75d51dd3 *man/GrapheR-package.Rd
+c0c6cfda332b5e414e88c3dd677f728c *man/GrapheR-package.Rd
 322da86695e4a85562aefff04e35b4ed *man/Swallows.Rd
 0ff9a4081107e9caa7c597d44a5d898c *man/active.erreur.Rd
 736e398811e619726db538a03fff096e *man/run.GrapheR.Rd

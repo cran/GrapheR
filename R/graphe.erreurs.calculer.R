@@ -1,5 +1,5 @@
 graphe.erreurs.calculer <-
-function(variable,facteur1,facteur2=NULL,valeurs=NULL) {
+function(variable,facteur1,facteur2=NULL,valeurs=NULL,prop.nvx=NULL) {
   alert=FALSE
   erreur.inf<-NULL
   erreur.sup<-NULL
@@ -52,13 +52,13 @@ function(variable,facteur1,facteur2=NULL,valeurs=NULL) {
 	if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 	  erreur<-NULL
 	  for (i in 1:nlevels(facteur1)) {
-	    erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/(length(variable[facteur1==levels(facteur1)[i]])-1)))
+	    erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/(length(na.omit(variable[facteur1==levels(facteur1)[i]]))-1)))
 	  }
 	  erreur.inf<-erreur.sup<-erreur
 	} else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	  for (i in 1:nlevels(facteur1)) {
-	    erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(variable[facteur1==levels(facteur1)[i]]),length(na.omit(variable)))$conf.int[1])
-	    erreur.sup<-c(erreur.sup,binom.test(length(variable[facteur1==levels(facteur1)[i]]),length(na.omit(variable)))$conf.int[2]-valeurs[i])
+	    erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]]),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[1])
+	    erreur.sup<-c(erreur.sup,binom.test(length(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]]),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[2]-valeurs[i])
 	  }
 	} else {
 	  erreur.inf<-erreur.sup<-rep(0,nlevels(facteur1))
@@ -67,20 +67,20 @@ function(variable,facteur1,facteur2=NULL,valeurs=NULL) {
 	if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 	  erreur<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur1))
 	  for (i in 1:nlevels(facteur1)) {
-	    for (j in 1:nlevels(variable)) {
-		erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/(length(variable[variable==levels(variable)[j] & facteur1==levels(facteur1)[i]])-1))
+	    for (j in 1:length(prop.nvx)) {
+		erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/(length(na.omit(variable[facteur1==levels(facteur1)[i]]))-1))
 	    }
 	  }
 	  erreur.inf<-erreur.sup<-erreur
 	} else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
-	  erreur.inf<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur1))
-	  erreur.sup<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur1))
+	  erreur.inf<-matrix(0,nrow=length(prop.nvx),ncol=nlevels(facteur1))
+	  erreur.sup<-matrix(0,nrow=length(prop.nvx),ncol=nlevels(facteur1))
 	  for (i in 1:nlevels(facteur1)) {
-	    for (j in 1:nlevels(variable)) {
-		erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(variable[variable==levels(variable)[j] & facteur1==levels(facteur1)[i]]),
-		  length(variable[facteur1==levels(facteur1)[i]]))$conf.int[1]
-		erreur.sup[j,i]<-binom.test(length(variable[variable==levels(variable)[j] & facteur1==levels(facteur1)[i]]),
-		  length(variable[facteur1==levels(facteur1)[i]]))$conf.int[2]-valeurs[j,i]
+	    for (j in 1:length(prop.nvx)) {
+		erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]]),
+		  length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[1]
+		erreur.sup[j,i]<-binom.test(length(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]]),
+		  length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[2]-valeurs[j,i]
 	    }
 	  }
 	} else {
@@ -90,4 +90,3 @@ function(variable,facteur1,facteur2=NULL,valeurs=NULL) {
   }
   return(list(erreur.inf=erreur.inf,erreur.sup=erreur.sup,alert=alert))
 }
-
