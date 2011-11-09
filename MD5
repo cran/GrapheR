@@ -1,5 +1,4 @@
-3bec1b5364aed4147ef3e64de6cf4ff9 *DESCRIPTION
-5903a0cd01fc7f72a2979d2576ba4a7c *R/AAA.R
+b72e0342cede6e6cf6193949bd37ce79 *DESCRIPTION
 5b47b8fb6215cb5f95e5c731b762dc22 *R/active.erreur.R
 df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
 9ec5bb3c3ed34752f8b8ea8c70661070 *R/active.legende2.R
@@ -111,11 +110,13 @@ a8731b078cac94d135ed1d3c23cc4991 *R/tracer.moust.R
 e29039d4b18e1de3544b50eccc1cf3a9 *R/type.trait.R
 36cf4ce71828e8ccd3f1c14a77f40a82 *R/variables.class.R
 c5fe45a92198f576a4d05bdd6bc05bae *R/vertical.R
+5903a0cd01fc7f72a2979d2576ba4a7c *R/zzz.R
 49422981d82ace917cd0f48aeb1401f9 *data/Swallows.txt.gz
 3dc5632f98c102e0ecc8a5d3213e27d5 *inst/doc/manual_en.pdf
 aa3b895422a652cac4a9609d9c27a90b *inst/doc/manual_fr.pdf
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
 18eb6e9b97a9be77dae28c52b2fd3e28 *inst/images/But_box.gif
+25e87eeb21e8755949e83d4f81c0d644 *inst/images/But_cam.gif
 f9bdd542465bcf4a4e2cccbb956faed1 *inst/images/But_courb.gif
 9bb3c335ecc37c313df339bf42c07252 *inst/images/But_data.gif
 a918d745831e546dfa9cd81171f84eee *inst/images/But_dis.gif
@@ -206,14 +207,13 @@ a6e488b7e75c135b6f3a00d811891aaf *inst/images/Symbole4.gif
 10cfa59fa321a2ada19a29b425a1798a *inst/images/Symbole6.gif
 a512c20896be489d1cc57d8eb0254ba9 *inst/images/Symbole7.gif
 90ccb3f71cf0686c2b68157762fcbee6 *inst/images/Symbole8.gif
-25e87eeb21e8755949e83d4f81c0d644 *inst/images/but_cam.gif
 8558eaa5238712e979685c6d37e0bbf8 *inst/lang/Images_en.csv
 d31c60333ba97c1316c24d6398769e32 *inst/lang/Images_fr.csv
 552570457fdce8573c29a6969779025f *inst/lang/Language.txt
 77d2908395b8acb9391f7b3592237659 *inst/lang/Language_en.csv
 9f1809db1a525466429c4cabfd854fc2 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-c0c6cfda332b5e414e88c3dd677f728c *man/GrapheR-package.Rd
+52b302da6d915619181800fcb42781cc *man/GrapheR-package.Rd
 322da86695e4a85562aefff04e35b4ed *man/Swallows.Rd
 0ff9a4081107e9caa7c597d44a5d898c *man/active.erreur.Rd
 736e398811e619726db538a03fff096e *man/run.GrapheR.Rd
