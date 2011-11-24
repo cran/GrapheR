@@ -1,4 +1,5 @@
-b72e0342cede6e6cf6193949bd37ce79 *DESCRIPTION
+f2df95ffa05618841f29d397aa30fb4b *DESCRIPTION
+f7fdaf767fe79c0af1116e54e58071cd *NAMESPACE
 5b47b8fb6215cb5f95e5c731b762dc22 *R/active.erreur.R
 df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
 9ec5bb3c3ed34752f8b8ea8c70661070 *R/active.legende2.R
@@ -111,7 +112,8 @@ e29039d4b18e1de3544b50eccc1cf3a9 *R/type.trait.R
 36cf4ce71828e8ccd3f1c14a77f40a82 *R/variables.class.R
 c5fe45a92198f576a4d05bdd6bc05bae *R/vertical.R
 5903a0cd01fc7f72a2979d2576ba4a7c *R/zzz.R
-49422981d82ace917cd0f48aeb1401f9 *data/Swallows.txt.gz
+b10125e5eca774ed2d83b8ed03c53bfb *R/zzzz.R
+d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
 3dc5632f98c102e0ecc8a5d3213e27d5 *inst/doc/manual_en.pdf
 aa3b895422a652cac4a9609d9c27a90b *inst/doc/manual_fr.pdf
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
@@ -213,7 +215,7 @@ d31c60333ba97c1316c24d6398769e32 *inst/lang/Images_fr.csv
 77d2908395b8acb9391f7b3592237659 *inst/lang/Language_en.csv
 9f1809db1a525466429c4cabfd854fc2 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-52b302da6d915619181800fcb42781cc *man/GrapheR-package.Rd
+c062cb8fd355a094dc59408171fe3489 *man/GrapheR-package.Rd
 322da86695e4a85562aefff04e35b4ed *man/Swallows.Rd
 0ff9a4081107e9caa7c597d44a5d898c *man/active.erreur.Rd
 736e398811e619726db538a03fff096e *man/run.GrapheR.Rd
