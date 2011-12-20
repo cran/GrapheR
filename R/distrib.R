@@ -81,46 +81,101 @@ function() {
   Env$l.fr7$tracer<-tkbutton(Env$l.frames$Fr7,width=16,text=Env$voc[72,1],font=Env$police,command=function() {
     if (dev.cur()>1) {
 	if (!is.null(Env$l.var$add.seq)) {
-	  if (tclvalue(Env$l.var$add.distrib)=="norm") {lines(Env$l.var$add.seq,dnorm(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
-	    as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="binom") {lines(Env$l.var$add.seq2,dbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
-          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="gamma") {lines(Env$l.var$add.seq,dgamma(Env$l.var$add.seq,shape=as.numeric(tclvalue(Env$l.var$add.param1)),
-          scale=as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="poiss") {lines(Env$l.var$add.seq2,dpois(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))*
-          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="expo") {lines(Env$l.var$add.seq,dexp(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
-	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="nbinom") {lines(Env$l.var$add.seq2,dnbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
-          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="chi") {lines(Env$l.var$add.seq,dchisq(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
-	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="geom") {lines(Env$l.var$add.seq2,dgeom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
-	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="fish") {lines(Env$l.var$add.seq,df(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
-          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="hyper") {lines(Env$l.var$add.seq2,dhyper(Env$l.var$add.seq2,round(as.numeric(tclvalue(Env$l.var$add.param3))*
-	    as.numeric(tclvalue(Env$l.var$add.param1)),0),round((1-as.numeric(tclvalue(Env$l.var$add.param3)))*as.numeric(tclvalue(Env$l.var$add.param1)),0),
-	    as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="stud") {lines(Env$l.var$add.seq,dt(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
-	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1))} else
-	  if (tclvalue(Env$l.var$add.distrib)=="mann") {lines(Env$l.var$add.seq2,dwilcox(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
-          as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)} else
-	  if (tclvalue(Env$l.var$add.distrib)=="wilcox") {lines(Env$l.var$add.seq2,dsignrank(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
-	    lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
-	    col=tclvalue(Env$l.var$add.col1),type="o",pch=16)}
+	  variable<-""
+	  sequence<-""
+	  distrib<-""
+	  if (nchar(tclvalue(Env$l.var$facteur1))>0 & tclvalue(Env$l.var$facteur1)!=Env$voc[82,1]) {
+	    variable<-"variable"
+	  } else {
+	    variable<-tclvalue(Env$l.var$variable)
+	  }
+	  if (tclvalue(Env$l.var$add.distrib)%in%c("norm","gamma","expo","chi","fish","stud")) {
+	    sequence<-paste("sequence <- seq(min(",variable,", na.rm=TRUE), max(",variable,", na.rm=TRUE), abs(max(",variable,", na.rm=TRUE) - min(",
+		variable,", na.rm=TRUE)) / 1000)\n",sep="")
+	  } else {
+	    sequence<-paste("sequence <- floor(min(",variable,", na.rm=TRUE)) : ceiling(max(",variable,", na.rm=TRUE))\n",sep="")
+	  }
+	  if (tclvalue(Env$l.var$add.distrib)=="norm") {
+	    lines(Env$l.var$add.seq,dnorm(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("dnorm(sequence, mean=",tclvalue(Env$l.var$add.param1),", sd=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="binom") {
+	    lines(Env$l.var$add.seq2,dbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dbinom(sequence, size=",tclvalue(Env$l.var$add.param1),", prob=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="gamma") {
+	    lines(Env$l.var$add.seq,dgamma(Env$l.var$add.seq,shape=as.numeric(tclvalue(Env$l.var$add.param1)),
+		scale=as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("dgamma(sequence, shape=",tclvalue(Env$l.var$add.param1),", rate=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="poiss") {
+	    lines(Env$l.var$add.seq2,dpois(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))*
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dpois(sequence, lambda=",tclvalue(Env$l.var$add.param1)," * ",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="expo") {
+	    lines(Env$l.var$add.seq,dexp(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+		lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("dexp(sequence, rate=",tclvalue(Env$l.var$add.param1),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="nbinom") {
+	    lines(Env$l.var$add.seq2,dnbinom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dnbinom(sequence, size=",tclvalue(Env$l.var$add.param1),", prob=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="chi") {
+	    lines(Env$l.var$add.seq,dchisq(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+		lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("dchisq(sequence, df=",tclvalue(Env$l.var$add.param1),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="geom") {
+	    lines(Env$l.var$add.seq2,dgeom(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
+		lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dgeom(sequence, prob=",tclvalue(Env$l.var$add.param1),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="fish") {
+	    lines(Env$l.var$add.seq,df(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1)),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("df(sequence, df1=",tclvalue(Env$l.var$add.param1),", df2=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="hyper") {
+	    lines(Env$l.var$add.seq2,dhyper(Env$l.var$add.seq2,round(as.numeric(tclvalue(Env$l.var$add.param3))*
+		as.numeric(tclvalue(Env$l.var$add.param1)),0),round((1-as.numeric(tclvalue(Env$l.var$add.param3)))*as.numeric(tclvalue(Env$l.var$add.param1)),0),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dhyper(sequence, m=round(",tclvalue(Env$l.var$add.param3)," * ",tclvalue(Env$l.var$add.param1),", 0), n=round((1 - ",tclvalue(Env$l.var$add.param3),") * ",
+		tclvalue(Env$l.var$add.param1),", 0), k=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="stud") {
+	    lines(Env$l.var$add.seq,dt(Env$l.var$add.seq,as.numeric(tclvalue(Env$l.var$add.param1))),
+		lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1))
+	    distrib<-paste("dt(sequence, df=",tclvalue(Env$l.var$add.param1),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="mann") {
+	    lines(Env$l.var$add.seq2,dwilcox(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1)),
+		as.numeric(tclvalue(Env$l.var$add.param2))),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dwilcox(sequence, m=",tclvalue(Env$l.var$add.param1),", n=",tclvalue(Env$l.var$add.param2),")",sep="")
+	  } else if (tclvalue(Env$l.var$add.distrib)=="wilcox") {
+	    lines(Env$l.var$add.seq2,dsignrank(Env$l.var$add.seq2,as.numeric(tclvalue(Env$l.var$add.param1))),
+		lty=type.trait(type=tclvalue(Env$l.var$add.trait)),lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),
+		col=tclvalue(Env$l.var$add.col1),type="o",pch=16)
+	    distrib<-paste("dsignrank(sequence, n=",tclvalue(Env$l.var$add.param1),")",sep="")
+	  }
+	  if (Env$l.code$save==TRUE) {
+	    sink(file=file.path(Env$l.code$folder,paste(paste("GrapheR",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],collapse="."),
+		sep="-"),".R",sep=""),fsep=.Platform$file.sep),append=TRUE)
+	    cat("# Added: theoretical distribution curve\n\n")
+	    cat(sequence)
+	    texte<-paste("lines(sequence, ",distrib,sep="")
+	    if (tclvalue(Env$l.var$add.col1)!="black" & tclvalue(Env$l.var$add.col1)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$add.col1),"\"",sep="")}
+	    texte<-paste(texte,", lty=",type.trait(type=tclvalue(Env$l.var$add.trait)),sep="")
+	    texte<-paste(texte,", lwd=",tclvalue(Env$l.var$add.epaisseur1),sep="")
+	    if (tclvalue(Env$l.var$add.distrib)%in%c("binom","pois","nbinom","geom","hyper","mann","wilcox")) {texte<-paste(texte,", type=\"o\", pch=16",sep="")}
+	    cat(paste(texte,")\n\n",sep=""))
+	    sink(NULL)
+	  }
 	} else {
 	  msg(text=Env$voc[201,1],type="error")
 	}

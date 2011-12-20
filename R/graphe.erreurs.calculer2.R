@@ -1,6 +1,5 @@
 graphe.erreurs.calculer2 <-
 function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NULL) {
-  alert=FALSE
   erreur.inf<-NULL
   erreur.sup<-NULL
   if (tclvalue(Env$l.var$plusieurs)==0) {
@@ -42,6 +41,6 @@ function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NULL) {
 	erreur.inf<-erreur.sup<-matrix(0,nrow=nlevels(facteur),ncol=nlevels(varX))
     }
   }
-  return(list(erreur.inf=erreur.inf,erreur.sup=erreur.sup,alert=alert))
+  return(list(erreur.inf=erreur.inf,erreur.sup=erreur.sup))
 }
 

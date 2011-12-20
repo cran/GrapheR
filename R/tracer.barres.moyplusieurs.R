@@ -7,8 +7,8 @@ function() {
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur1,facteur2=facteur2)
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
-  y.inf<-limites$yinf
-  y.sup<-limites$ysup
+  Env$l.code$y.inf<-y.inf<-limites$yinf
+  Env$l.code$y.sup<-y.sup<-limites$ysup
   Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$couleur1B,log=graphe.log(),
     border=Env$l.var$col.borduresB,ylim=c(y.inf,y.sup),names.arg=Env$l.var$noms1,
     beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE))
@@ -27,7 +27,7 @@ function() {
   }
   if (tclvalue(Env$l.var$stack)==0 & nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
-	erreur.sup=erreurs$erreur.sup,alert=erreurs$alert,couleur=tclvalue(Env$l.var$couleur2A))
+	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A))
   }
   graphe.titre()
   graphe.axes(type="bar",ordonnee=limites$ordonnee)

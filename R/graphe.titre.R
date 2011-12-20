@@ -1,5 +1,4 @@
-graphe.titre <-
-function(type="",orient=NULL) {
+graphe.titre<-function(type="",orient=NULL) {
   if (type=="moust") {
     titre.x<-if (orient=="ver") {
 	tclvalue(Env$l.var$titre.axenoms)
@@ -19,4 +18,3 @@ function(type="",orient=NULL) {
 	col.lab=tclvalue(Env$l.var$legendes.col))
   }
 }
-

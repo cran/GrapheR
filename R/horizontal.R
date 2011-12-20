@@ -33,6 +33,17 @@ function() {
     if (dev.cur()>1) {
       abline(h=as.numeric(tclvalue(Env$l.var$add.param1)),lty=type.trait(type=tclvalue(Env$l.var$add.trait)),
 	  lwd=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),col=tclvalue(Env$l.var$add.col1))
+	if (Env$l.code$save==TRUE) {
+	  sink(file=file.path(Env$l.code$folder,paste(paste("GrapheR",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],collapse="."),
+	    sep="-"),".R",sep=""),fsep=.Platform$file.sep),append=TRUE)
+	  cat("# Added: horizontal line\n\n")
+	  texte<-paste("abline(h=",tclvalue(Env$l.var$add.param1),sep="")
+	  if (tclvalue(Env$l.var$add.col1)!="black" & tclvalue(Env$l.var$add.col1)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$add.col1),"\"",sep="")}
+	  texte<-paste(texte,", lty=",type.trait(type=tclvalue(Env$l.var$add.trait)),sep="")
+	  texte<-paste(texte,", lwd=",tclvalue(Env$l.var$add.epaisseur1),")\n\n",sep="")
+	  cat(texte)
+	  sink(NULL)
+	}
     } else {
 	msg(text=Env$voc[163,1],type="error")
     }

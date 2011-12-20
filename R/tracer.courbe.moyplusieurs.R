@@ -6,10 +6,10 @@ function() {
   valeurs<-tapply(varY,list(facteur,varX),function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=varY,facteur1=factor(varX),facteur2=facteur)
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
-  x.inf<-limites$xinf
-  x.sup<-limites$xsup
-  y.inf<-limites$yinf
-  y.sup<-limites$ysup
+  Env$l.code$x.inf<-x.inf<-limites$xinf
+  Env$l.code$x.sup<-x.sup<-limites$xsup
+  Env$l.code$y.inf<-y.inf<-limites$yinf
+  Env$l.code$y.sup<-y.sup<-limites$ysup
   symboles<-graphe.symboles(num=Env$l.var$symboleB)
   lignes<-type.ligne(type=Env$l.var$type.courbeB)
   traits<-type.trait(type=Env$l.var$trait2)
@@ -23,7 +23,7 @@ function() {
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     for (i in 1:length(Env$l.var$noms1)) {
 	graphe.erreurs.tracer(abscisses=as.numeric(colnames(valeurs)),valeurs=valeurs[i,],erreur.inf=erreurs$erreur.inf[i,],
-	  erreur.sup=erreurs$erreur.sup[i,],alert=erreurs$alert,couleur=Env$l.var$couleur2B[i],amplitude=x.sup-x.inf)
+	  erreur.sup=erreurs$erreur.sup[i,],couleur=Env$l.var$couleur2B[i],amplitude=x.sup-x.inf)
     }
   }
   if (tclvalue(Env$l.var$legende)==1) {

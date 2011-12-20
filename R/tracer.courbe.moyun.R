@@ -10,10 +10,10 @@ function() {
   valeurs<-tapply(varY,varX,function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=varY,facteur1=factor(varX))
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
-  x.inf<-limites$xinf
-  x.sup<-limites$xsup
-  y.inf<-limites$yinf
-  y.sup<-limites$ysup
+  Env$l.code$x.inf<-x.inf<-limites$xinf
+  Env$l.code$x.sup<-x.sup<-limites$xsup
+  Env$l.code$y.inf<-y.inf<-limites$yinf
+  Env$l.code$y.sup<-y.sup<-limites$ysup
   symbole<-graphe.symboles(num=as.numeric(tclvalue(Env$l.var$symboleA)))
   plot(valeurs~as.numeric(names(valeurs)),axes=FALSE,ann=FALSE,xlim=c(x.inf,x.sup),ylim=c(y.inf,y.sup),log=graphe.log(),
     col=tclvalue(Env$l.var$couleur2A),pch=symbole,cex=as.numeric(tclvalue(Env$l.var$taille.ptsA)),
@@ -21,7 +21,7 @@ function() {
     lwd=as.numeric(tclvalue(Env$l.var$epaisseur1)))
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=as.numeric(names(valeurs)),valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
-	erreur.sup=erreurs$erreur.sup,alert=erreurs$alert,couleur=tclvalue(Env$l.var$couleur2A),amplitude=x.sup-x.inf)
+	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A),amplitude=x.sup-x.inf)
   }
   graphe.titre()
   graphe.axes()

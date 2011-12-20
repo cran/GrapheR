@@ -4,11 +4,15 @@ function() {
     read.csv(file.path(.path.package("GrapheR"),"lang","Images_en.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     } else if (Env$lang=="fr") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Images_fr.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    } else if (Env$lang=="es") {
+    read.csv(file.path(.path.package("GrapheR"),"lang","Images_es.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     }
   Env$voc<-if (Env$lang=="en") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Language_en.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     } else if (Env$lang=="fr") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Language_fr.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    } else if (Env$lang=="es") {
+    read.csv(file.path(.path.package("GrapheR"),"lang","Language_es.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     }
   Env$police<-tkfont.create(family="Arial",size=8)
   Env$police2<-tkfont.create(family="Arial",size=4)
@@ -73,6 +77,7 @@ function() {
   Env$l.var$couleur2A<-tclVar("black")
   Env$l.var$trait1<-tclVar("")
   Env$l.var$epaisseur1<-tclVar("1")
+  Env$l.var$facteur.interaction<-""
   Env$l.var$box.orient<-tclVar("")
   Env$l.var$titre.axenoms<-tclVar("")
   Env$l.var$titre.axevaleurs<-tclVar("")
@@ -145,6 +150,16 @@ function() {
   Env$l.var$fen.num<-tclVar("")
   Env$l.var$fen.larg<-tclVar("600")
   Env$l.var$fen.type<-tclVar("jpg")
+  Env$l.code<-list()
+  Env$l.code$ask<-FALSE
+  Env$l.code$save<-FALSE
+  Env$l.code$folder<-NULL
+  Env$l.code$graphsnb<-0
+  Env$l.code$graphsnb<-0
+  Env$l.code$x.inf<-NULL
+  Env$l.code$x.sup<-NULL
+  Env$l.code$y.inf<-NULL
+  Env$l.code$y.sup<-NULL
   ouvrir.GrapheR()
 }
 

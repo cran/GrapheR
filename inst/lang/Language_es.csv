@@ -1,0 +1,243 @@
+﻿Comience cargando la planilla de datos.
+Archivo externo
+Extensión:   
+Separador de columnas:   
+espacio / tabulación
+coma
+punto y coma
+Separador decimal
+punto
+Código para valores faltantes:   
+Nombre de variables indicados en archivo:   
+Objetos de R existentes
+Cargar
+Solo se muestran objetos de clase ''data.frame''.
+Variables de los datos
+Tipo de variable:   
+Resumen de la variable
+Error:
+no se cargó el archivo.
+no se seleccionó objeto en la lista.
+Se cargaron los datos.
+Nombre nuevo
+Cambiar nombre
+no se asignó un nombre nuevo.
+no se seleccionó variable en la lista.
+Click para borrar (no seleccionar con el ratón). Presionar Enter para aceptar.
+Sin agrupación (
+ niveles)
+Agrupación por clases:
+del mismo largo
+del mismo tamaño
+Número de clases
+Transformar
+solo se pueden transformar variables numéricas y cadenas de caracteres en vectores.
+Variable convertida.
+Variable a ser representada:   
+Factor (opcional):   
+Nivel del factor:   
+Tipo de histograma:   
+frecuencias
+conteos
+densidades
+Caja:   
+Título:   
+Color:   
+Tamaño:   
+Color de la fuente:   
+Tamaño de la fuente:   
+Color de las leyendas:   
+Tamaño de las leyendas:   
+Eje horizontal
+Eje vertical
+Límite inferior:   
+Límite superior:   
+Número de barras:   
+Color de las barras:   
+Color de los bordes:   
+Dibujar la curva:   
+Tipo de línea:   
+completa
+punteada
+cortada
+Ancho:   
+Elija un color
+Factor:   
+Orientación de las cajas:   
+horizontal
+vertical
+Eje x
+Eje y
+Nombres de las cajas:   
+Graficar
+Escala logarítmica:   
+Color de las cajas:   
+Intervalo de confianza:   
+El intervalo de confianza se representa con una escotadura en la caja.
+El tamaño está expresado como una proporción del largo de la caja.
+Mostrar valores atípicos:   
+Símbolo:   
+completo
+vacío
+Ninguno
+Renombrar una caja:   
+Medias
+Proporciones
+Factor 1 (obligatorio):   
+Factor 2 (opcional):   
+Proporciones:   
+Nombre de las barras:   
+Renombrar una barra:   
+Color de las barras:   
+Tramas:   
+Barras apiladas:   
+Tipo de barra:   
+ninguno
+desviación estándar
+error estándar
+intervalo de confianza
+Agregar una leyenda:   
+Posición:   
+arriba - izquierda
+arriba - centro
+arriba - derecha
+izquierda
+centro
+derecha
+abajo - izquierda
+abajo - centro
+abajo - derecha
+Items:   
+Renombrar un ítem:   
+Se puede definir un color de barra, borde y patrón de trama por nivel.
+no se pueden dibujar las barras de error si las barras están apiladas.
+solo el tipo ''densidades'' permite dibujar la curva de distribución de los datos.
+Porciones a ser representadas:   
+Nombre de las porciones:   
+Renombrar una porción:   
+Orientación de la torta:   
+horaria
+anti horaria
+Inicio de la torta (grados):   
+Unir las porciones a sus nombres:   
+Se puede definir un color de barra y patrón de trama por porción.
+Color de la porción:   
+no se puede agregar leyenda si las porciones están unidas a sus nombres.
+El color de borde es único.
+Variable X:   
+Variable Y:   
+Proporción:   
+Niveles:   
+Tamaño de los símbolos:   
+Tipo de curva:   
+solo puntos
+solo curva
+puntos y curva 1
+puntos y curva 2
+varas
+Símbolo:   
+Se dibuja una curva por nivel seleccionado.
+solo se puede representar una proporción.
+Todos los parámetros se pueden definir de forma diferente para cada curva.
+Seleccionar las proporciones a ser representadas.
+Se dibuja un gráfico de dispersión por nivel seleccionado.
+Agregar una línea:   
+línea de regresión lineal (cuadrados mínimos)
+línea de regresión lineal (rectángulos mínimos)
+línea de regresión cuadrática
+curva de tendencia de los puntos
+Elegir el número de gráficos a dibujar en la ventana:
+Color del fondo:   
+Aceptar
+Cerrar
+no se cargaron datos.
+no están definidos todos los parámetros generales necesarios.
+el separador decimal debe ser un punto, no una coma.
+El número de barras puede ser levemente diferente del valor dado.
+por un bajo número de individuos, se representa el intervalo de confianza de las medianas.
+no se pueden agregar tramas si se eligió escala logarítmica.
+Elegir las porciones a ser representadas.
+Advertencia:
+Abscisa:   
+Selección con el ratón
+no se dibuja el gráfico.
+Ordenada:   
+Ecuación:   
+y  =  
+ x   +  
+Selección con el ratón (2 puntos)
+Elija y parametrice la distribución:
+Normal 
+Binomial 
+Gamma 
+Poisson 
+Exponencial 
+Binomial
+ negativa
+Geométrica 
+Fisher-Snedecor 
+Hipergeométrica
+Student 
+Distribución Mann-Whitney 
+Distribución del test de Wilcoxon
+Número de intentos (n):   
+Probabilidad de éxito (p):   
+Probabilidad de éxito - evento raro (p):   
+Número deseado de intentos exitosos (k):   
+Número total de intentos posibles (N):   
+Número de intentos (n):   
+Media (
+Desviación estándar (
+Primer parámetro de la ley (
+Segundo parámetro de la ley (
+Parámetro de la ley (
+Grados de libertad (
+Primer grado de libertad (
+Segundo grado de libertad (
+Tamaño de la muestra 1 (n1):   
+Tamaño de la muestra 2 (n2):   
+Número de individuos (n):   
+):   
+el gráfico dibujado no es un histograma de densidades.
+Texto:   
+Coordenadas:   
+x:   
+y:   
+"Ingrese su texto, después haga click en 'Seleccionar'
+y luego seleccione dos barras a ser comparadas"
+"Ingrese su texto, después haga click en 'Seleccionar'
+y seleccione las barras izquierda y derecha
+de los grupos a ser comparados"
+Seleccionar
+lo dibujado no es un gráfico de barras.
+Elija el tipo de representación:   
+Ventana a ser salvada:   
+Ventana
+Tipo de archivo:   
+Largo de la imagen:   
+Guardar
+Idioma:   
+Inglés
+Francés
+Guardar la configuración:   
+no se seleccionó un idioma.
+Cargar o modificar la planilla de datos.
+Dibujar un histograma.
+Dibujar un diagrama de caja.
+Dibujar un gráfico de barras.
+Dibujar un gráfico de torta.
+Dibujar una o varias curvas.
+Dibujar un gráfico de dispersión.
+Abrir una ventana nueva.
+Dibujar el gráfico.
+Agregar una línea horizontal al gráfico.
+Agregar una línea vertical al gráfico.
+Agregar cualquier línea al gráfico.
+Agregar una curva de distribución teórica al gráfico (solo en histogramas de densidad).
+Agregar texto al gráfico.
+Agregar valores p al gráfico (solo en gráficos de barra).
+Guardar gráfico(s).
+Cambiar el idioma de la interfaz.
+Abrir el manual introductorio de GrapheR.
+Español
+¿Quiere guardar el código del gráfico?

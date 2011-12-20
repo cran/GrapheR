@@ -5,10 +5,10 @@ function() {
   facteur<-Env$dataset[,tclvalue(Env$l.var$facteur1)][Env$dataset[,tclvalue(Env$l.var$facteur1)]%in%levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])[as.numeric(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]])+1]]
   niveaux<-levels(facteur)[as.numeric(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]])+1]
   limites<-tracer.nuage.limites(varX=varX,varY=varY)
-  x.inf<-limites$xinf
-  x.sup<-limites$xsup
-  y.inf<-limites$yinf
-  y.sup<-limites$ysup
+  Env$l.code$x.inf<-x.inf<-limites$xinf
+  Env$l.code$x.sup<-x.sup<-limites$xsup
+  Env$l.code$y.inf<-y.inf<-limites$yinf
+  Env$l.code$y.sup<-y.sup<-limites$ysup
   symboles<-graphe.symboles(num=Env$l.var$symboleB)
   plot(varY[facteur==niveaux[1]]~varX[facteur==niveaux[1]],axes=FALSE,ann=FALSE,xlim=c(x.inf,x.sup),ylim=c(y.inf,y.sup),
     log=graphe.log(),col=Env$l.var$couleur2B[1],pch=symboles[1],cex=Env$l.var$taille.ptsB[1])

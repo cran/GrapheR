@@ -12,8 +12,8 @@ GrapheR is a multiplatform user interface for drawing highly customizable graphs
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.9-66\cr
-Date: \tab 2011-11-24\cr
+Version: \tab 1.9-70\cr
+Date: \tab 2011-12-20\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -30,4 +30,7 @@ Maintainer: Maxime Hervé <mx.herve@gmail.com>
 
     P. Dalgaard (2002) Changes to the R-Tcl/Tk Package.
     \emph{R News}, \bold{2(3)}, 25--27.
+
+    M. Hervé (2011) GrapheR: a multiplatform GUI for drawing customizable graphs in R.
+    \emph{The R Journal}, \bold{3(2)}, 45--53.
 }

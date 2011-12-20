@@ -25,6 +25,7 @@ function() {
   tclvalue(Env$l.var$couleur2A)<-"black"
   tclvalue(Env$l.var$trait1)<-""
   tclvalue(Env$l.var$epaisseur1)<-"1"
+  Env$l.var$facteur.interaction<-""
   tclvalue(Env$l.var$box.orient)<-""
   tclvalue(Env$l.var$titre.axenoms)<-""
   tclvalue(Env$l.var$titre.axevaleurs)<-""

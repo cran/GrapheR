@@ -2,6 +2,7 @@ ouvrir.GrapheR <-
 function() {
   Env$Fen<-tktoplevel()
   tktitle(Env$Fen)<-"GrapheR"
+  tkwm.geometry(Env$Fen, "+30+30")
   ### Barre de navigation
   Env$l.wdg$vide1<-tklabel(Env$Fen,text="  ",font=Env$police)
   Env$l.wdg$but.data<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_data.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="data")})
@@ -15,7 +16,7 @@ function() {
   Env$l.wdg$sep2<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
   Env$l.wdg$but.win<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_window.gif",fsep=.Platform$file.sep)),command=new.window)
   Env$l.wdg$sep3<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.drw<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_draw.gif",fsep=.Platform$file.sep)),command=tracer)
+  Env$l.wdg$but.drw<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_draw.gif",fsep=.Platform$file.sep)),command=pretracer)
   Env$l.wdg$sep4<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
   Env$l.wdg$but.hor<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_hor.gif",fsep=.Platform$file.sep)),command=horizontal)
   Env$l.wdg$but.ver<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_ver.gif",fsep=.Platform$file.sep)),command=vertical)

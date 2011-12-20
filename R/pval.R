@@ -58,6 +58,21 @@ function() {
 	  text(Env$l.var$add.abscisses[x1]+(Env$l.var$add.abscisses[x2]-Env$l.var$add.abscisses[x1])/2,
 	    Env$l.var$add.matrice[x2,x1]+ecart1+ecart2,tclvalue(Env$l.var$add.param1),
 	    cex=as.numeric(tclvalue(Env$l.var$add.epaisseur1)),col=tclvalue(Env$l.var$add.col1))
+	  if (Env$l.code$save==TRUE) {
+	    sink(file=file.path(Env$l.code$folder,paste(paste("GrapheR",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],collapse="."),
+		sep="-"),".R",sep=""),fsep=.Platform$file.sep),append=TRUE)
+	    cat("# Added: p-value\n\n")
+	    cat(paste("segments(",round(min(Env$l.var$add.abscisses[x1],Env$l.var$add.abscisses[x2]),2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),
+		", ",round(max(Env$l.var$add.abscisses[x1],Env$l.var$add.abscisses[x2]),2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),")\n",sep=""))
+	    cat(paste("segments(",round(Env$l.var$add.abscisses[x1],2),", ",round(Env$l.var$add.hauteurs[x1]+ecart2,2),", ",round(Env$l.var$add.abscisses[x1],2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),")\n",sep=""))
+	    cat(paste("segments(",round(Env$l.var$add.abscisses[x2],2),", ",round(Env$l.var$add.hauteurs[x2]+ecart2,2),", ",round(Env$l.var$add.abscisses[x2],2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),")\n",sep=""))
+	    texte<-paste("text(",round(Env$l.var$add.abscisses[x1]+(Env$l.var$add.abscisses[x2]-Env$l.var$add.abscisses[x1])/2,2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1+ecart2,2),sep="")
+	    texte<-paste(texte,", labels=\"",tclvalue(Env$l.var$add.param1),"\"",sep="")
+	    if (tclvalue(Env$l.var$add.col1)!="black" & tclvalue(Env$l.var$add.col1)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$add.col1),"\"",sep="")}
+	    texte<-paste(texte,", cex=",tclvalue(Env$l.var$add.epaisseur1),")\n\n",sep="")
+	    cat(texte)
+	    sink(NULL)
+	  }
 	  Env$l.var$add.hauteurs[x1:x2]<-Env$l.var$add.matrice[x2,x1]+ecart1+ecart2
 	  for (i in 1:length(Env$l.var$add.abscisses)) {
 	    for (j in 1:length(Env$l.var$add.abscisses)) {
@@ -88,6 +103,19 @@ function() {
 	  text(Env$l.var$add.abscisses[x1]+(Env$l.var$add.abscisses[x2]-Env$l.var$add.abscisses[x1])/2,
 	    Env$l.var$add.matrice[x2,x1]+ecart1+ecart2,tclvalue(Env$l.var$add.param2),
 	    cex=as.numeric(tclvalue(Env$l.var$add.epaisseur2)),col=tclvalue(Env$l.var$add.col2))
+	  if (Env$l.code$save==TRUE) {
+	    sink(file=file.path(Env$l.code$folder,paste(paste("GrapheR",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],collapse="."),
+		sep="-"),".R",sep=""),fsep=.Platform$file.sep),append=TRUE)
+	    cat("# Added: p-value\n\n")
+	    cat(paste("segments(",round(min(Env$l.var$add.abscisses[x1],Env$l.var$add.abscisses[x2])-0.5,2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),
+		", ",round(max(Env$l.var$add.abscisses[x1],Env$l.var$add.abscisses[x2])+0.5,2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1,2),")\n",sep=""))
+	    texte<-paste("text(",round(Env$l.var$add.abscisses[x1]+(Env$l.var$add.abscisses[x2]-Env$l.var$add.abscisses[x1])/2,2),", ",round(Env$l.var$add.matrice[x2,x1]+ecart1+ecart2,2),sep="")
+	    texte<-paste(texte,", labels=\"",tclvalue(Env$l.var$add.param2),"\"",sep="")
+	    if (tclvalue(Env$l.var$add.col2)!="black" & tclvalue(Env$l.var$add.col2)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$add.col2),"\"",sep="")}
+	    texte<-paste(texte,", cex=",tclvalue(Env$l.var$add.epaisseur2),")\n\n",sep="")
+	    cat(texte)
+	    sink(NULL)
+	  }
 	  Env$l.var$add.hauteurs[x1:x2]<-Env$l.var$add.matrice[x2,x1]+ecart1+ecart2
 	  for (i in 1:length(Env$l.var$add.abscisses)) {
 	    for (j in 1:length(Env$l.var$add.abscisses)) {

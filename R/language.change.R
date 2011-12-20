@@ -7,14 +7,15 @@ function() {
   lang.var<-tclVar("")
   save.var<-tclVar("1")
   Env$l.fr7$lang.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[216,1])
-  Env$l.fr7$lang.wdg<-ttkcombobox(Env$l.frames$Fr7,width=10,font=Env$police,values=Env$voc[217:218,1],textvariable=lang.var,state="readonly")
+  Env$l.fr7$lang.wdg<-ttkcombobox(Env$l.frames$Fr7,width=10,font=Env$police,values=Env$voc[c(217,218,239),1],textvariable=lang.var,state="readonly")
   Env$l.fr7$save.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[219,1])
   Env$l.fr7$save.wdg<-tkcheckbutton(Env$l.frames$Fr7,variable=save.var)
   Env$l.fr7$ok<-tkbutton(Env$l.frames$Fr7,text=Env$voc[151,1],font=Env$police,width=16,command=function() {
     if (nchar(tclvalue(lang.var))>0) {
 	langue<-NULL
 	if (tclvalue(lang.var)==Env$voc[217,1]) {langue<-"en"} else
-	if (tclvalue(lang.var)==Env$voc[218,1]) {langue<-"fr"}
+	if (tclvalue(lang.var)==Env$voc[218,1]) {langue<-"fr"} else
+	if (tclvalue(lang.var)==Env$voc[239,1]) {langue<-"es"}
 	if (tclvalue(save.var)==1) {
 	  write(langue,file=file.path(.path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))
 	}

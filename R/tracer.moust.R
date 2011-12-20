@@ -1,19 +1,27 @@
 tracer.moust <-
 function() {
   variable<-Env$dataset[,tclvalue(Env$l.var$variable)]
-  facteur<-Env$dataset[,tclvalue(Env$l.var$facteur1)]
+  facteur<-if (nchar(tclvalue(Env$l.var$facteur2))>0) {
+    if (tclvalue(Env$l.var$facteur2)!=Env$voc[82,1]) {
+	Env$l.var$facteur.interaction
+    } else {
+	Env$dataset[,tclvalue(Env$l.var$facteur1)]
+    }
+  } else {
+    Env$dataset[,tclvalue(Env$l.var$facteur1)]
+  }
   orient<-ifelse (tclvalue(Env$l.var$box.orient)==Env$voc[67,1],"hor","ver")
   log.axes<-if (orient=="ver" & tclvalue(Env$l.var$log.axevaleurs)==1) {
     "y"
   } else if (orient=="hor" & tclvalue(Env$l.var$log.axevaleurs)==1) {
     "x"
   } else {""}
-  y.inf<-if (tclvalue(Env$l.var$liminf.axevaleurs)=="Auto") {
+  Env$l.code$y.inf<-y.inf<-if (tclvalue(Env$l.var$liminf.axevaleurs)=="Auto") {
     min(na.omit(variable))
   } else {
     as.numeric(tclvalue(Env$l.var$liminf.axevaleurs))
   }
-  y.sup<-if (tclvalue(Env$l.var$limsup.axevaleurs)=="Auto") {
+  Env$l.code$y.sup<-y.sup<-if (tclvalue(Env$l.var$limsup.axevaleurs)=="Auto") {
     max(na.omit(variable))
   } else {
     as.numeric(tclvalue(Env$l.var$limsup.axevaleurs))
