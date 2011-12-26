@@ -1,4 +1,4 @@
-626eb2cb25ff2320239cc8508c806352 *DESCRIPTION
+156335a7a4cd1298231431ecac68664b *DESCRIPTION
 f7fdaf767fe79c0af1116e54e58071cd *NAMESPACE
 5b47b8fb6215cb5f95e5c731b762dc22 *R/active.erreur.R
 df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
@@ -7,7 +7,7 @@ df0cf00fdf6ff629a273d2b6de3f07e5 *R/active.legende.R
 8174de64229a58f45188b69a10f23813 *R/aide.R
 33a63d2c28378415abaf1a6e657e9f71 *R/barres.moy.R
 f0d06df6c8d85b7ba9987ba4d2969568 *R/barres.prop.R
-2f1dde6c52d62410bcc9459534d68782 *R/code.ask.R
+7ec8dfed5d95a6c8ba68018cf9f7be2a *R/code.ask.R
 4c9ca563ee297833908752eacddceff7 *R/code.data.R
 74e0e3305ab434dc2193eddc57f6a355 *R/code.graph.R
 9b1d27c5c9a665523b904a77b3dd40fd *R/code.graph.axes.R
@@ -131,11 +131,11 @@ e29039d4b18e1de3544b50eccc1cf3a9 *R/type.trait.R
 e4656f82ea1d7f2675157b5166f9eb94 *R/variables.class.R
 7b8464da927f01086c8317b39aaabd7c *R/vertical.R
 5903a0cd01fc7f72a2979d2576ba4a7c *R/zzz.R
-b6bb2d5f082023aa183046b65f656f86 *R/zzzz.R
+cca659fb9f27baafc6b834f401c26f3f *R/zzzz.R
 d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
 cff378271629a564eb02d6b4095958c3 *inst/CITATION
-2a1f9cb25e7fbe4b624e0d6afdfe3bae *inst/doc/manual_en.pdf
-a6f43b1d89d7c34c953dc08308c33751 *inst/doc/manual_fr.pdf
+8b0acccd77f6121c25a1d38739cccf89 *inst/doc/manual_en.pdf
+91318cf0d6af6702f6a30e0e2e6f9103 *inst/doc/manual_fr.pdf
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
 18eb6e9b97a9be77dae28c52b2fd3e28 *inst/images/But_box.gif
 25e87eeb21e8755949e83d4f81c0d644 *inst/images/But_cam.gif
@@ -255,7 +255,7 @@ f65a4d3b230c69b9b6555d8d1abe3710 *inst/lang/Language_en.csv
 83c8d6edb204ecc062faba8661d3fc97 *inst/lang/Language_es.csv
 433c06679365e565cf34d9cb395ea0a9 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-a0f1a0a3d686d8fa493e00cf1b6d6b57 *man/GrapheR-package.Rd
+e1c7c48ad7aa2152fa1ffe83479bd3e3 *man/GrapheR-package.Rd
 322da86695e4a85562aefff04e35b4ed *man/Swallows.Rd
 20f2566c6efee8ec99b0b4d31850150d *man/active.erreur.Rd
 736e398811e619726db538a03fff096e *man/run.GrapheR.Rd
