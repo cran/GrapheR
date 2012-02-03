@@ -1,4 +1,4 @@
-code.graph.barres.erreurs  <-
+code.graph.barres.erreurs <-
 function(type) {
   if (tclvalue(Env$l.var$erreur)==Env$voc[96,1]) {
     cat("# Error bars\n\n")

@@ -22,4 +22,3 @@ function(varX,varY) {
   }
   return(list(xinf=x.inf,xsup=x.sup,yinf=y.inf,ysup=y.sup))
 }
-

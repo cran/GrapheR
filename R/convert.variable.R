@@ -24,6 +24,12 @@ function(type) {
   tkconfigure(Env$l.fr4$curs.lab,foreground="grey")
   tkconfigure(Env$l.fr4$but,state="disabled")
   variables.class()
+  if (exists("fact.wdg",where=Env$l.fr5)) {
+    tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
+    tclvalue(Env$l.var$facteur1) <- ""
+    Env$l.var$levels.temp <- NULL
+    tkdelete(Env$l.fr5$liste.actual,0,"end")
+    tkdelete(Env$l.fr5$liste.new,0,"end")
+  }
   msg(text=Env$voc[35,1],type="info")
 }
-

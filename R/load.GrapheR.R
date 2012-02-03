@@ -6,6 +6,8 @@ function() {
     read.csv(file.path(.path.package("GrapheR"),"lang","Images_fr.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     } else if (Env$lang=="es") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Images_es.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    } else if (Env$lang=="de") {
+    read.csv(file.path(.path.package("GrapheR"),"lang","Images_de.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     }
   Env$voc<-if (Env$lang=="en") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Language_en.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
@@ -13,6 +15,8 @@ function() {
     read.csv(file.path(.path.package("GrapheR"),"lang","Language_fr.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     } else if (Env$lang=="es") {
     read.csv(file.path(.path.package("GrapheR"),"lang","Language_es.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    } else if (Env$lang=="de") {
+    read.csv(file.path(.path.package("GrapheR"),"lang","Language_de.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     }
   Env$police<-tkfont.create(family="Arial",size=8)
   Env$police2<-tkfont.create(family="Arial",size=4)
@@ -58,8 +62,10 @@ function() {
   Env$l.var$titre<-tclVar("")
   Env$l.var$titre.col<-tclVar("black")
   Env$l.var$titre.taille<-tclVar("1.5")
+  Env$l.var$soustitre<-tclVar("")
   Env$l.var$graduations.col<-tclVar("black")
   Env$l.var$graduations.taille<-tclVar("1")
+  Env$l.var$graduations.orient<-tclVar(Env$voc[246,1])
   Env$l.var$legendes.col<-tclVar("black")
   Env$l.var$legendes.taille<-tclVar("1")
   Env$l.var$titre.axehor<-tclVar("")
@@ -71,7 +77,7 @@ function() {
   Env$l.var$log.axehor<-tclVar(0)
   Env$l.var$log.axever<-tclVar(0)
   Env$l.var$hist.barres<-tclVar("Auto")
-  Env$l.var$couleur1A<-tclVar("white")
+  Env$l.var$couleur1A<-tclVar("grey")
   Env$l.var$col.borduresA<-tclVar("black")
   Env$l.var$hist.dens<-tclVar(0)
   Env$l.var$couleur2A<-tclVar("black")
@@ -84,10 +90,11 @@ function() {
   Env$l.var$liminf.axevaleurs<-tclVar("Auto")
   Env$l.var$limsup.axevaleurs<-tclVar("Auto")
   Env$l.var$log.axevaleurs<-tclVar(0)
+  Env$l.var$boxmoy<-tclVar(0)
   Env$l.var$ICmediane<-tclVar(0)
+  Env$l.var$varwidth<-tclVar(0)
   Env$l.var$lg.moustaches<-tclVar("1.5")
   Env$l.var$outliers<-tclVar(1)
-  Env$l.var$couleur3<-tclVar("black")
   Env$l.var$box.symbol<-tclVar("")
   Env$l.var$noms1<-""
   Env$l.var$moyprop<-tclVar("moy")
@@ -97,7 +104,7 @@ function() {
   Env$l.var$nomsprop<-""
   Env$l.var$moyprop<-tclVar("moy")
   Env$l.var$facteurprop<-tclVar("")
-  Env$l.var$couleur1B<-"grey"
+  Env$l.var$couleur1B<-"white"
   Env$l.var$col.borduresB<-"black"
   Env$l.var$hachuresA<-tclVar("1")
   Env$l.var$hachuresB<-1
@@ -129,6 +136,12 @@ function() {
   Env$l.var$select<-1
   Env$l.var$droiteA<-tclVar("")
   Env$l.var$droiteB<-""
+  Env$l.var$intervalA<-tclVar("")
+  Env$l.var$intervalB<-""
+  Env$l.var$ptlab<-tclVar(0)
+  Env$l.var$sysinfo<-tclVar(0)
+  Env$l.var$levels.temp <- NULL
+  Env$l.var$nobar<-tclVar(0)
   Env$l.var$nw.col<-tclVar("white")
   Env$l.var$nw.lignes<-tclVar("1")
   Env$l.var$nw.colonnes<-tclVar("1")
@@ -148,13 +161,13 @@ function() {
   Env$l.var$add.col2<-tclVar("black")
   Env$l.var$add.matrice<-NULL
   Env$l.var$fen.num<-tclVar("")
-  Env$l.var$fen.larg<-tclVar("600")
+  Env$l.var$fen.larg<-tclVar("1250")
   Env$l.var$fen.type<-tclVar("jpg")
+  Env$l.var$fen.res<-tclVar("150")
   Env$l.code<-list()
   Env$l.code$ask<-FALSE
   Env$l.code$save<-FALSE
   Env$l.code$folder<-NULL
-  Env$l.code$graphsnb<-0
   Env$l.code$graphsnb<-0
   Env$l.code$x.inf<-NULL
   Env$l.code$x.sup<-NULL
@@ -162,4 +175,3 @@ function() {
   Env$l.code$y.sup<-NULL
   ouvrir.GrapheR()
 }
-

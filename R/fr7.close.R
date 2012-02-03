@@ -7,4 +7,3 @@ function() {
   tkconfigure(Env$l.frames$Fr7,borderwidth=0)
   reinit.fr7()
 }
-

@@ -39,4 +39,3 @@ function(variable,type,frequence=NULL) {
   }
   return(list(xinf=x.inf,xsup=x.sup,ysup=y.sup))
 }
-

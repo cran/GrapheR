@@ -151,9 +151,10 @@ function() {
   fr4.close()
   tkgrid(Env$l.frames$Fr4)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab5<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+  Env$l.lab$lab5<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[19,1],fsep=.Platform$file.sep)))
   Env$l.wdg$but.lab5<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr5.status==1) {fr5.close()} else {
+	if (Env$l.var$ecran=="D") {fr5.openD()} else
 	if (Env$l.var$ecran=="H") {fr5.openH()} else
 	if (Env$l.var$ecran=="M") {fr5.openM()} else
 	if (Env$l.var$ecran=="B") {fr5.openB()} else
@@ -161,7 +162,7 @@ function() {
 	if (Env$l.var$ecran=="Co") {fr5.openCo()} else
 	if (Env$l.var$ecran=="N") {fr5.openN()}
     }
-  },state="disabled")
+  })
   tkgrid(Env$l.lab$lab5,Env$l.wdg$but.lab5)
   ## Frame 5
   Env$l.frames$Fr5<-tkframe(Env$l.frames$Frg)
@@ -175,7 +176,8 @@ function() {
     if (Env$l.frames$Fr6.status==1) {fr6.close()} else {
 	if (Env$l.var$ecran=="M") {fr6.openM()} else
 	if (Env$l.var$ecran=="B") {fr6.openB()} else
-	if (Env$l.var$ecran=="Co") {fr6.openCo()}
+	if (Env$l.var$ecran=="Co") {fr6.openCo()} else
+	if (Env$l.var$ecran=="N") {fr6.openN()}
     }
   },state="disabled")
   tkgrid(Env$l.lab$lab6,Env$l.wdg$but.lab6)
@@ -201,4 +203,3 @@ function() {
   tkgrid(Env$l.wdg$vide2)
   tkgrid(Env$l.frames$Frd2,row=0,column=27)
 }
-

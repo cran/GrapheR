@@ -27,4 +27,3 @@ function(num) {
   }
   return(list(densite=densite,angle=angle))
 }
-

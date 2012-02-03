@@ -88,4 +88,3 @@ function() {
   tkgrid(Env$l.fr7$fermer,row=7,column=3,columnspan=3,sticky="e")
   tkgrid(Env$l.fr7$espace.ver3)
 }
-

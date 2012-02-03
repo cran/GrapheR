@@ -1,0 +1,214 @@
+\documentclass[a4paper]{article}
+\usepackage[greek,english]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+%%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%%\usepackage{Sweave}
+\hypersetup{colorlinks=true,urlcolor=red}
+
+%%\VignetteIndexEntry{Introduction to GrapheR}
+
+\newcommand{\R}{\textcolor[RGB]{118,133,166}{\textbf{R}}}
+
+\begin{document}
+
+\title{Introduction to GrapheR}
+\author{Maxime Herv\'e}
+\date{}
+\maketitle
+
+For any question, comment or suggestion: \href{mx.herve@gmail.com}{mx.herve@gmail.com}
+
+Thanks to Juan Alberti for the Spanish translation of the interface.
+
+Thanks to Helmut Schlumprecht for the German translation of the interface and the user manual.
+
+\section{Introduction}
+GrapheR is a multiplatform (Linux, Mac OS, Windows) user interface for drawing highly customizable graphs in \R. It aims to be a valuable help to quickly draw publishable graphs without knowing any \R{} commands.
+
+Six kinds of graph are available:
+\begin{itemize}
+	\item histogram
+	\item box-and-whisker plot
+	\item bar plot
+	\item pie chart
+	\item curve
+	\item scatter plot
+\end{itemize}
+
+GrapheR was built on the \texttt{tcltk} package, and consequently bugs can happen if \R{} is configured in the MDI (Multiple-Document Interface) mode. It is recommended to configure it in SDI (Single-Document Interface) mode before starting the package.
+
+GrapheR needs to function at least the 2.10 version of \R{} and one additional package: \texttt{tcltk}. Under Mac OS X, Tcl/Tk must have already been installed (for more information see \href{http://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#X11-TclTk-headers-and-libraries-_0028optional_0029}{here}).
+
+\section{Launching the interface}
+
+As with any other package, GrapheR is loaded \emph{via} \texttt{library(GrapheR)}, \texttt{require(\\GrapheR)} or the \emph{Packages} menu of the Windows R GUI. At this time, the \texttt{tcltk} package is automatically loaded.
+
+Launching the interface is the only step that requires the user to enter a command: \texttt{run.GrapheR()}. The interface opens and the console can now be reduced.
+
+\section{Description of the interface}
+\subsection{Global view}
+
+The interface is divided into three blocks (Fig~1):
+\begin{enumerate}
+  \item the navigation bar: it contains all buttons opening the modules of the interface
+  \item the messages frame: to make the interface using easier, information messages are displayed in this frame when the mouse is over some specific elements or when some specific actions are performed
+  \item the settings block: it contains all dialog boxes allowing to set the graph to be drawn.
+\end{enumerate}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/1b.jpg}
+	\caption{User interface~--~global view (display under Windows 7) \label{blocs}} \end{center}
+\end{figure}
+
+\subsection{Navigation bar}
+
+The navigation bar is divided into seven groups of buttons, each corresponding to one (obligatory or optional) step of the process (Fig~2):
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/2.jpg}
+	\caption{Navigation bar \label{navigation}} \end{center}
+\end{figure}
+
+\begin{enumerate}
+  \item loading and modifying the dataset
+  \item setting up a graph. From left to right: histogram, box-and-whisker plot, bar plot, pie chart, curve and scatter plot
+  \item opening a new graphics device: when a graph is drawn, it is in the active window or in a new device if none is open. This button allows the user to open a new graphics device in which several graphs can be drawn
+  \item draw a graph
+  \item adding elements to the graph. From left to right: add a horizontal line, add a vertical line, add any other kind of line, add a theoretical distribution curve, add text and add \emph{p}-values
+  \item saving graph(s)
+  \item diverse options: user language and help.
+\end{enumerate}
+
+\subsection{Messages frame}
+
+When the mouse is over some specific elements of the GUI or when some specific actions are performed, messages are displayed in this frame. Three kinds of message can be displayed:
+\begin{itemize}
+  \item \textcolor[RGB]{3,15,178}{in blue:} informative messages
+  \item \textcolor[RGB]{2,103,0}{in green:} warnings, for when a particular attention should be payed to a specific point (for example: if this option is chosen, then this one can not be)
+  \item \textcolor[RGB]{255,0,0}{in red:} error messages, for when the action requested can not be completed. The message indicates the origin of the error.
+\end{itemize}
+
+\subsection{Settings block}
+
+This block is divided into for to six sub-blocks, each containing options relating to a given theme: general parameters of the graph, title of the graph, legend\dots{} Each sub-block can be opened or closed with the corresponding arrow situated on the right of the interface. Of course, defined settings are not lost when a sub-block is closed.
+
+\section{Use}
+
+The example used here is based on the dataset provided in the package, called \texttt{Swallows}. To load it, use the command \texttt{data(Swallows)}. This (fictional!) dataset exemplifies the legendary puzzle of African and European swallows' migrations.
+
+\subsection{Loading and modifying the dataset}
+
+The first sub-block (Figure~3) allows you to load the dataset. Data can be imported from an external file (\texttt{txt} and \texttt{csv} extensions are available so far) or can be an already existing \R{} object of class \texttt{data.frame} (\emph{i.e.} a table).
+
+The next sub-block allows you to get information on the dataset structure. When a variable is selected in the list on the left, its type (\texttt{numeric}, \texttt{factor}, \texttt{logical}\dots) and its summary are displayed in the frame on the right.
+
+The two next sub-blocks allow the dataset to be modified if needed:
+\begin{itemize}
+  \item by renaming variables (for example if the dataset does not contain their names)
+  \item by converting variables into factors. The conversion can be applied to variables of class \texttt{character} (\emph{i.e.} characters chains vectors) or to numeric variables (in this case values can be grouped into classes). The latter case is necessary when a factor is numerically coded, \emph{e.g.} a binary factors (0/1), otherwise \R{} would treat it as a numeric variable.
+\end{itemize}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/3b.jpg}
+	\caption{Loading the dataset \label{charger}} \end{center}
+\end{figure}
+
+\subsection{Setting up a graph}
+
+Once the dataset is ready, click on the button corresponding to the type of graph to be drawn (histogram, box-and-whisker plot, bar plot, pie chart, curve or scatter plot).
+
+Whatever the type of graph chosen, all parameters have a default value except general parameters~--~which correspond to variable(s) to be represented. Hence, to quickly draw a graph, only general parameters must be defined. If they are not (or not all) defined, an error occurs when trying to draw the graph.
+
+Here the aim is to draw a histogram displaying the distribution of the size of African swallows. We start by clicking on the \texttt{Histogram} button. In the general parameters, we choose \texttt{Size} as the variable to be represented, and add that we want to retain only the values corresponding to the \texttt{African} level of the \texttt{Species} factor (Figure~4). The histogram type is set to \texttt{densities}, because as the warning says only this type allows to draw the distribution curve of the data.
+
+All other settings are let to their default values, except the title of the graph and those corresponding to the distribution curve (we tick \texttt{Draw the curve} and define a color and a line type).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/4b.jpg}
+	\caption{Setting up a histogram \label{histo}} \end{center}
+\end{figure}
+
+Once all necessary parameters are set, the graph is drawn by clicking on the \texttt{DRAW} button of the navigation bar. At this time, you can choose to save the code producing your graph in an external \texttt{R} file. If you answer \texttt{Yes}, code of all graphs drawn in the same session will be added into this file.
+
+If a new graphics device have to be beforehand opened, click first on the \texttt{window} button (see next section).
+
+\subsection{Opening a new graphics device}
+
+It is possible to draw graphs in different windows and/or to draw several graphs in the same one. To do this click on the \texttt{window} button of the navigation bar. The dialog box that opens on the right of the interface allows specification of the number of graphs to be drawn in the device to be created, and the background color of this device (Figure~5).
+
+It is possible to draw up to 16 graphs in the same device, shared between four rows and four columns. However, the larger the number of graphs to be drawn, the smaller the space allocated to each.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/5b.jpg}
+	\caption{Opening a new graphics device \label{fenetre}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Adding elements to the graph}
+
+Once the graph is drawn, elements can be added to complete it:
+\begin{itemize}
+  \item one or several horizontal line(s)
+  \item one or several vertical line(s)
+  \item any other kind of line(s)
+  \item one or several theoretical distribution curve(s): only on density histograms
+  \item text
+  \item \emph{p}-values: only on bar plots.
+\end{itemize}
+
+These elements are always added to the last graph drawn.
+
+For each element, clicking on the corresponding button in the navigation bar opens a dialog box on the right of the interface.
+
+Here we want to add a distribution curve to the histogram, corresponding to the values of a normal law of parameters $\mu=15.8$ and $\sigma=2.2$ (parameters calculated from the data). Setting the curve is simple (Figure~6). Once all settings are defined, click on \texttt{Draw}.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/6b.jpg}
+	\caption{Add a theoretical distribution curve to the graph \label{distrib}} \end{center}
+\end{figure}
+
+The graph is now finished (Figure~7).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/7b.jpg}
+	\caption{Final histogram \label{graphe}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Saving graph(s)}
+
+Once all graphs are drawn, they can be saved by clicking on the \texttt{save} button of the navigation bar. In the dialog box opening on the right of the interface, select the device containing the graph to be saved (the window number corresponds to the number automatically allocated by \R, under the guise ``R Graphics: Device \emph{number}"). Then choose the extension of the file to be created (\texttt{jpg}, \texttt{png} and \texttt{tiff} are available) and the image length (in pixels). Image height is automatically calculated from the length value (Figure~8). Finally click on the \texttt{Save} button.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/8b.jpg}
+	\caption{Saving a graph \label{sauver}} \end{center}
+\end{figure}
+
+\subsection{Changing the user language}
+
+To change the user language, click on the \texttt{lang} button of the navigation bar. A dialog box opens on the right of the interface (Figure~9). Choose the desired language in the drop-down menu. To fix your preference in the future, tick the \texttt{Save the preference} checkbox. Click on the \texttt{Ok} button to validate. The interface is closed and re-opened in the chosen language (but note that any dataset loaded in the previous language session is lost and has to be re-loaded).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/9b.jpg}
+	\caption{Changing the user language \label{langue}} \end{center}
+\end{figure}
+
+\newpage
+
+\section{Implementing GrapheR in a new language}
+
+Implementing GrapheR in another language is very easy, because no word appearing in the interface is written in the code. The button names etc. come from an external file which is loaded depending on the language setting. English, French, German and Spanish are available so far (files \texttt{Language\_en.csv}, \texttt{Language\_fr.csv}, \texttt{Language\_de.csv} and \texttt{Language\_es.csv} respectively, in the \texttt{lang} directory of the package).
+
+Therefore, adding a new language just requires a (strict) translation of each line of one of the existing files (including spaces before and/or after words). The new file must then be saved as \texttt{Language\_XX.csv}.
+
+If you want to implement GrapheR in your language, you are most welcome. In that case, remember that it would be a good idea (but a tougher job) to also translate the user manual. The \texttt{pdf} version of this manual is contained in the \texttt{doc} directory of the package, while the \LaTeX{} version is contained in the \texttt{vignettes} directory). Note that even if you are not \LaTeX-familiar, the \LaTeX-format file can be red and translated with script editors such as Tinn-R or Notepad++.
+
+If you want to participate, do not hesitate to contact me. I will take care of all screenshots to be included in the manual, and then add the link to the new language file in the code.
+
+\end{document}

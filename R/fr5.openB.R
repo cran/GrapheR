@@ -28,4 +28,3 @@ function() {
   tkgrid(Env$l.fr5$col.lab,row=0,column=3)
   tkgrid(Env$l.fr5$col.wdg,row=0,column=4)
 }
-

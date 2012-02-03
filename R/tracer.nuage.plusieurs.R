@@ -19,8 +19,32 @@ function() {
   if (any(nchar(Env$l.var$droiteB)>0 & Env$l.var$droiteB!=Env$voc[95,1])) {
     for (i in 1:length(niveaux)) {
 	if (Env$l.var$droiteB[i]==Env$voc[145,1]) {
-	  abline(lm(varY[facteur==niveaux[i]]~varX[facteur==niveaux[i]])$coefficients,col=Env$l.var$couleur2B[i],
+	  x<-varX[facteur==niveaux[i]]
+	  y<-varY[facteur==niveaux[i]]
+	  model<-lm(y~x)
+	  abline(model$coefficients,col=Env$l.var$couleur2B[i],
 	    lty=type.trait(type=Env$l.var$trait2[i]),lwd=Env$l.var$epaisseur2[i])
+	  if (Env$l.var$intervalB[i]==Env$voc[261,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2<-predict(model,list(x=varX2),interval="confidence")
+	    lines(varX2,varY2[,"lwr"],lty=2,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2[,"upr"],lty=2,col=Env$l.var$couleur2B[i])
+	  }
+	  if (Env$l.var$intervalB[i]==Env$voc[262,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2<-predict(model,list(x=varX2),interval="prediction")
+	    lines(varX2,varY2[,"lwr"],lty=3,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2[,"upr"],lty=3,col=Env$l.var$couleur2B[i])
+	  }
+	  if (Env$l.var$intervalB[i]==Env$voc[263,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2.a<-predict(model,list(x=varX2),interval="confidence")
+	    lines(varX2,varY2.a[,"lwr"],lty=2,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2.a[,"upr"],lty=2,col=Env$l.var$couleur2B[i])
+	    varY2.b<-predict(model,list(x=varX2),interval="prediction")
+	    lines(varX2,varY2.b[,"lwr"],lty=3,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2.b[,"upr"],lty=3,col=Env$l.var$couleur2B[i])
+	  }
 	} else
 	if (Env$l.var$droiteB[i]==Env$voc[146,1]) {
 	  b<-sd(varY[facteur==niveaux[i]],na.rm=TRUE)/sd(varX[facteur==niveaux[i]],na.rm=TRUE)*sign(cov(varX[facteur==niveaux[i]],varY[facteur==niveaux[i]],use="complete.obs"))
@@ -35,12 +59,38 @@ function() {
 	  varY2<-predict(model,list(x=varX2))
 	  lines(varX2,varY2,col=Env$l.var$couleur2B[i],lty=type.trait(type=Env$l.var$trait2[i]),
 	    lwd=Env$l.var$epaisseur2[i])
+	  if (Env$l.var$intervalB[i]==Env$voc[261,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2<-predict(model,list(x=varX2),interval="confidence")
+	    lines(varX2,varY2[,"lwr"],lty=2,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2[,"upr"],lty=2,col=Env$l.var$couleur2B[i])
+	  }
+	  if (Env$l.var$intervalB[i]==Env$voc[262,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2<-predict(model,list(x=varX2),interval="prediction")
+	    lines(varX2,varY2[,"lwr"],lty=3,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2[,"upr"],lty=3,col=Env$l.var$couleur2B[i])
+	  }
+	  if (Env$l.var$intervalB[i]==Env$voc[263,1]) {
+	    varX2<-seq(min(varX[facteur==niveaux[i]],na.rm=TRUE),max(varX[facteur==niveaux[i]],na.rm=TRUE),abs(max(varX[facteur==niveaux[i]],na.rm=TRUE)-min(varX[facteur==niveaux[i]],na.rm=TRUE))/1000)
+	    varY2.a<-predict(model,list(x=varX2),interval="confidence")
+	    lines(varX2,varY2.a[,"lwr"],lty=2,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2.a[,"upr"],lty=2,col=Env$l.var$couleur2B[i])
+	    varY2.b<-predict(model,list(x=varX2),interval="prediction")
+	    lines(varX2,varY2.b[,"lwr"],lty=3,col=Env$l.var$couleur2B[i])
+	    lines(varX2,varY2.b[,"upr"],lty=3,col=Env$l.var$couleur2B[i])
+	  }
 	} else
 	if (Env$l.var$droiteB[i]==Env$voc[148,1]) {
 	  panel.smooth(varX[facteur==niveaux[i]],varY[facteur==niveaux[i]],pch=symboles[i],cex=Env$l.var$taille.ptsB[i],
 	    col=Env$l.var$couleur2B[i],col.smooth=Env$l.var$couleur2B[i],lty=type.trait(type=Env$l.var$trait2[i]),
 	    lwd=Env$l.var$epaisseur2[i])
 	}
+    }
+  }
+  if (tclvalue(Env$l.var$ptlab)==1) {
+    for (i in 1:length(niveaux)) {
+	text(varX[facteur==niveaux[i]],varY[facteur==niveaux[i]],pos=3,offset=0.4,cex=0.65*Env$l.var$taille.ptsB[i],col=Env$l.var$couleur2B[i])
     }
   }
   if (tclvalue(Env$l.var$legende)==1) {
@@ -50,4 +100,3 @@ function() {
   graphe.axes()
   graphe.box()
 }
-

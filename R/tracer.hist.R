@@ -45,4 +45,3 @@ function() {
   graphe.titre()
   graphe.box()
 }
-

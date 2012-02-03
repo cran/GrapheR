@@ -44,4 +44,3 @@ function() {
   tkgrid(Env$l.fr2$titre2,row=0,column=6)
   tkgrid(Env$l.fr2$resume.wdg,row=2,column=6,rowspan=5)
 }
-

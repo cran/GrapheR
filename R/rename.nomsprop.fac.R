@@ -13,4 +13,3 @@ function(value.list,value.nom) {
     msg(text=Env$voc[24,1],type="error")
   }
 }
-

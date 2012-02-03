@@ -214,7 +214,7 @@ Choisir le type de représentation :
 Fenêtre à enregistrer :   
 Fenêtre
 Type de fichier :   
-Largeur de l'image :   
+Largeur de l'image (px) :   
 Enregistrer
 Langue :   
 anglais
@@ -241,3 +241,28 @@ Changer la langue de l'interface.
 Ouvrir le manuel d'introduction à GrapheR.
 espagnol
 Voulez-vous enregistrer le code des graphes ?
+allemand
+Ajouter le numéro des individus :   
+Une couleur de boîte et de bordure différente peut être définie par niveau.
+il n'existe pas de valeur pour chaque combinaison des deux facteurs.
+Orientation des graduations :   
+parallèle à l'axe
+Sous-titre :   
+Ajouter les infos système :   
+Facteur :   
+Ordre actuel
+Nouvel ordre
+Réordonner
+pas autant de niveaux dans le nouvel ordre que dans l'ordre actuel.
+Facteur réordonné.
+Ajouter les moyennes :   
+Les moyennes sont représentées par une signe ''+''.
+Largeur proportionnelle à la taille de l'échantillon :   
+La largeur des boîtes est proportionnelle à la racine carrée du nombre d'observation par groupe.
+Intervalle :   
+aucun
+intervalle de confiance de la droite
+intervalle de prédiction des valeurs
+intervalles de confiance et de prédiction
+Ne pas représenter les barres :   
+Résolution (ppi) :   

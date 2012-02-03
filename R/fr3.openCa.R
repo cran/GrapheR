@@ -39,4 +39,3 @@ function() {
   tkgrid(Env$l.fr3$lien.lab,row=2,column=3,sticky="e")
   tkgrid(Env$l.fr3$lien.wdg,row=2,column=4,sticky="w")
 }
-

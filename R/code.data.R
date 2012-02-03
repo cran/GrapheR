@@ -38,7 +38,16 @@ function() {
   } else if (Env$l.var$ecran=="M") {
     if (nchar(facteur2)>0 & facteur2!=Env$voc[82,1]) {
 	cat("# Preliminary data creation\n\n")
-	cat(paste("interaction <- factor(paste(",facteur1,",",facteur2,",sep=\":\"))\n\n",sep=""))
+	cat(paste("interaction <- factor(paste(",facteur1,",",facteur2,",sep=\":\"))\n",sep=""))
+	if (tclvalue(Env$l.var$boxmoy)==1) {
+	  cat(paste("means <- tapply(",variable,", interaction, function(x) mean(x,na.rm=TRUE))\n",sep=""))
+	}
+	cat("\n")
+    } else {
+	if (tclvalue(Env$l.var$boxmoy)==1) {
+	  cat("# Preliminary data creation\n\n")	
+	  cat(paste("means <- tapply(",variable,", ",facteur1,", function(x) mean(x,na.rm=TRUE))\n\n",sep=""))
+	}
     }
   } else if (Env$l.var$ecran=="B") {
     proportions<-tclvalue(Env$l.var$proportions)

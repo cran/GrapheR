@@ -16,20 +16,42 @@ function() {
     "x"
   } else {""}
   texte<-paste(texte,", horizontal=",ifelse(orient=="hor","TRUE","FALSE"),sep="")
-  if (tclvalue(Env$l.var$couleur1A)!="white" & tclvalue(Env$l.var$couleur1A)!="#ffffff") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur1A),"\"",sep="")}
-  if (tclvalue(Env$l.var$col.borduresA)!="black" & tclvalue(Env$l.var$col.borduresA)!="#000000") {texte<-paste(texte,", boxcol=\"",tclvalue(Env$l.var$col.borduresA),
-    "\", medcol=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")}
-  if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", whiskcol=\"",tclvalue(Env$l.var$couleur2A),
-    "\", staplecol=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-  if (tclvalue(Env$l.var$couleur3)!="black" & tclvalue(Env$l.var$couleur3)!="#000000") {texte<-paste(texte,", outcol=\"",tclvalue(Env$l.var$couleur3),"\"",sep="")}
-  texte<-paste(texte,",\n  whisklty=",type.trait(type=tclvalue(Env$l.var$trait1)),sep="")
-  texte<-paste(texte,", outline=",ifelse(tclvalue(Env$l.var$outliers)=="1","TRUE","FALSE"),sep="")
-  texte<-paste(texte,", outpch=",ifelse(tclvalue(Env$l.var$box.symbol)==Env$voc[80,1],16,1),sep="")
+  texte<-paste(texte,",\n  col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\")",sep="")
+  texte<-paste(texte,", boxcol=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+  texte<-paste(texte,", medcol=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+  texte<-paste(texte,",\n  whiskcol=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+  texte<-paste(texte,", staplecol=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+  texte<-paste(texte,", whisklty=",type.trait(type=tclvalue(Env$l.var$trait1)),sep="")
+  texte<-paste(texte,",\n  outline=",ifelse(tclvalue(Env$l.var$outliers)=="1","TRUE","FALSE"),sep="")
+  if (tclvalue(Env$l.var$outliers)=="1") {texte<-paste(texte,", outpch=",ifelse(tclvalue(Env$l.var$box.symbol)==Env$voc[80,1],16,1),sep="")}
+  if (tclvalue(Env$l.var$outliers)=="1") {texte<-paste(texte,", outcol=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")}
   texte<-paste(texte,", range=",as.numeric(tclvalue(Env$l.var$lg.moustaches)),sep="")
   texte<-paste(texte,", notch=",ifelse(tclvalue(Env$l.var$ICmediane)=="1","TRUE","FALSE"),sep="")
   if (log.axes!="") {texte<-paste(texte,", log=",log.axes,sep="")}
-  texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),"))\n\n",sep="")
+  texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
+  if (tclvalue(Env$l.var$varwidth)==1) {texte<-paste(texte,", varwidth=TRUE",sep="")}
+  texte<-paste(texte,")\n\n",sep="")
   cat(texte)
+  if (tclvalue(Env$l.var$boxmoy)==1) {
+    facteur<-NULL
+    if (nchar(facteur2)>0 & facteur2!=Env$voc[82,1]) {
+	facteur <- factor(paste(Env$dataset[,tclvalue(Env$l.var$facteur1)],Env$dataset[,tclvalue(Env$l.var$facteur2)],sep=":"))
+    } else {
+	facteur <- Env$dataset[,tclvalue(Env$l.var$facteur1)]
+    }
+    texte<-""
+    if (tclvalue(Env$l.var$box.orient)==Env$voc[67,1]) {
+	texte<-paste("points(means",sep="")
+	texte<-paste(texte,", 1:",nlevels(facteur),sep="")
+    } else {
+	texte<-paste("points(1:",nlevels(facteur),sep="")
+	texte<-paste(texte,", means",sep="")
+    }
+    texte<-paste(texte,", cex=2",sep="")
+    texte<-paste(texte,", col=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+    texte<-paste(texte,", pch=\"+\")\n\n",sep="")
+    cat(texte)
+  }
   code.graph.axes()
   code.graph.titre()
   if (tclvalue(Env$l.var$encadre)==1) {cat("box()\n\n")}

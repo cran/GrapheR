@@ -48,7 +48,7 @@ function() {
     }
   } else {
     tclvalue(Env$l.var$plusieurs)<-0
-    tclvalue(Env$l.var$couleur1A)<-"white"
+    tclvalue(Env$l.var$couleur1A)<-"grey"
     tclvalue(Env$l.var$col.borduresA)<-"black"
     tclvalue(Env$l.var$hachuresA)<-"1"
     if (exists("noms.list",where=Env$l.fr4)) {
@@ -67,4 +67,3 @@ function() {
   }
   active.erreur()
 }
-

@@ -24,6 +24,8 @@ function() {
   })
   Env$l.fr1$niveau.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[38,1],font=Env$police,foreground=ifelse(nchar(tclvalue(Env$l.var$facteur1))>0 & tclvalue(Env$l.var$facteur1)!=Env$voc[82,1],"black","grey"))
   Env$l.fr1$niveau.wdg<-ttkcombobox(Env$l.frames$Fr1,values="",textvariable=Env$l.var$niveau,font=Env$police,state=ifelse(nchar(tclvalue(Env$l.var$facteur1))>0 & tclvalue(Env$l.var$facteur1)!=Env$voc[82,1],"readonly","disabled"))
+  Env$l.fr1$sysinfo.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[248,1],font=Env$police)
+  Env$l.fr1$sysinfo.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$sysinfo)
   Env$l.fr1$type.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[39,1],font=Env$police)
   Env$l.fr1$type.wdg<-ttkcombobox(Env$l.frames$Fr1,values=Env$voc[40:42,1],textvariable=Env$l.var$hist.type,font=Env$police,state="readonly")
   if (nchar(tclvalue(Env$l.var$facteur1))>0 & tclvalue(Env$l.var$facteur1)!=Env$voc[82,1]) {
@@ -77,5 +79,6 @@ function() {
   tkgrid(Env$l.fr1$type.wdg,row=0,column=4,sticky="w")
   tkgrid(Env$l.fr1$encadre.lab,row=1,column=3,sticky="e")
   tkgrid(Env$l.fr1$encadre.wdg,row=1,column=4,sticky="w")
+  tkgrid(Env$l.fr1$sysinfo.lab,row=2,column=3,sticky="e")
+  tkgrid(Env$l.fr1$sysinfo.wdg,row=2,column=4,sticky="w")
 }
-

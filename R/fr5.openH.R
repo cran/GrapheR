@@ -34,4 +34,3 @@ function() {
   tkgrid(Env$l.fr5$epaisseur.lab,row=0,column=9,sticky="e")
   tkgrid(Env$l.fr5$epaisseur.wdg,row=0,column=10,sticky="w")
 }
-

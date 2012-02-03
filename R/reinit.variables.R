@@ -8,8 +8,10 @@ function() {
   tclvalue(Env$l.var$titre)<-""
   tclvalue(Env$l.var$titre.col)<-"black"
   tclvalue(Env$l.var$titre.taille)<-"1.5"
+  tclvalue(Env$l.var$soustitre)<-""
   tclvalue(Env$l.var$graduations.col)<-"black"
   tclvalue(Env$l.var$graduations.taille)<-"1"
+  tclvalue(Env$l.var$graduations.orient)<-Env$voc[246,1]
   tclvalue(Env$l.var$legendes.col)<-"black"
   tclvalue(Env$l.var$legendes.taille)<-"1"
   tclvalue(Env$l.var$titre.axehor)<-""
@@ -19,7 +21,7 @@ function() {
   tclvalue(Env$l.var$liminf.axever)<-"Auto"
   tclvalue(Env$l.var$limsup.axever)<-"Auto"
   tclvalue(Env$l.var$hist.barres)<-"Auto"
-  tclvalue(Env$l.var$couleur1A)<-"white"
+  tclvalue(Env$l.var$couleur1A)<-"grey"
   tclvalue(Env$l.var$col.borduresA)<-"black"
   tclvalue(Env$l.var$hist.dens)<-0
   tclvalue(Env$l.var$couleur2A)<-"black"
@@ -32,10 +34,11 @@ function() {
   tclvalue(Env$l.var$liminf.axevaleurs)<-"Auto"
   tclvalue(Env$l.var$limsup.axevaleurs)<-"Auto"
   tclvalue(Env$l.var$log.axevaleurs)<-0
+  tclvalue(Env$l.var$boxmoy)<-0
   tclvalue(Env$l.var$ICmediane)<-0
+  tclvalue(Env$l.var$varwidth)<-0
   tclvalue(Env$l.var$lg.moustaches)<-"1.5"
   tclvalue(Env$l.var$outliers)<-1
-  tclvalue(Env$l.var$couleur3)<-"black"
   tclvalue(Env$l.var$box.symbol)<-""
   Env$l.var$noms1<-""
   tclvalue(Env$l.var$moyprop)<-"moy"
@@ -45,7 +48,7 @@ function() {
   Env$l.var$nomsprop<-""
   tclvalue(Env$l.var$moyprop)<-"moy"
   tclvalue(Env$l.var$facteurprop)<-""
-  Env$l.var$couleur1B<-"grey"
+  Env$l.var$couleur1B<-"white"
   Env$l.var$col.borduresB<-"black"
   tclvalue(Env$l.var$hachuresA)<-"1"
   Env$l.var$hachuresB<-1
@@ -77,10 +80,15 @@ function() {
   Env$l.var$select<-1
   tclvalue(Env$l.var$droiteA)<-""
   Env$l.var$droiteB<-""
+  tclvalue(Env$l.var$intervalA)<-""
+  Env$l.var$intervalB<-""
+  tclvalue(Env$l.var$ptlab)<-0
+  tclvalue(Env$l.var$sysinfo)<-0
+  Env$l.var$levels.temp <- NULL
+  tclvalue(Env$l.var$nobar)<-0
   Env$l.var$add.abscisses<-NULL
   Env$l.var$add.hauteurs<-NULL
   Env$l.var$add.seq<-NULL
   Env$l.var$add.seq2<-NULL
   Env$l.var$add.matrice<-NULL
 }
-

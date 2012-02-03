@@ -1,0 +1,268 @@
+Start durch Laden des Datensatzes.
+Externe Datei
+Extension:   
+Spalten-Trennzeichen:   
+Leertaste / Tabulator
+Komma
+Strichpunkt
+Dezimal-Trennzeichen:   
+Punkt
+Code für fehlende Werte:   
+Variablen-Namen in der Datei vorhanden:   
+Bestehende R-Objekte
+Laden
+Nur Objekte der Klasse ''data.frame'' werden dargestellt.
+Variablen des Datensatzes
+Variablen-Typ:   
+Zusammenfassung der Variablen
+Fehler:
+keine Datei geladen.
+kein Objekt ausgewählt.
+Datensatz geladen.
+Neuer Name
+Umbenennen
+kein neuer Name vergeben.
+keine Variable ausgewählt.
+Zum Löschen anklicken (nicht mit der Maus auswählen). Eingabe mit Return/Enter-Taste bestätigen.
+Keine Gruppierung (
+ Gruppen)
+Gruppierung nach Klassen:
+der gleichen Länge
+der gleichen Größe
+Anzahl / Nummer der Klassen
+Transformieren
+Nur numerische Variablen und Zeichenketten-Vektoren können transformiert werden.
+Variable wurde konvertiert.
+Variable zur Darstellung:   
+Faktor (optional):   
+Faktor-Gruppe:   
+Histogramm-Typ:   
+häufigkeiten
+anzahlen
+dichten
+Rahmen:   
+Titel:   
+Farbe:   
+Größe:   
+Farbe der Einteilungen:   
+Größe der Einteilungen:   
+Farbe der Legende:   
+Größe der Legende:   
+Horizontale Achse
+Vertikale Achse
+Untere Grenze:   
+Obere Grenze:   
+Anzahl der Säulen:   
+Farbe der Säulen:   
+Farbe der Randlinien:   
+Zeichnen der Kurve:   
+Linientyp:   
+durchgehend
+fein gestrichelt
+weit gestrichelt
+Breite:   
+Auswählen einer Farbe
+Faktor:   
+Ausrichtung der Boxen:   
+horizontal
+vertikal
+Achse mit den Namen des Faktors
+Achse für die Werte
+Namen der Boxen:   
+Zeichnen
+Logarithmische Skala:   
+Farbe der Boxen:   
+VB des Medians:   
+Der Vertrauensbereich (VB) wird durch eine Einkerbung der Box dargestellt.
+Die Größe wird dargestellt im Verhältnis zur Länge der Box.
+Darstellung von Ausreißern:   
+Symbol:   
+voll ausgefüllt
+leer
+Keines
+Umbenennen einer Box:   
+Mittelwerte
+Proportionen
+Faktor 1 (obligatorisch):   
+Faktor 2 (optional):   
+Proportionen:   
+Namen der Säulen:   
+Umbenennen einer Säule:   
+Farbe der Säulen:   
+Füllmuster:   
+Stapeln von Säulen:   
+Säulentyp:   
+keine
+standardabweichung
+standardfehler
+vertrauensbereich
+Hinzufügen einer Legende:   
+Position:   
+links oben
+oben zentriert
+rechts oben
+links mittig
+mittig im Diagramm
+rechts mittig
+links unten
+unten zentriert
+rechts unten
+Items:   
+Umbenennen eines Items:   
+Eine Säulenfarbe, eine Randlinienfarbe und ein Füllmuster kann pro Gruppe definiert werden.
+bei gestapelten Säulen kann kein Fehlerbalken gezeichnet werden.
+nur der Typ ''dichten'' erlaubt, die Verteilungskurve der Daten zu zeichnen.
+Darzustellende Kreissegmente:   
+Name der Kreissegmente:   
+Umbenennen eines Kreissegments:   
+Orientierung des Kreis-Diagramms:   
+im Uhrzeigersinn
+gegen Uhrzeigersinn
+Beginn (Grad):   
+Zusammenfassen von Kreissegmenten nach ihrem Namen:   
+Eine Farbe und ein Füllmuster kann pro Kreissegment definiert werden.
+Farbe des Kreissegments:   
+wenn Kreissegmente nach ihrem Namen zusammengefasst wurden, kann keine Legende hinzugefügt werden
+Die Randlinien-Farbe ist einmalig.
+X-Variable:   
+Y-Variable:   
+Proportion:   
+Gruppen:   
+Symbolgröße:   
+Kurventyp:   
+nur Punkte
+nur Linie
+punkte und Kurve 1
+punkte und Kurve 2
+stöcke
+Symbol:   
+Für die gewählte Gruppe wird eine Linie angezeigt.
+nur eine Proportion kann angezeigt werden.
+Alle Parameter können pro Kurve unterschiedlich angezeigt werden.
+Ausgewählte Proportionen werden angezeigt.
+Für die gewählte Gruppe wird ein Streudiagramm angezeigt.
+Hinzufügen einer Linie:   
+lineare Regressionslinie (kleinste Quadrate)
+lineare Regressionslinie (kleinste Rechtecke)
+quadratische Regressionslinie
+trendkurve durch die Punkte
+Auswählen der Anzahl von Grafiken, die im Fenster gezeichnet werden sollen:
+Hintergrundfarbe:   
+Okay
+Schließen
+kein Datensatz geladen.
+nicht alle benötigten allgemeinen Einstellungen wurden definiert.
+das Dezimaltrennzeichen muss ein Punkt sein, kein Komma.
+Die Zahl der Säulen kann geringfügig vom eingestellten Wert abweichen.
+aufgrund der geringen Stichprobengröße werden Vertrauensbereiche des Medians angezeigt.
+bei einer logarithmischen Skala kann kein Füllmuster hinzugefügt werden.
+Auswählen der Kreissegmente, die angezeigt werden sollen.
+Warnung:
+Abszisse:   
+Auswahl mit der Maus
+keine Graphik gezeichnet.
+Ordinate:   
+Gleichung:   
+y  =  
+ x   +  
+Auswahl mit der Maus (2 Punkte)
+Auswählen und Parametrisieren der Verteilung:
+Normal-Verteilung
+Binomial-Verteilung
+Gamma-Verteilung
+Poisson-Verteilung
+Exponential-Verteilung
+Negative Binomial-Verteilung
+ Verteilung
+Geometrische Verteilung
+Fisher-Snedecor-Verteilung
+Hypergeometrische Verteilung
+Student-Verteilung
+Mann-Whitney-Verteilung
+Wilcoxon-Vorzeichen-Rangtest-Verteilung
+Anzahl Versuche (n):   
+Wahrscheinlichkeit des Erfolgs (p):   
+Wahrscheinlichkeit des Erfolgs - selten (p):   
+Anzahl der erfolgreichen Versuche (k):   
+Gesamtzahl der möglichen Versuche (N):   
+Anzahl Versuche (n):   
+Mittelwert (
+Standardabweichung (
+Erster Parameter der Verteilung (
+Zweiter Parameter der Verteilung (
+Parameter der Verteilung (
+Anzahl der Freiheitsgrade (
+Erste Zahl der Freiheitsgrade (
+Zweite Zahl der Freiheitsgrade (
+Größe der 1. Stichprobe (n1):   
+Größe der 2. Stichprobe (n2):   
+Anzahl Stichprobeneinheiten (n):   
+):   
+die Grafik ist kein Histogramm von Dichten.
+Text:   
+Koordinaten:
+x:   
+y:   
+"Text eingeben, dann auf 'Auswählen' klicken,
+und die zwei zu vergleichenden Säulen auswählen"
+"Text eingeben, dann auf 'Auswählen' klicken,
+und die linke und rechte Säule der zu
+vergleichenden Gruppe auswählen"
+Auswählen
+die Grafik ist kein Säulendiagramm.
+Auswählen des Typs der Darstellung:
+Zu sicherndes Fenster:   
+Fenster
+Dateityp:   
+Bildgröße (px):   
+Speichern
+Sprache:   
+Englisch
+Französich
+Speichern der Präferenzen:   
+keine Sprache ausgewählt.
+Laden oder Ändern des Datensatzes.
+Ein Histogramm zeichnen.
+Box und Whisker-Plot zeichnen.
+Ein Säulengramm zeichnen.
+Ein Kreisdiagramm zeichnen.
+Eine oder mehrere Kurven zeichnen.
+Ein Streudiagramm zeichnen.
+Ein neues Fenster öffnen.
+Die Grafik zeichnen.
+Eine horizontale Linie hinzufügen.
+Eine vertikale Linie hinzufügen.
+Eine beliebige Linie hinzufügen.
+Eine theoretische Verteilungskurve hinzufügen (nur bei Dichte-Histogrammen).
+Text zur Grafik hinzufügen.
+P-Werte zur Grafik hinzufügen (nur bei Säulendiagrammen).
+Speichern der Grafik(en).
+Ändern der Sprache.
+Öffnen des einführenden Handbuchs für GrapheR.
+Spanish
+Möchten Sie den Code für die Graphik speichern?
+Deutsch
+Hinzufügen die individuelle Nummern:   
+Pro Gruppe kann eine Farbe für die Box und eine Farbe für die Randlinien definiert werden.
+für mindestens eine Kombination der zwei Faktoren ist kein Wert vorhanden.
+Ausrichtung:   
+parallel zur Achse
+Untertitel:   
+Hinzufügen von System-Informationen:   
+Faktor:   
+Gegenwärtige Ordnung
+Neue Ordnung
+Umordnen
+keine gleiche Zahl von Gruppen in neuer und gegenwärtiger Ordnung.
+Faktor wurde umgeordnet
+Hinzufügen von Mittelwerten:   
+Mittelwerte werden symbolisiert durch ein ''+''-Zeichen.
+Breite proportional zur Stichprobengröße:   
+Die Breite der Box ist proportional zur Quadratwurzel der Anzahl der Beobachtungen pro Gruppe.
+Intervall:   
+keines
+Vertrauensbereich der Regressionsgerade
+Vorhersagebereich der einzelnen Werte
+Vertrauensbereich und Vorhersagebereich
+Saülen nicht anzeigen:   
+Auflösung (ppi):   

@@ -1,4 +1,5 @@
-code.graph<-function() {
+code.graph <-
+function() {
   cat("# Graph\n\n")
   if (Env$l.var$ecran=="H") {
     code.graph.hist()

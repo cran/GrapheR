@@ -1,4 +1,5 @@
-msg<-function(text,type) {
+msg <-
+function(text,type) {
   if (type=="error") {
     tkconfigure(Env$l.wdg$message.wdg,foreground="red")
     tclvalue(Env$l.var$message)<-paste(Env$voc[18,1],text)

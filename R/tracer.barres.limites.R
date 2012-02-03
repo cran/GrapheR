@@ -51,4 +51,3 @@ function(valeurs,erreur.inf,erreur.sup) {
   }
   return(list(yinf=y.inf,ysup=y.sup,ordonnee=ordonnee))
 }
-

@@ -82,4 +82,3 @@ function() {
   tkgrid(Env$l.fr7$fermer,row=8,column=4)
   tkgrid(Env$l.fr7$espace.ver3)
 }
-

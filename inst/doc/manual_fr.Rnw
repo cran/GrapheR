@@ -1,0 +1,213 @@
+\documentclass[a4paper]{article}
+\usepackage[greek,french]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%%\usepackage{Sweave}
+\hypersetup{colorlinks=true,urlcolor=red}
+
+%%\VignetteIndexEntry{Introduction to GrapheR}
+
+\newcommand{\R}{\textcolor[RGB]{118,133,166}{\textbf{R}}}
+
+\begin{document}
+
+\title{Introduction à GrapheR}
+\author{Maxime Hervé}
+\date{}
+\maketitle
+
+Pour toute question, commentaire ou suggestion : \href{mx.herve@gmail.com}{mx.herve@gmail.com}
+
+Merci à Juan Alberti pour la traduction espagnole de l'interface.
+
+Merci à Helmut Schlumprecht pour la traduction allemande de l'interface et du manuel utilisateur.
+
+\section{Introduction}
+GrapheR est une interface utilisateur multiplateforme (Linux, Mac OS, Windows) permettant de réaliser des graphes hautement paramétrables sous \R. Son intérêt est de faciliter la création rapide de figures publiables, sans avoir à connaître le langage \R.
+
+Six types de graphe sont disponibles :
+\begin{itemize}
+	\item histogramme
+	\item diagramme en boîtes à moustaches
+	\item diagramme en barres
+	\item camembert
+	\item courbe
+	\item nuage de points
+\end{itemize}
+
+GrapheR a été construit à partir du package \texttt{tcltk}, et à ce titre il peut se produire quelques bugs si \R{} est configuré en mode MDI (\emph{Multiple-Document Interface}). Il est recommandé de configurer le logiciel en mode SDI (\emph{Single-Document Interface}) avant de lancer le package.
+
+GrapheR exige pour fonctionner une version de \R{} égale ou supérieure à 2.10, ainsi qu'un package additionnel : \texttt{tcltk}. Sous Mac OS X, Tcl/Tk doit préalablement avoir été installé (pour plus d'informations voir \href{http://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#X11-TclTk-headers-and-libraries-_0028optional_0029}{ici}).
+
+\section{Lancement de l'interface}
+Comme n'importe quel autre package, GrapheR est chargé \emph{via} \texttt{library(Gra\-pheR)}, \texttt{require(GrapheR)} ou le menu \emph{Packages} de la console sous Windows. Le package \texttt{tcltk} est à ce moment automatiquement chargé.
+
+Lancer l'interface est la seule étape qui nécessite de taper une commande : \texttt{run.GrapheR()}. L'interface s'ouvre alors et la console peut être réduite.
+
+\section{Description de l'interface}
+\subsection{Vue d'ensemble}
+
+L'interface est composée de trois blocs (Fig~1) :
+\begin{enumerate}
+  \item la barre de navigation : elle regroupe tous les boutons permettant d'ouvrir les modules de l'interface
+  \item le cadre des messages : afin de faciliter l'utilisation de l'interface, des messages d'information s'affichent dans ce cadre lorsque certains éléments sont survolés par la souris ou que certaines actions sont effectuées. Les messages d'erreur s'affichent également dans ce cadre
+  \item le bloc de paramétrage : il contient toutes les boîtes de dialogue permettant de paramétrer les graphes à tracer.
+\end{enumerate}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/1a.jpg}
+	\caption{Interface utilisateur : vue d'ensemble (affichage sous Windows 7) \label{blocs}} \end{center}
+\end{figure}
+
+\subsection{Barre de navigation}
+
+La barre de navigation est divisée en sept groupes de boutons, chacun correspondant à une étape (obligatoire ou facultative) du processus (Fig~2) :
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/2.jpg}
+	\caption{Barre de navigation \label{navigation}} \end{center}
+\end{figure}
+
+\begin{enumerate}
+  \item charger et modifier le jeu de données
+  \item paramétrer un graphe. De gauche à droite : histogramme, diagramme en boîtes à moustaches, diagramme en barres, camembert, courbe et nuage de points
+  \item ouvrir une nouvelle fenêtre : lorsqu'un graphe est tracé, il l'est dans la fenêtre active ou à défaut dans une nouvelle fenêtre graphique si aucune n'est ouverte. Ce bouton permet d'ouvrir une nouvelle fenêtre où plusieurs graphes pourront être tracés
+  \item tracer le graphe
+  \item ajouter des éléments sur le graphe. De gauche à droite : ajouter une ligne horizontale, ajouter une ligne verticale, ajouter une droite quelconque, ajouter une courbe de distribution théorique, ajouter du texte et ajouter des \emph{p-values}
+  \item sauvegarder le(s) graphe(s)
+  \item options diverses : langage utilisateur et aide.
+\end{enumerate}
+
+\subsection{Cadre des messages}
+
+Lorsque certains éléments de l'interface sont survolés par la souris ou que certaines actions sont réalisées, des messages s'affichent dans ce cadre. Trois types de message peuvent s'afficher :
+\begin{itemize}
+  \item \textcolor[RGB]{3,15,178}{en bleu :} messages d'information, à but indicatif
+  \item \textcolor[RGB]{2,103,0}{en vert :} avertissements, une attention particulière doit être portée sur un point précis (par exemple : si telle option est choisie, telle autre ne pourra pas l'être)
+  \item \textcolor[RGB]{255,0,0}{en rouge :} messages d'erreur, l'action n'a pas pu être réalisée. Le message indique d'où vient l'erreur.
+\end{itemize}
+
+\subsection{Bloc de paramétrage}
+
+Ce bloc est divisé en quatre à six sous-blocs qui contiennent chacun les options relatives à un thème donné : paramètres généraux du graphe, titre du graphe, légende\dots{} Chaque sous-bloc peut être ouvert ou fermé grâce à la flèche correspondante située à droite de l'interface. Les paramètres enregistrés ne sont bien sûr pas perdus lorsqu'un sous-bloc est fermé.
+
+\section{Utilisation}
+
+L'exemple traité ici est basé sur le jeu de donné fourni avec le package, nommé \texttt{Swallows}. Pour l'importer, utiliser la commande \texttt{data(Swallows)}. Ce jeu données (fictif bien entendu !) permet d'illustrer le célèbre dilemme de la migration des hirondelles africaine et européenne.
+
+\subsection{Charger et modifier le jeu de données}
+
+Le premier sous-bloc (Figure~3) permet de charger le jeu de données. Celui-ci peut être importé depuis un fichier externe à \R{} (les extensions \texttt{txt} et \texttt{csv} sont reconnues) ou être un objet de classe \texttt{data.frame} (\emph{i.e.} un tableau) déjà existant dans la session \R.
+
+Le sous-bloc suivant permet d'avoir une information sur la structure du jeu de données. Lorsqu'une variable est sélectionnée dans la liste de gauche, son type (\texttt{numeric}, \texttt{factor}, \texttt{logical}\dots) et son résumé sont renvoyés dans le cadre de droite.
+
+Les deux sous-blocs suivants permettent, si besoin, de modifier le jeu de données :
+\begin{itemize}
+  \item en renommant des variables (par exemple si le jeu de données ne contenait pas leur nom)
+  \item en transformant des variables en facteurs. La transformation peut s'appliquer à des variables de classe \texttt{character} (\emph{i.e.} des vecteurs de chaînes de caractères) ou à des variables numériques (auquel cas les valeurs peuvent être regroupées en classes).
+\end{itemize}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/3a.jpg}
+	\caption{Charger le jeu de données \label{charger}} \end{center}
+\end{figure}
+
+\subsection{Paramétrer un graphe}
+
+Une fois que le jeu de données est prêt, cliquez sur le bouton correspondant au type de graphe à tracer (histogramme, diagramme en boîtes à moustaches, diagramme en barres, camembert, courbe ou nuage de points).
+
+Quel que soit le type de graphe choisi, tous les paramètres ont une valeur par défaut, sauf les paramètres généraux~--~qui correspondent à la (ou aux) variable(s) à représenter. Pour tracer un graphe très rapidement, seuls les paramètres généraux peuvent donc être définis. S'ils ne le sont pas (ou pas tous), une erreur se produit au moment de tracer le graphe.
+
+Ici l'objectif est de représenter en histogramme la distribution de la taille des hirondelles africaines. On commence par cliquer sur le bouton \texttt{Histogramme} de la barre de navigation. Dans les paramètres généraux, on choisit \texttt{Size} comme variable à représenter, et précisons que l'on ne veut utiliser que les valeurs correspondant au niveau \texttt{African} du facteur \texttt{Species} (Figure~4). Le type d'histogramme est réglé sur \texttt{densités}, car comme l'avertissement l'indique seul ce type permet d'ajouter une courbe de distribution des données.
+
+Tous les autres paramètres sont laissés par défaut, sauf le titre du graphe et ceux correspondant à la courbe de distribution (où l'on coche \texttt{Tracer la courbe} et définissons une couleur et un type de trait).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/4a.jpg}
+	\caption{Paramétrer un histogramme \label{histo}} \end{center}
+\end{figure}
+
+Une fois tous les paramètres nécessaires définis, le graphe est tracé en cliquant sur le bouton \texttt{DRAW} de la barre de navigation. A ce moment, vous pouvez choisir de sauver le code produisant votre graphe dans un fichier \texttt{R} externe. Si vous répondez \texttt{Yes}, le code de tous les graphes produits dans la même session seront ajoutés dans ce fichier.
+
+ Si une nouvelle fenêtre doit être ouverte avant de tracer le graphe, cliquez d'abord sur le bouton \texttt{window} (voir section suivante).
+
+\subsection{Ouvrir une nouvelle fenêtre}
+
+Il est possible de tracer ses graphes dans des fenêtres différentes et/ou d'en tracer plusieurs dans une même fenêtre. Pour cela cliquer sur le bouton \texttt{window} de la barre de navigation. La boîte de dialogue qui s'ouvre à droite de l'interface permet de définir combien de graphes seront tracés dans la fenêtre à créer, ainsi que la couleur de fond de cette fenêtre (Figure~5).
+
+Il est possible de tracer jusqu'à 16 graphes dans une même fenêtre, répartis en quatre lignes et quatre colonnes. Cependant, plus le nombre de graphes à tracer est élevé, plus l'espace alloué à chacun est restreint.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/5a.jpg}
+	\caption{Ouvrir une nouvelle fenêtre \label{fenetre}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Ajouter des éléments sur le graphe}
+
+Une fois le graphe tracé, il est possible d'ajouter des éléments pour le compléter :
+\begin{itemize}
+  \item une (ou des) droite(s) horizontale(s)
+  \item une (ou des) droite(s) verticale(s)
+  \item une (ou des) droite(s) quelconque(s)
+  \item une (ou des) courbe(s) de distribution théorique : uniquement sur des histogrammes tracés en densités
+  \item du texte
+  \item des \emph{p-values} : uniquement sur des diagrammes en barres.
+\end{itemize}
+
+Les éléments sont toujours ajoutés sur le dernier graphe tracé.
+
+Pour chaque élément, cliquer sur le bouton correspondant dans la barre de navigation ouvre une boîte de dialogue à droite de l'interface.
+
+Ici on veut rajouter une courbe de distribution sur l'histogramme, correspondant aux valeurs d'une loi normale de paramètres $\mu=15.8$ et $\sigma=2.2$ (paramètres calculés à partir des données représentées sur l'histogramme). Le paramétrage de la courbe est simple (Figure~6). Une fois les paramètres définis, cliquez sur \texttt{Tracer}.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/6a.jpg}
+	\caption{Ajouter une courbe de distribution théorique sur le graphe \label{distrib}} \end{center}
+\end{figure}
+
+Le graphe est maintenant terminé (Figure~7).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/7a.jpg}
+	\caption{Histogramme final \label{graphe}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Sauvegarder le(s) graphe(s)}
+
+Une fois que les graphes sont tracés, ils peuvent être sauvegardés en cliquant sur le bouton \texttt{save} de la barre de navigation. Dans la boîte de dialogue qui s'ouvre à droite de l'interface, choisissez la fenêtre à enregistrer (le numéro de fenêtre correspond au numéro attribué automatiquement par \R, sous la forme ``R Graphics: Device \emph{numéro}''). Choisissez le format de fichier à créer (\texttt{jpg}, \texttt{png} et \texttt{tiff} sont disponibles) et la largeur de l'image (en pixels). La hauteur de l'image est calculée automatiquement d'après la largeur (Figure~8). Une fois ces paramètres définis, cliquez sur \texttt{Enregistrer}.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/8a.jpg}
+	\caption{Sauvegarder un graphe \label{sauver}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Changer le langage utilisateur}
+
+Pour changer le langage utilisateur, cliquez sur le bouton \texttt{lang} de la barre de navigation. Une boîte de dialogue s'ouvre à droite de l'interface (Figure~9). Choisissez dans le menu déroulant la langue souhaitée. Pour que le langage choisi soit utilisé par défaut à l'avenir, cochez la case \texttt{Sauvegarder la préférence}. Cliquez sur le bouton \texttt{Ok} pour valider. L'interface se ferme et se rouvre dans la langue choisie (le jeu de données est alors perdu et doit être rechargé).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/9a.jpg}
+	\caption{Changer le langage utilisateur \label{langue}} \end{center}
+\end{figure}
+
+\section{Ajouter un nouveau langage utilisateur à GrapheR}
+
+Ajouter un nouveau langage à GrapheR est très facile, car aucun mot apparaissant dans l'interface n'est écrit dans le code de celle-ci. Les noms des boutons etc viennent d'un fichier externe qui est chargé selon le langage défini dans l'interface. Anglais, français, allemand et espagnol sont disponibles pour le momnet (fichiers \texttt{Language\_en.csv}, \texttt{Language\_fr.csv}, \texttt{Language\_de.csv} et \texttt{Language\_es.csv} respectivement, dans le dossier \texttt{lang} du package).
+
+Par conséquent, ajouter un nouveau langage demande simplement de traduire (scrupuleusement) chaque ligne de l'un de ces fichiers (y compris les espaces avant/après les mots). Le nouveau fichier doit être enregistré en tant que \texttt{Language\_XX.csv}.
+
+Si vous voulez que GrapheR soit disponible dans votre langue, vous êtes le bienvenu. Dans ce cas, souvenez-vous qu'il serait une bonne idée (mais un travail plus laborieux) d'également traduire le manuel utilisateur. Celui-ci est contenu dans le dossier \texttt{doc} du package, tandis que la version \LaTeX{} est contenue dans le dossier \texttt{vignettes}. Notez que même si vous n'êtes pas familier avec \LaTeX, vous pouvez ouvrir et traduire ce fichier dans des éditeurs de script tels que Tinn-R ou Notepad++.
+
+ Si vous souhaitez participer, n'hésitez pas à me contacter. Je m'occuperai des captures d'écran à inclure dans le manuel, et j'ajouterai le lien vers le nouveau langage dans le code.
+
+\end{document}

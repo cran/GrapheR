@@ -32,6 +32,8 @@ function() {
 	tkconfigure(Env$l.fr4$l.hachures[[Env$l.var$hachuresB[1]]],borderwidth=2)
     }
   })
+  Env$l.fr1$sysinfo.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[248,1],font=Env$police)
+  Env$l.fr1$sysinfo.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$sysinfo)
   Env$l.fr1$parts.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[115,1],font=Env$police)
   Env$l.fr1$parts.list<-tklistbox(Env$l.frames$Fr1,height=7,font=Env$police,selectmode="multiple",yscrollcommand=function(...) tkset(Env$l.fr1$parts.scroll,...))
   Env$l.fr1$parts.scroll<-tkscrollbar(Env$l.frames$Fr1,repeatinterval=5,command=function(...) tkyview(Env$l.fr1$parts.list,...))
@@ -63,8 +65,9 @@ function() {
   Env$l.fr1$espace.hor<-tklabel(Env$l.frames$Fr1,text="                                        ",font=Env$police)
   tkgrid(Env$l.fr1$var.lab,row=0,column=0,sticky="e")
   tkgrid(Env$l.fr1$var.wdg,row=0,column=1,sticky="w")
+  tkgrid(Env$l.fr1$sysinfo.lab,row=1,column=0,sticky="e")
+  tkgrid(Env$l.fr1$sysinfo.wdg,row=1,column=1,sticky="w")
   tkgrid(Env$l.fr1$espace.hor,row=0,column=2)
   tkgrid(Env$l.fr1$parts.lab,row=0,column=3,sticky="e")
   tkgrid(Env$l.fr1$parts.list,Env$l.fr1$parts.scroll,row=0,column=4,rowspan=7,sticky="w");tkgrid.configure(Env$l.fr1$parts.scroll,sticky="ens")
 }
-

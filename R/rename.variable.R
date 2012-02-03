@@ -18,8 +18,14 @@ function() {
 	msg(text=Env$voc[25,1],type="error")
     }
     variables.class()
+    if (exists("fact.wdg",where=Env$l.fr5)) {
+	tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
+	tclvalue(Env$l.var$facteur1) <- ""
+	Env$l.var$levels.temp <- NULL
+	tkdelete(Env$l.fr5$liste.actual,0,"end")
+	tkdelete(Env$l.fr5$liste.new,0,"end")
+    }
   } else {
     msg(text=Env$voc[24,1],type="error")
   }
 }
-

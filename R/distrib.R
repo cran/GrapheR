@@ -34,7 +34,9 @@ function() {
     command=function() {type.distrib(dist="BN (k,p)",par1=Env$voc[186,1],par2=Env$voc[184,1],par3="",act2=TRUE,act3=FALSE)})
   Env$l.fr7$rb7<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="chi",
     text=if (Env$lang=="fr") {paste(Env$voc[176,1],"\U03C7\U00B2",sep="")} else
-    if (Env$lang=="en") {paste("\U03C7\U00B2",Env$voc[176,1],sep="")},
+    if (Env$lang=="en") {paste("\U03C7\U00B2",Env$voc[176,1],sep="")} else
+    if (Env$lang=="es") {paste("\U03C7\U00B2",Env$voc[176,1],sep="")} else
+    if (Env$lang=="de") {paste("\U03C7\U00B2",Env$voc[176,1],sep="")},
     command=function() {type.distrib(dist="\U03C7\U00B2 (\U03BD)",par1=paste(Env$voc[194,1],"\U03BD",Env$voc[200,1],sep=""),
     par2="",par3="",act2=FALSE,act3=FALSE)})
   Env$l.fr7$rb8<-tkradiobutton(Env$l.frames$Fr7,font=Env$police,variable=Env$l.var$add.distrib,value="geom",text=Env$voc[177,1],
@@ -232,4 +234,3 @@ function() {
   tkgrid(Env$l.fr7$fermer,row=23,column=2)
   tkgrid(Env$l.fr7$espace.ver7)
 }
-

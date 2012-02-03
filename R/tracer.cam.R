@@ -22,4 +22,3 @@ function() {
     graphe.legende(type="cam")
   }
 }
-

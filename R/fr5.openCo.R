@@ -14,4 +14,3 @@ function() {
   tkgrid(Env$l.fr5$type.lab,row=0,column=0,sticky="e")
   tkgrid(Env$l.fr5$type.wdg,row=0,column=1,sticky="w")
 }
-

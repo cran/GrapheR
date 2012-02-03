@@ -7,4 +7,3 @@ function() {
   Env$l.fr5$vide<-tklabel(Env$l.frames$Fr5,text="",font=Env$police2)
   tkgrid(Env$l.fr5$vide)
 }
-

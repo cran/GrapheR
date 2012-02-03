@@ -5,7 +5,7 @@ Column separator:
 space / tabulation
 comma
 semicolon
-Decimal separator
+Decimal separator:   
 point
 Code for missing values:   
 Variables name indicated in the file:   
@@ -188,7 +188,7 @@ Total number of possible trials (N):
 Number of trials (n):   
 Mean (
 Standard deviation (
-First paramter of the law (
+First parameter of the law (
 Second parameter of the law (
 Parameter of the law (
 Number of degrees of freedom (
@@ -214,7 +214,7 @@ Choose the type of representation:
 Window to be saved:   
 Window
 File type:   
-Image length:   
+Image length (px):   
 Save
 Language:   
 English
@@ -241,3 +241,28 @@ Change interface language.
 Open the GrapheR introductory manual.
 Spanish
 Do you wan to save graph code?
+German
+Add individual number:   
+One box color and border color can be defined by level.
+there is no value for at least one combination of the two factors.
+Graduations orientation:   
+parallel to the axis
+Subtitle:   
+Add system informations:   
+Factor:   
+Actual order
+New order
+Re-order
+not equal number of levels in new order and actual order.
+Factor re-ordered.
+Add means:   
+Means are symbolized by a ''+'' sign.
+Width proportional to sample size:   
+Box width is proportional to the square root of the number of observations per group.
+Interval:   
+none
+confidence interval of the line
+prediction interval of values
+confidence and prediction intervals
+Do not represent bars:   
+Resolution (ppi):   

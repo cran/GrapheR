@@ -38,4 +38,3 @@ function() {
   graphe.axes()
   graphe.box()
 }
-

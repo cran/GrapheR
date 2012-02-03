@@ -22,4 +22,3 @@ function() {
   tkgrid(Env$l.fr5$position.lab,row=0,column=6,sticky="e")
   tkgrid(Env$l.fr5$position.wdg,row=0,column=7,sticky="w")
 }
-

@@ -12,6 +12,7 @@
 \alias{code.graph.axes}
 \alias{code.graph.barres}
 \alias{code.graph.barres.erreurs}
+\alias{code.graph.erreurs}
 \alias{code.graph.cam}
 \alias{code.graph.courbe}
 \alias{code.graph.courbe.erreurs1}
@@ -66,6 +67,7 @@
 \alias{fr5.openB}
 \alias{fr5.openCa}
 \alias{fr5.openCo}
+\alias{fr5.openD}
 \alias{fr5.openH}
 \alias{fr5.openM}
 \alias{fr5.openN}
@@ -73,6 +75,7 @@
 \alias{fr6.openB}
 \alias{fr6.openCo}
 \alias{fr6.openM}
+\alias{fr6.openN}
 \alias{fr7.close}
 \alias{graphe.axes}
 \alias{graphe.box}

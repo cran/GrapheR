@@ -6,4 +6,3 @@ function(lang=NULL) {
     Env$lang<-read.table(file.path(.path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))[1,1]
   }
 }
-

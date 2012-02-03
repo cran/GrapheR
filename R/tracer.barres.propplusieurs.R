@@ -9,15 +9,23 @@ function() {
 	valeurs[j,i]<-length(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]])/length(na.omit(variable[facteur==levels(facteur)[i]]))
     }
   }
-  valeurs<-valeurs[niveaux,]
+  valeurs-valeurs[niveaux,]
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur,valeurs=valeurs,prop.nvx=niveaux)
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   Env$l.code$y.inf<-y.inf<-limites$yinf
   Env$l.code$y.sup<-y.sup<-limites$ysup
-  Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$couleur1B,log=graphe.log(),
-    border=Env$l.var$col.borduresB,ylim=c(y.inf,y.sup),names.arg=Env$l.var$nomsprop.fac,
-    beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE))
+  if (tclvalue(Env$l.var$nobar)==0) {
+    Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$couleur1B,log=graphe.log(),
+	border=Env$l.var$col.borduresB,ylim=c(y.inf,y.sup),names.arg=Env$l.var$nomsprop.fac,
+	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE))
+  } else {
+    Env$l.var$add.abscisses<-barplot(valeurs,log=graphe.log(),ylim=c(y.inf,y.sup),beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),
+	plot=FALSE)
+    plot(if(tclvalue(Env$l.var$stack)==1){rep(Env$l.var$add.abscisses,each=length(Env$l.var$add.abscisses))}else{Env$l.var$add.abscisses},valeurs,cex=1.7,pch=16,
+	col=if(tclvalue(Env$l.var$stack)==1){Env$l.var$couleur1B}else{rep(Env$l.var$couleur1B,ncol(Env$l.var$add.abscisses))},xlim=c(min(Env$l.var$add.abscisses)-0.5,
+	max(Env$l.var$add.abscisses)+0.5),ylim=c(y.inf,y.sup),axes=FALSE,ann=FALSE,log=graphe.log())
+  }
   Env$l.var$add.matrice<-matrix(numeric(length(Env$l.var$add.abscisses)^2),nrow=length(Env$l.var$add.abscisses),
     dimnames=list(1:length(Env$l.var$add.abscisses),1:length(Env$l.var$add.abscisses)))
   for (i in 1:length(Env$l.var$add.abscisses)) {
@@ -25,7 +33,7 @@ function() {
 	Env$l.var$add.matrice[j,i]<-max(Env$l.var$add.hauteurs[i:j])
     }
   }
-  if (graphe.log()=="" & any(Env$l.var$hachuresB!=1)) {
+  if (tclvalue(Env$l.var$nobar)==0 & graphe.log()=="" & any(Env$l.var$hachuresB!=1)) {
     hachures<-graphe.hachures(num=Env$l.var$hachuresB)
     barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$col.borduresB,border=Env$l.var$col.borduresB,
 	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,
@@ -42,4 +50,3 @@ function() {
     graphe.legende(type="bar")
   }
 }
-

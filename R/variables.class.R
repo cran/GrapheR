@@ -11,4 +11,3 @@ function() {
   }
   if (is.null(Env$l.var$var.fact)) {Env$l.var$var.fact<-""}
 }
-

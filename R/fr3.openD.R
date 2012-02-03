@@ -35,4 +35,3 @@ function() {
   tkgrid(Env$l.fr3$titre2,row=0,column=2)
   tkgrid(Env$l.fr3$nom.wdg,row=2,column=2)
 }
-

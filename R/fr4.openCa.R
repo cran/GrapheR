@@ -64,4 +64,3 @@ function() {
   tkgrid(Env$l.fr4$l.hachures[[8]],row=2,column=7)
   tkgrid(Env$l.fr4$l.hachures[[9]],row=2,column=8)
 }
-

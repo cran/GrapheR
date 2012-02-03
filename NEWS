@@ -1,0 +1,24 @@
+version 1.9-75-2 (03-02-2012)
+
+    - A German translation of the GUI and the user manual is available
+    - Levels of a factor can be re-ordered in a desired order
+    - An information message with R version, GrapheR version and date of graph creation
+	can be displayed near the graph
+    - A subtitle (smaller than the main title) can be displayed under the main title
+    - Labels on the vertical axis can be displayed horizontally or parallel to the axis
+    - A different box color and border color can be set for each box on box-and-whisker plots 
+    - Color of whiskers is set as identical to color of border on box-and-whisker plots
+    - Color of outliers is set as identical to color of boxes on box-and-whisker plots
+    - A "+" symbolizing mean value can be added to the boxes on box-and-whisker plots
+    - Box width of box-and-whisker plots can be displayed proportionately to the number of
+	individuals in the corresponding group
+    - Default color (for histogramn, boxes and bars) is now "grey"
+    - When drawing a bar plot of means with 2 factors, design is checked. If factors are
+	not fully crossed, an error message is displayed and no graph is drawn
+    - Bars can be not diplayed on bar plots, to display only mean or proportions values as points
+    - Number of individuals can be displayed just near their corresponding point on scatter plots
+    - For linear regression line (least squares method only) and quadratic regression line,
+	confidence interval of the line and/or prediction interval of values can be displayed
+	on scatter plots
+    - Graphs can nox be saved in .tiff extension
+    - Image resolution can be chosen between 72, 150, 300 and 600ppi when saving a graph

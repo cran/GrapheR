@@ -22,7 +22,7 @@ function() {
     Env$l.var$hachuresB<-rep(1,length(Env$l.var$nomsprop))
   } else {
     tclvalue(Env$l.var$plusieurs)<-0
-    tclvalue(Env$l.var$couleur1A)<-"white"
+    tclvalue(Env$l.var$couleur1A)<-"grey"
     tclvalue(Env$l.var$col.borduresA)<-"black"
     tclvalue(Env$l.var$hachuresA)<-"1"
   }
@@ -71,4 +71,3 @@ function() {
   active.legende()
   active.erreur()
 }
-

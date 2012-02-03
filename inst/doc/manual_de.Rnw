@@ -1,0 +1,210 @@
+\documentclass[a4paper]{article}
+\usepackage[greek,english]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+%%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%%\usepackage{Sweave}
+\hypersetup{colorlinks=true,urlcolor=red}
+
+%%\VignetteIndexEntry{Einführung in GrapheR}
+
+\newcommand{\R}{\textcolor[RGB]{118,133,166}{\textbf{R}}}
+
+\begin{document}
+
+\title{Einführung in GrapheR}
+\author{Maxime Herv\'e}
+\date{}
+\maketitle
+
+Für alle Fragen, Kommentare oder Vorschläge: \href{mx.herve@gmail.com}{mx.herve@gmail.com}
+
+Dank an Juan Alberti für die spanische Übersetzung der Benutzeroberfläche.
+
+Dank an Helmut Schlumprecht für die deutsche Übersetzung der Benutzeroberfläche und des Handbuchs.
+
+\section{Introduction}
+GrapheR ist eine auf mehreren Plattformen (Linux, Mac OS, Windows) lauffähige Benutzeroberfläche zur Erstellung hochgradig benutzerdefinierter Grafiken in \R. Ziel von GrapheR ist, eine wertvolle Hilfe bei der schnellen Erstellung publikationsfähiger Grafiken ohne Kenntnis von \R{} Befehlen zu sein.
+
+Sechs Typen von Grafiken sind verfügbar:
+\begin{itemize}
+	\item Histogramm
+	\item Box-und-Whisker-Plot
+	\item Säulen-Diagramm
+	\item Kreis-Diagramm
+	\item Linien-Diagramm
+	\item Streu-Diagramm
+\end{itemize}
+
+GrapheR wurde auf dem \texttt{tcltk} Paket aufgebaut. Daher kann es Fehler geben, wenn \R{} im MDI-Modus (\emph{Multiple-Document Interface}) betrieben wird. Daher wird empfohlen, R im SDI-Modus (\emph{Single-Document Interface}) zu konfigurieren, bevor GrapheR gestartet wird.
+
+GrapheR benötigt mindestens die Version 2.10 von \R{} und ein zusätzliches Paket: \texttt{tcltk}. Unter Mac OS X muss das Paket Tcl/Tk  bereits installiert sein (für weitere Informationen siehe \href{http://cran.r-project.org/bin/macosx/RMacOSX-FAQ.html#X11-TclTk-headers-and-libraries-_0028optional_0029}{here}).
+
+\section{Aufruf der Benutzeroberfläche}
+
+Wie jedes andere Paket wird GrapheR geladen durch \texttt{library(GrapheR)}, \texttt{requi\-re(GrapheR)} oder das \emph{Pakete} Menü beim Arbeiten in der \R{} Konsole. Hierbei wird das Paket \texttt{tcltk} automatisch geladen.
+
+Der Aufruf der Benutzeroberfläche ist der einzige Schritt, der die Eingabe eines Kommandos erfordert: \texttt{run.GrapheR()}. Die Benutzeroberfläche öffnet sich und die Konsole kann verkleinert werden.
+
+\section{Beschreibung der Benutzeroberfläche}
+\subsection{Überblick}
+
+Die Benutzeroberfläche ist in drei Teile geteilt (Abb.~1) :
+\begin{enumerate}
+  \item Navigationszeile: enthält alle Schaltflächen zur Öffnung der einzelnen Module
+  \item Nachrichten-Rahmen: Zur Vereinfachung der Benutzeroberfläche werden Nachrichten in diesem Rahmen dargestellt, wenn die Maus über bestimmte Elemente geführt wird oder wenn bestimmte Aktionen ausgeführt werden
+  \item Einstellungen-Block: enthält alle Dialog-Boxen zur Einstellung der zu zeichnenden Grafiken.
+\end{enumerate}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/1d.jpg}
+	\caption{Benutzeroberfläche~--~Überblick (unter Windows 7) \label{blocs}} \end{center}
+\end{figure}
+
+\subsection{Navigationszeile}
+
+Die Navigationszeile ist in sieben Schaltflächen geteilt, wobei jede einem obligatorischen oder fakultativen Schritt der Grafik-Gestaltung entspricht (Abb.~2):
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/2.jpg}
+	\caption{Navigationszeile \label{navigation}} \end{center}
+\end{figure}
+
+\begin{enumerate}
+  \item Laden und Modifizieren des Datensatzes
+  \item Einstellung der Grafik. Von links nach rechts: Histogramm, Box-und-Whisker Plot, Säulen-Diagramm, Kreis-Diagramm, Linien- und Streu-Diagramm
+  \item Öffnen eines neuen Grafik-Fensters: wenn eine Grafik gezeichnet wird, erfolgt dies im aktiven Fenster oder in einem neuen Grafik-Fenster, wenn keines geöffnet ist. Diese Schaltfläche ermöglicht ein neues Grafik-Fensters zu öffnen, in dem mehreren Grafiken gezeichnet werden können
+  \item Zeichnen einer Grafik
+  \item Hinzufügen von Elementen zur Grafik. Von links nach rechts: Hinzufügen einer horizontalen oder vertikalen Linie, Hinzufügen einer beliebigen Linie, Hinzufügen einer theoretischen Verteilungskurve, eines Textes oder eines \emph{p}-Wertes
+  \item Speichern der Grafik(en)
+  \item diverse Optionen: Sprache und Hilfe.
+\end{enumerate}
+
+\subsection{Nachrichten-Rahmen}
+
+Wenn die Maus über bestimmte Elemente geführt wird oder wenn bestimmte Aktionen durchgeführt werden, werden in diesem Rahmen Hinweise angezeigt. Drei Typen von Hinweisen werden hierbei angezeigt:
+\begin{itemize}
+  \item \textcolor[RGB]{3,15,178}{in Blau:} Informative Hinweise
+  \item \textcolor[RGB]{2,103,0}{in Grün:} Warnungen, die die Aufmerksamkeit auf einen bestimmten Punkt lenken (z. B. wenn eine bestimmte Option gewählt wird, kann eine bestimmte andere nicht ausgewählt sein)
+  \item \textcolor[RGB]{255,0,0}{in Rot:} Fehler-Meldungen, z.B. die Aktion wurde nicht ausgeführt. Die Fehler-Meldung erklärt die Herkunft des Fehlers.
+\end{itemize}
+
+\subsection{Einstellungen}
+
+Dieser Block ist in vier bis sechs Teil-Blöcke mit spezifischen Optionen geteilt: allgemeine Einstellungen der Grafik, Titel, Legende\dots{} Jeder Teil-Block kann mit dem Pfeil auf der rechten Seite geöffnet oder geschlossen werden. Definierte Einstellungen gehen natürlich nicht verloren, wenn der Teil-Block geschlossen wird.
+
+\section{Benutzung von GrapheR}
+
+Das hier benutzte Beispiel beruht auf dem im Paket enthaltenen Datensatz namens \texttt{Swallows}. Um den Datensatz zu laden, benutzen Sie den Befehl \texttt{data(Swa\-llows)}. Dieser (fiktive!) Datensatz veranschaulicht das bekannte Dilemma des Vogelzugs von afrikanischen und europäischen Schwalben.
+
+\subsection{Laden und Modifizieren des Datensatzes}
+
+Der erste Teil-Block (Abb.~3) ermöglicht den Datensatz zu laden. Daten können importiert werden von einer externen Datei (nur \texttt{txt} und \texttt{csv} Dateinamen-Endungen sind bislang verfügbar) oder können ein bereits bestehendes \R{} Objekt der Klasse \texttt{data.frame} sein (\emph{i.e.} eine Tabelle).
+
+Der nächste Teil-Block erlaubt, Informationen über die Struktur des Datensatzes zu bekommen. Wenn eine Variable in der Liste links ausgewählt wird, wird ihr Typ (\texttt{numeric}, \texttt{factor}, \texttt{logical}\dots) und ihre Zusammenfassung im Rahmen auf der rechten Seite angezeigt.
+
+Die nächsten drei Teil-Blöcke ermöglichen den Datensatz zu verändern, falls nötig:
+\begin{itemize}
+  \item durch Umbenennen von Variablen (z. B. wenn der Datensatz keine Namen enthält)
+  \item durch Umwandlung von Variablen in Faktoren. Diese Umwandlung kann auf Variable der Klasse \texttt{character} (\emph{i.e.} Vektoren von Zeichenketten) oder auf numerische Variablen angewendet werden (in diesem Fall können Werte in Klassen gruppiert werden). Der letzte Fall ist obligatorisch, wenn ein Faktor numerisch codiert ist, bei \emph{z. B.} binären Faktoren (0/1), ansonsten würde \R{} dies als numerische Variable behandeln
+  \item durch Umordnen der Gruppen eines Faktors. Die Gruppen eines Faktors werden standardmäßig in der Grafik angezeigt, was jedoch je nach Ziel der Grafik nicht optimal sein kann.
+\end{itemize}
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/3d.jpg}
+	\caption{Laden des Datensatzes \label{charger}} \end{center}
+\end{figure}
+
+\subsection{Einstellungen der Grafik}
+
+Welcher Grafik-Typ auch immer ausgewählt wird, alle Parameter haben eine Voreinstellung, ausgenommen allgemeine Einstellungen~--~welche sich auf die Variable(n) beziehen, die dargestellt werden soll(en). Um schnell eine Grafik zu zeichnen, müssen daher nur die allgemeinen Einstellungen definiert werden. Wenn dies nicht erfolgt, tritt ein Fehler beim Zeichnen der Grafik auf.
+
+Im Folgenden ist das Ziel ein Histogramm zu erstellen, das die Verteilung der Größe der afrikanischen Schwalben darstellt (Abb.~4). Wir wählen daher die Variable \texttt{Size} als die zu zeichnende Variable aus, und fügen hinzu, dass wir nur die Werte erhalten und darstellen wollen, die sich auf die Gruppe \texttt{African} des Faktors \texttt{Species} beziehen. Der Histogramm-Typ wird eingestellt auf \texttt{Dichte}, da - wie die Warnmeldung sagt - nur dieser Typ es ermöglicht, die Verteilungskurve der Daten zu zeichnen.
+
+Alle anderen Einstellungen werden bei ihren Voreinstellungen belassen, aus\-genommen der Titel der Grafik und die, die sich auf die Verteilungskurve bezie\-hen (wir klicken \texttt{Zeichnen der Kurve} und definieren eine Farbe und einen Linientyp).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/4d.jpg}
+	\caption{Einstellungen für ein Histogramm \label{histo}} \end{center}
+\end{figure}
+
+Wenn alle notwendigen Einstellungen erfolgt sind, wird die Grafik durch Klicken auf die Schaltfläche \texttt{DRAW} der Navigationszeile gezeichnet. Wenn ein neues Grafik-Fenster zuvor geöffnet werden soll, muss zuerst auf die Schaltfläche \texttt{Fenster} geklickt werden (siehe nächster Abschnitt).
+
+\subsection{Öffnen eines neuen Grafik-Fenster}
+
+Es ist möglich, Grafiken in verschiedenen Fenstern zu zeichnen und/oder mehrere Grafiken im gleichen Fenster. Hierzu auf die Schaltfläche \texttt{window} der Navigationszeile klicken. Die Dialog-Box, die sich auf der rechten Seite der Benutzeroberfläche öffnet, erlaubt festzulegen, wie viele Grafiken in dem Grafik-Fenster gezeichnet werden sollen, und die Hintergrundfarbe dieses Grafik-Fensters (Abb. 5).
+
+Bis zu 16 Grafiken können im gleichen Grafik-Fenster gezeichnet werden, aufgeteilt zwischen 4 Zeilen und 4 Spalten. Je größer die Zahl der zu zeichnenden Grafiken, desto kleiner der Platz für jede einzelne Grafik.
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/5d.jpg}
+	\caption{Öffnen eines neuen Grafik-Fensters \label{fenetre}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Hinzufügen von Elementen zu einer Grafik}
+
+Nachdem eine Grafik gezeichnet ist, können folgende Elemente zur Vervollständigung hinzugefügt werden:
+\begin{itemize}
+  \item eine oder mehrere horizontale Linien
+  \item eine oder mehrere vertikale Linien
+  \item beliebige Linien
+  \item eine oder mehrere theoretische Verteilungskurven: nur bei Dichte-Histo\-grammen
+  \item Text
+  \item \emph{p}-Werte: nur bei Säulen-Diagrammen.
+\end{itemize}
+
+Diese Elemente werden stets jeweils nur der letzten gezeichneten Grafik hinzugefügt.
+
+Für jedes Element führt das Klicken auf die zugehörige Befehltsschaltfläche in der Navigationszeile dazu, dass sich auf der rechten Seite eine Dialogbox öffnet.
+
+Hier wollen wir zu einem Histogramm eine Verteilungskurve hinzufügen, gemäß den Werten einer Normalverteilungskurve mit den Parametern $\mu=15.8$ und $\sigma=2.2$ (die Parameter wurden aus den Daten berechnet). Das Einstellen der Kurve ist einfach (Abb.~6). Wenn alle Einstellungen definiert sind, auf \texttt{Zeichnen} klicken.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/6d.jpg}
+	\caption{Hinzufügen einer theoretischen Verteilungskurve zu einer Grafik \label{distrib}} \end{center}
+\end{figure}
+
+Die Grafik ist nun fertiggestellt (Abb.~7).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=\textwidth]{Images/7d.jpg}
+	\caption{Fertiggestelltes Histogramm \label{graphe}} \end{center}
+\end{figure}
+
+\newpage
+
+\subsection{Speichern von Grafik(en)}
+
+Um eine oder mehreren Grafiken zu speichern, auf die Schaltfläche \texttt{Speichern} der Navigationszeile klicken. Auf der rechten Seite der Benutzeroberfläche öffnet sich eine Dialogbox. Danach Auswählen des Grafik-Geräts, das gespeichert werden soll, mit dem Drop-Down-Menü (die Nummer des Fensters entspricht der Nummer, die von \R{} automatisch vergeben wird, in der Gestalt von ``R Graphics: Device \emph{nummer}"). Dann die Dateinamenendung der Datei auswählen (\texttt{jpg}, \texttt{png} oder \texttt{tiff}), die Bildbreite (in Pixel) und die Auflösung (in Pixel pro Inch). Eine geeignete Breite in Pixel wird vorgeschlagen, je nach Ihrer Wahl der Auflösung (Abb.~8). Wenn alle Einstellungen festgelegt sind, auf \texttt{Speichern} klicken.
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/8d.jpg}
+	\caption{Speichern einer Grafik \label{sauver}} \end{center}
+\end{figure}
+
+\subsection{Verändern der Sprache}
+
+Um die Sprache zu verändern, auf die Schaltfläche \texttt{Sprache} der Navigationszeile klicken. Eine Dialogbox öffnet sich auf der rechten Seite (Abb.~9), dann die gewünschte Sprache aus dem Drop-down Menü auswählen. Um diese Präferenz für die Zukunft festzulegen, auf die Auswahlbox \texttt{Speichern der Präferenzen} klicken. Zum Bestätigen auf die Schaltfläche \texttt{Ok} klicken. Die Benutzerfläche wird geschlossen und in der gewünschten Sprache wieder geöffnet (aber jeder Datensatz, der in der früheren Sprache gewählt wurde, geht verloren und muss wieder eingeladen werden).
+
+\begin{figure}[!htb]
+	\begin{center} \includegraphics[width=.5\textwidth]{Images/9d.jpg}
+	\caption{Verändern der Sprache \label{langue}} \end{center}
+\end{figure}
+
+\newpage
+
+\section{GrapheR in einer neuen Sprache implementieren}
+
+GrapheR kann sehr einfach in einer anderen Sprache implementiert werden, da kein Wort der Benutzeroberfläche im R-Code geschrieben ist. Die Namen der Schaltflächen etc. stammen aus einer externen Datei, welche je nach ausgewählter Sprach-Einstellung geladen wird. Englisch, Französich, Deutsch und Spanisch sind derzeit verfügbar (Dateien \texttt{Language\_en.csv}, \texttt{Language\_fr.csv}, \texttt{Language\_de.csv} and \texttt{Language\_es.csv}, im Verzeichnis \texttt{lang} des Pakets).
+
+Daher ist das Hinzufügen einer neuen Sprache einfach: hierzu ist nur die strikte Übersetzung jeder Zeile der bestehenden Sprach-Datei nötig (einschließlich der Leerzeichen vor oder nach Wörtern). Die neue Datei muss dann als \texttt{Langua\-ge\_XX.csv} gespeichert werden.
+
+Wenn Sie das Paket GrapheR in Ihre Sprache implementieren wollen, sind Sie herzlich willkommen. Hierbei wäre es eine gute Idee (ist aber etwas arbeitsaufwändig), nicht nur die Benutzeroberfläche, sondern auch das Benutzer-Handbuch zu übersetzen. Die pdf-Version des Benutzerhandbuchs ist im Verzeichnis "doc" des Pakets enthalten, die LaTeX version dagegen im Verzeichnis Vignette. Wichtig: Auch wenn Sie sich nicht mit \LaTeX{} auskennen, können Sie mit  Skript-Editoren wie z. B. Tinn-R oder Notepad++ die Latex-Datei bearbeiten, übersetzen und abspeichern.
+
+Wenn Sie bei der Implementierung in weiteren Sprachen mitmachen möchten, zögern Sie nicht mich zu kontaktieren. Ich werde mich dann um alle Bildschirmausschnitte im Benutzerhandbuch kümmern, und dann die Verknüpfung zur neuen Sprache im Code herstellen.
+
+\end{document}

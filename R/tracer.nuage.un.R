@@ -17,8 +17,30 @@ function() {
     col=tclvalue(Env$l.var$couleur2A),pch=symbole,cex=as.numeric(tclvalue(Env$l.var$taille.ptsA)))
   if (nchar(tclvalue(Env$l.var$droiteA))>0 & tclvalue(Env$l.var$droiteA)!=Env$voc[95,1]) {
     if (tclvalue(Env$l.var$droiteA)==Env$voc[145,1]) {
-	abline(lm(varY~varX)$coefficients,col=tclvalue(Env$l.var$couleur2A),
+	model<-lm(varY~varX)
+	abline(model$coefficients,col=tclvalue(Env$l.var$couleur2A),
 	  lty=type.trait(type=tclvalue(Env$l.var$trait1)),lwd=as.numeric(tclvalue(Env$l.var$epaisseur1)))
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[261,1]) {
+	  varX2<-seq(min(varX,na.rm=TRUE),max(varX,na.rm=TRUE),abs(max(varX,na.rm=TRUE)-min(varX,na.rm=TRUE))/1000)
+	  varY2<-predict(model,list(varX=varX2),interval="confidence")
+	  lines(varX2,varY2[,"lwr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY2[,"upr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	}
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[262,1]) {
+	  varX2<-seq(min(varX,na.rm=TRUE),max(varX,na.rm=TRUE),abs(max(varX,na.rm=TRUE)-min(varX,na.rm=TRUE))/1000)
+	  varY2<-predict(model,list(varX=varX2),interval="prediction")
+	  lines(varX2,varY2[,"lwr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY2[,"upr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	}
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[263,1]) {
+	  varX2<-seq(min(varX,na.rm=TRUE),max(varX,na.rm=TRUE),abs(max(varX,na.rm=TRUE)-min(varX,na.rm=TRUE))/1000)
+	  varY2.a<-predict(model,list(varX=varX2),interval="confidence")
+	  lines(varX2,varY2.a[,"lwr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY2.a[,"upr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  varY2.b<-predict(model,list(varX=varX2),interval="prediction")
+	  lines(varX2,varY2.b[,"lwr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY2.b[,"upr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	}
     } else
     if (tclvalue(Env$l.var$droiteA)==Env$voc[146,1]) {
 	b<-sd(varY,na.rm=TRUE)/sd(varX,na.rm=TRUE)*sign(cov(varX,varY,use="complete.obs"))
@@ -32,6 +54,24 @@ function() {
 	varY2<-predict(model,list(varX=varX2))
 	lines(varX2,varY2,col=tclvalue(Env$l.var$couleur2A),lty=type.trait(type=tclvalue(Env$l.var$trait1)),
 	  lwd=as.numeric(tclvalue(Env$l.var$epaisseur1)))
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[261,1]) {
+	  varY3<-predict(model,list(varX=varX2),interval="confidence")
+	  lines(varX2,varY3[,"lwr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY3[,"upr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	}
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[262,1]) {
+	  varY3<-predict(model,list(varX=varX2),interval="prediction")
+	  lines(varX2,varY3[,"lwr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY3[,"upr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	}
+	if (tclvalue(Env$l.var$intervalA)==Env$voc[263,1]) {
+	  varY3.a<-predict(model,list(varX=varX2),interval="confidence")
+	  lines(varX2,varY3.a[,"lwr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY3.a[,"upr"],lty=2,col=tclvalue(Env$l.var$couleur2A))
+	  varY3.b<-predict(model,list(varX=varX2),interval="prediction")
+	  lines(varX2,varY3.b[,"lwr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	  lines(varX2,varY3.b[,"upr"],lty=3,col=tclvalue(Env$l.var$couleur2A))
+	}
     } else
     if (tclvalue(Env$l.var$droiteA)==Env$voc[148,1]) {
 	panel.smooth(varX,varY,pch=symbole,cex=as.numeric(tclvalue(Env$l.var$taille.ptsA)),
@@ -39,8 +79,10 @@ function() {
 	  lty=type.trait(type=tclvalue(Env$l.var$trait1)),lwd=as.numeric(tclvalue(Env$l.var$epaisseur1)))
     }
   }
+  if (tclvalue(Env$l.var$ptlab)==1) {
+    text(varX,varY,pos=3,offset=0.4,cex=0.65*as.numeric(tclvalue(Env$l.var$taille.ptsA)),col=tclvalue(Env$l.var$couleur2A))
+  }
   graphe.titre()
   graphe.axes()
   graphe.box()
 }
-

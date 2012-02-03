@@ -12,9 +12,8 @@ function(type) {
 	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[2,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[3,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[4,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[19,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.wdg$but.lab5,state="disabled")
 	tkconfigure(Env$l.wdg$but.lab6,state="disabled")
 	fr1.openD()
     }
@@ -95,13 +94,12 @@ function(type) {
 	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[18,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[14,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[20,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[14,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
-	tkconfigure(Env$l.wdg$but.lab6,state="disabled")
+	tkconfigure(Env$l.wdg$but.lab6,state="normal")
 	reinit.variables()
 	fr1.openN()
     }
   }
 }
-

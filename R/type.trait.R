@@ -8,4 +8,3 @@ function(type) {
   }
   return(result)
 }
-

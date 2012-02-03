@@ -43,4 +43,3 @@ function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NULL) {
   }
   return(list(erreur.inf=erreur.inf,erreur.sup=erreur.sup))
 }
-

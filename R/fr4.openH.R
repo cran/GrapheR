@@ -37,4 +37,3 @@ function() {
   tkgrid(Env$l.fr4$colbordures.lab,row=0,column=6,sticky="e")
   tkgrid(Env$l.fr4$colbordures.wdg,row=0,column=7,sticky="w")
 }
-

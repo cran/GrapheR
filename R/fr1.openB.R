@@ -49,7 +49,7 @@ function() {
     } else {
 	Env$l.var$noms2<-""
 	tclvalue(Env$l.var$plusieurs)<-0
-	tclvalue(Env$l.var$couleur1A)<-"white"
+	tclvalue(Env$l.var$couleur1A)<-"grey"
 	tclvalue(Env$l.var$col.borduresA)<-"black"
 	tclvalue(Env$l.var$hachuresA)<-"1"
 	if (exists("noms.list",where=Env$l.fr4)) {
@@ -71,8 +71,12 @@ function() {
     }
     active.erreur()
   })
+  Env$l.fr1$nobar.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[264,1],font=Env$police)
+  Env$l.fr1$nobar.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$nobar)
   Env$l.fr1$encadre.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[43,1],font=Env$police)
   Env$l.fr1$encadre.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$encadre)
+  Env$l.fr1$sysinfo.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[248,1],font=Env$police)
+  Env$l.fr1$sysinfo.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$sysinfo)
   Env$l.fr1$titre2<-tklabel(Env$l.frames$Fr1,text=Env$voc[85,1],font=Env$police3)
   Env$l.fr1$rb2<-tkradiobutton(Env$l.frames$Fr1,variable=Env$l.var$moyprop,value="prop",command=barres.prop)
   Env$l.fr1$propvar.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[36,1],font=Env$police)
@@ -93,8 +97,8 @@ function() {
     }
   })
   Env$l.fr1$propnivx.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[88,1],font=Env$police)
-  Env$l.fr1$propnivx.list<-tklistbox(Env$l.frames$Fr1,height=4,font=Env$police,selectmode="multiple",yscrollcommand=function(...) tkset(Env$l.fr1$propnivx.scroll,...))
-  Env$l.fr1$propnivx.scroll<-tkscrollbar(Env$l.frames$Fr1,repeatinterval=4,command=function(...) tkyview(Env$l.fr1$propnivx.list,...))
+  Env$l.fr1$propnivx.list<-tklistbox(Env$l.frames$Fr1,height=6,font=Env$police,selectmode="multiple",yscrollcommand=function(...) tkset(Env$l.fr1$propnivx.scroll,...))
+  Env$l.fr1$propnivx.scroll<-tkscrollbar(Env$l.frames$Fr1,repeatinterval=5,command=function(...) tkyview(Env$l.fr1$propnivx.list,...))
   tkbind(Env$l.fr1$propnivx.list,"<Enter>",function() {if(tclvalue(Env$l.var$moyprop)=="prop") {msg(text=Env$voc[142,1],type="info")}})
   tkbind(Env$l.fr1$propnivx.list,"<Leave>",function() {msg(text="",type="info")})
   tkbind(Env$l.fr1$propnivx.list,"<ButtonRelease-1>",function() {
@@ -128,7 +132,7 @@ function() {
     } else {
 	tclvalue(Env$l.var$plusieurs)<-0
 	tclvalue(Env$l.var$prop.niveaux)<-tclvalue(tkcurselection(Env$l.fr1$propnivx.list))
-	tclvalue(Env$l.var$couleur1A)<-"white"
+	tclvalue(Env$l.var$couleur1A)<-"grey"
 	tclvalue(Env$l.var$col.borduresA)<-"black"
 	tclvalue(Env$l.var$hachuresA)<-"1"
 	Env$l.var$nomsprop<-""
@@ -175,8 +179,7 @@ function() {
     if (exists("noms.wdg",where=Env$l.fr3)) {tkdelete(Env$l.fr3$noms.wdg,0,"end")}
   })
   Env$l.fr1$espace.ver<-tklabel(Env$l.frames$Fr1,text="",font=Env$police2)
-  Env$l.fr1$espace.hor1<-tklabel(Env$l.frames$Fr1,text="          ",font=Env$police)
-  Env$l.fr1$espace.hor2<-tklabel(Env$l.frames$Fr1,text="          ",font=Env$police)
+  Env$l.fr1$espace.hor<-tklabel(Env$l.frames$Fr1,text="                    ",font=Env$police)
   tkgrid(Env$l.fr1$titre1,row=0,column=0,sticky="e")
   tkgrid(Env$l.fr1$rb1,row=0,column=1,sticky="w")
   tkgrid(Env$l.fr1$espace.ver,row=1,column=0)
@@ -186,17 +189,19 @@ function() {
   tkgrid(Env$l.fr1$moyfac1.wdg,row=3,column=1,sticky="w")
   tkgrid(Env$l.fr1$moyfac2.lab,row=4,column=0,sticky="e")
   tkgrid(Env$l.fr1$moyfac2.wdg,row=4,column=1,sticky="w")
-  tkgrid(Env$l.fr1$espace.hor1,row=0,column=2)
-  tkgrid(Env$l.fr1$encadre.lab,row=2,column=3,sticky="e")
-  tkgrid(Env$l.fr1$encadre.wdg,row=2,column=4,sticky="w")
-  tkgrid(Env$l.fr1$espace.hor2,row=0,column=5)
-  tkgrid(Env$l.fr1$rb2,row=0,column=6,sticky="e")
-  tkgrid(Env$l.fr1$titre2,row=0,column=7,sticky="w")
-  tkgrid(Env$l.fr1$propvar.lab,row=2,column=6,sticky="e")
-  tkgrid(Env$l.fr1$propvar.wdg,row=2,column=7,sticky="w")
-  tkgrid(Env$l.fr1$propnivx.lab,row=3,column=6,sticky="e")
-  tkgrid(Env$l.fr1$propnivx.list,Env$l.fr1$propnivx.scroll,row=3,column=7,rowspan=4,sticky="w");tkgrid.configure(Env$l.fr1$propnivx.scroll,sticky="ens")
-  tkgrid(Env$l.fr1$propfac.lab,row=7,column=6,sticky="e")
-  tkgrid(Env$l.fr1$propfac.wdg,row=7,column=7,sticky="w")
+  tkgrid(Env$l.fr1$nobar.lab,row=5,column=0,sticky="e")
+  tkgrid(Env$l.fr1$nobar.wdg,row=5,column=1,sticky="w")
+  tkgrid(Env$l.fr1$encadre.lab,row=6,column=0,sticky="e")
+  tkgrid(Env$l.fr1$encadre.wdg,row=6,column=1,sticky="w")
+  tkgrid(Env$l.fr1$sysinfo.lab,row=7,column=0,sticky="e")
+  tkgrid(Env$l.fr1$sysinfo.wdg,row=7,column=1,sticky="w")
+  tkgrid(Env$l.fr1$espace.hor,row=0,column=2)
+  tkgrid(Env$l.fr1$rb2,row=0,column=3,sticky="e")
+  tkgrid(Env$l.fr1$titre2,row=0,column=4,sticky="w")
+  tkgrid(Env$l.fr1$propvar.lab,row=2,column=3,sticky="e")
+  tkgrid(Env$l.fr1$propvar.wdg,row=2,column=4,sticky="w")
+  tkgrid(Env$l.fr1$propnivx.lab,row=3,column=3,sticky="e")
+  tkgrid(Env$l.fr1$propnivx.list,Env$l.fr1$propnivx.scroll,row=3,column=4,rowspan=4,sticky="w");tkgrid.configure(Env$l.fr1$propnivx.scroll,sticky="ens")
+  tkgrid(Env$l.fr1$propfac.lab,row=7,column=3,sticky="e")
+  tkgrid(Env$l.fr1$propfac.wdg,row=7,column=4,sticky="w")
 }
-

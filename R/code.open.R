@@ -12,4 +12,3 @@ function() {
   code.graph()
   sink(NULL)
 }
-

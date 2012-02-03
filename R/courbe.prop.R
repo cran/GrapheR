@@ -17,4 +17,3 @@ function() {
     tkconfigure(Env$l.fr5$type.wdg,values=Env$voc[c(95,97,98),1])
   }
 }
-

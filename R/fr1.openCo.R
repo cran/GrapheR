@@ -10,6 +10,8 @@ function() {
   Env$l.fr1$moyvarX.wdg<-ttkcombobox(Env$l.frames$Fr1,width=15,values=Env$l.var$var.num,textvariable=Env$l.var$varX,font=Env$police,state="readonly")
   Env$l.fr1$moyvarY.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[128,1],font=Env$police)
   Env$l.fr1$moyvarY.wdg<-ttkcombobox(Env$l.frames$Fr1,width=15,values=Env$l.var$var.num,textvariable=Env$l.var$varY,font=Env$police,state="readonly")
+  Env$l.fr1$sysinfo.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[248,1],font=Env$police)
+  Env$l.fr1$sysinfo.wdg<-tkcheckbutton(Env$l.frames$Fr1,variable=Env$l.var$sysinfo)
   Env$l.fr1$fact.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[37,1],font=Env$police)
   Env$l.fr1$fact.wdg<-ttkcombobox(Env$l.frames$Fr1,width=15,values=c(Env$voc[82,1],Env$l.var$var.fact),textvariable=Env$l.var$facteur1,font=Env$police,state="readonly")
   tkbind(Env$l.fr1$fact.wdg,"<<ComboboxSelected>>",function() {
@@ -128,6 +130,8 @@ function() {
   tkgrid(Env$l.fr1$fact.list,Env$l.fr1$fact.scroll,row=3,column=4,rowspan=4,sticky="w");tkgrid.configure(Env$l.fr1$fact.scroll,sticky="ens")
   tkgrid(Env$l.fr1$encadre.lab,row=7,column=3,sticky="e")
   tkgrid(Env$l.fr1$encadre.wdg,row=7,column=4,sticky="w")
+  tkgrid(Env$l.fr1$sysinfo.lab,row=8,column=3,sticky="e")
+  tkgrid(Env$l.fr1$sysinfo.wdg,row=8,column=4,sticky="w")
   tkgrid(Env$l.fr1$espace.hor2,row=0,column=5)
   tkgrid(Env$l.fr1$rb2,row=0,column=6,sticky="e")
   tkgrid(Env$l.fr1$titre2,row=0,column=7,sticky="w")
@@ -138,4 +142,3 @@ function() {
   tkgrid(Env$l.fr1$propvarY.niv.lab,row=4,column=6,sticky="e")
   tkgrid(Env$l.fr1$propvarY.niv.wdg,row=4,column=7,sticky="w")
 }
-

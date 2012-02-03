@@ -10,4 +10,3 @@ function(type) {
   }
   return(result)
 }
-

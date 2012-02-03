@@ -12,4 +12,3 @@ function(abscisses,valeurs,erreur.inf,erreur.sup,couleur,amplitude=NULL) {
     msg(text="",type="info")
   }
 }
-

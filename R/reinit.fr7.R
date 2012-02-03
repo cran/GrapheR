@@ -14,7 +14,7 @@ function() {
   tclvalue(Env$l.var$add.epaisseur2)<-"1"
   tclvalue(Env$l.var$add.col2)<-"black"
   tclvalue(Env$l.var$fen.num)<-""
-  tclvalue(Env$l.var$fen.larg)<-"600"
+  tclvalue(Env$l.var$fen.larg)<-"1250"
   tclvalue(Env$l.var$fen.type)<-"jpg"
+  tclvalue(Env$l.var$fen.res)<-"150"
 }
-

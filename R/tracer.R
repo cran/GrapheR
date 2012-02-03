@@ -28,8 +28,13 @@ function() {
 		par(mar=c(5,5,4,2),bg="white")
 		tracer.barres.moyun()
 	    } else {
-		par(mar=c(5,5,4,2),bg="white")
-		tracer.barres.moyplusieurs()
+		if (!any(table(Env$dataset[,tclvalue(Env$l.var$facteur1)],Env$dataset[,tclvalue(Env$l.var$facteur2)])==0)) {
+		  par(mar=c(5,5,4,2),bg="white")
+		  tracer.barres.moyplusieurs()
+		} else {
+		  msg(text=Env$voc[244,1],type="error")
+		  return(FALSE)
+		}
 	    }
 	    return(TRUE)
 	  } else {

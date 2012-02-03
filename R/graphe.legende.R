@@ -13,15 +13,31 @@ function(type,symboles=NULL,lignes=NULL,traits=NULL) {
   if (type=="bar") {
     if (nchar(tclvalue(Env$l.var$legende.titre))>0) {
 	if (tclvalue(Env$l.var$moyprop)=="moy") {
-	  legend(position,legend=Env$l.var$noms2,fill=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  if (tclvalue(Env$l.var$nobar)==0) {
+	    legend(position,legend=Env$l.var$noms2,fill=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  } else {
+	    legend(position,legend=Env$l.var$noms2,pch=16,pt.cex=1.7,col=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  }
 	} else {
-	  legend(position,legend=Env$l.var$nomsprop,fill=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  if (tclvalue(Env$l.var$nobar)==0) {
+	    legend(position,legend=Env$l.var$nomsprop,fill=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  } else {
+	    legend(position,legend=Env$l.var$nomsprop,pch=16,pt.cex=1.7,col=Env$l.var$couleur1B,title=tclvalue(Env$l.var$legende.titre))
+	  }
 	}
     } else {
 	if (tclvalue(Env$l.var$moyprop)=="moy") {
-	  legend(position,legend=Env$l.var$noms2,fill=Env$l.var$couleur1B)
+	  if (tclvalue(Env$l.var$nobar)==0) {
+	    legend(position,legend=Env$l.var$noms2,fill=Env$l.var$couleur1B)
+	  } else {
+	    legend(position,legend=Env$l.var$noms2,pch=16,pt.cex=1.7,col=Env$l.var$couleur1B)
+	  }
 	} else {
-	  legend(position,legend=Env$l.var$nomsprop,fill=Env$l.var$couleur1B)
+	  if (tclvalue(Env$l.var$nobar)==0) {
+	    legend(position,legend=Env$l.var$nomsprop,fill=Env$l.var$couleur1B)
+	  } else {
+	    legend(position,legend=Env$l.var$nomsprop,pch=16,pt.cex=1.7,col=Env$l.var$couleur1B)
+	  }
 	}
     }
   }
@@ -61,4 +77,3 @@ function(type,symboles=NULL,lignes=NULL,traits=NULL) {
   }
   par(xpd=FALSE)
 }
-

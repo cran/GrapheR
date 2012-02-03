@@ -58,4 +58,3 @@ function() {
   tkgrid(Env$l.fr1$obj.list,Env$l.fr1$obj.scroll,row=2,column=4,rowspan=5);tkgrid.configure(Env$l.fr1$obj.scroll,sticky="ens")
   tkgrid(Env$l.fr1$but2,row=8,column=4)
 }
-

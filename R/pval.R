@@ -167,4 +167,3 @@ function() {
   tkgrid(Env$l.fr7$fermer,column=1,columnspan=5)
   tkgrid(Env$l.fr7$espace.ver5)
 }
-

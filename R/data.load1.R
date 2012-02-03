@@ -23,7 +23,13 @@ function() {
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr4$var.list,"end",colnames(Env$dataset)[i])}
     }
     variables.class()
+    if (exists("fact.wdg",where=Env$l.fr5)) {
+	tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
+	tclvalue(Env$l.var$facteur1) <- ""
+	Env$l.var$levels.temp <- NULL
+	tkdelete(Env$l.fr5$liste.actual,0,"end")
+	tkdelete(Env$l.fr5$liste.new,0,"end")
+    }
     msg(text=Env$voc[21,1],type="info")
   }
 }
-

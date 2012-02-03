@@ -70,4 +70,3 @@ function() {
   tkgrid(Env$l.fr4$espace.hor2,row=2,column=5)
   tkgrid(Env$l.fr4$but,row=2,column=6,rowspan=2)
 }
-

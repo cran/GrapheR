@@ -48,4 +48,3 @@ function() {
   tkgrid(Env$l.fr6$noms.lab2,row=4,column=3,sticky="e")
   tkgrid(Env$l.fr6$noms.wdg,row=4,column=4,sticky="w")
 }
-

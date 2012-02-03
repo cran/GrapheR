@@ -5,7 +5,7 @@ Separador de columnas:
 espacio / tabulación
 coma
 punto y coma
-Separador decimal
+Separador decimal:   
 punto
 Código para valores faltantes:   
 Nombre de variables indicados en archivo:   
@@ -214,7 +214,7 @@ Elija el tipo de representación:
 Ventana a ser salvada:   
 Ventana
 Tipo de archivo:   
-Largo de la imagen:   
+Largo de la imagen (px):   
 Guardar
 Idioma:   
 Inglés
@@ -241,3 +241,28 @@ Cambiar el idioma de la interfaz.
 Abrir el manual introductorio de GrapheR.
 Español
 ¿Quiere guardar el código del gráfico?
+Alemán
+Agregar número de individuo:   
+Se puede definir un color de caja y borde por nivel.
+no hay datos para al menos una combinación de los dos factores.
+Orientación de las etiquetas:   
+paralelo al eje
+Subtítulo:   
+Agregar informaciones del sistema:   
+Factor:   
+Orden actual
+Orden nuevo
+Reordenar
+el número de niveles en el orden actual y el nuevo no es el mismo.
+Factor reordenado.
+Agregar medias:   
+Las medias se simbolizan con el signo ''+''.
+Ancho proporcional al tamaño de la muestra:   
+El ancho de la caja es proporcional a la raíz cuadrada del número de observaciones por grupo.
+Intervalo:   
+ninguno
+intervalo de confianza de la línea
+intervalo de predicción de los valores
+intervalos de confianza y predicción
+No representar las barras:   
+Resolución (ppi):   
