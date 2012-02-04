@@ -2,7 +2,7 @@
 \docType{data}
 \alias{Swallows}
 \title{Swallows dataset}
-\description{An illustrative and imaginary dataset about African and European swallows.}
+\description{An illustrative and fictive dataset about African and European swallows.}
 \usage{Swallows}
 \format{
 \enumerate{

@@ -26,6 +26,7 @@
 \alias{code.graphtype}
 \alias{code.open}
 \alias{col.barres}
+\alias{col.boites}
 \alias{col.bordures}
 \alias{col.parts}
 \alias{col.symboles}
@@ -103,6 +104,7 @@
 \alias{reinit.variables}
 \alias{rename.legende}
 \alias{rename.legende2}
+\alias{rename.legende3}
 \alias{rename.noms1}
 \alias{rename.nomsparts}
 \alias{rename.nomsprop.fac}

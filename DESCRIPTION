@@ -2,8 +2,8 @@ Encoding: latin1
 Package: GrapheR
 Type: Package
 Title: A multiplatform GUI for drawing customizable graphs in R
-Version: 1.9-75-2
-Date: 2012-02-03
+Version: 1.9-76
+Date: 2012-02-04
 Author: Maxime Hervé
 Maintainer: Maxime Hervé <mx.herve@gmail.com>
 Depends: R (>= 2.10.0), tcltk
@@ -15,6 +15,6 @@ Description: GrapheR is a multiplatform user interface for drawing
         plot.
 License: GPL-2
 LazyLoad: yes
-Packaged: 2012-02-03 08:56:15 UTC; Maxime
+Packaged: 2012-02-03 23:44:02 UTC; Maxime
 Repository: CRAN
-Date/Publication: 2012-02-03 09:08:06
+Date/Publication: 2012-02-04 08:39:43

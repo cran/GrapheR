@@ -1,4 +1,14 @@
-version 1.9-75-2 (03-02-2012)
+version 1.9-76 (04-02-2012) - Thanks to Juan Alberti
+
+    - A bug in axes drawing on box-and-whisker plots is fixed
+    - When drawing a boxplot with 2 factors, colors are managed in the same way as with bar plots
+    - Outliers are always displayed on box-and-whisker plots
+    - A legend can be added on box-and-whisker plots when using 2 factors. The legend is managed
+	in the same way as with bar plots
+
+
+
+version 1.9-75-2 (03-02-2012) - Thanks to Helmut Schlumprecht, Juan Alberti and Gilles Le Pape
 
     - A German translation of the GUI and the user manual is available
     - Levels of a factor can be re-ordered in a desired order
@@ -15,7 +25,7 @@ version 1.9-75-2 (03-02-2012)
     - Default color (for histogramn, boxes and bars) is now "grey"
     - When drawing a bar plot of means with 2 factors, design is checked. If factors are
 	not fully crossed, an error message is displayed and no graph is drawn
-    - Bars can be not diplayed on bar plots, to display only mean or proportions values as points
+    - Bars can be not displayed on bar plots, to display only mean or proportions values as points
     - Number of individuals can be displayed just near their corresponding point on scatter plots
     - For linear regression line (least squares method only) and quadratic regression line,
 	confidence interval of the line and/or prediction interval of values can be displayed

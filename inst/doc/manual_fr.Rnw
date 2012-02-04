@@ -9,7 +9,7 @@
 %%\usepackage{Sweave}
 \hypersetup{colorlinks=true,urlcolor=red}
 
-%%\VignetteIndexEntry{Introduction to GrapheR}
+%%\VignetteIndexEntry{Introduction à GrapheR}
 
 \newcommand{\R}{\textcolor[RGB]{118,133,166}{\textbf{R}}}
 
