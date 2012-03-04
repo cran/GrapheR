@@ -253,7 +253,7 @@ data.load1<-function() {
   } else {
     Env$dataset<-read.table(file,dec=ifelse(tclvalue(Env$l.var$sepdec)==Env$voc[9,1],".",","),header=ifelse(tclvalue(Env$l.var$header)==1,TRUE,FALSE),
 	na.strings=tclvalue(Env$l.var$na),sep=if (tclvalue(Env$l.var$sepcol)==Env$voc[5,1]) {""} else if (tclvalue(Env$l.var$sepcol)==Env$voc[6,1]) {","} else {";"})
-    if (exists("var.list",where=Env$l.fr2)) {
+    if ("var.list"%in%names(Env$l.fr2)) {
 	tkdelete(Env$l.fr2$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr2$var.list,"end",colnames(Env$dataset)[i])}
 	tkconfigure(Env$l.fr2$type.wdg,text="")
@@ -261,16 +261,16 @@ data.load1<-function() {
 	tkdelete(Env$l.fr2$resume.wdg,"0.0","end")
 	tkconfigure(Env$l.fr2$resume.wdg,state="disabled")
     }
-    if (exists("var.list",where=Env$l.fr3)) {
+    if ("var.list"%in%names(Env$l.fr3)) {
 	tkdelete(Env$l.fr3$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr3$var.list,"end",colnames(Env$dataset)[i])}
     }
-    if (exists("var.list",where=Env$l.fr4)) {
+    if ("var.list"%in%names(Env$l.fr4)) {
 	tkdelete(Env$l.fr4$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr4$var.list,"end",colnames(Env$dataset)[i])}
     }
     variables.class()
-    if (exists("fact.wdg",where=Env$l.fr5)) {
+    if ("fact.wdg"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
 	tclvalue(Env$l.var$facteur1) <- ""
 	Env$l.var$levels.temp <- NULL
@@ -293,7 +293,7 @@ data.load2<-function() {
 	if (is.data.frame(get(ls(.GlobalEnv)[i]))) {tables<-c(tables,ls(.GlobalEnv)[i])}
     }
     Env$dataset<-get(tables[as.numeric(tclvalue(tkcurselection(Env$l.fr1$obj.list)))+1],pos=.GlobalEnv)
-    if (exists("var.list",where=Env$l.fr2)) {
+    if ("var.list"%in%names(Env$l.fr2)) {
 	tkdelete(Env$l.fr2$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr2$var.list,"end",colnames(Env$dataset)[i])}
 	tkconfigure(Env$l.fr2$type.wdg,text="")
@@ -301,16 +301,16 @@ data.load2<-function() {
 	tkdelete(Env$l.fr2$resume.wdg,"0.0","end")
 	tkconfigure(Env$l.fr2$resume.wdg,state="disabled")
     }
-    if (exists("var.list",where=Env$l.fr3)) {
+    if ("var.list"%in%names(Env$l.fr3)) {
 	tkdelete(Env$l.fr3$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr3$var.list,"end",colnames(Env$dataset)[i])}
     }
-    if (exists("var.list",where=Env$l.fr4)) {
+    if ("var.list"%in%names(Env$l.fr4)) {
 	tkdelete(Env$l.fr4$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr4$var.list,"end",colnames(Env$dataset)[i])}
     }
     variables.class()
-    if (exists("fact.wdg",where=Env$l.fr5)) {
+    if ("fact.wdg"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
 	tclvalue(Env$l.var$facteur1) <- ""
 	Env$l.var$levels.temp <- NULL
@@ -335,11 +335,11 @@ rename.variable<-function() {
 	tkdelete(Env$l.fr3$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr3$var.list,"end",colnames(Env$dataset)[i])}
 	tkdelete(Env$l.fr3$nom.wdg,0,"end")
-	if (exists("var.list",where=Env$l.fr2)) {
+	if ("var.list"%in%names(Env$l.fr2)) {
 	  tkdelete(Env$l.fr2$var.list,0,"end")
 	  for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr2$var.list,"end",colnames(Env$dataset)[i])}
 	}
-	if (exists("var.list",where=Env$l.fr4)) {
+	if ("var.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$var.list,0,"end")
 	  for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr4$var.list,"end",colnames(Env$dataset)[i])}
 	}
@@ -347,7 +347,7 @@ rename.variable<-function() {
 	msg(text=Env$voc[25,1],type="error")
     }
     variables.class()
-    if (exists("fact.wdg",where=Env$l.fr5)) {
+    if ("fact.wdg"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
 	tclvalue(Env$l.var$facteur1) <- ""
 	Env$l.var$levels.temp <- NULL
@@ -389,7 +389,7 @@ convert.variable<-function(type) {
   tkconfigure(Env$l.fr4$curs.lab,foreground="grey")
   tkconfigure(Env$l.fr4$but,state="disabled")
   variables.class()
-  if (exists("fact.wdg",where=Env$l.fr5)) {
+  if ("fact.wdg"%in%names(Env$l.fr5)) {
     tkconfigure(Env$l.fr5$fact.wdg,values=Env$l.var$var.fact)
     tclvalue(Env$l.var$facteur1) <- ""
     Env$l.var$levels.temp <- NULL
@@ -505,7 +505,7 @@ rename.noms1<-function(value.list,value.nom) {
   if(nchar(value.nom)>0) {
     if (nchar(value.list)>0) {
 	Env$l.var$noms1[as.numeric(value.list)+1]<-value.nom
-	if (exists("noms.list",where=Env$l.fr3)) {
+	if ("noms.list"%in%names(Env$l.fr3)) {
 	  tkdelete(Env$l.fr3$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$noms1[i])}
 	  tkdelete(Env$l.fr3$noms.wdg,0,"end")
@@ -540,7 +540,7 @@ rename.nomsparts<-function() {
 	tkdelete(Env$l.fr3$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$nomsparts[i])}
 	tkdelete(Env$l.fr3$noms.wdg,0,"end")
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$nomsparts[i])}
 	}
@@ -645,7 +645,7 @@ hachures<-function(num) {
 #-------------------------------------------------
 
 active.erreur<-function() {
-  if (exists("type.lab",where=Env$l.fr5)) {
+  if ("type.lab"%in%names(Env$l.fr5)) {
     if (tclvalue(Env$l.var$stack)==1) {
 	tkconfigure(Env$l.fr5$type.lab,foreground="grey")
 	tkconfigure(Env$l.fr5$type.wdg,state="disabled")
@@ -667,7 +667,7 @@ active.erreur<-function() {
 
 active.legende<-function() {
   if (tclvalue(Env$l.var$plusieurs)==0) {
-    if (exists("legende.lab",where=Env$l.fr5)) {
+    if ("legende.lab"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$legende.lab,foreground="grey")
 	tkconfigure(Env$l.fr5$legende.wdg,state="disabled")
 	tkconfigure(Env$l.fr5$titre.lab,foreground="grey")
@@ -681,7 +681,7 @@ active.legende<-function() {
 	tkdelete(Env$l.fr5$noms.wdg,0,"end")
 	tkconfigure(Env$l.fr5$noms.wdg,state="disabled")
     }
-    if (exists("legende.lab",where=Env$l.fr6)) {
+    if ("legende.lab"%in%names(Env$l.fr6)) {
 	tkconfigure(Env$l.fr6$legende.lab,foreground="grey")
 	tkconfigure(Env$l.fr6$legende.wdg,state="disabled")
 	tkconfigure(Env$l.fr6$titre.lab,foreground="grey")
@@ -696,7 +696,7 @@ active.legende<-function() {
 	tkconfigure(Env$l.fr6$noms.wdg,state="disabled")
     }
   } else {
-    if (exists("legende.lab",where=Env$l.fr5)) {
+    if ("legende.lab"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$legende.lab,foreground="black")
 	tkconfigure(Env$l.fr5$legende.wdg,state="normal")
 	tkconfigure(Env$l.fr5$titre.lab,foreground="black")
@@ -708,7 +708,7 @@ active.legende<-function() {
 	tkconfigure(Env$l.fr5$noms.lab2,foreground="black")
 	tkconfigure(Env$l.fr5$noms.wdg,state="normal")
     }
-    if (exists("legende.lab",where=Env$l.fr6)) {
+    if ("legende.lab"%in%names(Env$l.fr6)) {
 	tkconfigure(Env$l.fr6$legende.lab,foreground="black")
 	tkconfigure(Env$l.fr6$legende.wdg,state="normal")
 	tkconfigure(Env$l.fr6$titre.lab,foreground="black")
@@ -732,7 +732,7 @@ rename.legende3<-function(value.list,value.nom) {
   if(nchar(value.nom)>0) {
     if (nchar(value.list)>0) {
 	Env$l.var$noms2[as.numeric(value.list)+1]<-value.nom
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms2[i])}
 	}
@@ -757,22 +757,22 @@ rename.legende<-function(value.list,value.nom) {
     if (nchar(value.list)>0) {
 	if (tclvalue(Env$l.var$moyprop)=="moy") {
 	  Env$l.var$noms2[as.numeric(value.list)+1]<-value.nom
-	  if (exists("noms.list",where=Env$l.fr6)) {
+	  if ("noms.list"%in%names(Env$l.fr6)) {
 	    tkdelete(Env$l.fr6$noms.list,0,"end")
 	    for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms2[i])}
 	    tkdelete(Env$l.fr6$noms.wdg,0,"end")
 	  }
-	  if (exists("noms.list",where=Env$l.fr4)) {
+	  if ("noms.list"%in%names(Env$l.fr4)) {
 	    tkdelete(Env$l.fr4$noms.list,0,"end")
 	    for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms2[i])}
 	  }
 	} else {
 	  Env$l.var$nomsprop[as.numeric(value.list)+1]<-value.nom
-	  if (exists("noms.list",where=Env$l.fr4)) {
+	  if ("noms.list"%in%names(Env$l.fr4)) {
 	    tkdelete(Env$l.fr4$noms.list,0,"end")
 	    for (i in 1:length(Env$l.var$nomsprop)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$nomsprop[i])}
 	  }
-	  if (exists("noms.list",where=Env$l.fr6)) {
+	  if ("noms.list"%in%names(Env$l.fr6)) {
 	    tkdelete(Env$l.fr6$noms.list,0,"end")
 	    for (i in 1:length(Env$l.var$nomsprop)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$nomsprop[i])}
 	    tkdelete(Env$l.fr6$noms.wdg,0,"end")
@@ -795,11 +795,11 @@ rename.legende2<-function(value.list,value.nom) {
   if(nchar(value.nom)>0) {
     if (nchar(value.list)>0) {
 	Env$l.var$noms1[as.numeric(value.list)+1]<-value.nom
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms1[i])}
 	}
-	if (exists("noms.list",where=Env$l.fr5)) {
+	if ("noms.list"%in%names(Env$l.fr5)) {
 	  tkdelete(Env$l.fr5$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr5$noms.list,"end",Env$l.var$noms1[i])}
 	}
@@ -835,12 +835,12 @@ barres.moy<-function() {
   tkconfigure(Env$l.fr1$propfac.lab,foreground="grey")
   tkconfigure(Env$l.fr1$propfac.wdg,state="disabled")
   tclvalue(Env$l.var$stack)<-0
-  if (exists("noms.list",where=Env$l.fr3)) {
+  if ("noms.list"%in%names(Env$l.fr3)) {
     tkdelete(Env$l.fr3$noms.list,0,"end")
     for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$noms1[i])}
     tkdelete(Env$l.fr3$noms.wdg,0,"end")
   }
-  if (exists("type.wdg",where=Env$l.fr5)) {
+  if ("type.wdg"%in%names(Env$l.fr5)) {
     tclvalue(Env$l.var$erreur)<-""
     tkconfigure(Env$l.fr5$type.wdg,values=Env$voc[c(95:98),1])
   }
@@ -849,7 +849,7 @@ barres.moy<-function() {
     Env$l.var$couleur1B<-grey.colors(nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
     Env$l.var$col.borduresB<-rep("black",nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
     Env$l.var$hachuresB<-rep(1,nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
-    if (exists("noms.list",where=Env$l.fr4)) {
+    if ("noms.list"%in%names(Env$l.fr4)) {
 	tkconfigure(Env$l.fr4$noms.list,state="normal")
 	tkdelete(Env$l.fr4$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms2[i])}
@@ -862,7 +862,7 @@ barres.moy<-function() {
 	tkdeselect(Env$l.fr4$stack.wdg)
     }
     active.legende()
-    if (exists("noms.list",where=Env$l.fr6)) {
+    if ("noms.list"%in%names(Env$l.fr6)) {
 	tkdelete(Env$l.fr6$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms2[i])}
     }
@@ -871,7 +871,7 @@ barres.moy<-function() {
     tclvalue(Env$l.var$couleur1A)<-"grey"
     tclvalue(Env$l.var$col.borduresA)<-"black"
     tclvalue(Env$l.var$hachuresA)<-"1"
-    if (exists("noms.list",where=Env$l.fr4)) {
+    if ("noms.list"%in%names(Env$l.fr4)) {
 	tkconfigure(Env$l.fr4$noms.list,state="normal")
 	tkdelete(Env$l.fr4$noms.list,0,"end")
 	tkconfigure(Env$l.fr4$noms.list,state="disabled")
@@ -915,12 +915,12 @@ barres.prop<-function() {
     tclvalue(Env$l.var$col.borduresA)<-"black"
     tclvalue(Env$l.var$hachuresA)<-"1"
   }
-  if (exists("noms.list",where=Env$l.fr3)) {
+  if ("noms.list"%in%names(Env$l.fr3)) {
     tkdelete(Env$l.fr3$noms.list,0,"end")
     for (i in 1:length(Env$l.var$nomsprop.fac)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$nomsprop.fac[i])}
     tkdelete(Env$l.fr3$noms.wdg,0,"end")
   }
-  if (exists("noms.list",where=Env$l.fr4)) {
+  if ("noms.list"%in%names(Env$l.fr4)) {
     tkconfigure(Env$l.fr4$noms.list,state="normal")
     tkdelete(Env$l.fr4$noms.list,0,"end")
     if (tclvalue(Env$l.var$plusieurs)==1) {
@@ -943,11 +943,11 @@ barres.prop<-function() {
 	tkconfigure(Env$l.fr4$stack.wdg,state="disabled")
     }
   }
-  if (exists("type.wdg",where=Env$l.fr5)) {
+  if ("type.wdg"%in%names(Env$l.fr5)) {
     tclvalue(Env$l.var$erreur)<-""
     tkconfigure(Env$l.fr5$type.wdg,values=Env$voc[c(95,97,98),1])
   }
-  if (exists("noms.list",where=Env$l.fr6)) {
+  if ("noms.list"%in%names(Env$l.fr6)) {
     if (tclvalue(Env$l.var$plusieurs)==1) {
 	tkconfigure(Env$l.fr6$noms.list,state="normal")
 	tkdelete(Env$l.fr6$noms.list,0,"end")
@@ -991,7 +991,7 @@ hachures2<-function(num) {
 
 active.legende2<-function() {
   if (tclvalue(Env$l.var$cam.lien)==1) {
-    if (exists("legende.lab",where=Env$l.fr5)) {
+    if ("legende.lab"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$legende.lab,foreground="grey")
 	tkconfigure(Env$l.fr5$legende.wdg,state="disabled")
 	tkconfigure(Env$l.fr5$titre.lab,foreground="grey")
@@ -1000,7 +1000,7 @@ active.legende2<-function() {
 	tkconfigure(Env$l.fr5$position.wdg,state="disabled")
     }
   } else {
-    if (exists("legende.lab",where=Env$l.fr5)) {
+    if ("legende.lab"%in%names(Env$l.fr5)) {
 	tkconfigure(Env$l.fr5$legende.lab,foreground="black")
 	tkconfigure(Env$l.fr5$legende.wdg,state="normal")
 	tkconfigure(Env$l.fr5$titre.lab,foreground="black")
@@ -1029,7 +1029,7 @@ courbe.moy<-function() {
   tkconfigure(Env$l.fr1$propvarY.wdg,state="disabled")
   tkconfigure(Env$l.fr1$propvarY.niv.lab,foreground="grey")
   tkconfigure(Env$l.fr1$propvarY.niv.wdg,state="disabled")
-  if (exists("type.wdg",where=Env$l.fr5)) {
+  if ("type.wdg"%in%names(Env$l.fr5)) {
     tclvalue(Env$l.var$erreur)<-""
     tkconfigure(Env$l.fr5$type.wdg,values=Env$voc[c(95:98),1])
   }
@@ -1048,7 +1048,7 @@ courbe.prop<-function() {
   tkconfigure(Env$l.fr1$propvarY.wdg,state="readonly")
   tkconfigure(Env$l.fr1$propvarY.niv.lab,foreground="black")
   tkconfigure(Env$l.fr1$propvarY.niv.wdg,state="readonly")
-  if (exists("type.wdg",where=Env$l.fr5)) {
+  if ("type.wdg"%in%names(Env$l.fr5)) {
     tclvalue(Env$l.var$erreur)<-""
     tkconfigure(Env$l.fr5$type.wdg,values=Env$voc[c(95,97,98),1])
   }
@@ -1204,7 +1204,7 @@ fr1.openH<-function() {
   tkbind(Env$l.fr1$type.wdg,"<Enter>",function() {msg(text=Env$voc[114,1],type="warning")})
   tkbind(Env$l.fr1$type.wdg,"<Leave>",function() {msg(text="",type="info")})
   tkbind(Env$l.fr1$type.wdg,"<<ComboboxSelected>>",function() {
-    if (exists("hor.liminf.wdg",where=Env$l.fr3)) {
+    if ("hor.liminf.wdg"%in%names(Env$l.fr3)) {
 	if (tclvalue(Env$l.var$hist.type)==Env$voc[40,1]) {
 	  tkconfigure(Env$l.fr3$hor.liminf.wdg,state="disabled")
 	  tkconfigure(Env$l.fr3$hor.limsup.wdg,state="disabled")
@@ -1213,7 +1213,7 @@ fr1.openH<-function() {
 	  tkconfigure(Env$l.fr3$hor.limsup.wdg,state="normal")
 	}
     }
-    if (exists("tracer.lab",where=Env$l.fr5)) {
+    if ("tracer.lab"%in%names(Env$l.fr5)) {
 	if (!tclvalue(Env$l.var$hist.type)==Env$voc[42,1]) {
 	  tkconfigure(Env$l.fr5$tracer.lab,foreground="grey")
 	  tkconfigure(Env$l.fr5$tracer.wdg,state="disabled")
@@ -1269,7 +1269,7 @@ fr1.openM<-function() {
 	Env$l.var$facteur.interaction<-""
     }
     Env$l.var$noms1<-levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])
-    if (exists("noms.list",where=Env$l.fr3)) {
+    if ("noms.list"%in%names(Env$l.fr3)) {
 	tkdelete(Env$l.fr3$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$noms1[i])}
     }
@@ -1283,7 +1283,7 @@ fr1.openM<-function() {
 	tclvalue(Env$l.var$plusieurs)<-1
 	Env$l.var$couleur1B<-grey.colors(nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
 	Env$l.var$col.borduresB<-rep("black",nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms2[i])}
@@ -1291,7 +1291,7 @@ fr1.openM<-function() {
 	  tkconfigure(Env$l.fr4$colbordures.wdg,bg=Env$l.var$col.borduresB[1])
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms2[i])}
 	}
@@ -1301,7 +1301,7 @@ fr1.openM<-function() {
 	tclvalue(Env$l.var$plusieurs)<-0
 	tclvalue(Env$l.var$couleur1A)<-"grey"
 	tclvalue(Env$l.var$col.borduresA)<-"black"
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
@@ -1309,7 +1309,7 @@ fr1.openM<-function() {
 	  tkconfigure(Env$l.fr4$colbordures.wdg,bg=tclvalue(Env$l.var$col.borduresA))
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	}
     }
@@ -1350,7 +1350,7 @@ fr1.openB<-function() {
   tkbind(Env$l.fr1$moyfac1.wdg,"<<ComboboxSelected>>",function() {
     if (nchar(tclvalue(Env$l.var$facteur1))>0) {
 	Env$l.var$noms1<-levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])
-	if (exists("noms.list",where=Env$l.fr3)) {
+	if ("noms.list"%in%names(Env$l.fr3)) {
 	  tkdelete(Env$l.fr3$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$noms1[i])}
 	}
@@ -1366,7 +1366,7 @@ fr1.openB<-function() {
 	Env$l.var$couleur1B<-grey.colors(nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
 	Env$l.var$col.borduresB<-rep("black",nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
 	Env$l.var$hachuresB<-rep(1,nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms2[i])}
@@ -1379,7 +1379,7 @@ fr1.openB<-function() {
 	  tkdeselect(Env$l.fr4$stack.wdg)
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms2)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms2[i])}
 	}
@@ -1389,7 +1389,7 @@ fr1.openB<-function() {
 	tclvalue(Env$l.var$couleur1A)<-"grey"
 	tclvalue(Env$l.var$col.borduresA)<-"black"
 	tclvalue(Env$l.var$hachuresA)<-"1"
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
@@ -1402,7 +1402,7 @@ fr1.openB<-function() {
 	  tkconfigure(Env$l.fr4$stack.wdg,state="disabled")
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	}
     }
@@ -1426,7 +1426,7 @@ fr1.openB<-function() {
 	tkdelete(Env$l.fr1$propnivx.list,0,"end")
 	for (i in 1:nlevels(Env$dataset[,tclvalue(Env$l.var$proportions)])) {tkinsert(Env$l.fr1$propnivx.list,"end",levels(Env$dataset[,tclvalue(Env$l.var$proportions)])[i])}
 	tkselection.set(Env$l.fr1$propnivx.list,tclvalue(Env$l.var$prop.niveaux))
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
 	}
@@ -1448,7 +1448,7 @@ fr1.openB<-function() {
 	Env$l.var$col.borduresB<-rep("black",length(num))
 	Env$l.var$hachuresB<-rep(1,length(num))
 	Env$l.var$nomsprop<-levels(Env$dataset[,tclvalue(Env$l.var$proportions)])[num]
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$nomsprop)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$nomsprop[i])}
@@ -1461,7 +1461,7 @@ fr1.openB<-function() {
 	  tkdeselect(Env$l.fr4$stack.wdg)
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkconfigure(Env$l.fr6$noms.list,state="normal")
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$nomsprop)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$nomsprop[i])}
@@ -1473,7 +1473,7 @@ fr1.openB<-function() {
 	tclvalue(Env$l.var$col.borduresA)<-"black"
 	tclvalue(Env$l.var$hachuresA)<-"1"
 	Env$l.var$nomsprop<-""
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
@@ -1486,7 +1486,7 @@ fr1.openB<-function() {
 	  tkconfigure(Env$l.fr4$stack.wdg,state="disabled")
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkconfigure(Env$l.fr6$noms.list,state="normal")
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  tkconfigure(Env$l.fr6$noms.list,state="disabled")
@@ -1504,16 +1504,16 @@ fr1.openB<-function() {
   tkbind(Env$l.fr1$propfac.wdg,"<<ComboboxSelected>>",function() {
     if (nchar(tclvalue(Env$l.var$facteurprop))>0) {
 	Env$l.var$nomsprop.fac<-levels(Env$dataset[,tclvalue(Env$l.var$facteurprop)])
-	if (exists("noms.list",where=Env$l.fr3)) {
+	if ("noms.list"%in%names(Env$l.fr3)) {
 	  tkdelete(Env$l.fr3$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$nomsprop.fac)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$nomsprop.fac[i])}
 	}
     } else {
-	if (exists("noms.list",where=Env$l.fr3)) {
+	if ("noms.list"%in%names(Env$l.fr3)) {
 	  tkdelete(Env$l.fr3$noms.list,0,"end")
 	}
     }
-    if (exists("noms.wdg",where=Env$l.fr3)) {tkdelete(Env$l.fr3$noms.wdg,0,"end")}
+    if ("noms.wdg"%in%names(Env$l.fr3)) {tkdelete(Env$l.fr3$noms.wdg,0,"end")}
   })
   Env$l.fr1$espace.ver<-tklabel(Env$l.frames$Fr1,text="",font=Env$police2)
   Env$l.fr1$espace.hor<-tklabel(Env$l.frames$Fr1,text="                    ",font=Env$police)
@@ -1563,12 +1563,12 @@ fr1.openCa<-function() {
     tclvalue(Env$l.var$parts.niveaux)<-paste(0:(length(Env$l.var$noms1)-1),collapse=" ")
     tkdelete(Env$l.fr1$parts.list,0,"end")
     for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr1$parts.list,"end",Env$l.var$noms1[i])}
-    if (exists("noms.list",where=Env$l.fr3)) {
+    if ("noms.list"%in%names(Env$l.fr3)) {
 	tkdelete(Env$l.fr3$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$nomsparts[i])}
 	tkdelete(Env$l.fr3$noms.wdg,0,"end")
     }
-    if (exists("noms.list",where=Env$l.fr4)) {
+    if ("noms.list"%in%names(Env$l.fr4)) {
 	tkdelete(Env$l.fr4$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$nomsparts[i])}
 	tkconfigure(Env$l.fr4$colparts.wdg,bg=Env$l.var$couleur1B[1])
@@ -1593,12 +1593,12 @@ fr1.openCa<-function() {
     Env$l.var$nomsparts<-Env$l.var$noms1[as.numeric(strsplit(tclvalue(Env$l.var$parts.niveaux),split=" ")[[1]])+1]
     Env$l.var$couleur1B<-grey.colors(length(Env$l.var$nomsparts))
     Env$l.var$hachuresB<-rep(1,length(Env$l.var$nomsparts))
-    if (exists("noms.list",where=Env$l.fr3)) {
+    if ("noms.list"%in%names(Env$l.fr3)) {
 	tkdelete(Env$l.fr3$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr3$noms.list,"end",Env$l.var$nomsparts[i])}
 	tkdelete(Env$l.fr3$noms.wdg,0,"end")
     }
-    if (exists("noms.list",where=Env$l.fr4)) {
+    if ("noms.list"%in%names(Env$l.fr4)) {
 	tkdelete(Env$l.fr4$noms.list,0,"end")
 	for (i in 1:length(Env$l.var$nomsparts)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$nomsparts[i])}
 	tkconfigure(Env$l.fr4$colparts.wdg,bg=Env$l.var$couleur1B[1])
@@ -1641,7 +1641,7 @@ fr1.openCo<-function() {
 	tclvalue(Env$l.var$trait1)<-""
 	tclvalue(Env$l.var$epaisseur1)<-"1"
 	tkdelete(Env$l.fr1$fact.list,0,"end")
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
 	  for (i in 1:8) {tkconfigure(Env$l.fr4$l.symboles[[i]],borderwidth=0)}
@@ -1676,7 +1676,7 @@ fr1.openCo<-function() {
 	Env$l.var$epaisseur2<-rep(1,length(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]]))
 	tclvalue(Env$l.var$epaisseur1)<-as.character(Env$l.var$epaisseur2[1])
 	Env$l.var$noms1<-levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])[as.numeric(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]])+1]
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms1[i])}
@@ -1685,7 +1685,7 @@ fr1.openCo<-function() {
 	  tkconfigure(Env$l.fr4$col.wdg,bg=Env$l.var$couleur2B[1])
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkconfigure(Env$l.fr6$noms.list,state="normal")
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms1[i])}
@@ -1699,14 +1699,14 @@ fr1.openCo<-function() {
 	tclvalue(Env$l.var$type.courbeA)<-""
 	tclvalue(Env$l.var$trait1)<-""
 	tclvalue(Env$l.var$epaisseur1)<-"1"
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
 	  for (i in 1:8) {tkconfigure(Env$l.fr4$l.symboles[[i]],borderwidth=0)}
 	  tkconfigure(Env$l.fr4$l.symboles[[as.numeric(tclvalue(Env$l.var$symboleA))]],borderwidth=2)
 	  tkconfigure(Env$l.fr4$col.wdg,bg=tclvalue(Env$l.var$couleur2A))
 	}
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  tkdelete(Env$l.fr6$noms.wdg,0,"end")
 	}
@@ -1786,14 +1786,14 @@ fr1.openN<-function() {
 	tclvalue(Env$l.var$trait1)<-""
 	tclvalue(Env$l.var$epaisseur1)<-"1"
 	tkdelete(Env$l.fr1$fact.list,0,"end")
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
 	  for (i in 1:8) {tkconfigure(Env$l.fr4$l.symboles[[i]],borderwidth=0)}
 	  tkconfigure(Env$l.fr4$l.symboles[[as.numeric(tclvalue(Env$l.var$symboleA))]],borderwidth=2)
 	  tkconfigure(Env$l.fr4$col.wdg,bg=tclvalue(Env$l.var$couleur2A))
 	}
-	if (exists("noms.list",where=Env$l.fr5)) {
+	if ("noms.list"%in%names(Env$l.fr5)) {
 	  tkdelete(Env$l.fr5$noms.list,0,"end")
 	  tkconfigure(Env$l.fr5$noms.list,state="disabled")
 	}
@@ -1827,7 +1827,7 @@ fr1.openN<-function() {
 	Env$l.var$epaisseur2<-rep(1,length(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]]))
 	tclvalue(Env$l.var$epaisseur1)<-as.character(Env$l.var$epaisseur2[1])
 	Env$l.var$noms1<-levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])[as.numeric(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]])+1]
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkconfigure(Env$l.fr4$noms.list,state="normal")
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr4$noms.list,"end",Env$l.var$noms1[i])}
@@ -1835,13 +1835,13 @@ fr1.openN<-function() {
 	  tkconfigure(Env$l.fr4$l.symboles[[Env$l.var$symboleB[1]]],borderwidth=2)
 	  tkconfigure(Env$l.fr4$col.wdg,bg=Env$l.var$couleur2B[1])
 	}
-	if (exists("noms.list",where=Env$l.fr5)) {
+	if ("noms.list"%in%names(Env$l.fr5)) {
 	  tkconfigure(Env$l.fr5$noms.list,state="normal")
 	  tkdelete(Env$l.fr5$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr5$noms.list,"end",Env$l.var$noms1[i])}
 	}
 	active.legende()
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkconfigure(Env$l.fr6$noms.list,state="normal")
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  for (i in 1:length(Env$l.var$noms1)) {tkinsert(Env$l.fr6$noms.list,"end",Env$l.var$noms1[i])}
@@ -1855,18 +1855,18 @@ fr1.openN<-function() {
 	tclvalue(Env$l.var$droiteA)<-""
 	tclvalue(Env$l.var$trait1)<-""
 	tclvalue(Env$l.var$epaisseur1)<-"1"
-	if (exists("noms.list",where=Env$l.fr4)) {
+	if ("noms.list"%in%names(Env$l.fr4)) {
 	  tkdelete(Env$l.fr4$noms.list,0,"end")
 	  tkconfigure(Env$l.fr4$noms.list,state="disabled")
 	  for (i in 1:8) {tkconfigure(Env$l.fr4$l.symboles[[i]],borderwidth=0)}
 	  tkconfigure(Env$l.fr4$l.symboles[[as.numeric(tclvalue(Env$l.var$symboleA))]],borderwidth=2)
 	  tkconfigure(Env$l.fr4$col.wdg,bg=tclvalue(Env$l.var$couleur2A))
 	}
-	if (exists("noms.list",where=Env$l.fr5)) {
+	if ("noms.list"%in%names(Env$l.fr5)) {
 	  tkdelete(Env$l.fr5$noms.list,0,"end")
 	  tkconfigure(Env$l.fr5$noms.list,state="disabled")
 	}
-	if (exists("noms.list",where=Env$l.fr6)) {
+	if ("noms.list"%in%names(Env$l.fr6)) {
 	  tkdelete(Env$l.fr6$noms.list,0,"end")
 	  tkdelete(Env$l.fr6$noms.wdg,0,"end")
 	}
@@ -2444,10 +2444,10 @@ fr3.openCoN<-function() {
 fr4.close<-function() {
   Env$l.frames$Fr4.status<-0
   tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
-  if (exists("l.hachures",where=Env$l.fr4)) {
+  if ("l.hachures"%in%names(Env$l.fr4)) {
     for (i in 1:9) {tkdestroy(Env$l.fr4$l.hachures[[i]])}
   }
-  if (exists("l.symboles",where=Env$l.fr4)) {
+  if ("l.symboles"%in%names(Env$l.fr4)) {
     for (i in 1:8) {tkdestroy(Env$l.fr4$l.symboles[[i]])}
   }
   for (i in 1:length(Env$l.fr4)) {
@@ -4481,7 +4481,7 @@ graphe.titre<-function(type="",orient=NULL) {
     }
   }
   if (tclvalue(Env$l.var$sysinfo)==1) {
-    mtext(paste("R version: ",getRversion()," - GrapheR version: ",installed.packages()["GrapheR","Version"]," - Date: ",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],
+    mtext(paste("R version: ",getRversion()," - GrapheR version: ",packageVersion("GrapheR")," - Date: ",paste(strsplit(as.character(Sys.Date()),split="-")[[1]],
 	collapse="."),sep=""),side=4,cex=0.6)
   }
 }
