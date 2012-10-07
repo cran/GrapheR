@@ -1,3 +1,11 @@
+version 1.9-78 (07-10-2012) - Thanks to Juan Alberti
+
+    - A bug with box-and-whisker plots with 2 factors is fixed
+    - Size of whiskers in box-and-whisker plots can now be set to 0, extending whiskers to extreme
+	values
+
+
+
 version 1.9-77 (04-03-2012) - Thanks to Jean-Patrick Pommier
 
     - A bug occuring on Ubuntu is fixed. The GUI can now be used on this platform as with any other

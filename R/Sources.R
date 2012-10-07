@@ -1264,7 +1264,7 @@ fr1.openM<-function() {
   Env$l.fr1$facteur1.wdg<-ttkcombobox(Env$l.frames$Fr1,values=Env$l.var$var.fact,textvariable=Env$l.var$facteur1,font=Env$police,state="readonly")
   tkbind(Env$l.fr1$facteur1.wdg,"<<ComboboxSelected>>",function() {
     if (nchar(tclvalue(Env$l.var$facteur2))>0 & tclvalue(Env$l.var$facteur2)!=Env$voc[82,1]) {
-	Env$l.var$facteur.interaction<-interaction(Env$dataset[,tclvalue(Env$l.var$facteur1)],Env$dataset[,tclvalue(Env$l.var$facteur2)])
+	Env$l.var$facteur.interaction<-interaction(Env$dataset[,tclvalue(Env$l.var$facteur2)],Env$dataset[,tclvalue(Env$l.var$facteur1)])
     } else {
 	Env$l.var$facteur.interaction<-""
     }
@@ -1278,7 +1278,7 @@ fr1.openM<-function() {
   Env$l.fr1$facteur2.wdg<-ttkcombobox(Env$l.frames$Fr1,values=c(Env$voc[82,1],Env$l.var$var.fact),textvariable=Env$l.var$facteur2,font=Env$police,state="readonly")
   tkbind(Env$l.fr1$facteur2.wdg,"<<ComboboxSelected>>",function() {
     if (nchar(tclvalue(Env$l.var$facteur2))>0 & tclvalue(Env$l.var$facteur2)!=Env$voc[82,1]) {
-	Env$l.var$facteur.interaction<-interaction(Env$dataset[,tclvalue(Env$l.var$facteur1)],Env$dataset[,tclvalue(Env$l.var$facteur2)])
+	Env$l.var$facteur.interaction<-interaction(Env$dataset[,tclvalue(Env$l.var$facteur2)],Env$dataset[,tclvalue(Env$l.var$facteur1)])
 	Env$l.var$noms2<-levels(Env$dataset[,tclvalue(Env$l.var$facteur2)])
 	tclvalue(Env$l.var$plusieurs)<-1
 	Env$l.var$couleur1B<-grey.colors(nlevels(Env$dataset[,tclvalue(Env$l.var$facteur2)]))
@@ -3078,7 +3078,7 @@ fr5.openM<-function() {
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$taille.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[46,1],font=Env$police)
-  Env$l.fr5$taille.wdg<-tkscale(Env$l.frames$Fr5,from=0.1,to=3,showvalue=TRUE,font=Env$police,variable=Env$l.var$lg.moustaches,resolution=0.1,orient="horizontal")
+  Env$l.fr5$taille.wdg<-tkscale(Env$l.frames$Fr5,from=0,to=3,showvalue=TRUE,font=Env$police,variable=Env$l.var$lg.moustaches,resolution=0.1,orient="horizontal")
   tkbind(Env$l.fr5$taille.wdg,"<Enter>",function() {msg(text=Env$voc[77,1],type="info")})
   tkbind(Env$l.fr5$taille.wdg,"<Leave>",function() {msg(text="",type="info")})
   Env$l.fr5$trait.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[59,1],font=Env$police)
@@ -6142,7 +6142,7 @@ code.data<-function() {
   } else if (Env$l.var$ecran=="M") {
     if (nchar(facteur2)>0 & facteur2!=Env$voc[82,1]) {
 	cat("# Preliminary data creation\n\n")
-	cat(paste("interaction <- interaction(",facteur1,",",facteur2,")\n",sep=""))
+	cat(paste("interaction <- interaction(",facteur2,",",facteur1,")\n",sep=""))
 	if (tclvalue(Env$l.var$boxmoy)==1) {
 	  cat(paste("means <- tapply(",variable,", interaction, function(x) mean(x,na.rm=TRUE))\n",sep=""))
 	}
