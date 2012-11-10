@@ -15,8 +15,9 @@ language<-function(lang=NULL) {
 # Chargement 1
 #-------------------------------------------------
 
-run.GrapheR<-function(lang=NULL) {
+run.GrapheR<-function(lang=NULL,path.to.save=NULL) {
   language(lang=lang)
+  Env$path.to.save<-path.to.save
   load.GrapheR()
 }
 
@@ -189,9 +190,15 @@ load.GrapheR<-function() {
   Env$l.var$fen.type<-tclVar("jpg")
   Env$l.var$fen.res<-tclVar("150")
   Env$l.code<-list()
-  Env$l.code$ask<-FALSE
-  Env$l.code$save<-FALSE
-  Env$l.code$folder<-NULL
+  if (!is.null(Env$path.to.save)) {
+    Env$l.code$ask<-TRUE
+    Env$l.code$save<-TRUE
+    Env$l.code$folder<-Env$path.to.save
+  } else {
+    Env$l.code$ask<-FALSE
+    Env$l.code$save<-FALSE
+    Env$l.code$folder<-NULL
+  }
   Env$l.code$graphsnb<-0
   Env$l.code$x.inf<-NULL
   Env$l.code$x.sup<-NULL
@@ -253,6 +260,8 @@ data.load1<-function() {
   } else {
     Env$dataset<-read.table(file,dec=ifelse(tclvalue(Env$l.var$sepdec)==Env$voc[9,1],".",","),header=ifelse(tclvalue(Env$l.var$header)==1,TRUE,FALSE),
 	na.strings=tclvalue(Env$l.var$na),sep=if (tclvalue(Env$l.var$sepcol)==Env$voc[5,1]) {""} else if (tclvalue(Env$l.var$sepcol)==Env$voc[6,1]) {","} else {";"})
+    Env$loading<-paste("read.table(\"",file,"\",\n  dec=",ifelse(tclvalue(Env$l.var$sepdec)==Env$voc[9,1],"\".\"","\",\""),", header=",ifelse(tclvalue(Env$l.var$header)==1,"TRUE","FALSE"),
+	", na.strings=\"",tclvalue(Env$l.var$na),"\", sep=",if (tclvalue(Env$l.var$sepcol)==Env$voc[5,1]) {"\"\""} else if (tclvalue(Env$l.var$sepcol)==Env$voc[6,1]) {"\",\""} else {"\";\""},")",sep="")
     if ("var.list"%in%names(Env$l.fr2)) {
 	tkdelete(Env$l.fr2$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr2$var.list,"end",colnames(Env$dataset)[i])}
@@ -293,6 +302,7 @@ data.load2<-function() {
 	if (is.data.frame(get(ls(.GlobalEnv)[i]))) {tables<-c(tables,ls(.GlobalEnv)[i])}
     }
     Env$dataset<-get(tables[as.numeric(tclvalue(tkcurselection(Env$l.fr1$obj.list)))+1],pos=.GlobalEnv)
+    Env$loading<-tables[as.numeric(tclvalue(tkcurselection(Env$l.fr1$obj.list)))+1]
     if ("var.list"%in%names(Env$l.fr2)) {
 	tkdelete(Env$l.fr2$var.list,0,"end")
 	for (i in 1:ncol(Env$dataset)) {tkinsert(Env$l.fr2$var.list,"end",colnames(Env$dataset)[i])}
@@ -5249,7 +5259,7 @@ tracer.barres.moyun<-function() {
   Env$l.code$y.sup<-y.sup<-limites$ysup
   if (tclvalue(Env$l.var$nobar)==0) {
     Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=tclvalue(Env$l.var$couleur1A),log=graphe.log(),
-	border=tclvalue(Env$l.var$col.borduresA),ylim=c(y.inf,y.sup),names.arg=Env$l.var$noms1)
+	border=tclvalue(Env$l.var$col.borduresA),ylim=c(y.inf,y.sup),names.arg=Env$l.var$noms1,xpd=FALSE)
   } else {
     Env$l.var$add.abscisses<-barplot(valeurs,log=graphe.log(),ylim=c(y.inf,y.sup),plot=FALSE)
     plot(Env$l.var$add.abscisses,valeurs,cex=1.7,pch=16,col=tclvalue(Env$l.var$couleur1A),xlim=c(min(Env$l.var$add.abscisses)-0.5,max(Env$l.var$add.abscisses)+0.5),
@@ -5265,7 +5275,7 @@ tracer.barres.moyun<-function() {
   if (tclvalue(Env$l.var$nobar)==0 & graphe.log()=="" & tclvalue(Env$l.var$hachuresA)!="1") {
     hachures<-graphe.hachures(num=as.numeric(tclvalue(Env$l.var$hachuresA)))
     barplot(valeurs,axes=FALSE,ann=FALSE,col=tclvalue(Env$l.var$col.borduresA),border=tclvalue(Env$l.var$col.borduresA),
-	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,names.arg="",add=TRUE)
+	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,names.arg="",xpd=FALSE,add=TRUE)
   }
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
@@ -5294,7 +5304,7 @@ tracer.barres.moyplusieurs<-function() {
   if (tclvalue(Env$l.var$nobar)==0) {
     Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$couleur1B,log=graphe.log(),
 	border=Env$l.var$col.borduresB,ylim=c(y.inf,y.sup),names.arg=Env$l.var$noms1,
-	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE))
+	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),xpd=FALSE)
   } else {
     Env$l.var$add.abscisses<-barplot(valeurs,log=graphe.log(),ylim=c(y.inf,y.sup),beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),plot=FALSE)
     plot(if(tclvalue(Env$l.var$stack)==1){rep(Env$l.var$add.abscisses,each=length(Env$l.var$add.abscisses))}else{Env$l.var$add.abscisses},valeurs,cex=1.7,pch=16,
@@ -5312,7 +5322,7 @@ tracer.barres.moyplusieurs<-function() {
     hachures<-graphe.hachures(num=Env$l.var$hachuresB)
     barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$col.borduresB,border=Env$l.var$col.borduresB,
 	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,
-	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),names.arg=rep("",nlevels(facteur1)),add=TRUE)
+	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),names.arg=rep("",nlevels(facteur1)),xpd=FALSE,add=TRUE)
   }
   if (tclvalue(Env$l.var$stack)==0 & nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
@@ -5349,7 +5359,7 @@ tracer.barres.propun<-function() {
   Env$l.code$y.sup<-y.sup<-limites$ysup
   if (tclvalue(Env$l.var$nobar)==0) {
     Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=tclvalue(Env$l.var$couleur1A),log=graphe.log(),
-	border=tclvalue(Env$l.var$col.borduresA),ylim=c(y.inf,y.sup),names.arg=Env$l.var$nomsprop.fac)
+	border=tclvalue(Env$l.var$col.borduresA),ylim=c(y.inf,y.sup),names.arg=Env$l.var$nomsprop.fac,xpd=FALSE)
   } else {
     Env$l.var$add.abscisses<-barplot(valeurs,log=graphe.log(),ylim=c(y.inf,y.sup),plot=FALSE)
     plot(Env$l.var$add.abscisses,valeurs,cex=1.7,pch=16,col=tclvalue(Env$l.var$couleur1A),xlim=c(min(Env$l.var$add.abscisses)-0.5,max(Env$l.var$add.abscisses)+0.5),
@@ -5365,7 +5375,7 @@ tracer.barres.propun<-function() {
   if (tclvalue(Env$l.var$nobar)==0 & graphe.log()=="" & tclvalue(Env$l.var$hachuresA)!="1") {
     hachures<-graphe.hachures(num=as.numeric(tclvalue(Env$l.var$hachuresA)))
     barplot(valeurs,axes=FALSE,ann=FALSE,col=tclvalue(Env$l.var$col.borduresA),border=tclvalue(Env$l.var$col.borduresA),
-	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,names.arg="",add=TRUE)
+	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,names.arg="",xpd=FALSE,add=TRUE)
   }
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
@@ -5400,7 +5410,7 @@ tracer.barres.propplusieurs<-function() {
   if (tclvalue(Env$l.var$nobar)==0) {
     Env$l.var$add.abscisses<-barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$couleur1B,log=graphe.log(),
 	border=Env$l.var$col.borduresB,ylim=c(y.inf,y.sup),names.arg=Env$l.var$nomsprop.fac,
-	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE))
+	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),xpd=FALSE)
   } else {
     Env$l.var$add.abscisses<-barplot(valeurs,log=graphe.log(),ylim=c(y.inf,y.sup),beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),
 	plot=FALSE)
@@ -5419,7 +5429,7 @@ tracer.barres.propplusieurs<-function() {
     hachures<-graphe.hachures(num=Env$l.var$hachuresB)
     barplot(valeurs,axes=FALSE,ann=FALSE,col=Env$l.var$col.borduresB,border=Env$l.var$col.borduresB,
 	log=graphe.log(),ylim=c(y.inf,y.sup),density=hachures$densite,angle=hachures$angle,
-	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),names.arg=rep("",nlevels(facteur)),add=TRUE)
+	beside=ifelse(tclvalue(Env$l.var$stack)==1,FALSE,TRUE),names.arg=rep("",nlevels(facteur)),xpd=FALSE,add=TRUE)
   }
   if (tclvalue(Env$l.var$stack)==0 & nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
@@ -6079,8 +6089,12 @@ code.open<-function() {
     cat("#----------------------------------------")
   }
   code.graphtype()
+  cat("# Loading of the dataset\n\n")
+  cat(paste("dataset <- ",Env$loading,"\n",sep=""))
+  cat("attach(dataset)\n\n")
   code.data()
   code.graph()
+  cat("detach(dataset)\n\n")
   sink(NULL)
 }
 
@@ -6092,7 +6106,8 @@ code.open<-function() {
 code.graphtype<-function() {
   graph <- if (Env$l.var$ecran=="H") {"Histogram"} else if (Env$l.var$ecran=="M") {"Box plot"} else if (Env$l.var$ecran=="B") {"Bar plot"} else
     if (Env$l.var$ecran=="Ca") {"Pie chart"} else if (Env$l.var$ecran=="Co") {"Curve"} else if (Env$l.var$ecran=="N") {"Scatter plot"}
-  cat("\n\n\n#------------------------------\n")
+  if (Env$l.code$graphsnb>0) {cat("\n")}
+  cat("\n#------------------------------\n")
   Env$l.code$graphsnb <- Env$l.code$graphsnb+1
   cat(paste("# GRAPH ",Env$l.code$graphsnb,": ",graph,sep=""))
   cat("\n#------------------------------\n\n")
@@ -6802,19 +6817,17 @@ code.graph.barres<-function() {
 	  if (tclvalue(Env$l.var$col.borduresA)!="black" & tclvalue(Env$l.var$col.borduresA)!="#000000") {texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")}
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
 	  texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
-	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"))\n\n",sep="")
+	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), xpd=FALSE)\n\n",sep="")
 	  if (graphe.log()=="" & tclvalue(Env$l.var$hachuresA)!="1") {
 	    hachures<-graphe.hachures(num=as.numeric(tclvalue(Env$l.var$hachuresA)))
 	    texte<-paste(texte,"barplot(means, axes=FALSE, ann=FALSE",sep="")
-	    if (tclvalue(Env$l.var$col.borduresA)!="black" & tclvalue(Env$l.var$col.borduresA)!="#000000") {
-		texte<-paste(texte,", col=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
-		texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
-	    }
+	    texte<-paste(texte,", col=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
+	    texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
 	    texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	    texte<-paste(texte,",\n  density=",hachures$densite,sep="")
 	    texte<-paste(texte,", angle=",hachures$angle,sep="")
-	    texte<-paste(texte,", names.arg=\"\"",sep="")
-	    texte<-paste(texte,", add=TRUE)\n\n",sep="")
+	    texte<-paste(texte,", names.arg=rep(\"\",",length(Env$l.var$noms1),")",sep="")
+	    texte<-paste(texte,", xpd=FALSE, add=TRUE)\n\n",sep="")
 	  }
 	} else {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
@@ -6840,20 +6853,18 @@ code.graph.barres<-function() {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
 	  texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	  texte<-paste(texte,", beside=",ifelse(tclvalue(Env$l.var$stack)==1,"FALSE","TRUE"),sep="")
-	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"))\n\n",sep="")
+	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), xpd=FALSE)\n\n",sep="")
 	  if (graphe.log()=="" & any(Env$l.var$hachuresB!=1)) {
 	    hachures<-graphe.hachures(num=Env$l.var$hachuresB)
 	    texte<-paste(texte,"barplot(means, axes=FALSE, ann=FALSE",sep="")
-	    if (any(!Env$l.var$col.borduresB%in%c("black","#000000"))) {
-		texte<-paste(texte,", col=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
-		texte<-paste(texte,", border=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
-	    }
+	    texte<-paste(texte,", col=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+	    texte<-paste(texte,", border=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
 	    texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	    texte<-paste(texte,", beside=",ifelse(tclvalue(Env$l.var$stack)==1,"FALSE","TRUE"),sep="")
 	    texte<-paste(texte,", density=c(",paste(hachures$densite,collapse=","),")",sep="")
 	    texte<-paste(texte,", angle=c(",paste(hachures$angle,collapse=","),")",sep="")
-	    texte<-paste(texte,",\n  names.arg=\"\"",sep="")
-	    texte<-paste(texte,", add=TRUE)\n\n",sep="")
+	    texte<-paste(texte,",\n  names.arg=rep(\"\",",length(Env$l.var$noms1),")",sep="")
+	    texte<-paste(texte,", xpd=FALSE, add=TRUE)\n\n",sep="")
 	  }
 	} else {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
@@ -6903,19 +6914,17 @@ code.graph.barres<-function() {
 	  if (tclvalue(Env$l.var$col.borduresA)!="black" & tclvalue(Env$l.var$col.borduresA)!="#000000") {texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")}
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
 	  texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
-	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$nomsprop.fac,collapse="\",\""),"\"))\n\n",sep="")
+	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$nomsprop.fac,collapse="\",\""),"\"), xpd=FALSE)\n\n",sep="")
 	  if (graphe.log()=="" & tclvalue(Env$l.var$hachuresA)!="1") {
 	    hachures<-graphe.hachures(num=as.numeric(tclvalue(Env$l.var$hachuresA)))
-	    texte<-paste(texte,"barplot(means, axes=FALSE, ann=FALSE",sep="")
-	    if (tclvalue(Env$l.var$col.borduresA)!="black" & tclvalue(Env$l.var$col.borduresA)!="#000000") {
-		texte<-paste(texte,", col=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
-		texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
-	    }
+	    texte<-paste(texte,"barplot(proportions, axes=FALSE, ann=FALSE",sep="")
+	    texte<-paste(texte,", col=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
+	    texte<-paste(texte,", border=\"",tclvalue(Env$l.var$col.borduresA),"\"",sep="")
 	    texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	    texte<-paste(texte,",\n  density=",hachures$densite,sep="")
 	    texte<-paste(texte,", angle=",hachures$angle,sep="")
-	    texte<-paste(texte,", names.arg=\"\"",sep="")
-	    texte<-paste(texte,", add=TRUE)\n\n",sep="")
+	    texte<-paste(texte,", names.arg=rep(\"\",",length(Env$l.var$nomsprop.fac),")",sep="")
+	    texte<-paste(texte,", xpd=FALSE, add=TRUE)\n\n",sep="")
 	  }
 	} else {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
@@ -6934,7 +6943,6 @@ code.graph.barres<-function() {
 	code.graph.barres.erreurs(type="proportions")
     } else {
 	texte<-"graph <- barplot(proportions"
-
 	if (tclvalue(Env$l.var$nobar)==0) {
 	  texte<-paste(texte,", axes=FALSE, ann=FALSE",sep="")
 	  texte<-paste(texte,", col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\")",sep="")
@@ -6942,20 +6950,18 @@ code.graph.barres<-function() {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
 	  texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	  texte<-paste(texte,", beside=",ifelse(tclvalue(Env$l.var$stack)==1,"FALSE","TRUE"),sep="")
-	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$nomsprop.fac,collapse="\",\""),"\"))\n\n",sep="")
+	  texte<-paste(texte,", names=c(\"",paste(Env$l.var$nomsprop.fac,collapse="\",\""),"\"), xpd=FALSE)\n\n",sep="")
 	  if (graphe.log()=="" & any(Env$l.var$hachuresB!=1)) {
 	    hachures<-graphe.hachures(num=Env$l.var$hachuresB)
-	    texte<-paste(texte,"barplot(means, axes=FALSE, ann=FALSE",sep="")
-	    if (any(!Env$l.var$col.borduresB%in%c("black","#000000"))) {
-		texte<-paste(texte,", col=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
-		texte<-paste(texte,", border=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
-	    }
+	    texte<-paste(texte,"barplot(proportions, axes=FALSE, ann=FALSE",sep="")
+	    texte<-paste(texte,", col=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
+	    texte<-paste(texte,", border=c(\"",paste(Env$l.var$col.borduresB,collapse="\",\""),"\")",sep="")
 	    texte<-paste(texte,",\n  ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),")",sep="")
 	    texte<-paste(texte,", beside=",ifelse(tclvalue(Env$l.var$stack)==1,"FALSE","TRUE"),sep="")
 	    texte<-paste(texte,", density=c(",paste(hachures$densite,collapse=","),")",sep="")
 	    texte<-paste(texte,", angle=c(",paste(hachures$angle,collapse=","),")",sep="")
-	    texte<-paste(texte,",\n  names.arg=\"\"",sep="")
-	    texte<-paste(texte,", add=TRUE)\n\n",sep="")
+	    texte<-paste(texte,",\n  names.arg=rep(\"\",",length(Env$l.var$nomsprop.fac),")",sep="")
+	    texte<-paste(texte,", xpd=FALSE, add=TRUE)\n\n",sep="")
 	  }
 	} else {
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}

@@ -1,3 +1,12 @@
+version 1.9-80 (10-11-2012) - Thanks to Gilles Le Pape
+
+    - A bug with bar plots and y-axis lower limit different from 0 is fixed
+    - A new argument exists for the function run.GrapheR() : path.to.save, to generate and save the
+	code drawing the graphs without asking any question
+    - In the code generated, a section "Loading of the dataset" is added
+
+
+
 version 1.9-78 (07-10-2012) - Thanks to Juan Alberti
 
     - A bug with box-and-whisker plots with 2 factors is fixed
