@@ -1,9 +1,9 @@
-86902cff8e975bb49f4373ed06253cc1 *DESCRIPTION
+7342520da38acec8ac3593866836fdd6 *DESCRIPTION
 df390c53434517b304ac5db487184641 *NAMESPACE
-22e0c1fbd6ae53087af4142a600796e7 *NEWS
-1c5d606e96b58f9d6f1e13ee22986911 *R/Sources.R
+eacafe08fa1bdffc30e76cfb9d3d3918 *NEWS
+09a97965a15a4e182c4a337cdfb98d7d *R/Sources.R
 5903a0cd01fc7f72a2979d2576ba4a7c *R/zzz.R
-4b52904d80e1ba0d0d40ffffbc050e6d *R/zzzz.R
+0df6b0e54eee183db664bb237232745b *R/zzzz.R
 d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
 cff378271629a564eb02d6b4095958c3 *inst/CITATION
 487f0d0ce12d4c81c599907ff6558b9b *inst/doc/manual_de.Rnw
@@ -155,7 +155,7 @@ ebec99d05064b33db4046864ba838a69 *inst/lang/Language_en.csv
 e68d5df73d2033a153c3237b932a31bb *inst/lang/Language_es.csv
 070df1626074d0a01ce54c452916fdc2 *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-841660a3b938ecfffd3e6b5cfa688885 *man/GrapheR-package.Rd
+bec183be56e5e818417e87aad06ca72f *man/GrapheR-package.Rd
 ba63001551b3db0ecade57b182bf0a4c *man/Swallows.Rd
 c651b55d3faa1bfafa05722338fc8900 *man/active.erreur.Rd
 6195084813fb4eb7529462f1492b888f *man/run.GrapheR.Rd

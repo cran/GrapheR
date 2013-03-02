@@ -4512,7 +4512,11 @@ graphe.axes<-function(type="",mids=NULL,longueur=NULL,orient=NULL,ordonnee=NULL)
 	if (tclvalue(Env$l.var$plusieurs)==0) {
 	  axis(1,labels=Env$l.var$noms1,at=1:length(Env$l.var$noms1))
 	} else {
-	  mtext(Env$l.var$noms1,side=1,line=1,at=seq(1.5,nlevels(Env$l.var$facteur.interaction)-0.5,2))
+	  n.lab <- length(Env$l.var$noms1)
+	  n.tot <- nlevels(Env$l.var$facteur.interaction)
+	  n <- n.tot/n.lab
+	  deb <- ((n.tot+1)-n*(n.lab-1))/2
+	  mtext(Env$l.var$noms1,side=1,line=1,at=seq(deb,deb+n*(n.lab-1),n))
 	}
     } else {
 	axis(1)
@@ -4538,7 +4542,11 @@ graphe.axes<-function(type="",mids=NULL,longueur=NULL,orient=NULL,ordonnee=NULL)
 	if (tclvalue(Env$l.var$plusieurs)==0) {
 	  axis(2,labels=Env$l.var$noms1,at=1:length(Env$l.var$noms1))
 	} else {
-	  mtext(Env$l.var$noms1,side=2,line=1,at=seq(1.5,nlevels(Env$l.var$facteur.interaction)-0.5,2))
+	  n.lab <- length(Env$l.var$noms1)
+	  n.tot <- nlevels(Env$l.var$facteur.interaction)
+	  n <- n.tot/n.lab
+	  deb <- ((n.tot+1)-n*(n.lab-1))/2
+	  mtext(Env$l.var$noms1,side=2,line=1,at=seq(deb,deb+n*(n.lab-1),n))
 	}
     }
   } else {
@@ -6428,7 +6436,11 @@ code.graph.axes<-function() {
 	if (tclvalue(Env$l.var$plusieurs)==0) {
 	  texte<-paste(texte,"axis(1, labels=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), at=1:",length(Env$l.var$noms1),sep="")
 	} else {
-	  texte<-paste(texte,"mtext(c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), side=1, line=1, at=c(",paste(seq(1.5,nlevels(Env$l.var$facteur.interaction)-0.5,2),collapse=","),")",sep="")
+	  n.lab <- length(Env$l.var$noms1)
+	  n.tot <- nlevels(Env$l.var$facteur.interaction)
+	  n <- n.tot/n.lab
+	  deb <- ((n.tot+1)-n*(n.lab-1))/2
+	  texte<-paste(texte,"mtext(c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), side=1, line=1, at=c(",paste(seq(deb,deb+n*(n.lab-1),n),collapse=","),")",sep="")
 	}
     } else {
 	texte<-paste(texte,"axis(1",sep="")
@@ -6480,7 +6492,11 @@ code.graph.axes<-function() {
 	if (tclvalue(Env$l.var$plusieurs)==0) {
 	  texte<-paste(texte,"axis(2, labels=c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), at=1:",length(Env$l.var$noms1),sep="")
 	} else {
-	  texte<-paste(texte,"mtext(c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), side=2, line=1, at=c(",paste(seq(1.5,nlevels(Env$l.var$facteur.interaction)-0.5,2),collapse=","),")",sep="")
+	  n.lab <- length(Env$l.var$noms1)
+	  n.tot <- nlevels(Env$l.var$facteur.interaction)
+	  n <- n.tot/n.lab
+	  deb <- ((n.tot+1)-n*(n.lab-1))/2
+	  texte<-paste(texte,"mtext(c(\"",paste(Env$l.var$noms1,collapse="\",\""),"\"), side=2, line=1, at=c(",paste(seq(deb,deb+n*(n.lab-1),n),collapse=","),")",sep="")
 	}
 	if (tclvalue(Env$l.var$plusieurs)==0) {
 	  if (tclvalue(Env$l.var$graduations.col)!="black" & tclvalue(Env$l.var$graduations.col)!="#000000") {texte<-paste(texte,", col.axis=\"",tclvalue(Env$l.var$graduations.col),"\"",sep="")}

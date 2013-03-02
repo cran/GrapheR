@@ -1,3 +1,9 @@
+version 1.9-81 (02-03-2013) - Thanks to Juan Alberti
+
+    - A bug in displaying labels in box-and-whisker plots with 2 factors is fixed
+
+
+
 version 1.9-80 (10-11-2012) - Thanks to Gilles Le Pape
 
     - A bug with bar plots and y-axis lower limit different from 0 is fixed
