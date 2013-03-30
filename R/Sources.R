@@ -6,7 +6,7 @@ language<-function(lang=NULL) {
   if (!is.null(lang)) {
     Env$lang<-lang
   } else {
-    Env$lang<-read.table(file.path(.path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))[1,1]
+    Env$lang<-read.table(file.path(path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))[1,1]
   }
 }
 
@@ -15,9 +15,10 @@ language<-function(lang=NULL) {
 # Chargement 1
 #-------------------------------------------------
 
-run.GrapheR<-function(lang=NULL,path.to.save=NULL) {
+run.GrapheR<-function(lang=NULL,path.to.save=NULL,figurej=FALSE) {
   language(lang=lang)
   Env$path.to.save<-path.to.save
+  Env$figurej <- figurej
   load.GrapheR()
 }
 
@@ -28,22 +29,22 @@ run.GrapheR<-function(lang=NULL,path.to.save=NULL) {
 
 load.GrapheR<-function() {
   Env$img<-if (Env$lang=="en") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Images_en.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Images_en.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     } else if (Env$lang=="fr") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Images_fr.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Images_fr.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     } else if (Env$lang=="es") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Images_es.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Images_es.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     } else if (Env$lang=="de") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Images_de.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Images_de.csv",fsep=.Platform$file.sep),header=FALSE,sep=";")
     }
   Env$voc<-if (Env$lang=="en") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Language_en.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Language_en.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     } else if (Env$lang=="fr") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Language_fr.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Language_fr.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     } else if (Env$lang=="es") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Language_es.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Language_es.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     } else if (Env$lang=="de") {
-    read.csv(file.path(.path.package("GrapheR"),"lang","Language_de.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
+    read.csv(file.path(path.package("GrapheR"),"lang","Language_de.csv",fsep=.Platform$file.sep),header=FALSE,as.is=1,sep=";")
     }
   Env$police<-tkfont.create(family="Arial",size=8)
   Env$police2<-tkfont.create(family="Arial",size=4)
@@ -1112,7 +1113,7 @@ col.symboles<-function() {
 
 fr1.close<-function() {
   Env$l.frames$Fr1.status<-0
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$vide<-tklabel(Env$l.frames$Fr1,text="",font=Env$police2)
@@ -1121,7 +1122,7 @@ fr1.close<-function() {
 
 fr1.openD<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$titre1<-tklabel(Env$l.frames$Fr1,text=Env$voc[2,1],font=Env$police3)
@@ -1181,7 +1182,7 @@ fr1.openD<-function() {
 
 fr1.openH<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$variable.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[36,1],font=Env$police)
@@ -1265,7 +1266,7 @@ fr1.openH<-function() {
 
 fr1.openM<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$variable.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[36,1],font=Env$police)
@@ -1348,7 +1349,7 @@ fr1.openM<-function() {
 
 fr1.openB<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$titre1<-tklabel(Env$l.frames$Fr1,text=Env$voc[84,1],font=Env$police3)
@@ -1555,7 +1556,7 @@ fr1.openB<-function() {
 
 fr1.openCa<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$var.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[36,1],font=Env$police)
@@ -1628,7 +1629,7 @@ fr1.openCa<-function() {
 
 fr1.openCo<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$titre1<-tklabel(Env$l.frames$Fr1,text=Env$voc[84,1],font=Env$police3)
@@ -1772,7 +1773,7 @@ fr1.openCo<-function() {
 
 fr1.openN<-function() {
   Env$l.frames$Fr1.status<-1
-  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr1)) {tkdestroy(Env$l.fr1[[i]])}
   Env$l.fr1<-list()
   Env$l.fr1$varX.lab<-tklabel(Env$l.frames$Fr1,text=Env$voc[127,1],font=Env$police)
@@ -1906,7 +1907,7 @@ fr1.openN<-function() {
 
 fr2.close<-function() {
   Env$l.frames$Fr2.status<-0
-  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr2)) {tkdestroy(Env$l.fr2[[i]])}
   Env$l.fr2<-list()
   Env$l.fr2$vide<-tklabel(Env$l.frames$Fr2,text="",font=Env$police2)
@@ -1915,7 +1916,7 @@ fr2.close<-function() {
 
 fr2.openD<-function() {
   Env$l.frames$Fr2.status<-1
-  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr2)) {tkdestroy(Env$l.fr2[[i]])}
   Env$l.fr2<-list()
   Env$l.fr2$titre1<-tklabel(Env$l.frames$Fr2,text=Env$voc[15,1],font=Env$police3)
@@ -1961,7 +1962,7 @@ fr2.openD<-function() {
 
 fr2.opengraphe<-function() {
   Env$l.frames$Fr2.status<-1
-  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr2)) {tkdestroy(Env$l.fr2[[i]])}
   Env$l.fr2<-list()
   Env$l.fr2$titre.lab<-tklabel(Env$l.frames$Fr2,text=Env$voc[44,1],font=Env$police)
@@ -1999,7 +2000,7 @@ fr2.opengraphe<-function() {
 
 fr3.close<-function() {
   Env$l.frames$Fr3.status<-0
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$vide<-tklabel(Env$l.frames$Fr3,text="",font=Env$police2)
@@ -2008,7 +2009,7 @@ fr3.close<-function() {
 
 fr3.openD<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$titre1<-tklabel(Env$l.frames$Fr3,text=Env$voc[15,1],font=Env$police3)
@@ -2045,7 +2046,7 @@ fr3.openD<-function() {
 
 fr3.openH<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$grad.lab1<-tklabel(Env$l.frames$Fr3,text=Env$voc[47,1],font=Env$police)
@@ -2120,7 +2121,7 @@ fr3.openH<-function() {
 
 fr3.openM<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$grad.lab1<-tklabel(Env$l.frames$Fr3,text=Env$voc[47,1],font=Env$police)
@@ -2211,7 +2212,7 @@ fr3.openM<-function() {
 
 fr3.openB<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$grad.lab1<-tklabel(Env$l.frames$Fr3,text=Env$voc[47,1],font=Env$police)
@@ -2318,7 +2319,7 @@ fr3.openB<-function() {
 
 fr3.openCa<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$noms.lab1<-tklabel(Env$l.frames$Fr3,text=Env$voc[116,1],font=Env$police)
@@ -2359,7 +2360,7 @@ fr3.openCa<-function() {
 
 fr3.openCoN<-function() {
   Env$l.frames$Fr3.status<-1
-  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr3)) {tkdestroy(Env$l.fr3[[i]])}
   Env$l.fr3<-list()
   Env$l.fr3$grad.lab1<-tklabel(Env$l.frames$Fr3,text=Env$voc[47,1],font=Env$police)
@@ -2453,7 +2454,7 @@ fr3.openCoN<-function() {
 
 fr4.close<-function() {
   Env$l.frames$Fr4.status<-0
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   if ("l.hachures"%in%names(Env$l.fr4)) {
     for (i in 1:9) {tkdestroy(Env$l.fr4$l.hachures[[i]])}
   }
@@ -2472,7 +2473,7 @@ fr4.close<-function() {
 
 fr4.openD<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   type.var<-"unknown"
@@ -2544,7 +2545,7 @@ fr4.openD<-function() {
 
 fr4.openH<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$nombre.lab<-tklabel(Env$l.frames$Fr4,text=Env$voc[55,1],font=Env$police)
@@ -2583,7 +2584,7 @@ fr4.openH<-function() {
 
 fr4.openM<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$noms.list<-tklistbox(Env$l.frames$Fr4,height=7,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr4$noms.scroll,...))
@@ -2642,7 +2643,7 @@ fr4.openM<-function() {
 
 fr4.openB<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$noms.list<-tklistbox(Env$l.frames$Fr4,height=7,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr4$noms.scroll,...))
@@ -2675,7 +2676,7 @@ fr4.openB<-function() {
   Env$l.fr4$hachures.lab<-tklabel(Env$l.frames$Fr4,text=Env$voc[92,1],font=Env$police)
   Env$l.fr4$l.hachures<-list()
   for (i in 1:9) {
-    Env$l.fr4$l.hachures[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Hachures",i,".gif",sep=""),fsep=.Platform$file.sep)))
+    Env$l.fr4$l.hachures[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Hachures",i,".gif",sep=""),fsep=.Platform$file.sep)))
   }
   if (tclvalue(Env$l.var$plusieurs)==0) {
     tkconfigure(Env$l.fr4$noms.list,state="disabled")
@@ -2727,7 +2728,7 @@ fr4.openB<-function() {
 
 fr4.openCa<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$noms.list<-tklistbox(Env$l.frames$Fr4,height=7,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr4$noms.scroll,...))
@@ -2758,7 +2759,7 @@ fr4.openCa<-function() {
   Env$l.fr4$hachures.lab<-tklabel(Env$l.frames$Fr4,text=Env$voc[92,1],font=Env$police)
   Env$l.fr4$l.hachures<-list()
   for (i in 1:9) {
-    Env$l.fr4$l.hachures[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Hachures",i,".gif",sep=""),fsep=.Platform$file.sep)))
+    Env$l.fr4$l.hachures[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Hachures",i,".gif",sep=""),fsep=.Platform$file.sep)))
   }
   tkconfigure(Env$l.fr4$l.hachures[[Env$l.var$hachuresB[1]]],borderwidth=2)
   tkbind(Env$l.fr4$l.hachures[[1]],"<ButtonRelease-1>",function() {hachures2(num=1)})
@@ -2793,7 +2794,7 @@ fr4.openCa<-function() {
 
 fr4.openCo<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$noms.list<-tklistbox(Env$l.frames$Fr4,height=10,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr4$noms.scroll,...))
@@ -2815,7 +2816,7 @@ fr4.openCo<-function() {
   Env$l.fr4$symboles.lab<-tklabel(Env$l.frames$Fr4,text=Env$voc[138,1],font=Env$police)
   Env$l.fr4$l.symboles<-list()
   for (i in 1:8) {
-    Env$l.fr4$l.symboles[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Symbole",i,".gif",sep=""),fsep=.Platform$file.sep)))
+    Env$l.fr4$l.symboles[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Symbole",i,".gif",sep=""),fsep=.Platform$file.sep)))
   }
   tkbind(Env$l.fr4$l.symboles[[1]],"<ButtonRelease-1>",function() {symboles(num=1)})
   tkbind(Env$l.fr4$l.symboles[[2]],"<ButtonRelease-1>",function() {symboles(num=2)})
@@ -2901,7 +2902,7 @@ fr4.openCo<-function() {
 
 fr4.openN<-function() {
   Env$l.frames$Fr4.status<-1
-  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr4)) {tkdestroy(Env$l.fr4[[i]])}
   Env$l.fr4<-list()
   Env$l.fr4$noms.list<-tklistbox(Env$l.frames$Fr4,height=7,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr4$noms.scroll,...))
@@ -2920,7 +2921,7 @@ fr4.openN<-function() {
   Env$l.fr4$symboles.lab<-tklabel(Env$l.frames$Fr4,text=Env$voc[138,1],font=Env$police)
   Env$l.fr4$l.symboles<-list()
   for (i in 1:8) {
-    Env$l.fr4$l.symboles[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Symbole",i,".gif",sep=""),fsep=.Platform$file.sep)))
+    Env$l.fr4$l.symboles[[i]]<-tklabel(Env$l.frames$Fr4,height=35,width=35,font=Env$police,relief="groove",borderwidth=0,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Symbole",i,".gif",sep=""),fsep=.Platform$file.sep)))
   }
   tkbind(Env$l.fr4$l.symboles[[1]],"<ButtonRelease-1>",function() {symboles(num=1)})
   tkbind(Env$l.fr4$l.symboles[[2]],"<ButtonRelease-1>",function() {symboles(num=2)})
@@ -2983,7 +2984,7 @@ fr4.openN<-function() {
 
 fr5.close<-function() {
   Env$l.frames$Fr5.status<-0
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$vide<-tklabel(Env$l.frames$Fr5,text="",font=Env$police2)
@@ -2992,7 +2993,7 @@ fr5.close<-function() {
 
 fr5.openD<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.var$levels.temp <- NULL
@@ -3048,7 +3049,7 @@ fr5.openD<-function() {
 
 fr5.openH<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$tracer.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[58,1],font=Env$police,foreground=ifelse(tclvalue(Env$l.var$hist.type)==Env$voc[42,1],"black","grey"))
@@ -3084,7 +3085,7 @@ fr5.openH<-function() {
 
 fr5.openM<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$taille.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[46,1],font=Env$police)
@@ -3103,7 +3104,7 @@ fr5.openM<-function() {
 
 fr5.openB<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$type.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[94,1],font=Env$police)
@@ -3133,7 +3134,7 @@ fr5.openB<-function() {
 
 fr5.openCa<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$legende.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[99,1],font=Env$police)
@@ -3157,7 +3158,7 @@ fr5.openCa<-function() {
 
 fr5.openCo<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$type.lab<-tklabel(Env$l.frames$Fr5,text=Env$voc[94,1],font=Env$police)
@@ -3173,7 +3174,7 @@ fr5.openCo<-function() {
 
 fr5.openN<-function() {
   Env$l.frames$Fr5.status<-1
-  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr5)) {tkdestroy(Env$l.fr5[[i]])}
   Env$l.fr5<-list()
   Env$l.fr5$noms.list<-tklistbox(Env$l.frames$Fr5,height=7,font=Env$police,selectmode="single",yscrollcommand=function(...) tkset(Env$l.fr5$noms.scroll,...))
@@ -3250,7 +3251,7 @@ fr5.openN<-function() {
 
 fr6.close<-function() {
   Env$l.frames$Fr6.status<-0
-  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_bas.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr6)) {tkdestroy(Env$l.fr6[[i]])}
   Env$l.fr6<-list()
   Env$l.fr6$vide<-tklabel(Env$l.frames$Fr6,text="",font=Env$police2)
@@ -3259,7 +3260,7 @@ fr6.close<-function() {
 
 fr6.openM<-function() {
   Env$l.frames$Fr6.status<-1
-  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr6)) {tkdestroy(Env$l.fr6[[i]])}
   Env$l.fr6<-list()
   Env$l.fr6$legende.lab<-tklabel(Env$l.frames$Fr6,text=Env$voc[99,1],font=Env$police)
@@ -3301,7 +3302,7 @@ fr6.openM<-function() {
 
 fr6.openB<-function() {
   Env$l.frames$Fr6.status<-1
-  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr6)) {tkdestroy(Env$l.fr6[[i]])}
   Env$l.fr6<-list()
   Env$l.fr6$legende.lab<-tklabel(Env$l.frames$Fr6,text=Env$voc[99,1],font=Env$police)
@@ -3351,7 +3352,7 @@ fr6.openB<-function() {
 
 fr6.openCo<-function() {
   Env$l.frames$Fr6.status<-1
-  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr6)) {tkdestroy(Env$l.fr6[[i]])}
   Env$l.fr6<-list()
   Env$l.fr6$legende.lab<-tklabel(Env$l.frames$Fr6,text=Env$voc[99,1],font=Env$police)
@@ -3395,7 +3396,7 @@ fr6.openCo<-function() {
 
 fr6.openN<-function() {
   Env$l.frames$Fr6.status<-1
-  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
+  tkconfigure(Env$l.wdg$but.lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)))
   for (i in 1:length(Env$l.fr6)) {tkdestroy(Env$l.fr6[[i]])}
   Env$l.fr6<-list()
   Env$l.fr6$legende.lab<-tklabel(Env$l.frames$Fr6,text=Env$voc[99,1],font=Env$police)
@@ -3497,12 +3498,12 @@ new.window<-function() {
     }
   })
   Env$l.fr7$lignes.wdg<-tkscale(Env$l.frames$Fr7,from=1,to=4,showvalue=TRUE,font=Env$police5,variable=Env$l.var$nw.lignes,length=200,resolution=1,orient="vertical",command=function(...) {
-    tkconfigure(Env$l.fr7$fenetre,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Fenetre",tclvalue(Env$l.var$nw.lignes),"-",tclvalue(Env$l.var$nw.colonnes),".gif",sep=""),fsep=.Platform$file.sep)))
+    tkconfigure(Env$l.fr7$fenetre,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Fenetre",tclvalue(Env$l.var$nw.lignes),"-",tclvalue(Env$l.var$nw.colonnes),".gif",sep=""),fsep=.Platform$file.sep)))
   })
   Env$l.fr7$colonnes.wdg<-tkscale(Env$l.frames$Fr7,from=1,to=4,showvalue=TRUE,font=Env$police5,variable=Env$l.var$nw.colonnes,length=200,resolution=1,orient="horizontal",command=function(...) {
-    tkconfigure(Env$l.fr7$fenetre,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",paste("Fenetre",tclvalue(Env$l.var$nw.lignes),"-",tclvalue(Env$l.var$nw.colonnes),".gif",sep=""),fsep=.Platform$file.sep)))
+    tkconfigure(Env$l.fr7$fenetre,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",paste("Fenetre",tclvalue(Env$l.var$nw.lignes),"-",tclvalue(Env$l.var$nw.colonnes),".gif",sep=""),fsep=.Platform$file.sep)))
   })
-  Env$l.fr7$fenetre<-tklabel(Env$l.frames$Fr7,height=200,width=200,font=Env$police,borderwidth=0,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fenetre1-1.gif",fsep=.Platform$file.sep)))
+  Env$l.fr7$fenetre<-tklabel(Env$l.frames$Fr7,height=200,width=200,font=Env$police,borderwidth=0,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fenetre1-1.gif",fsep=.Platform$file.sep)))
   Env$l.fr7$ok<-tkbutton(Env$l.frames$Fr7,width=16,text=Env$voc[151,1],font=Env$police,command=function() {
     dimensions<-if (tclvalue(Env$l.var$nw.lignes)=="1" & tclvalue(Env$l.var$nw.colonnes)=="1") {c(7,7)} else
       if (tclvalue(Env$l.var$nw.lignes)=="2" & tclvalue(Env$l.var$nw.colonnes)=="1") {c(6,12)} else
@@ -4144,8 +4145,8 @@ pval<-function() {
   Env$l.fr7<-list()
   tkconfigure(Env$l.frames$Fr7,borderwidth=3)
   Env$l.fr7$titre.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[210,1],font=Env$police3)
-  Env$l.fr7$img1<-tklabel(Env$l.frames$Fr7,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Pvalue1.gif",fsep=.Platform$file.sep)))
-  Env$l.fr7$img2<-tklabel(Env$l.frames$Fr7,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Pvalue2.gif",fsep=.Platform$file.sep)))
+  Env$l.fr7$img1<-tklabel(Env$l.frames$Fr7,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Pvalue1.gif",fsep=.Platform$file.sep)))
+  Env$l.fr7$img2<-tklabel(Env$l.frames$Fr7,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Pvalue2.gif",fsep=.Platform$file.sep)))
   Env$l.fr7$txt1.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[202,1],font=Env$police)
   Env$l.fr7$txt1.wdg<-tkentry(Env$l.frames$Fr7,width=10,textvariable=Env$l.var$add.param1,font=Env$police)
   Env$l.fr7$txt2.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[202,1],font=Env$police)
@@ -4324,7 +4325,8 @@ enregistrer<-function() {
   }
   Env$l.fr7$fenetre.wdg<-ttkcombobox(Env$l.frames$Fr7,font=Env$police,values=fenetres,textvariable=Env$l.var$fen.num,state="readonly")
   Env$l.fr7$fichier.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[213,1],font=Env$police)
-  Env$l.fr7$fichier.wdg<-ttkcombobox(Env$l.frames$Fr7,width=8,font=Env$police,values=c("jpg","png","tiff"),textvariable=Env$l.var$fen.type,state="readonly")
+  formats <- if(Env$figurej) {c("jpg","png","tiff","FigureJ")} else {c("jpg","png","tiff")}
+  Env$l.fr7$fichier.wdg<-ttkcombobox(Env$l.frames$Fr7,width=8,font=Env$police,values=formats,textvariable=Env$l.var$fen.type,state="readonly")
   Env$l.fr7$largeur.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[214,1],font=Env$police)
   Env$l.fr7$largeur.wdg<-tkscale(Env$l.frames$Fr7,from=400,to=5000,showvalue=TRUE,font=Env$police,variable=Env$l.var$fen.larg,resolution=50,orient="horizontal")
   Env$l.fr7$res.lab<-tklabel(Env$l.frames$Fr7,text=Env$voc[265,1],font=Env$police)
@@ -4373,6 +4375,42 @@ enregistrer<-function() {
 	  if (nchar(file)>0) {
 	    dev.print(tiff,filename=paste(strsplit(file,".tiff"),".tiff",sep=""),units="px",
 		width=as.numeric(tclvalue(Env$l.var$fen.larg)),compression="none",res=as.numeric(tclvalue(Env$l.var$fen.res)))
+	  }
+	}
+	if (tclvalue(Env$l.var$fen.type)=="FigureJ") {
+	  file <- if (grepl("apple",Sys.getenv("R_PLATFORM"))) {
+	    paste(Sys.getenv("HOME"),"/Library/Preferences/IJ_Prefs.txt",sep="")
+	  } else { 
+	    paste(Sys.getenv("HOME"),".imagej","IJ_Prefs.txt",sep=.Platform$file.sep)
+	  }
+	  if ( file.exists (file) ) {
+	    # read prefs file into dataframe with keys/values
+	    ijPrefs <- read.table(file,header=FALSE,sep="=",col.names=c("Key","Value"))
+	    # read values from figurej panel properties
+	    panelTempDir <- paste("",with(ijPrefs,Value[Key==".figurej.tempDir"]),sep="")
+	    panelFilename <- paste("",with(ijPrefs,Value[Key==".figurej.panelFilename"]),sep="")
+	    panelWidth <- paste("",with(ijPrefs,Value[Key==".figurej.panelWidth"]),sep="")
+	    panelHeight <- paste("",with(ijPrefs,Value[Key==".figurej.panelHeight"]),sep="")	
+	    if ((panelTempDir!="")&&(panelFilename!="")&&(panelWidth!="")&&(panelHeight!="")) {
+		# save tif at defined location and resolution, and the code used for this graph
+		if (nchar(file)>0) {
+		  dev.print(tiff,filename=paste(panelTempDir,panelFilename,sep=""),units="px",width=as.numeric(panelWidth),height=as.numeric(panelHeight),res=as.numeric(tclvalue(Env$l.var$fen.res)))
+		  msg(text="Panel exported",type="info")
+		  sink(file=file.path(paste(panelTempDir,paste(strsplit(panelFilename,".tif"),".R",sep=""),sep=""),fsep=.Platform$file.sep),append=FALSE)
+		  code.graphtype()
+		  cat("# Loading of the dataset\n\n")
+		  cat(paste("dataset <- ",Env$loading,"\n",sep=""))
+		  cat("attach(dataset)\n\n")
+		  code.data()
+		  code.graph()
+		  cat("detach(dataset)\n\n")
+		  sink(NULL)
+		}
+	    } else {
+		msg(text=Env$voc[266,1],type="error")
+	    }
+	  } else {
+	    msg(text=Env$voc[266,1],type="error")
 	  }
 	}
     } else {
@@ -4426,10 +4464,10 @@ language.change<-function() {
 	if (tclvalue(lang.var)==Env$voc[239,1]) {langue<-"es"} else
 	if (tclvalue(lang.var)==Env$voc[241,1]) {langue<-"de"}
 	if (tclvalue(save.var)==1) {
-	  write(langue,file=file.path(.path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))
+	  write(langue,file=file.path(path.package("GrapheR"),"lang","Language.txt",fsep=.Platform$file.sep))
 	}
 	fermer.GrapheR()
-	run.GrapheR(lang=langue)
+	run.GrapheR(lang=langue,path.to.save=Env$path.to.save,figurej=Env$figurej)
     } else {
 	msg(text=Env$voc[220,1],type="error")
     }
@@ -5958,24 +5996,24 @@ navigation<-function(type) {
   fr6.close()
     if (type=="data") {
 	Env$l.var$ecran<-"D"
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[1,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[2,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[3,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[4,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[18,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[1,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[2,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[3,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[4,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[18,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab6,state="disabled")
 	fr1.openD()
     }
     if (type=="hist") {
 	Env$l.var$ecran<-"H"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[8,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[9,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[8,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[9,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="disabled")
 	reinit.variables()
@@ -5984,12 +6022,12 @@ navigation<-function(type) {
     if (type=="moust") {
 	Env$l.var$ecran<-"M"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[10,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[11,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[10,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[11,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="normal")
 	reinit.variables()
@@ -5998,12 +6036,12 @@ navigation<-function(type) {
     if (type=="barres") {
 	Env$l.var$ecran<-"B"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[8,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[12,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[8,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[12,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="normal")
 	reinit.variables()
@@ -6012,12 +6050,12 @@ navigation<-function(type) {
     if (type=="cam") {
 	Env$l.var$ecran<-"Ca"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[14,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[15,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[14,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[15,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="disabled")
 	reinit.variables()
@@ -6026,12 +6064,12 @@ navigation<-function(type) {
     if (type=="courbe") {
 	Env$l.var$ecran<-"Co"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[16,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[12,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[16,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[12,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="normal")
 	reinit.variables()
@@ -6040,12 +6078,12 @@ navigation<-function(type) {
     if (type=="nuage") {
 	Env$l.var$ecran<-"N"
 	msg(text="",type="info")
-	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[17,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[19,1],fsep=.Platform$file.sep)))
-	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab1,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[5,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab2,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[6,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab3,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[7,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab4,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[17,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab5,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[19,1],fsep=.Platform$file.sep)))
+	tkconfigure(Env$l.lab$lab6,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[13,1],fsep=.Platform$file.sep)))
 	tkconfigure(Env$l.wdg$but.lab5,state="normal")
 	tkconfigure(Env$l.wdg$but.lab6,state="normal")
 	reinit.variables()
@@ -6060,10 +6098,10 @@ navigation<-function(type) {
 #-------------------------------------------------
 
 aide<-function() {
-  if (Env$lang=="en") {browseURL(file.path(.path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="fr") {browseURL(file.path(.path.package("GrapheR"),"doc","manual_fr.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="es") {browseURL(file.path(.path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="de") {browseURL(file.path(.path.package("GrapheR"),"doc","manual_de.pdf",fsep=.Platform$file.sep))}
+  if (Env$lang=="en") {browseURL(file.path(path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
+  if (Env$lang=="fr") {browseURL(file.path(path.package("GrapheR"),"doc","manual_fr.pdf",fsep=.Platform$file.sep))}
+  if (Env$lang=="es") {browseURL(file.path(path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
+  if (Env$lang=="de") {browseURL(file.path(path.package("GrapheR"),"doc","manual_de.pdf",fsep=.Platform$file.sep))}
 }
 
 
@@ -7790,30 +7828,30 @@ ouvrir.GrapheR<-function() {
   tkwm.geometry(Env$Fen, "+30+30")
   ### Barre de navigation
   Env$l.wdg$vide1<-tklabel(Env$Fen,text="  ",font=Env$police)
-  Env$l.wdg$but.data<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_data.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="data")})
-  Env$l.wdg$sep1<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.his<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_hist.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="hist")})
-  Env$l.wdg$but.box<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_box.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="moust")})
-  Env$l.wdg$but.bar<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_bar.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="barres")})
-  Env$l.wdg$but.pie<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_cam.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="cam")})
-  Env$l.wdg$but.crb<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_courb.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="courbe")})
-  Env$l.wdg$but.sct<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_nuage.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="nuage")})
-  Env$l.wdg$sep2<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.win<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_window.gif",fsep=.Platform$file.sep)),command=new.window)
-  Env$l.wdg$sep3<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.drw<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_draw.gif",fsep=.Platform$file.sep)),command=pretracer)
-  Env$l.wdg$sep4<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.hor<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_hor.gif",fsep=.Platform$file.sep)),command=horizontal)
-  Env$l.wdg$but.ver<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_ver.gif",fsep=.Platform$file.sep)),command=vertical)
-  Env$l.wdg$but.drt<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_drt.gif",fsep=.Platform$file.sep)),command=affine)
-  Env$l.wdg$but.dis<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_dis.gif",fsep=.Platform$file.sep)),command=distrib)
-  Env$l.wdg$but.txt<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_text.gif",fsep=.Platform$file.sep)),command=texte)
-  Env$l.wdg$but.p<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_p.gif",fsep=.Platform$file.sep)),command=pval)
-  Env$l.wdg$sep5<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.save<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_save.gif",fsep=.Platform$file.sep)),command=enregistrer)
-  Env$l.wdg$sep6<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lang<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_lang.gif",fsep=.Platform$file.sep)),command=language.change)
-  Env$l.wdg$but.help<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","But_help.gif",fsep=.Platform$file.sep)),command=aide)
+  Env$l.wdg$but.data<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_data.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="data")})
+  Env$l.wdg$sep1<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.his<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_hist.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="hist")})
+  Env$l.wdg$but.box<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_box.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="moust")})
+  Env$l.wdg$but.bar<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_bar.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="barres")})
+  Env$l.wdg$but.pie<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_cam.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="cam")})
+  Env$l.wdg$but.crb<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_courb.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="courbe")})
+  Env$l.wdg$but.sct<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_nuage.gif",fsep=.Platform$file.sep)),command=function() {navigation(type="nuage")})
+  Env$l.wdg$sep2<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.win<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_window.gif",fsep=.Platform$file.sep)),command=new.window)
+  Env$l.wdg$sep3<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.drw<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_draw.gif",fsep=.Platform$file.sep)),command=pretracer)
+  Env$l.wdg$sep4<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.hor<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_hor.gif",fsep=.Platform$file.sep)),command=horizontal)
+  Env$l.wdg$but.ver<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_ver.gif",fsep=.Platform$file.sep)),command=vertical)
+  Env$l.wdg$but.drt<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_drt.gif",fsep=.Platform$file.sep)),command=affine)
+  Env$l.wdg$but.dis<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_dis.gif",fsep=.Platform$file.sep)),command=distrib)
+  Env$l.wdg$but.txt<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_text.gif",fsep=.Platform$file.sep)),command=texte)
+  Env$l.wdg$but.p<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_p.gif",fsep=.Platform$file.sep)),command=pval)
+  Env$l.wdg$sep5<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.save<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_save.gif",fsep=.Platform$file.sep)),command=enregistrer)
+  Env$l.wdg$sep6<-tklabel(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Sep.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lang<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_lang.gif",fsep=.Platform$file.sep)),command=language.change)
+  Env$l.wdg$but.help<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","But_help.gif",fsep=.Platform$file.sep)),command=aide)
   tkbind(Env$l.wdg$but.data,"<Enter>",function() {msg(text=Env$voc[221,1],type="info")})
   tkbind(Env$l.wdg$but.data,"<Leave>",function() {msg(text="",type="info")})
   tkbind(Env$l.wdg$but.his,"<Enter>",function() {msg(text=Env$voc[222,1],type="info")})
@@ -7862,8 +7900,8 @@ ouvrir.GrapheR<-function() {
   msg(text=Env$voc[1,1],type="info")
   ### Frame gauche
   Env$l.frames$Frg<-tkframe(Env$Fen)
-  Env$l.lab$lab1<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[1,1],fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab1<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab1<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[1,1],fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab1<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
 	if (Env$l.frames$Fr1.status==1) {fr1.close()} else {
 	if (Env$l.var$ecran=="D") {fr1.openD()} else
 	if (Env$l.var$ecran=="H") {fr1.openH()} else
@@ -7882,8 +7920,8 @@ ouvrir.GrapheR<-function() {
   fr1.openD()
   tkgrid(Env$l.frames$Fr1)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab2<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[2,1],fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab2<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab2<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[2,1],fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab2<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr2.status==1) {fr2.close()} else {
 	if (Env$l.var$ecran=="D") {fr2.openD()} else
 	if (Env$l.var$ecran%in%c("H","M","B","Ca","Co","N")) {fr2.opengraphe()}
@@ -7897,8 +7935,8 @@ ouvrir.GrapheR<-function() {
   fr2.close()
   tkgrid(Env$l.frames$Fr2)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab3<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[3,1],fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab3<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab3<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[3,1],fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab3<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr3.status==1) {fr3.close()} else {
 	if (Env$l.var$ecran=="D") {fr3.openD()} else
 	if (Env$l.var$ecran=="H") {fr3.openH()} else
@@ -7916,8 +7954,8 @@ ouvrir.GrapheR<-function() {
   fr3.close()
   tkgrid(Env$l.frames$Fr3)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab4<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[4,1],fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab4<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab4<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[4,1],fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab4<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr4.status==1) {fr4.close()} else {
 	if (Env$l.var$ecran=="D") {fr4.openD()} else
 	if (Env$l.var$ecran=="H") {fr4.openH()} else
@@ -7936,8 +7974,8 @@ ouvrir.GrapheR<-function() {
   fr4.close()
   tkgrid(Env$l.frames$Fr4)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab5<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images",Env$img[18,1],fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab5<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab5<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images",Env$img[18,1],fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab5<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr5.status==1) {fr5.close()} else {
 	if (Env$l.var$ecran=="D") {fr5.openD()} else
 	if (Env$l.var$ecran=="H") {fr5.openH()} else
@@ -7956,8 +7994,8 @@ ouvrir.GrapheR<-function() {
   fr5.close()
   tkgrid(Env$l.frames$Fr5)
   tkgrid(tklabel(Env$l.frames$Frg,text="",font=Env$police2))
-  Env$l.lab$lab6<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
-  Env$l.wdg$but.lab6<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(.path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
+  Env$l.lab$lab6<-tklabel(Env$l.frames$Frg,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Lab0.gif",fsep=.Platform$file.sep)))
+  Env$l.wdg$but.lab6<-tkbutton(Env$Fen,image=tkimage.create("photo",file=file.path(path.package("GrapheR"),"images","Fleche_haut.gif",fsep=.Platform$file.sep)),command=function() {
     if (Env$l.frames$Fr6.status==1) {fr6.close()} else {
 	if (Env$l.var$ecran=="M") {fr6.openM()} else
 	if (Env$l.var$ecran=="B") {fr6.openB()} else

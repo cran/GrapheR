@@ -1,3 +1,11 @@
+version 1.9-82 (30-03-2013)
+
+    - A new argument exists for the function run.GrapheR() : figurej, to allow to choose the "FigureJ"
+	option when saving a graph. This will save the graph (and the associated code) in a format
+	adapted for the pulgin FigureJ of the Software ImageJ
+
+
+
 version 1.9-81 (02-03-2013) - Thanks to Juan Alberti
 
     - A bug in displaying labels in box-and-whisker plots with 2 factors is fixed
