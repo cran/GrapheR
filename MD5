@@ -1,9 +1,10 @@
-72f3f64b9e0172671a440f5ff0995610 *DESCRIPTION
+b4c4c9addad0fe964f12ff6b7d6c6303 *DESCRIPTION
 df390c53434517b304ac5db487184641 *NAMESPACE
-3dc0e0d9d965bdd66f5502a559e5feb3 *NEWS
-cee82f1757e56a4828a47a45f63bc77e *R/Sources.R
+638e54e458ffb05fc73a646a15d48a7b *NEWS
+76149db4801e8a5507868ab63d23e4f6 *R/Sources.R
 5903a0cd01fc7f72a2979d2576ba4a7c *R/zzz.R
-16ac77ca59a9ad0c2a4e644629f3b6f6 *R/zzzz.R
+b3337504e2d1970a5bab9063b299b5a6 *R/zzzz.R
+946a20a93cd12a82f2a244b39320c8f2 *build/vignette.rds
 d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
 cff378271629a564eb02d6b4095958c3 *inst/CITATION
 487f0d0ce12d4c81c599907ff6558b9b *inst/doc/manual_de.Rnw
@@ -155,7 +156,7 @@ bb421215bd87f9ebabb4d45ee742c3cd *inst/lang/Language_de.csv
 a6285949616518a0962ddf0d22105283 *inst/lang/Language_es.csv
 1b5a0970bcd600bd6301a27a84523afb *inst/lang/Language_fr.csv
 037bf2c5a07c3b8efadd2f026d1bcbbe *man/Env.Rd
-2ff60f88eebffac456267ac894149467 *man/GrapheR-package.Rd
+8a533aadf64b22efbdaa2dafa158c538 *man/GrapheR-package.Rd
 ba63001551b3db0ecade57b182bf0a4c *man/Swallows.Rd
 c651b55d3faa1bfafa05722338fc8900 *man/active.erreur.Rd
 814eef89a4c27bcbddf7acd1cf31038c *man/run.GrapheR.Rd

@@ -4560,7 +4560,7 @@ graphe.axes<-function(type="",mids=NULL,longueur=NULL,orient=NULL,ordonnee=NULL)
 	axis(1)
     }
   } else if (type=="bar") {
-    abline(h=ordonnee)
+    if (tclvalue(Env$l.var$encadre)==0) {abline(h=ordonnee)}
     if (tclvalue(Env$l.var$nobar)==1) {
 	if (nrow(t(Env$l.var$add.abscisses))==1) {
 	  mtext(text=if(tclvalue(Env$l.var$moyprop)=="moy"){Env$l.var$noms1}else{Env$l.var$nomsprop.fac},at=Env$l.var$add.abscisses,side=1,line=1.1,
@@ -5299,6 +5299,8 @@ tracer.barres.moyun<-function() {
   facteur<-Env$dataset[,tclvalue(Env$l.var$facteur1)]
   valeurs<-tapply(variable,facteur,function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   Env$l.code$y.inf<-y.inf<-limites$yinf
@@ -5326,6 +5328,9 @@ tracer.barres.moyun<-function() {
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
 	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A))
+    if (tclvalue(Env$l.var$nobar)==1) {
+	points(Env$l.var$add.abscisses,valeurs,cex=1.7,pch=16,col=tclvalue(Env$l.var$couleur1A))
+    }
   }
   graphe.titre()
   graphe.axes(type="bar",ordonnee=limites$ordonnee)
@@ -5343,6 +5348,8 @@ tracer.barres.moyplusieurs<-function() {
   facteur2<-Env$dataset[,tclvalue(Env$l.var$facteur2)]
   valeurs<-tapply(variable,list(facteur2,facteur1),function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur1,facteur2=facteur2)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   Env$l.code$y.inf<-y.inf<-limites$yinf
@@ -5373,6 +5380,10 @@ tracer.barres.moyplusieurs<-function() {
   if (tclvalue(Env$l.var$stack)==0 & nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
 	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A))
+    if (tclvalue(Env$l.var$nobar)==1) {
+	points(if(tclvalue(Env$l.var$stack)==1){rep(Env$l.var$add.abscisses,each=length(Env$l.var$add.abscisses))}else{Env$l.var$add.abscisses},valeurs,cex=1.7,pch=16,
+	  col=if(tclvalue(Env$l.var$stack)==1){Env$l.var$couleur1B}else{rep(Env$l.var$couleur1B,ncol(Env$l.var$add.abscisses))})
+    }
   }
   graphe.titre()
   graphe.axes(type="bar",ordonnee=limites$ordonnee)
@@ -5399,6 +5410,8 @@ tracer.barres.propun<-function() {
   }
   valeurs<-valeurs[niveau,]
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur,valeurs=valeurs,prop.nvx=niveau)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   Env$l.code$y.inf<-y.inf<-limites$yinf
@@ -5426,6 +5439,9 @@ tracer.barres.propun<-function() {
   if (nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
 	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A))
+    if (tclvalue(Env$l.var$nobar)==1) {
+	points(Env$l.var$add.abscisses,valeurs,cex=1.7,pch=16,col=tclvalue(Env$l.var$couleur1A))
+    }
   }
   graphe.titre()
   graphe.axes(type="bar",ordonnee=limites$ordonnee)
@@ -5449,6 +5465,8 @@ tracer.barres.propplusieurs<-function() {
   }
   valeurs-valeurs[niveaux,]
   erreurs<-graphe.erreurs.calculer(variable=variable,facteur1=facteur,valeurs=valeurs,prop.nvx=niveaux)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.barres.limites(valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.var$add.hauteurs<-valeurs+erreurs$erreur.sup
   Env$l.code$y.inf<-y.inf<-limites$yinf
@@ -5480,6 +5498,10 @@ tracer.barres.propplusieurs<-function() {
   if (tclvalue(Env$l.var$stack)==0 & nchar(tclvalue(Env$l.var$erreur))>0 & tclvalue(Env$l.var$erreur)!=Env$voc[95,1]) {
     graphe.erreurs.tracer(abscisses=Env$l.var$add.abscisses,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,
 	erreur.sup=erreurs$erreur.sup,couleur=tclvalue(Env$l.var$couleur2A))
+    if (tclvalue(Env$l.var$nobar)==1) {
+	points(if(tclvalue(Env$l.var$stack)==1){rep(Env$l.var$add.abscisses,each=length(Env$l.var$add.abscisses))}else{Env$l.var$add.abscisses},valeurs,cex=1.7,pch=16,
+	  col=if(tclvalue(Env$l.var$stack)==1){Env$l.var$couleur1B}else{rep(Env$l.var$couleur1B,ncol(Env$l.var$add.abscisses))})
+    }
   }
   graphe.titre()
   graphe.axes(type="bar",ordonnee=limites$ordonnee)
@@ -5585,12 +5607,12 @@ tracer.courbe.limites<-function(varX,valeurs,erreur.inf,erreur.sup) {
     as.numeric(tclvalue(Env$l.var$limsup.axehor))
   }
   y.inf<-if(tclvalue(Env$l.var$liminf.axever)=="Auto") {
-    0.8*min(valeurs-erreur.inf)
+    0.8*min(valeurs-erreur.inf,na.rm=TRUE)
   } else {
     as.numeric(tclvalue(Env$l.var$liminf.axever))
   }
   y.sup<-if(tclvalue(Env$l.var$limsup.axever)=="Auto") {
-    1.1*max(valeurs+erreur.sup)
+    1.1*max(valeurs+erreur.sup,na.rm=TRUE)
   } else {
     as.numeric(tclvalue(Env$l.var$limsup.axever))
   }
@@ -5612,6 +5634,8 @@ tracer.courbe.moyun<-function() {
   }
   valeurs<-tapply(varY,varX,function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=varY,facteur1=factor(varX))
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.code$x.inf<-x.inf<-limites$xinf
   Env$l.code$x.sup<-x.sup<-limites$xsup
@@ -5642,6 +5666,8 @@ tracer.courbe.moyplusieurs<-function() {
   facteur<-Env$dataset[,tclvalue(Env$l.var$facteur1)][Env$dataset[,tclvalue(Env$l.var$facteur1)]%in%levels(Env$dataset[,tclvalue(Env$l.var$facteur1)])[as.numeric(strsplit(tclvalue(Env$l.var$niveau),split=" ")[[1]])+1]]
   valeurs<-tapply(varY,list(facteur,varX),function(x) mean(x,na.rm=TRUE))
   erreurs<-graphe.erreurs.calculer(variable=varY,facteur1=factor(varX),facteur2=facteur)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.code$x.inf<-x.inf<-limites$xinf
   Env$l.code$x.sup<-x.sup<-limites$xsup
@@ -5689,6 +5715,8 @@ tracer.courbe.propun<-function() {
     valeurs[i]<-length(varY[varY==tclvalue(Env$l.var$prop.niveaux) & factor(varX)==levels(factor(varX))[i]])/length(na.omit(varY[factor(varX)==levels(factor(varX))[i]]))
   }
   erreurs<-graphe.erreurs.calculer2(varX=factor(varX),varY=varY,niveau=tclvalue(Env$l.var$prop.niveaux),valeurs=valeurs)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.code$x.inf<-x.inf<-limites$xinf
   Env$l.code$x.sup<-x.sup<-limites$xsup
@@ -5724,6 +5752,8 @@ tracer.courbe.propplusieurs<-function() {
     }
   }
   erreurs<-graphe.erreurs.calculer2(varX=factor(varX),varY=varY,niveau=tclvalue(Env$l.var$prop.niveaux),valeurs=valeurs,facteur=facteur)
+  erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
+  erreurs$erreur.sup[is.na(erreurs$erreur.sup)] <- 0
   limites<-tracer.courbe.limites(varX=varX,valeurs=valeurs,erreur.inf=erreurs$erreur.inf,erreur.sup=erreurs$erreur.sup)
   Env$l.code$x.inf<-x.inf<-limites$xinf
   Env$l.code$x.sup<-x.sup<-limites$xsup
@@ -6489,14 +6519,16 @@ code.graph.axes<-function() {
     }
     texte<-paste(texte,")\n",sep="")
   } else if (Env$l.var$ecran=="B") {
-    ordonnee<-if (Env$l.code$y.inf>=0 & Env$l.code$y.sup>0) {
-	Env$l.code$y.inf
-    } else if (Env$l.code$y.inf<0 & Env$l.code$y.sup>0){
-	0
-    } else if (Env$l.code$y.inf<0 & Env$l.code$y.sup<=0) {
-	Env$l.code$y.sup
+    if (tclvalue(Env$l.var$encadre)==0) {
+	ordonnee<-if (Env$l.code$y.inf>=0 & Env$l.code$y.sup>0) {
+	  Env$l.code$y.inf
+	} else if (Env$l.code$y.inf<0 & Env$l.code$y.sup>0){
+	  0
+	} else if (Env$l.code$y.inf<0 & Env$l.code$y.sup<=0) {
+	  Env$l.code$y.sup
+	}
+	texte<-paste(texte,"abline(h=",ordonnee,")\n",sep="")
     }
-    texte<-paste(texte,"abline(h=",ordonnee,")\n",sep="")
     if (tclvalue(Env$l.var$nobar)==1) {
 	texte<-paste(texte,"mtext(",sep="")
 	if(tclvalue(Env$l.var$moyprop)=="moy"){
@@ -6890,14 +6922,21 @@ code.graph.barres<-function() {
 	  texte<-paste(texte,"plot(graph, means, axes=FALSE, ann=FALSE, pch=16, cex=1.7",sep="")
 	  texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur1A),"\"",sep="")
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
-	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,", ",max(Env$l.var$add.abscisses)+0.5,")",sep="")
+	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,",",max(Env$l.var$add.abscisses)+0.5,")",sep="")
 	  texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),"))\n\n",sep="")
 	}
 	cat(texte)
 	code.graph.axes()
 	code.graph.titre()
 	if (tclvalue(Env$l.var$encadre)==1) {cat("box()\n\n")}
-	code.graph.barres.erreurs(type="means")
+	if (tclvalue(Env$l.var$erreur)%in%Env$voc[96:98,1]) {
+	  code.graph.barres.erreurs(type="means")
+	  if (tclvalue(Env$l.var$nobar)==1) {
+	    cat("# Points above error bars\n\n")
+	    texte<-paste("points(graph, means, pch=16, cex=1.7, col=\"",tclvalue(Env$l.var$couleur1A),"\")\n\n",sep="")
+	    cat(texte)
+	  }
+	}
     } else {
 	texte<-"graph <- barplot(means"
 	if (tclvalue(Env$l.var$nobar)==0) {
@@ -6934,14 +6973,21 @@ code.graph.barres<-function() {
 	  texte<-paste(texte,", means, axes=FALSE, ann=FALSE, pch=16, cex=1.7",sep="")
 	  texte<-paste(texte,", col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\")",sep="")
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
-	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,", ",max(Env$l.var$add.abscisses)+0.5,")",sep="")
+	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,",",max(Env$l.var$add.abscisses)+0.5,")",sep="")
 	  texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),"))\n\n",sep="")
 	}
 	cat(texte)
 	code.graph.axes()
 	code.graph.titre()
 	if (tclvalue(Env$l.var$encadre)==1) {cat("box()\n\n")}
-	if (tclvalue(Env$l.var$stack)==0) {code.graph.barres.erreurs(type="means")}
+	if (tclvalue(Env$l.var$stack)==0 & tclvalue(Env$l.var$erreur)%in%Env$voc[96:98,1]) {
+	  code.graph.barres.erreurs(type="means")
+	  if (tclvalue(Env$l.var$nobar)==1) {
+	    cat("# Points above error bars\n\n")
+	    texte<-paste("points(graph, means, pch=16, cex=1.7, col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\"))\n\n",sep="")
+	    cat(texte)
+	  }
+	}
 	if (tclvalue(Env$l.var$legende)==1) {
 	  cat("# Legend\n\n")
 	  cat("par(xpd=TRUE)\n")
@@ -6987,14 +7033,21 @@ code.graph.barres<-function() {
 	  texte<-paste(texte,"plot(graph, proportions, axes=FALSE, ann=FALSE, pch=16, cex=1.7",sep="")
 	  texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur1A),"\"",sep="")
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
-	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,", ",max(Env$l.var$add.abscisses)+0.5,")",sep="")
+	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,",",max(Env$l.var$add.abscisses)+0.5,")",sep="")
 	  texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),"))\n\n",sep="")
 	}
 	cat(texte)
 	code.graph.axes()
 	code.graph.titre()
 	if (tclvalue(Env$l.var$encadre)==1) {cat("box()\n\n")}
-	code.graph.barres.erreurs(type="proportions")
+	if (tclvalue(Env$l.var$erreur)%in%Env$voc[97:98,1]) {
+	  code.graph.barres.erreurs(type="proportions")
+	  if (tclvalue(Env$l.var$nobar)==1) {
+	    cat("# Points above error bars\n\n")
+	    texte<-paste("points(graph, proportions, pch=16, cex=1.7, col=\"",tclvalue(Env$l.var$couleur1A),"\")\n\n",sep="")
+	    cat(texte)
+	  }
+	}
     } else {
 	texte<-"graph <- barplot(proportions"
 	if (tclvalue(Env$l.var$nobar)==0) {
@@ -7028,17 +7081,24 @@ code.graph.barres<-function() {
 	  } else {
 	    texte<-paste(texte,"graph",sep="")
 	  }
-	  texte<-paste(texte,", means, axes=FALSE, ann=FALSE, pch=16, cex=1.7",sep="")
+	  texte<-paste(texte,", proportions, axes=FALSE, ann=FALSE, pch=16, cex=1.7",sep="")
 	  texte<-paste(texte,", col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\")",sep="")
 	  if (graphe.log()!="") {texte<-paste(texte,", log=\"",graphe.log(),"\"",sep="")}
-	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,", ",max(Env$l.var$add.abscisses)+0.5,")",sep="")
+	  texte<-paste(texte,",\n  xlim=c(",min(Env$l.var$add.abscisses)-0.5,",",max(Env$l.var$add.abscisses)+0.5,")",sep="")
 	  texte<-paste(texte,", ylim=c(",round(Env$l.code$y.inf,2),",",round(Env$l.code$y.sup,2),"))\n\n",sep="")
 	}
 	cat(texte)
 	code.graph.axes()
 	code.graph.titre()
 	if (tclvalue(Env$l.var$encadre)==1) {cat("box()\n\n")}
-	if (tclvalue(Env$l.var$stack)==0) {code.graph.barres.erreurs(type="proportions")}
+	if (tclvalue(Env$l.var$stack)==0 & tclvalue(Env$l.var$erreur)%in%Env$voc[97:98,1]) {
+	  code.graph.barres.erreurs(type="proportions")
+	  if (tclvalue(Env$l.var$nobar)==1) {
+	    cat("# Points above error bars\n\n")
+	    texte<-paste("points(graph, proportions, pch=16, cex=1.7, col=c(\"",paste(Env$l.var$couleur1B,collapse="\",\""),"\"))\n\n",sep="")
+	    cat(texte)
+	  }
+	}
 	if (tclvalue(Env$l.var$legende)==1) {
 	  cat("# Legend\n\n")
 	  cat("par(xpd=TRUE)\n")
