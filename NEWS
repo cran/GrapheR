@@ -1,64 +1,43 @@
-version 1.9-84 (27-07-2014)
+version 1.9-85 (17-10-2015)
+    - A bug in calculation of proportions with NA's is fixed
+    - The way of displaying error bars is changed
 
+version 1.9-84 (27-07-2014)
     - Corrected CITATION file
 
-
-
 version 1.9-83 (28-06-2014)
-
     - Small bugs are fixed
 
-
-
 version 1.9-82 (30-03-2013)
-
     - A new argument exists for the function run.GrapheR() : figurej, to allow to choose the "FigureJ"
 	option when saving a graph. This will save the graph (and the associated code) in a format
 	adapted for the pulgin FigureJ of the Software ImageJ
 
-
-
 version 1.9-81 (02-03-2013) - Thanks to Juan Alberti
-
     - A bug in displaying labels in box-and-whisker plots with 2 factors is fixed
 
-
-
 version 1.9-80 (10-11-2012) - Thanks to Gilles Le Pape
-
     - A bug with bar plots and y-axis lower limit different from 0 is fixed
     - A new argument exists for the function run.GrapheR() : path.to.save, to generate and save the
 	code drawing the graphs without asking any question
     - In the code generated, a section "Loading of the dataset" is added
 
-
-
 version 1.9-78 (07-10-2012) - Thanks to Juan Alberti
-
     - A bug with box-and-whisker plots with 2 factors is fixed
     - Size of whiskers in box-and-whisker plots can now be set to 0, extending whiskers to extreme
 	values
 
-
-
 version 1.9-77 (04-03-2012) - Thanks to Jean-Patrick Pommier
-
     - A bug occuring on Ubuntu is fixed. The GUI can now be used on this platform as with any other
 
-
-
 version 1.9-76 (04-02-2012) - Thanks to Juan Alberti
-
     - A bug in axes drawing on box-and-whisker plots is fixed
     - When drawing a boxplot with 2 factors, colors are managed in the same way as with bar plots
     - Outliers are always displayed on box-and-whisker plots
     - A legend can be added on box-and-whisker plots when using 2 factors. The legend is managed
 	in the same way as with bar plots
 
-
-
 version 1.9-75-2 (03-02-2012) - Thanks to Helmut Schlumprecht, Juan Alberti and Gilles Le Pape
-
     - A German translation of the GUI and the user manual is available
     - Levels of a factor can be re-ordered in a desired order
     - An information message with R version, GrapheR version and date of graph creation

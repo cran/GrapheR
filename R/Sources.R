@@ -4663,8 +4663,8 @@ graphe.erreurs.calculer<-function(variable,facteur1,facteur2=NULL,valeurs=NULL,p
 	  erreur.inf<-erreur.sup<-erreur
 	} else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	  for (i in 1:nlevels(facteur1)) {
-	    erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]]),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[1])
-	    erreur.sup<-c(erreur.sup,binom.test(length(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]]),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[2]-valeurs[i])
+	    erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(na.omit(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]])),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[1])
+	    erreur.sup<-c(erreur.sup,binom.test(length(na.omit(variable[variable==levels(variable)[prop.nvx] & facteur1==levels(facteur1)[i]])),length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[2]-valeurs[i])
 	  }
 	} else {
 	  erreur.inf<-erreur.sup<-rep(0,nlevels(facteur1))
@@ -4683,9 +4683,9 @@ graphe.erreurs.calculer<-function(variable,facteur1,facteur2=NULL,valeurs=NULL,p
 	  erreur.sup<-matrix(0,nrow=length(prop.nvx),ncol=nlevels(facteur1))
 	  for (i in 1:nlevels(facteur1)) {
 	    for (j in 1:length(prop.nvx)) {
-		erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]]),
+		erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(na.omit(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]])),
 		  length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[1]
-		erreur.sup[j,i]<-binom.test(length(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]]),
+		erreur.sup[j,i]<-binom.test(length(na.omit(variable[variable==levels(variable)[prop.nvx[j]] & facteur1==levels(facteur1)[i]])),
 		  length(na.omit(variable[facteur1==levels(facteur1)[i]])))$conf.int[2]-valeurs[j,i]
 	    }
 	  }
@@ -4704,13 +4704,10 @@ graphe.erreurs.calculer<-function(variable,facteur1,facteur2=NULL,valeurs=NULL,p
 
 graphe.erreurs.tracer<-function(abscisses,valeurs,erreur.inf,erreur.sup,couleur,amplitude=NULL) {
   if (tclvalue(Env$l.var$erreur)%in%Env$voc[96:98,1]) {
-    segments(abscisses,valeurs-erreur.inf,abscisses,valeurs+erreur.sup,col=couleur)
     if (is.null(amplitude)) {
-	segments(abscisses-0.1,valeurs-erreur.inf,abscisses+0.1,valeurs-erreur.inf,col=couleur)
-	segments(abscisses-0.1,valeurs+erreur.sup,abscisses+0.1,valeurs+erreur.sup,col=couleur)
+	arrows(abscisses,valeurs-erreur.inf,abscisses,valeurs+erreur.sup,col=couleur,code=3,angle=90,length=0.1)
     } else {
-	segments(abscisses-0.015*amplitude,valeurs-erreur.inf,abscisses+0.015*amplitude,valeurs-erreur.inf,col=couleur)
-	segments(abscisses-0.015*amplitude,valeurs+erreur.sup,abscisses+0.015*amplitude,valeurs+erreur.sup,col=couleur)
+	arrows(abscisses,valeurs-erreur.inf,abscisses,valeurs+erreur.sup,col=couleur,code=3,angle=90,length=0.015*amplitude)
     }
     msg(text="",type="info")
   }
@@ -5405,7 +5402,7 @@ tracer.barres.propun<-function() {
   valeurs<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur))
   for (i in 1:nlevels(facteur)) {
     for (j in 1:nlevels(variable)) {
-	valeurs[j,i]<-length(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]])/length(na.omit(variable[facteur==levels(facteur)[i]]))
+	valeurs[j,i]<-length(na.omit(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]]))/length(na.omit(variable[facteur==levels(facteur)[i]]))
     }
   }
   valeurs<-valeurs[niveau,]
@@ -5460,7 +5457,7 @@ tracer.barres.propplusieurs<-function() {
   valeurs<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur))
   for (i in 1:nlevels(facteur)) {
     for (j in 1:nlevels(variable)) {
-	valeurs[j,i]<-length(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]])/length(na.omit(variable[facteur==levels(facteur)[i]]))
+	valeurs[j,i]<-length(na.omit(variable[variable==levels(variable)[j] & facteur==levels(facteur)[i]]))/length(na.omit(variable[facteur==levels(facteur)[i]]))
     }
   }
   valeurs-valeurs[niveaux,]
@@ -5557,8 +5554,8 @@ graphe.erreurs.calculer2<-function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NU
 	erreur.inf<-erreur.sup<-erreur
     } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	for (i in 1:nlevels(varX)) {
-	  erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(varY[varY==niveau & varX==levels(varX)[i]]),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[1])
-	  erreur.sup<-c(erreur.sup,binom.test(length(varY[varY==niveau & varX==levels(varX)[i]]),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[2]-valeurs[i])
+	  erreur.inf<-c(erreur.inf,valeurs[i]-binom.test(length(na.omit(varY[varY==niveau & varX==levels(varX)[i]])),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[1])
+	  erreur.sup<-c(erreur.sup,binom.test(length(na.omit(varY[varY==niveau & varX==levels(varX)[i]])),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[2]-valeurs[i])
 	}
     } else {
 	erreur.inf<-erreur.sup<-rep(0,nlevels(varX))
@@ -5577,9 +5574,9 @@ graphe.erreurs.calculer2<-function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NU
 	erreur.sup<-matrix(0,nrow=nlevels(facteur),ncol=nlevels(varX))
 	for (i in 1:nlevels(varX)) {
 	  for (j in 1:nlevels(facteur)) {
-	    erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(varY[varY==niveau & varX==levels(varX)[i] & facteur==levels(facteur)[j]]),
+	    erreur.inf[j,i]<-valeurs[j,i]-binom.test(length(na.omit(varY[varY==niveau & varX==levels(varX)[i] & facteur==levels(facteur)[j]])),
 		length(varY[varX==levels(varX)[i] & facteur==levels(facteur)[j]]))$conf.int[1]
-	    erreur.sup[j,i]<-binom.test(length(varY[varY==niveau & varX==levels(varX)[i] & facteur==levels(facteur)[j]]),
+	    erreur.sup[j,i]<-binom.test(length(na.omit(varY[varY==niveau & varX==levels(varX)[i] & facteur==levels(facteur)[j]])),
 		length(varY[varX==levels(varX)[i] & facteur==levels(facteur)[j]]))$conf.int[2]-valeurs[j,i]
 	  }
 	}
@@ -5712,7 +5709,7 @@ tracer.courbe.propun<-function() {
   }
   valeurs<-integer(nlevels(factor(varX)))
   for (i in 1:nlevels(factor(varX))) {
-    valeurs[i]<-length(varY[varY==tclvalue(Env$l.var$prop.niveaux) & factor(varX)==levels(factor(varX))[i]])/length(na.omit(varY[factor(varX)==levels(factor(varX))[i]]))
+    valeurs[i]<-length(na.omit(varY[varY==tclvalue(Env$l.var$prop.niveaux) & factor(varX)==levels(factor(varX))[i]]))/length(na.omit(varY[factor(varX)==levels(factor(varX))[i]]))
   }
   erreurs<-graphe.erreurs.calculer2(varX=factor(varX),varY=varY,niveau=tclvalue(Env$l.var$prop.niveaux),valeurs=valeurs)
   erreurs$erreur.inf[is.na(erreurs$erreur.inf)] <- 0
@@ -5748,7 +5745,7 @@ tracer.courbe.propplusieurs<-function() {
   valeurs<-matrix(0,nrow=nlevels(facteur),ncol=nlevels(factor(varX)))
   for (i in 1:nlevels(factor(varX))) {
     for (j in 1:nlevels(facteur)) {
-	valeurs[j,i]<-length(varY[varY==tclvalue(Env$l.var$prop.niveaux) & varX==levels(factor(varX))[i] & facteur==levels(facteur)[j]])/length(na.omit(varY[varX==levels(factor(varX))[i] & facteur==levels(facteur)[j]]))
+	valeurs[j,i]<-length(na.omit(varY[varY==tclvalue(Env$l.var$prop.niveaux) & varX==levels(factor(varX))[i] & facteur==levels(facteur)[j]]))/length(na.omit(varY[varX==levels(factor(varX))[i] & facteur==levels(facteur)[j]]))
     }
   }
   erreurs<-graphe.erreurs.calculer2(varX=factor(varX),varY=varY,niveau=tclvalue(Env$l.var$prop.niveaux),valeurs=valeurs,facteur=facteur)
@@ -6278,7 +6275,7 @@ code.data<-function() {
 	cat(paste("prop.total <- matrix(0,nrow=nlevels(",proportions,"),ncol=nlevels(",facteurprop,"),dimnames=list(levels(",proportions,"),levels(",facteurprop,")))\n",sep=""))
 	cat(paste("for (i in 1:nlevels(",facteurprop,")) {\n",sep=""))
 	cat(paste("  for (j in 1:nlevels(",proportions,")) {\n",sep=""))
-	cat(paste("    prop.total[j,i] <- length(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,"==levels(",facteurprop,")[i]])/length(na.omit(",
+	cat(paste("    prop.total[j,i] <- length(na.omit(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,"==levels(",facteurprop,")[i]]))/length(na.omit(",
 	  proportions,"[",facteurprop,"==levels(",facteurprop,")[i]]))\n",sep=""))
 	cat("  }\n}\n")
 	if (tclvalue(Env$l.var$plusieurs)==0) {
@@ -6293,10 +6290,10 @@ code.data<-function() {
 	    cat("\nci.inf <- NULL\n")
 	    cat("ci.sup <- NULL\n")
 	    cat(paste("for (i in 1:nlevels(",facteurprop,")) {\n",sep=""))
-	    cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(",proportions,"[",proportions,"==levels(",proportions,")[",niveaux,"] & ",facteurprop,
-		"==levels(",facteurprop,")[i]]),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[1])\n",sep=""))
-	    cat(paste("  ci.sup <- c(ci.sup,binom.test(length(",proportions,"[",proportions,"==levels(",proportions,")[",niveaux,"] & ",facteurprop,
-		"==levels(",facteurprop,")[i]]),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[2] - proportions[i])\n",sep=""))
+	    cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(na.omit(",proportions,"[",proportions,"==levels(",proportions,")[",niveaux,"] & ",facteurprop,
+		"==levels(",facteurprop,")[i]])),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[1])\n",sep=""))
+	    cat(paste("  ci.sup <- c(ci.sup,binom.test(length(na.omit(",proportions,"[",proportions,"==levels(",proportions,")[",niveaux,"] & ",facteurprop,
+		"==levels(",facteurprop,")[i]])),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[2] - proportions[i])\n",sep=""))
 	    cat("}\n\n")
 	  } else {
 	    cat("\n")
@@ -6315,10 +6312,10 @@ code.data<-function() {
 	    cat("ci.sup <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")
 	    cat("for (i in 1:ncol(proportions)) {\n")
 	    cat(paste("  for (j in c(",paste(niveaux,collapse=","),")) {\n",sep=""))
-	    cat(paste("    ci.inf[j,i] <- proportions[j,i] - binom.test(length(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,
-		"==levels(",facteurprop,")[i]]),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[1]\n",sep=""))
-	    cat(paste("    ci.sup[j,i] <- binom.test(length(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,
-		"==levels(",facteurprop,")[i]]),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[2] - proportions[j,i]\n",sep=""))
+	    cat(paste("    ci.inf[j,i] <- proportions[j,i] - binom.test(length(na.omit(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,
+		"==levels(",facteurprop,")[i]])),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[1]\n",sep=""))
+	    cat(paste("    ci.sup[j,i] <- binom.test(length(na.omit(",proportions,"[",proportions,"==levels(",proportions,")[j] & ",facteurprop,
+		"==levels(",facteurprop,")[i]])),length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))$conf.int[2] - proportions[j,i]\n",sep=""))
 	    cat("  }\n}\n\n")
 	  } else {
 	    cat("\n")
@@ -6390,7 +6387,7 @@ code.data<-function() {
 	    cat(paste("varY <- ",varY,"[",facteur1,"==\"",niveau,"\"]\n",sep=""))
 	    cat("proportions <- NULL\n")
 	    cat("for (i in 1:nlevels(varX)) {\n")
-	    cat(paste("  proportions <- c(proportions,length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]])/",
+	    cat(paste("  proportions <- c(proportions,length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]]))/",
 		"length(na.omit(varY[varX==levels(varX)[i]])))","\n",sep=""))
 	    cat("}\n")
 	    if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
@@ -6402,10 +6399,10 @@ code.data<-function() {
 		cat("\nci.inf <- NULL\n")
 		cat("ci.sup <- NULL\n")
 		cat("for (i in 1:nlevels(varX)) {\n")
-		cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]])",
-		  ",length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[1])\n",sep=""))
-		cat(paste("  ci.sup <- c(ci.sup,binom.test(length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]])",
-		  ",length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[2] - proportions[i])\n",sep=""))
+		cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]])",
+		  "),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[1])\n",sep=""))
+		cat(paste("  ci.sup <- c(ci.sup,binom.test(length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i]])",
+		  "),length(na.omit(varY[varX==levels(varX)[i]])))$conf.int[2] - proportions[i])\n",sep=""))
 		cat("}\n\n")
 	    } else {
 		cat("\n")
@@ -6426,10 +6423,10 @@ code.data<-function() {
 		cat("\nci.inf <- NULL\n")
 		cat("ci.sup <- NULL\n")
 		cat(paste("for (i in 1:nlevels(varX)) {\n",sep=""))
-		cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(",varY,"[",varY,"==\"",varY.niv,"\" & varX==levels(varX)[i]])",
-		  ",length(na.omit(",varY,"[varX==levels(varX)[i]])))$conf.int[1])\n",sep=""))
-		cat(paste("  ci.sup <- c(ci.sup,binom.test(length(",varY,"[",varY,"==\"",varY.niv,"\" & varX==levels(varX)[i]])",
-		  ",length(na.omit(",varY,"[varX==levels(varX)[i]])))$conf.int[2] - proportions[i])\n",sep=""))
+		cat(paste("  ci.inf <- c(ci.inf,proportions[i] - binom.test(length(na.omit(",varY,"[",varY,"==\"",varY.niv,"\" & varX==levels(varX)[i]])",
+		  "),length(na.omit(",varY,"[varX==levels(varX)[i]])))$conf.int[1])\n",sep=""))
+		cat(paste("  ci.sup <- c(ci.sup,binom.test(length(na.omit(",varY,"[",varY,"==\"",varY.niv,"\" & varX==levels(varX)[i]])",
+		  "),length(na.omit(",varY,"[varX==levels(varX)[i]])))$conf.int[2] - proportions[i])\n",sep=""))
 		cat("}\n\n")
 	    } else {
 		cat("\n")
@@ -6443,7 +6440,7 @@ code.data<-function() {
 	  cat("proportions <- matrix(0,nrow=nlevels(fact),ncol=nlevels(varX),dimnames=list(levels(fact),levels(varX)))\n")
 	  cat("for (i in 1:nlevels(varX)) {\n")
 	  cat("  for (j in 1:nlevels(fact)) {\n")
-	  cat(paste("    proportions[j,i] <- length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==levels(fact)[j]])/length(na.omit(",
+	  cat(paste("    proportions[j,i] <- length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==levels(fact)[j]]))/length(na.omit(",
 	    "varY[varX==levels(varX)[i] & fact==levels(fact)[j]]))\n",sep=""))
 	  cat("  }\n}\n")
 	  if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
@@ -6457,9 +6454,9 @@ code.data<-function() {
 	    cat("ci.sup <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")
 	    cat("for (i in 1:ncol(proportions)) {\n")
 	    cat(paste("  for (j in c(\"",paste(niveaux,collapse="\",\""),"\")) {\n",sep=""))
-	    cat(paste("    ci.inf[j,i] <- proportions[j,i] - binom.test(length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==j]),",
+	    cat(paste("    ci.inf[j,i] <- proportions[j,i] - binom.test(length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==j])),",
 		"length(na.omit(varY[varX==levels(varX)[i] & fact==j])))$conf.int[1]\n",sep=""))
-	    cat(paste("    ci.sup[j,i] <- binom.test(length(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==j]),",
+	    cat(paste("    ci.sup[j,i] <- binom.test(length(na.omit(varY[varY==\"",varY.niv,"\" & varX==levels(varX)[i] & fact==j])),",
 		"length(na.omit(varY[varX==levels(varX)[i] & fact==j])))$conf.int[2] - proportions[j,i]\n",sep=""))
 	    cat("  }\n}\n\n")
 	  } else {
@@ -6836,26 +6833,15 @@ code.graph.barres.erreurs<-function(type) {
   if (tclvalue(Env$l.var$erreur)==Env$voc[96,1]) {
     cat("# Error bars\n\n")
     texte<-""
-    texte<-paste("segments(graph, ",type," - std.dev, graph, ",type," + std.dev",sep="")
+    texte<-paste("arrows(graph, ",type," - std.dev, graph, ",type," + std.dev, code=3, angle=90, length=0.1",sep="")
     if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(graph - 0.1, ",type," + std.dev, graph + 0.1, ",type," + std.dev",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(graph - 0.1, ",type," - std.dev, graph + 0.1, ",type," - std.dev",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
+
     texte<-paste(texte,")\n\n",sep="")
     cat(texte)
   } else if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
     cat("# Error bars\n\n")
     texte<-""
-    texte<-paste("segments(graph, ",type," - std.err, graph, ",type," + std.err",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(graph - 0.1, ",type," + std.err, graph + 0.1, ",type," + std.err",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(graph - 0.1, ",type," - std.err, graph + 0.1, ",type," - std.err",sep="")
+    texte<-paste("arrows(graph, ",type," - std.err, graph, ",type," + std.err, code=3, angle=90, length=0.1",sep="")
     if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
     texte<-paste(texte,")\n\n",sep="")
     cat(texte)
@@ -6863,23 +6849,11 @@ code.graph.barres.erreurs<-function(type) {
     cat("# Error bars\n\n")
     texte<-""
     if (tclvalue(Env$l.var$moyprop)=="moy") {
-	texte<-paste("segments(graph, ",type," - ci, graph, ",type," + ci",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(graph - 0.1, ",type," + ci, graph + 0.1, ",type," + ci",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(graph - 0.1, ",type," - ci, graph + 0.1, ",type," - ci",sep="")
+	texte<-paste("arrows(graph, ",type," - ci, graph, ",type," + ci, code=3, angle=90, length=0.1",sep="")
 	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
 	texte<-paste(texte,")\n\n",sep="")
     } else {
-	texte<-paste("segments(graph, ",type," - ci.inf, graph, ",type," + ci.sup",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(graph - 0.1, ",type," + ci.sup, graph + 0.1, ",type," + ci.sup",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(graph - 0.1, ",type," - ci.inf, graph + 0.1, ",type," - ci.inf",sep="")
+	texte<-paste("arrows(graph, ",type," - ci.inf, graph, ",type," + ci.sup, code=3, angle=90, length=0.1",sep="")
 	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
 	texte<-paste(texte,")\n\n",sep="")
     }
@@ -7175,26 +7149,14 @@ code.graph.courbe.erreurs1<-function(type) {
   if (tclvalue(Env$l.var$erreur)==Env$voc[96,1]) {
     cat("# Error bars\n\n")
     texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae, ",type," - std.dev, abscissae, ",type," + std.dev",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae - width, ",type," + std.dev, abscissae + width, ",type," + std.dev",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae - width, ",type," - std.dev, abscissae + width, ",type," - std.dev",sep="")
+    texte<-paste(texte,"arrows(abscissae, ",type," - std.dev, abscissae, ",type," + std.dev, code=3, angle=90, length=width",sep="")
     if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
     texte<-paste(texte,")\n\n",sep="")
     cat(texte)
   } else if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
     cat("# Error bars\n\n")
     texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae, ",type," - std.err, abscissae, ",type," + std.err",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae - width, ",type," + std.err, abscissae + width, ",type," + std.err",sep="")
-    if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-    texte<-paste(texte,")\n",sep="")
-    texte<-paste(texte,"segments(abscissae - width, ",type," - std.err, abscissae + width, ",type," - std.err",sep="")
+    texte<-paste(texte,"arrows(abscissae, ",type," - std.err, abscissae, ",type," + std.err, code=3, angle=90, length=width",sep="")
     if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
     texte<-paste(texte,")\n\n",sep="")
     cat(texte)
@@ -7202,23 +7164,11 @@ code.graph.courbe.erreurs1<-function(type) {
     cat("# Error bars\n\n")
     texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
     if (tclvalue(Env$l.var$moyprop)=="moy") {
-	texte<-paste(texte,"segments(abscissae, ",type," - ci, abscissae, ",type," + ci",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type," + ci, abscissae + width, ",type," + ci",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type," - ci, abscissae + width, ",type," - ci",sep="")
+	texte<-paste(texte,"arrows(abscissae, ",type," - ci, abscissae, ",type," + ci, code=3, angle=90, length=width",sep="")
 	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
 	texte<-paste(texte,")\n\n",sep="")
     } else {
-	texte<-paste(texte,"segments(abscissae, ",type," - ci.inf, abscissae, ",type," + ci.sup",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type," + ci.sup, abscissae + width, ",type," + ci.sup",sep="")
-	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type," - ci.inf, abscissae + width, ",type," - ci.inf",sep="")
+	texte<-paste(texte,"arrows(abscissae, ",type," - ci.inf, abscissae, ",type," + ci.sup, code=3, angle=90, length=width",sep="")
 	if (tclvalue(Env$l.var$couleur2A)!="black" & tclvalue(Env$l.var$couleur2A)!="#000000") {texte<-paste(texte,", col=\"",tclvalue(Env$l.var$couleur2A),"\"",sep="")}
 	texte<-paste(texte,")\n\n",sep="")
     }
@@ -7234,67 +7184,46 @@ code.graph.courbe.erreurs1<-function(type) {
 code.graph.courbe.erreurs2<-function(type) {
   if (tclvalue(Env$l.var$erreur)==Env$voc[96,1]) {
     cat("# Error bars\n\n")
-    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n\n",sep="")
+    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
     cat(texte)
     for (i in 1:length(Env$l.var$noms1)) {
-	texte<-paste("segments(abscissae, ",type,"[",i,",] - std.dev[",i,",], abscissae, ",type,"[",i,",] + std.dev[",i,",]",sep="")
+	texte<-paste("arrows(abscissae, ",type,"[",i,",] - std.dev[",i,",], abscissae, ",type,"[",i,",] + std.dev[",i,",], code=3, angle=90, length=width",sep="")
 	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
 	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] + std.dev[",i,",], abscissae + width, ",type,"[",i,",] + std.dev[",i,",]",sep="")
-	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] - std.dev[",i,",], abscissae + width, ",type,"[",i,",] - std.dev[",i,",]",sep="")
-	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	texte<-paste(texte,")\n\n",sep="")
 	cat(texte)
     }
+    cat("\n")
   } else if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
     cat("# Error bars\n\n")
-    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n\n",sep="")
+    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
     cat(texte)
     for (i in 1:length(Env$l.var$noms1)) {
-	texte<-paste("segments(abscissae, ",type,"[",i,",] - std.err[",i,",], abscissae, ",type,"[",i,",] + std.err[",i,",]",sep="")
+	texte<-paste("arrows(abscissae, ",type,"[",i,",] - std.err[",i,",], abscissae, ",type,"[",i,",] + std.err[",i,",], code=3, angle=90, length=width",sep="")
 	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
 	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] + std.err[",i,",], abscissae + width, ",type,"[",i,",] + std.err[",i,",]",sep="")
-	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	texte<-paste(texte,")\n",sep="")
-	texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] - std.err[",i,",], abscissae + width, ",type,"[",i,",] - std.err[",i,",]",sep="")
-	if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	texte<-paste(texte,")\n\n",sep="")
 	cat(texte)
     }
+    cat("\n")
   } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
     cat("# Error bars\n\n")
-    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n\n",sep="")
+    texte<-paste("width <- 0.015 * (",Env$l.code$x.sup," - ",Env$l.code$x.inf,")\n",sep="")
     cat(texte)
     if (tclvalue(Env$l.var$moyprop)=="moy") {
 	for (i in 1:length(Env$l.var$noms1)) {
-	  texte<-paste("segments(abscissae, ",type,"[",i,",] - ci[",i,",], abscissae, ",type,"[",i,",] + ci[",i,",]",sep="")
+	  texte<-paste("arrows(abscissae, ",type,"[",i,",] - ci[",i,",], abscissae, ",type,"[",i,",] + ci[",i,",], code=3, angle=90, length=width",sep="")
 	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
 	  texte<-paste(texte,")\n",sep="")
-	  texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] + ci[",i,",], abscissae + width, ",type,"[",i,",] + ci[",i,",]",sep="")
-	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	  texte<-paste(texte,")\n",sep="")
-	  texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] - ci[",i,",], abscissae + width, ",type,"[",i,",] - ci[",i,",]",sep="")
-	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	  texte<-paste(texte,")\n\n",sep="")
 	  cat(texte)
 	}
     } else {
 	for (i in 1:length(Env$l.var$noms1)) {
-	  texte<-paste("segments(abscissae, ",type,"[",i,",] - ci.inf[",i,",], abscissae, ",type,"[",i,",] + ci.sup[",i,",]",sep="")
+	  texte<-paste("arrows(abscissae, ",type,"[",i,",] - ci.inf[",i,",], abscissae, ",type,"[",i,",] + ci.sup[",i,",], code=3, angle=90, length=width",sep="")
 	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
 	  texte<-paste(texte,")\n",sep="")
-	  texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] + ci.sup[",i,",], abscissae + width, ",type,"[",i,",] + ci.sup[",i,",]",sep="")
-	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	  texte<-paste(texte,")\n",sep="")
-	  texte<-paste(texte,"segments(abscissae - width, ",type,"[",i,",] - ci.inf[",i,",], abscissae + width, ",type,"[",i,",] - ci.inf[",i,",]",sep="")
-	  if (Env$l.var$couleur2B[i]!="black" & Env$l.var$couleur2B[i]!="#000000") {texte<-paste(texte,", col=\"",Env$l.var$couleur2B[i],"\"",sep="")}
-	  texte<-paste(texte,")\n\n",sep="")
 	  cat(texte)
 	}
     }
+    cat("\n")
   }
 }
 

@@ -1,1 +1,10 @@
-exportPattern("^[[:alpha:]]+")
+import(tcltk)
+
+importFrom(grDevices,dev.cur,dev.list,dev.new,dev.print,dev.set,grey.colors,jpeg,png,tiff)
+importFrom(graphics,abline,arrows,axis,barplot,box,boxplot,hist,legend,lines,locator,mtext,
+  panel.smooth,par,pie,plot,points,segments,text,title)
+importFrom(stats,binom.test,cov,dbinom,dchisq,density,dexp,df,dgamma,dgeom,dhyper,dnbinom,
+  dnorm,dpois,dsignrank,dt,dwilcox,lm,na.omit,predict,quantile,sd,t.test)
+importFrom(utils,browseURL,packageVersion,read.csv,read.table)
+
+export(run.GrapheR)
