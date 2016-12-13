@@ -4658,7 +4658,7 @@ graphe.erreurs.calculer<-function(variable,facteur1,facteur2=NULL,valeurs=NULL,p
 	if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 	  erreur<-NULL
 	  for (i in 1:nlevels(facteur1)) {
-	    erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/(length(na.omit(variable[facteur1==levels(facteur1)[i]]))-1)))
+	    erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/length(na.omit(variable[facteur1==levels(facteur1)[i]]))))
 	  }
 	  erreur.inf<-erreur.sup<-erreur
 	} else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
@@ -4674,7 +4674,7 @@ graphe.erreurs.calculer<-function(variable,facteur1,facteur2=NULL,valeurs=NULL,p
 	  erreur<-matrix(0,nrow=nlevels(variable),ncol=nlevels(facteur1))
 	  for (i in 1:nlevels(facteur1)) {
 	    for (j in 1:length(prop.nvx)) {
-		erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/(length(na.omit(variable[facteur1==levels(facteur1)[i]]))-1))
+		erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/length(na.omit(variable[facteur1==levels(facteur1)[i]])))
 	    }
 	  }
 	  erreur.inf<-erreur.sup<-erreur
@@ -5549,7 +5549,7 @@ graphe.erreurs.calculer2<-function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NU
     if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 	erreur<-NULL
 	for (i in 1:nlevels(varX)) {
-	  erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/(length(varY[varX==levels(varX)[i]])-1)))
+	  erreur<-c(erreur,sqrt((valeurs[i]*(1-valeurs[i]))/length(varY[varX==levels(varX)[i]])))
 	}
 	erreur.inf<-erreur.sup<-erreur
     } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
@@ -5565,7 +5565,7 @@ graphe.erreurs.calculer2<-function(varX,varY,niveau=NULL,valeurs=NULL,facteur=NU
 	erreur<-matrix(0,nrow=nlevels(facteur),ncol=nlevels(varX))
 	for (i in 1:nlevels(varX)) {
 	  for (j in 1:nlevels(facteur)) {
-	    erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/(length(varY[facteur==levels(facteur)[j] & varX==levels(varX)[i]])-1))
+	    erreur[j,i]<-sqrt((valeurs[j,i]*(1-valeurs[j,i]))/length(varY[facteur==levels(facteur)[j] & varX==levels(varX)[i]]))
 	  }
 	}
 	erreur.inf<-erreur.sup<-erreur
@@ -6284,7 +6284,7 @@ code.data<-function() {
 	  if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 	    cat("\nstd.err <- NULL\n")
 	    cat(paste("for (i in 1:nlevels(",facteurprop,")) {\n",sep=""))
-	    cat(paste("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/(length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]]))-1)))\n",sep=""))
+	    cat(paste("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]]))))\n",sep=""))
 	    cat("}\n\n")
 	  } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	    cat("\nci.inf <- NULL\n")
@@ -6305,7 +6305,7 @@ code.data<-function() {
 	    cat("\nstd.err <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")
 	    cat("for (i in 1:ncol(proportions)) {\n")
 	    cat("  for (j in 1:nrow(proportions)) {\n")
-	    cat(paste("    std.err[j,i] <- sqrt((proportions[j,i]*(1-proportions[j,i]))/(length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]]))-1))\n",sep=""))
+	    cat(paste("    std.err[j,i] <- sqrt((proportions[j,i]*(1-proportions[j,i]))/length(na.omit(",proportions,"[",facteurprop,"==levels(",facteurprop,")[i]])))\n",sep=""))
 	    cat("  }\n}\n\n")
 	  } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	    cat("\nci.inf <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")
@@ -6393,7 +6393,7 @@ code.data<-function() {
 	    if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 		cat("\nstd.err <- NULL\n")
 		cat("for (i in 1:nlevels(varX)) {\n")
-		cat("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/(length(na.omit(varY[varX==levels(varX)[i]]))-1)))\n")
+		cat("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/length(na.omit(varY[varX==levels(varX)[i]]))))\n")
 		cat("}\n\n")
 	    } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 		cat("\nci.inf <- NULL\n")
@@ -6417,7 +6417,7 @@ code.data<-function() {
 	    if (tclvalue(Env$l.var$erreur)==Env$voc[97,1]) {
 		cat("\nstd.err <- NULL\n")
 		cat("for (i in 1:nlevels(varX)) {\n")
-		cat(paste("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/(length(na.omit(",varY,"[varX==levels(varX)[i]]))-1)))\n",sep=""))
+		cat(paste("  std.err <- c(std.err,sqrt((proportions[i]*(1-proportions[i]))/length(na.omit(",varY,"[varX==levels(varX)[i]]))))\n",sep=""))
 		cat("}\n\n")
 	    } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 		cat("\nci.inf <- NULL\n")
@@ -6447,7 +6447,7 @@ code.data<-function() {
 	    cat("\nstd.err <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")
 	    cat("for (i in 1:ncol(proportions)) {\n")
 	    cat("  for (j in 1:nrow(proportions)) {\n")
-	    cat("    std.err[j,i] <- sqrt((proportions[j,i]*(1-proportions[j,i]))/(length(na.omit(varY[varX==levels(varX)[i] & fact==levels(fact)[j]]))-1))\n")
+	    cat("    std.err[j,i] <- sqrt((proportions[j,i]*(1-proportions[j,i]))/length(na.omit(varY[varX==levels(varX)[i] & fact==levels(fact)[j]])))\n")
 	    cat("  }\n}\n\n")
 	  } else if (tclvalue(Env$l.var$erreur)==Env$voc[98,1]) {
 	    cat("\nci.inf <- matrix(0,nrow=nrow(proportions),ncol=ncol(proportions),dimnames=list(rownames(proportions),colnames(proportions)))\n")

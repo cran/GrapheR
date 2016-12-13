@@ -1,3 +1,6 @@
+version 1.9-86 (12-12-2016)
+    - An error in the calculation of standard errors of proportions is corrected
+
 version 1.9-85 (17-10-2015)
     - A bug in calculation of proportions with NA's is fixed
     - The way of displaying error bars is changed

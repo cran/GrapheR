@@ -12,8 +12,8 @@ A multi-platform user interface for drawing highly customizable graphs in R. It 
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.9-85\cr
-Date: \tab 2015-10-17\cr
+Version: \tab 1.9-86\cr
+Date: \tab 2016-12-12\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
