@@ -6125,10 +6125,10 @@ navigation<-function(type) {
 #-------------------------------------------------
 
 aide<-function() {
-  if (Env$lang=="en") {browseURL(file.path(path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="fr") {browseURL(file.path(path.package("GrapheR"),"doc","manual_fr.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="es") {browseURL(file.path(path.package("GrapheR"),"doc","manual_en.pdf",fsep=.Platform$file.sep))}
-  if (Env$lang=="de") {browseURL(file.path(path.package("GrapheR"),"doc","manual_de.pdf",fsep=.Platform$file.sep))}
+  if (Env$lang=="en") {browseURL("https://drive.google.com/file/d/1wULSxs_AzEN7L-mrtlT5NSzv7WLYE4rO/view?usp=sharing")}
+  if (Env$lang=="fr") {browseURL("https://drive.google.com/file/d/1zoS21S5U70Q6og__gtOFPp3pJy9Oxak1/view?usp=sharing")}
+  if (Env$lang=="es") {browseURL("https://drive.google.com/file/d/1wULSxs_AzEN7L-mrtlT5NSzv7WLYE4rO/view?usp=sharing")}
+  if (Env$lang=="de") {browseURL("https://drive.google.com/file/d/1vX53tOd4Q5oFVZ-50ttv_3p8vR3mmva9/view?usp=sharing")}
 }
 
 
