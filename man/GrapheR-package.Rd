@@ -12,26 +12,26 @@ A multi-platform user interface for drawing highly customizable graphs in R. It 
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.9-86-3\cr
-Date: \tab 2020-12-15\cr
+Version: \tab 1.9-86-4\cr
+Date: \tab 2023-10-05\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
 }
 \author{
-Maxime Hervé
+Maxime HERVE
 
-Maintainer: Maxime Hervé <mx.herve@gmail.com>
+Maintainer: Maxime HERVE <mx.herve@gmail.com>
 }
 
 \references{
-    Dalgaard P (2001) A Primer on the R-Tcl/Tk Package.
+    DALGAARD P (2001) A Primer on the R-Tcl/Tk Package.
     \emph{R News}, \bold{1(3)}, 27--31.
 
-    Dalgaard P (2002) Changes to the R-Tcl/Tk Package.
+    DALGAARD P (2002) Changes to the R-Tcl/Tk Package.
     \emph{R News}, \bold{2(3)}, 25--27.
 
-    Hervé M (2011) GrapheR: a multiplatform GUI for drawing customizable graphs in R.
+    HERVE M (2011) GrapheR: a multiplatform GUI for drawing customizable graphs in R.
     \emph{The R Journal}, \bold{3(2)}, 45--53.
 }
 \examples{

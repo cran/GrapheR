@@ -1,10 +1,10 @@
-citEntry(entry="Article",
+bibentry(bibtype="Article",
   title = "GrapheR: a multiplatform GUI for drawing customizable graphs in R",
   journal="The R Journal",
   volume="3",
   number="2",
   pages="45-53",
   year="2011",
-  author = "Hervé M",
-  textVersion = "Hervé M (2011) GrapheR: a multiplatform GUI for drawing customizable graphs in R. The R Journal 3(2): 45-53."
+  author = person(given="Maxime",family="HERVE"),
+  textVersion = "HERVE M (2011) GrapheR: a multiplatform GUI for drawing customizable graphs in R. The R Journal 3(2): 45-53."
 )

@@ -1,11 +1,11 @@
-1fcfd34270406cca7ee00b5347940d41 *DESCRIPTION
+5648b3bc74e2d263332c52f84d3e7ec9 *DESCRIPTION
 73ef4a53b7ef07125c2162f4c1356623 *NAMESPACE
-603fcddb65354416341217410534d70c *NEWS
+3dac14f68c02936eb35e805249d3682b *NEWS
 c9fd5a3d709369b8a82a1fa7c8c13017 *R/Sources.R
 d1ce0d65381bf96795c2a4b69e211433 *R/zzz.R
-6f5b12f7218642edde8e5e769963aed4 *R/zzzz.R
+217f2b8cfe0bd2bba399c8d8cebb6d74 *R/zzzz.R
 d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
-725c87c0dd0b4aa12aab44c9940bb6cb *inst/CITATION
+7c75e06f9d1c4cbf77c49c477fe6c705 *inst/CITATION
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
 18eb6e9b97a9be77dae28c52b2fd3e28 *inst/images/But_box.gif
 25e87eeb21e8755949e83d4f81c0d644 *inst/images/But_cam.gif
@@ -148,6 +148,6 @@ bb421215bd87f9ebabb4d45ee742c3cd *inst/lang/Language_de.csv
 70047554eda1a0b428bfda984b384508 *inst/lang/Language_en.csv
 a6285949616518a0962ddf0d22105283 *inst/lang/Language_es.csv
 1b5a0970bcd600bd6301a27a84523afb *inst/lang/Language_fr.csv
-442cbe9c0baa30210bbd4085f9c13a6b *man/GrapheR-package.Rd
+0ca4217d821c50c1ea549286f1feafb9 *man/GrapheR-package.Rd
 ba63001551b3db0ecade57b182bf0a4c *man/Swallows.Rd
-814eef89a4c27bcbddf7acd1cf31038c *man/run.GrapheR.Rd
+b077f8eb68e0f9d07df6e1d86b2760f8 *man/run.GrapheR.Rd
