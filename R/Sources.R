@@ -24,7 +24,7 @@ run.GrapheR<-function(lang=NULL,path.to.save=NULL,figurej=FALSE) {
 
 
 #-------------------------------------------------
-# Chargement 2 et définition des variables
+# Chargement 2 et definition des variables
 #-------------------------------------------------
 
 load.GrapheR<-function() {
@@ -232,7 +232,7 @@ msg<-function(text,type) {
 
 
 #-------------------------------------------------
-# Séparation des variables numériques et des
+# Separation des variables numeriques et des
 # facteurs
 #-------------------------------------------------
 
@@ -251,7 +251,7 @@ variables.class<-function() {
 
 
 #-------------------------------------------------
-# Chargement du jeu de données - fichier externe
+# Chargement du jeu de donnees - fichier externe
 #-------------------------------------------------
 
 data.load1<-function() {
@@ -293,7 +293,7 @@ data.load1<-function() {
 
 
 #-------------------------------------------------
-# Chargement du jeu de données - objet R
+# Chargement du jeu de donnees - objet R
 #-------------------------------------------------
 
 data.load2<-function() {
@@ -412,7 +412,7 @@ convert.variable<-function(type) {
 
 
 #-------------------------------------------------
-# Remise à zéro des variables graphiques
+# Remise a zero des variables graphiques
 #-------------------------------------------------
 
 reinit.variables<-function() {
@@ -509,7 +509,7 @@ reinit.variables<-function() {
 
 
 #-------------------------------------------------
-# Renommer une classe (boîte, barre, part)
+# Renommer une classe (boite, barre, part)
 #-------------------------------------------------
 
 rename.noms1<-function(value.list,value.nom) {
@@ -565,7 +565,7 @@ rename.nomsparts<-function() {
 
 
 #-------------------------------------------------
-# Boîtes - couleur des boîtes
+# Boites - couleur des boites
 #-------------------------------------------------
 
 col.boites<-function() {
@@ -590,8 +590,8 @@ col.boites<-function() {
 
 
 #-------------------------------------------------
-# Barplot (et boîtes) - couleur des barres et
-# bordures (barres et boîtes) hachures
+# Barplot (et boites) - couleur des barres et
+# bordures (barres et boites) hachures
 #-------------------------------------------------
 
 col.barres<-function() {
@@ -652,7 +652,7 @@ hachures<-function(num) {
 
 
 #-------------------------------------------------
-# Activer / désactiver la frame Barres d'erreur
+# Activer / desactiver la frame Barres d'erreur
 #-------------------------------------------------
 
 active.erreur<-function() {
@@ -673,7 +673,7 @@ active.erreur<-function() {
 
 
 #-------------------------------------------------
-# Activer / désactiver la frame Légende
+# Activer / desactiver la frame Legende
 #-------------------------------------------------
 
 active.legende<-function() {
@@ -736,7 +736,7 @@ active.legende<-function() {
 
 
 #-------------------------------------------------
-# Boîtes - renommer un item de légende
+# Boites - renommer un item de legende
 #-------------------------------------------------
 
 rename.legende3<-function(value.list,value.nom) {
@@ -760,7 +760,7 @@ rename.legende3<-function(value.list,value.nom) {
 
 
 #-------------------------------------------------
-# Barres - renommer un item de légende
+# Barres - renommer un item de legende
 #-------------------------------------------------
 
 rename.legende<-function(value.list,value.nom) {
@@ -799,7 +799,7 @@ rename.legende<-function(value.list,value.nom) {
 
 
 #-------------------------------------------------
-# Courbe et nuage - renommer un item de légende
+# Courbe et nuage - renommer un item de legende
 #-------------------------------------------------
 
 rename.legende2<-function(value.list,value.nom) {
@@ -975,7 +975,7 @@ barres.prop<-function() {
 
 #-------------------------------------------------
 # Camembert - couleur des barres et hachures,
-# activation/désactivation de la légende
+# activation/desactivation de la legende
 #-------------------------------------------------
 
 col.parts<-function() {
@@ -3440,7 +3440,7 @@ fr6.openN<-function() {
 
 
 #-------------------------------------------------
-# Remise à zéro des variables de la Frame 7
+# Remise a zero des variables de la Frame 7
 #-------------------------------------------------
 
 reinit.fr7<-function() {
@@ -3479,7 +3479,7 @@ fr7.close<-function() {
 
 
 #-------------------------------------------------
-# Ouvrir une nouvelle fenêtre
+# Ouvrir une nouvelle fenetre
 #-------------------------------------------------
 
 new.window<-function() {
@@ -3806,7 +3806,7 @@ affine<-function() {
 
 
 #--------------------------------------------------------------------------
-# Ajouter une courbe de distribution théorique sur le graphe
+# Ajouter une courbe de distribution theorique sur le graphe
 #--------------------------------------------------------------------------
 
 distrib<-function() {
@@ -4596,7 +4596,7 @@ graphe.axes<-function(type="",mids=NULL,longueur=NULL,orient=NULL,ordonnee=NULL)
 
 
 #-------------------------------------------------
-# Graphe - échelles log
+# Graphe - echelles log
 #-------------------------------------------------
 
 graphe.log<-function() {
@@ -4715,7 +4715,7 @@ graphe.erreurs.tracer<-function(abscisses,valeurs,erreur.inf,erreur.sup,couleur,
 
 
 #-------------------------------------------------
-# Graphe - ajouter la légende
+# Graphe - ajouter la legende
 #-------------------------------------------------
 
 graphe.legende<-function(type,symboles=NULL,lignes=NULL,traits=NULL) {
@@ -5173,7 +5173,7 @@ tracer.hist<-function() {
 
 
 #-------------------------------------------------
-# Tracer les boîtes à moustaches
+# Tracer les boites a moustaches
 #-------------------------------------------------
 
 tracer.moust<-function() {
@@ -6188,7 +6188,7 @@ code.graphtype<-function() {
 
 
 #-------------------------------------------------
-# Code - Création des données
+# Code - Creation des donnees
 #-------------------------------------------------
 
 code.data<-function() {
@@ -6675,7 +6675,7 @@ code.graph.titre<-function() {
 
 
 #-------------------------------------------------
-# Code - Graphe (position légende)
+# Code - Graphe (position legende)
 #-------------------------------------------------
 
 code.graph.posleg<-function() {
@@ -6744,7 +6744,7 @@ code.graph.hist<-function() {
 
 
 #-------------------------------------------------
-# Code - Graphe (boîtes à moustaches)
+# Code - Graphe (boites a moustaches)
 #-------------------------------------------------
 
 code.graph.moust<-function() {
@@ -7229,7 +7229,7 @@ code.graph.courbe.erreurs2<-function(type) {
 
 
 #-------------------------------------------------
-# Code - Graphe (courbe - légende)
+# Code - Graphe (courbe - legende)
 #-------------------------------------------------
 
 code.graph.courbe.leg<-function() {
@@ -7788,7 +7788,7 @@ code.graph<-function() {
 
 
 #-------------------------------------------------
-# Code - Vérification si enregistrement du code
+# Code - Verification si enregistrement du code
 #   avant de tracer un graphe
 #-------------------------------------------------
 
@@ -7808,7 +7808,7 @@ pretracer<-function() {
 
 
 #-------------------------------------------------
-# Fenêtre principale
+# Fenetre principale
 #-------------------------------------------------
 
 ouvrir.GrapheR<-function() {

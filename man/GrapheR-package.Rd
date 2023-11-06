@@ -12,8 +12,8 @@ A multi-platform user interface for drawing highly customizable graphs in R. It 
 \tabular{ll}{
 Package: \tab GrapheR\cr
 Type: \tab Package\cr
-Version: \tab 1.9-86-4\cr
-Date: \tab 2023-10-05\cr
+Version: \tab 1.9-86-5\cr
+Date: \tab 2023-11-06\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -21,7 +21,7 @@ LazyLoad: \tab yes\cr
 \author{
 Maxime HERVE
 
-Maintainer: Maxime HERVE <mx.herve@gmail.com>
+Maintainer: Maxime HERVE <maxime.herve@univ-rennes1.fr>
 }
 
 \references{

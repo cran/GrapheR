@@ -1,9 +1,9 @@
-5648b3bc74e2d263332c52f84d3e7ec9 *DESCRIPTION
+030e5822bd2949cc0aff264037a7f3bc *DESCRIPTION
 73ef4a53b7ef07125c2162f4c1356623 *NAMESPACE
-3dac14f68c02936eb35e805249d3682b *NEWS
-c9fd5a3d709369b8a82a1fa7c8c13017 *R/Sources.R
+c97bd93b67489c393a0a005e8ab60f34 *NEWS
+2e8389d271f1380ab86c52427552cd22 *R/Sources.R
 d1ce0d65381bf96795c2a4b69e211433 *R/zzz.R
-217f2b8cfe0bd2bba399c8d8cebb6d74 *R/zzzz.R
+8553d4d48137486c124085d5f83aaa93 *R/zzzz.R
 d19ed2ec807786ee0826160e6e1ac48e *data/Swallows.txt.gz
 7c75e06f9d1c4cbf77c49c477fe6c705 *inst/CITATION
 8a2d4783de05f668d0333966f391255d *inst/images/But_bar.gif
@@ -148,6 +148,6 @@ bb421215bd87f9ebabb4d45ee742c3cd *inst/lang/Language_de.csv
 70047554eda1a0b428bfda984b384508 *inst/lang/Language_en.csv
 a6285949616518a0962ddf0d22105283 *inst/lang/Language_es.csv
 1b5a0970bcd600bd6301a27a84523afb *inst/lang/Language_fr.csv
-0ca4217d821c50c1ea549286f1feafb9 *man/GrapheR-package.Rd
+ab4dfdc7839465bff2128e7b929ccdd2 *man/GrapheR-package.Rd
 ba63001551b3db0ecade57b182bf0a4c *man/Swallows.Rd
-b077f8eb68e0f9d07df6e1d86b2760f8 *man/run.GrapheR.Rd
+dbdaaecd35d40df0da961fac139f83df *man/run.GrapheR.Rd

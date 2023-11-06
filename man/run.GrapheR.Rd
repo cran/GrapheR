@@ -21,5 +21,5 @@ if \code{TRUE}, allows to choose the "FigureJ" option when saving a graph. This 
 }
 }
 \author{
-Maxime HERVE <mx.herve@gmail.com>
+Maxime HERVE <maxime.herve@univ-rennes1.fr>
 }
